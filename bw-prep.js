@@ -10,6 +10,7 @@ const YAML = require('yaml');
  *
  * Packages removed
  * - ant design
+ * 
  * - plotly (if not a team with DS)
  *
  * Alter the index.js file
