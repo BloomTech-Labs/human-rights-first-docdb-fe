@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Here is an example of using our reusable List component to display some list data to the UI.
+//This is where our ant design will go. We might need to make another file to fetch the data
 const DocumentList = () => {
   return (
     <h1 style={{ color: '#9668ab' }}>
