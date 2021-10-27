@@ -1,12 +1,6 @@
-# Basic SPA
+# Humans Rights First Document Database
 
-For steps on how to work with this repository [please see here](https://docs.labs.lambdaschool.com/labs-spa-starter/)
-
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your first Pull-Request is merged. This is intended to be a guideline. Feel free to add your own flare to it.
-
-# Title of project goes here
-
-You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+You can find the deployed project at [HRF DOCDB](https://a.humanrightsfirstdocdb.dev/login).
 
 ## Contributors
 
