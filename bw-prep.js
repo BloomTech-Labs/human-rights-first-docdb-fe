@@ -26,7 +26,7 @@ const YAML = require('yaml');
     initial: false,
   });
 
-  var packages = [,
+  var packages = [
     'antd',
     'prompts',
     'kleur',
