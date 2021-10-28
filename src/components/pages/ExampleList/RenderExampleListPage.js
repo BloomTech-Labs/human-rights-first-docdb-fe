@@ -1,18 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const RenderExampleListPage = props => (
-  <div>
-    {props.data.map(item => (
-      <figure key={item.id}>
-        <img src={item.thumbnailUrl} alt={item.title} />
-        <figcaption>
-          <h3>{item.title}</h3>
-        </figcaption>
-      </figure>
-    ))}
-  </div>
-);
+const RenderExampleListPage = props => {
+  const { data } = props;
+  return (
+    <div>
+      {data.map(item => (
+        <ExampleComponent {...item} />
+      ))}
+    </div>
+  );
+};
+
+const ExampleComponent = props => {
+  const { id, thumbnailUrl, title } = props;
+  return (
+    <figure key={id}>
+      <img src={thumbnailUrl} alt={title} />
+      <figcaption>
+        <h3>{title}</h3>
+      </figcaption>
+    </figure>
+  );
+};
 
 export default RenderExampleListPage;
 

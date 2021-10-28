@@ -23,9 +23,9 @@ function DataVizContainer() {
           onChange={handleSelectState}
           placeholder="Select Your State"
         >
-          {states.map(state => (
-            <Option value={state.value} id={state.value}>
-              {state.value}
+          {states.map(({ value }) => (
+            <Option value={value} id={value}>
+              {value}
             </Option>
           ))}
         </Select>

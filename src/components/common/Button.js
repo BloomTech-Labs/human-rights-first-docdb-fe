@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 const Button = props => {
   // Here is a button for use when simply in need of a button that doesn't require to be wrapped in a form.
   // contains a click property for your use onClick
+  const { handleClick, isDisabled, classType, buttonText } = props;
   return (
     <button
-      onClick={props.handleClick}
-      disabled={props.isDisabled}
-      className={props.classType || 'primary'}
+      onClick={handleClick}
+      disabled={isDisabled}
+      className={classType || 'primary'}
     >
-      {props.buttonText}
+      {buttonText}
     </button>
   );
 };
