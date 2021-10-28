@@ -27,12 +27,6 @@ const YAML = require('yaml');
   });
 
   var packages = [
-    '@storybook/react',
-    '@storybook/addon-actions',
-    '@storybook/addon-knobs',
-    '@storybook/addon-notes',
-    '@storybook/addons',
-    '@storybook/storybook-deployer',
     'antd',
     'prompts',
     'kleur',
@@ -52,7 +46,6 @@ const YAML = require('yaml');
   removeThemeFromCraco();
   // remove storybook stories
   fs.rmdirSync('./src/stories', { recursive: true });
-  fs.rmdirSync('./.storybook', { recursive: true });
   // remove ant files
   fs.rmdirSync('./src/styles', { recursive: true });
   // remove scaffold .git 😈
