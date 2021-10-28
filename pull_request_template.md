@@ -9,16 +9,16 @@ Fixes # (issue)
 
 Please delete options that are not relevant.
 
-- [X] New feature (non-breaking change which adds functionality)
+- [ ] New feature (non-breaking change which adds functionality)
 
 ## Checklist:
 
-- [X] My code follows the style guidelines of this project
-- [X] I have performed a self-review of my own code
-- [X] I have removed unnecessary comments/console logs from my code
-- [X] I have made corresponding changes to the documentation if necessary (optional)
-- [X] My changes generate no new warnings
-- [X] I have checked my code and corrected any misspellings
-- [X] No duplicate code left within changed files
-- [X] Size of pull request kept to a minimum
-- [X] Pull request description clearly describes changes made & motivations for said changes
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my own code
+- [ ] I have removed unnecessary comments/console logs from my code
+- [ ] I have made corresponding changes to the documentation if necessary (optional)
+- [ ] My changes generate no new warnings
+- [ ] I have checked my code and corrected any misspellings
+- [ ] No duplicate code left within changed files
+- [ ] Size of pull request kept to a minimum
+- [ ] Pull request description clearly describes changes made & motivations for said changes
