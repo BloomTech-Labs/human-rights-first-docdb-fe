@@ -11,7 +11,7 @@ function RenderLandingPage(props) {
           components.
         </p>
         <p>
-          <Link to="/example-list">Example List of Items</Link>
+          <Link to="/document-list">Documents</Link>
         </p>
       </div>
     </div>
