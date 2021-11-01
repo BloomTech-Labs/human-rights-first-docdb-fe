@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../common';
 
 function RenderHomePage(props) {
-  const { userInfo, authService } = props;
+  const {
+    userInfo: { name },
+    authService: { logout },
+  } = props;
   return (
     <div>
-      <h1>Hi {userInfo.name} Welcome to Labs Basic SPA</h1>
+      <h1>Hi {name} Welcome to Labs Basic SPA</h1>
       <div>
         <p>
           This is an example of a common example of how we'd like for you to
@@ -22,10 +25,7 @@ function RenderHomePage(props) {
           <Link to="/datavis">Data Visualizations Example</Link>
         </p>
         <p>
-          <Button
-            handleClick={() => authService.logout()}
-            buttonText="Logout"
-          />
+          <Button handleClick={logout} buttonText="Logout" />
         </p>
       </div>
     </div>

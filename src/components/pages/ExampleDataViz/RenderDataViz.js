@@ -14,12 +14,13 @@ const initialState = {
 };
 
 function DataViz(props) {
+  const { url, authState } = props;
   const [data, setData] = useState(initialState);
   const [figure, setFigure] = useState(null);
 
   useEffect(() => {
     function fetchDSData() {
-      getDSData(props.url, props.authState)
+      getDSData(url, authState)
         .then(res => {
           setData(res);
         })
@@ -28,17 +29,14 @@ function DataViz(props) {
         });
     }
     fetchDSData();
-  }, [props.url, props.authState]);
+  }, [url, authState]);
 
   return (
     <Plot
       className="DataViz"
-      data={data.data}
-      layout={data.layout}
-      frames={data.frames}
-      config={data.config}
-      onInitialized={figure => setFigure(figure)}
-      onUpdate={figure => setFigure(figure)}
+      {...data}
+      onInitialized={setFigure}
+      onUpdate={setFigure}
     />
   );
 }
