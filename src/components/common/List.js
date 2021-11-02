@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 // Here is an example of a reusable list component.
 // We are passing all of its functions through props to keep our component clean & testable
 // Feel free to add to this component with some more advanced features of your own
-const List = ({ LoadingComponent, RenderItems, getItemsData }) => {
+const List = props => {
+  const { LoadingComponent, RenderItems, getItemsData } = props;
   const [items, setItems] = useState([]);
   const [isFetching, setFetching] = useState(true);
 

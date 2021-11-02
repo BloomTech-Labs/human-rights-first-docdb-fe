@@ -2,15 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FormInput = props => {
+  const { labelId, name, placeholder } = props;
   return (
     <>
-      <label htmlFor={props.labelId}>{props.labelId}</label>
-      <input
-        type="text"
-        id={props.labelId}
-        name={props.name}
-        placeholder={props.placeholder}
-      />
+      <label htmlFor={labelId}>{labelId}</label>
+      <input type="text" id={labelId} name={name} placeholder={placeholder} />
     </>
   );
 };

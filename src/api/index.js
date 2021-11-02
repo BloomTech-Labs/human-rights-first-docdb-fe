@@ -15,10 +15,11 @@ const getExampleData = () => {
 };
 
 const getAuthHeader = authState => {
-  if (!authState.isAuthenticated) {
+  const { isAuthenticated, idToken } = authState;
+  if (!isAuthenticated) {
     throw new Error('Not authenticated');
   }
-  return { Authorization: `Bearer ${authState.idToken}` };
+  return { Authorization: `Bearer ${idToken}` };
 };
 
 const getDSData = (url, authState) => {
