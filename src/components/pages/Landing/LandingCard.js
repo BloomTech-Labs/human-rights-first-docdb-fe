@@ -5,12 +5,13 @@ import { StarOutlined, StarFilled, ArrowsAltOutlined } from '@ant-design/icons';
 const { Meta } = Card;
 
 function LandingCard(props) {
-  const { title, preview, tags } = props;
+  const { title, preview, tags, favorited } = props;
+
   return (
     <Card
       title={<ArrowsAltOutlined />}
       cover={<img src={preview} alt={title} />}
-      extra={<StarOutlined />}
+      extra={favorited ? <StarFilled /> : <StarOutlined />}
       style={{ width: 300 }}
       bodyStyle={{ padding: '12px' }}
     >
