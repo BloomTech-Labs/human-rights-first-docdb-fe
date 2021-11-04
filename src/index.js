@@ -19,7 +19,7 @@ import { LandingPage } from './components/pages/Landing';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
-import { MainHeader } from './components/common/Header';
+import MainHeader from './components/common/Header.js';
 
 ReactDOM.render(
   <Router>
