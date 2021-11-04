@@ -22,8 +22,12 @@ function LandingCard(props) {
       <Row>
         {tags.map(tag => {
           return (
-            <Col span={0} style={{ display: 'flex', justifyContent: 'center' }}>
-              <Tag key={tag}> {tag} </Tag>
+            <Col
+              key={tag}
+              span={0}
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >
+              <Tag> {tag} </Tag>
             </Col>
           );
         })}

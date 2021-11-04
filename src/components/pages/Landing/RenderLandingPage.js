@@ -7,7 +7,7 @@ import LandingCardList from './LandingCardList';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 
 function RenderLandingPage(props) {
-  const { getDocs } = props;
+  const { getDocs, isFetching } = props;
   const { authState } = useOktaAuth();
   return (
     <div>
@@ -25,9 +25,14 @@ function RenderLandingPage(props) {
         getItemsData={() => getDocs(authState)}
         RenderItems={LandingCardList}
         LoadingComponent={() => <LoadingComponent message="...Loading" />}
+        isFetching={isFetching}
       />
     </div>
   );
 }
 
-export default connect(null, { getDocs })(RenderLandingPage);
+const mapStateToProps = state => ({
+  isFetching: state.isFetching,
+});
+
+export default connect(mapStateToProps, { getDocs })(RenderLandingPage);

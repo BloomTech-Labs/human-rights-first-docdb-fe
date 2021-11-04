@@ -6,8 +6,8 @@ function LandingCardList(props) {
   const { docs } = props;
   return (
     <div>
-      {docs.map(doc => (
-        <LandingCard {...doc} />
+      {docs.map((doc, index) => (
+        <LandingCard {...doc} key={index} />
       ))}
     </div>
   );
