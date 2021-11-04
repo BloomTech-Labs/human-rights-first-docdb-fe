@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const ReduxList = props => {
   const { LoadingComponent, RenderItems, getItemsData, isFetching } = props;
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(getItemsData, []);
 
   return isFetching ? <LoadingComponent /> : <RenderItems />;
