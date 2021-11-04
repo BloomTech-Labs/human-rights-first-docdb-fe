@@ -15,7 +15,7 @@ function MainHeader(props) {
       <Divider />
       <Layout>
         <Layout.Header style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={logo} alt="HRF logo"></img>
+          <img src={logo} className="header_img" alt="HRF logo"></img>
           <Search />
           <Button className="logout_button" type="default">
             Logout
