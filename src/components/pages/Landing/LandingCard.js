@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Tag, Row, Col } from 'antd';
 import { StarOutlined, StarFilled, ArrowsAltOutlined } from '@ant-design/icons';
+import PropTypes from 'prop-types';
 
 const { Meta } = Card;
 
@@ -31,5 +32,12 @@ function LandingCard(props) {
     </Card>
   );
 }
+
+LandingCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  preview: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  favorited: PropTypes.bool.isRequired,
+};
 
 export default LandingCard;
