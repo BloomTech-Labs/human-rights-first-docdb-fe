@@ -16,7 +16,7 @@ function MainHeader(props) {
       <Layout>
         <Layout.Header style={{ display: 'flex', alignItems: 'center' }}>
           <img src={logo} className="header_img" alt="HRF logo"></img>
-          <Search />
+          <Search placeholder="Search" />
           <Button className="logout_button" type="default">
             Logout
           </Button>
