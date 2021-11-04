@@ -12,7 +12,13 @@ function LandingCard(props) {
     <Card
       title={<ArrowsAltOutlined />}
       cover={<img src={preview} alt={title} />}
-      extra={favorited ? <StarFilled /> : <StarOutlined />}
+      extra={
+        favorited ? (
+          <StarFilled data-testid="filled-star" />
+        ) : (
+          <StarOutlined data-testid="outlined-star" />
+        )
+      }
       style={{ width: 300 }}
       bodyStyle={{ padding: '12px' }}
     >
@@ -21,13 +27,14 @@ function LandingCard(props) {
         style={{ textAlign: 'center', marginBottom: '10px' }}
       />
       <Row>
-        {tags.map(tag => {
-          return (
-            <Col span={0} style={{ display: 'flex', justifyContent: 'center' }}>
-              <Tag key={tag}> {tag} </Tag>
-            </Col>
-          );
-        })}
+        {tags.map(tag => (
+          <Col span={0} style={{ display: 'flex', justifyContent: 'center' }}>
+            <Tag key={tag} data-testid="doc-tag">
+              {' '}
+              {tag}{' '}
+            </Tag>
+          </Col>
+        ))}
       </Row>
     </Card>
   );
