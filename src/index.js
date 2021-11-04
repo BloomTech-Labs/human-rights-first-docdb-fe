@@ -19,6 +19,7 @@ import { LandingPage } from './components/pages/Landing';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
+import { MainHeader } from './components/common/Header';
 
 ReactDOM.render(
   <Router>
@@ -42,6 +43,7 @@ function App() {
 
   return (
     <Security {...config} onAuthRequired={authHandler}>
+      <MainHeader />
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
