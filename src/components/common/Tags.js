@@ -7,8 +7,8 @@ function Tags(props) {
   const { size, tagArray } = props;
   return (
     <Row>
+      {/*eslint-disable-next-line*/}
       {tagArray.map((tag, index) => {
-        //eslint-disable-line
         if (index < size - 1) {
           return <ColTag tag={tag} />;
         } else if (index === size - 1 && tagArray.length <= size) {
@@ -18,8 +18,8 @@ function Tags(props) {
             <Col>
               <Popover
                 title="Tags cont."
+                // eslint-disable-next-line
                 content={tagArray.map((tag, index) => {
-                  //eslint-disable-line
                   if (index >= size - 1) {
                     return <ColTag tag={tag} />;
                   }

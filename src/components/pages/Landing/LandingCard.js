@@ -27,7 +27,7 @@ function LandingCard(props) {
         title={title}
         style={{ textAlign: 'center', marginBottom: '10px' }}
       />
-      <Tags tagArray={tags} size={5} />
+      <Tags tagArray={tags} size={8} />
     </Card>
   );
 }

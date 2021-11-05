@@ -7,8 +7,11 @@ function ColTag(props) {
   return (
     <Col span={0} style={{ display: 'flex', justifyContent: 'center' }}>
       <Tag key={tag} data-testid="doc-tag">
-        {' '}
-        {tag}{' '}
+        {tag.length < 8 ? (
+          tag
+        ) : (
+          <Tooltip title={tag}>{tag.slice(0, 6)}...</Tooltip>
+        )}
       </Tag>
     </Col>
   );
