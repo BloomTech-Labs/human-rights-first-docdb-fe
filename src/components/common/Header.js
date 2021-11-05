@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Layout, Input, Divider, Space } from 'antd';
+import { Layout } from 'antd';
 import Search from 'antd/es/input/Search';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
