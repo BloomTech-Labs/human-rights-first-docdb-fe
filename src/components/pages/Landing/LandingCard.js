@@ -20,7 +20,7 @@ function LandingCard(props) {
             src={bookmarkFilled}
             alt="bookmark filled"
             width="20"
-            data-testid="filled-boomark"
+            data-testid="filled-bookmark"
           />
         ) : (
           <img
