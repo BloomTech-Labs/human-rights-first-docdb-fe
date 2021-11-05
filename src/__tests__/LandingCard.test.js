@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { testDocument } from '../__mocks__';
 import LandingCard from '../components/pages/Landing/LandingCard';
 
