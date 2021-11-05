@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, Tag, Row, Col } from 'antd';
+import { Card } from 'antd';
 import { StarOutlined, StarFilled, ArrowsAltOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
+import { Tags } from '../../common';
 
 const { Meta } = Card;
 
@@ -26,16 +27,7 @@ function LandingCard(props) {
         title={title}
         style={{ textAlign: 'center', marginBottom: '10px' }}
       />
-      <Row>
-        {tags.map(tag => (
-          <Col span={0} style={{ display: 'flex', justifyContent: 'center' }}>
-            <Tag key={tag} data-testid="doc-tag">
-              {' '}
-              {tag}{' '}
-            </Tag>
-          </Col>
-        ))}
-      </Row>
+      <Tags tagArray={tags} size={5} />
     </Card>
   );
 }
