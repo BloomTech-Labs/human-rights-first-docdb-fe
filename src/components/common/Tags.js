@@ -18,12 +18,16 @@ function Tags(props) {
             <Col>
               <Popover
                 title="Tags cont."
-                // eslint-disable-next-line
-                content={tagArray.map((tag, index) => {
-                  if (index >= size - 1) {
-                    return <ColTag tag={tag} />;
-                  }
-                })}
+                content={
+                  <Row>
+                    {/* eslint-disable-next-line */}
+                    {tagArray.map((tag, index) => {
+                      if (index >= size - 1) {
+                        return <ColTag tag={tag} />;
+                      }
+                    })}
+                  </Row>
+                }
               >
                 <Tag>
                   <EllipsisOutlined />

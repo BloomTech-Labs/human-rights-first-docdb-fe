@@ -5,7 +5,7 @@ function ColTag(props) {
   const { tag } = props;
 
   return (
-    <Col span={0} style={{ display: 'flex', justifyContent: 'center' }}>
+    <Col span={6} style={{ display: 'flex', justifyContent: 'center' }}>
       <Tag key={tag} data-testid="doc-tag">
         {tag.length < 8 ? (
           tag
