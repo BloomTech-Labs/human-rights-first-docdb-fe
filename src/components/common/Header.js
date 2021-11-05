@@ -11,20 +11,16 @@ import logo from '../../assets/HRF_Logo.webp';
 
 function MainHeader(props) {
   return (
-    <div className="App">
-      <Divider />
-      <Layout>
-        <Layout.Header style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={logo} className="header_img" alt="HRF logo"></img>
-          <Search placeholder="Search" />
-          <Button className="logout_button" type="default">
-            Logout
-          </Button>
-          <Avatar className="avatars" size={35} icon={<UserOutlined />} />
-        </Layout.Header>
-      </Layout>
-      <Divider />
-    </div>
+    <Layout>
+      <Layout.Header className="header_div">
+        <img src={logo} className="header_img" alt="HRF logo"></img>
+        <Search className="search_bar" placeholder="Search" />
+        <Button className="logout_button" type="default">
+          Logout
+        </Button>
+        <Avatar className="avatars" size={45} icon={<UserOutlined />} />
+      </Layout.Header>
+    </Layout>
   );
 }
 export default MainHeader;

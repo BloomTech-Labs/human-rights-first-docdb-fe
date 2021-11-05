@@ -1,13 +1,17 @@
-.App {
-    padding: 20px;
-  }
-.avatars{
-    margin-left: 18px;
-  }
-.logout_button{
-    margin-left: 18px;
-  }
 .header_img{
-    margin-left: 18px;
-
+  width:30%;
+  max-width: 260px;
+  height: auto;
+}
+.header_div{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color:#DBC6B2;
+  width: auto;
+  height: 65px;
+  padding: 0;
+}
+.search_bar{
+  width: 40%;
 }
