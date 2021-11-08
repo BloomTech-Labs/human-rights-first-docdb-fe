@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, Tag, Row, Col } from 'antd';
-import { StarOutlined, StarFilled, ArrowsAltOutlined } from '@ant-design/icons';
+import { ArrowsAltOutlined } from '@ant-design/icons';
+import bookmarkOutlined from '../../../assets/bookmarkOutlined.png';
+import bookmarkFilled from '../../../assets/bookmarkFilled.png';
 import PropTypes from 'prop-types';
 
 const { Meta } = Card;
@@ -10,13 +12,23 @@ function LandingCard(props) {
 
   return (
     <Card
-      title={<ArrowsAltOutlined />}
+      title={<ArrowsAltOutlined rotate={90} />}
       cover={<img src={preview} alt={title} />}
       extra={
         favorited ? (
-          <StarFilled data-testid="filled-star" />
+          <img
+            src={bookmarkFilled}
+            alt="bookmark filled"
+            width="20"
+            data-testid="filled-bookmark"
+          />
         ) : (
-          <StarOutlined data-testid="outlined-star" />
+          <img
+            src={bookmarkOutlined}
+            alt="bookmark outlined"
+            width="20"
+            data-testid="outlined-bookmark"
+          />
         )
       }
       style={{ width: 300 }}
@@ -28,9 +40,10 @@ function LandingCard(props) {
       />
       <Row>
         {tags.map(tag => (
-          <Col key={tag} span={0} style={{ display: 'flex', justifyContent: 'center' }}>
-            <Tag data-testid="doc-tag">
-              {' '}{tag}{' '}
+          <Col span={0} style={{ display: 'flex', justifyContent: 'center' }}>
+            <Tag key={tag} data-testid="doc-tag">
+              {' '}
+              {tag}{' '}
             </Tag>
           </Col>
         ))}
