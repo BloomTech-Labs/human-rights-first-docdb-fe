@@ -7,11 +7,12 @@ import PropTypes from 'prop-types';
 
 const { Meta } = Card;
 
-function LandingCard(props) {
+function DocumentCard(props) {
   const { title, preview, tags, favorited } = props;
 
   return (
     <Card
+      key={title}
       title={<ArrowsAltOutlined rotate={90} />}
       cover={<img src={preview} alt={title} />}
       extra={
@@ -40,11 +41,12 @@ function LandingCard(props) {
       />
       <Row>
         {tags.map(tag => (
-          <Col span={0} style={{ display: 'flex', justifyContent: 'center' }}>
-            <Tag key={tag} data-testid="doc-tag">
-              {' '}
-              {tag}{' '}
-            </Tag>
+          <Col
+            key={tag}
+            span={0}
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
+            <Tag data-testid="doc-tag"> {tag} </Tag>
           </Col>
         ))}
       </Row>
@@ -52,11 +54,11 @@ function LandingCard(props) {
   );
 }
 
-LandingCard.propTypes = {
+DocumentCard.propTypes = {
   title: PropTypes.string.isRequired,
   preview: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string),
   favorited: PropTypes.bool.isRequired,
 };
 
-export default LandingCard;
+export default DocumentCard;

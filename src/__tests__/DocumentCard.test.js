@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { testDocument } from '../__mocks__';
-import LandingCard from '../components/pages/Landing/LandingCard';
+import DocumentCard from '../components/pages/DocumentList/DocumentCard';
 
 describe('<Landing Card /> testing suite', () => {
   beforeAll(() => {
@@ -20,20 +20,22 @@ describe('<Landing Card /> testing suite', () => {
     });
   });
   test('renders title', () => {
-    const { getByText } = render(<LandingCard {...testDocument} />);
+    const { getByText } = render(<DocumentCard {...testDocument} />);
     const titleElement = getByText(/test/i);
     expect(titleElement).toBeInTheDocument();
   });
   test('renders tags', () => {
-    const { getAllByTestId } = render(<LandingCard {...testDocument} />);
+    const { getAllByTestId } = render(<DocumentCard {...testDocument} />);
     const tags = getAllByTestId('doc-tag');
     expect(tags).toHaveLength(testDocument.tags.length);
   });
   test('renders correct bookmark', () => {
-    const { getByTestId, rerender } = render(<LandingCard {...testDocument} />);
+    const { getByTestId, rerender } = render(
+      <DocumentCard {...testDocument} />
+    );
     const FilledBookmark = getByTestId('filled-bookmark');
     expect(FilledBookmark).toBeInTheDocument();
-    rerender(<LandingCard {...testDocument} favorited={false} />);
+    rerender(<DocumentCard {...testDocument} favorited={false} />);
     const OutlinedBookmark = getByTestId('outlined-bookmark');
     expect(OutlinedBookmark).toBeInTheDocument();
   });
