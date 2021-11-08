@@ -5,38 +5,42 @@ import { ColTag } from './';
 
 function Tags(props) {
   const { size, tagArray } = props;
+
+  if (tagArray.length <= size)
+    return (
+      <Row>
+        {tagArray.map(tag => (
+          <ColTag tag={tag} />
+        ))}
+      </Row>
+    );
+
+  const shownTags = tagArray.slice(0, size - 1);
+  const hiddenTags = tagArray.slice(size - 1, tagArray.length);
+
   return (
     <Row>
       {/*eslint-disable-next-line*/}
-      {tagArray.map((tag, index) => {
-        if (index < size - 1) {
-          return <ColTag tag={tag} />;
-        } else if (index === size - 1 && tagArray.length <= size) {
-          return <ColTag tag={tag} />;
-        } else if (index === size - 1) {
-          return (
-            <Col>
-              <Popover
-                title="Tags cont."
-                content={
-                  <Row>
-                    {/* eslint-disable-next-line */}
-                    {tagArray.map((tag, index) => {
-                      if (index >= size - 1) {
-                        return <ColTag tag={tag} />;
-                      }
-                    })}
-                  </Row>
-                }
-              >
-                <Tag>
-                  <EllipsisOutlined />
-                </Tag>
-              </Popover>
-            </Col>
-          );
-        }
-      })}
+      {shownTags.map(tag => (
+        <ColTag tag={tag} />
+      ))}
+      <Col>
+        <Popover
+          title="Tags cont."
+          content={
+            <Row>
+              {/* eslint-disable-next-line */}
+              {hiddenTags.map(tag => (
+                <ColTag tag={tag} />
+              ))}
+            </Row>
+          }
+        >
+          <Tag>
+            <EllipsisOutlined />
+          </Tag>
+        </Popover>
+      </Col>
     </Row>
   );
 }
