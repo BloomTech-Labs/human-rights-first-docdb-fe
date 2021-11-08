@@ -20,7 +20,6 @@ function Tags(props) {
 
   return (
     <Row>
-      {/*eslint-disable-next-line*/}
       {shownTags.map(tag => (
         <ColTag tag={tag} />
       ))}
@@ -29,7 +28,6 @@ function Tags(props) {
           title="Tags cont."
           content={
             <Row>
-              {/* eslint-disable-next-line */}
               {hiddenTags.map(tag => (
                 <ColTag tag={tag} />
               ))}
