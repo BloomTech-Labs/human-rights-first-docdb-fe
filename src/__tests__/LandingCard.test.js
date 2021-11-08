@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { testDocument } from '../__mocks__';
 import LandingCard from '../components/pages/Landing/LandingCard';
 
@@ -29,12 +29,12 @@ describe('<Landing Card /> testing suite', () => {
     const tags = getAllByTestId('doc-tag');
     expect(tags).toHaveLength(testDocument.tags.length);
   });
-  test('renders correct stars', () => {
+  test('renders correct bookmark', () => {
     const { getByTestId, rerender } = render(<LandingCard {...testDocument} />);
-    const FilledStar = getByTestId('filled-star');
-    expect(FilledStar).toBeInTheDocument();
+    const FilledBookmark = getByTestId('filled-bookmark');
+    expect(FilledBookmark).toBeInTheDocument();
     rerender(<LandingCard {...testDocument} favorited={false} />);
-    const OutlinedStar = getByTestId('outlined-star');
-    expect(OutlinedStar).toBeInTheDocument();
+    const OutlinedBookmark = getByTestId('outlined-bookmark');
+    expect(OutlinedBookmark).toBeInTheDocument();
   });
 });
