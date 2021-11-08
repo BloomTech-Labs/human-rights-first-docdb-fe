@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tag, Popover, Row, Col } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
-import { ColTag } from './';
+import ColTag from './ColTag';
 
 function Tags(props) {
   const { size, tagArray } = props;
