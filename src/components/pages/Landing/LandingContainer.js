@@ -1,13 +1,10 @@
 import React from 'react';
 import RenderLandingPage from './RenderLandingPage';
-import LandingCard from './LandingCard';
-import { testDocument } from '../../../__mocks__';
 
-function LandingContainer({ LoadingComponent }) {
+function LandingContainer() {
   return (
     <>
       <RenderLandingPage />
-      <LandingCard {...testDocument} />
     </>
   );
 }
