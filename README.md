@@ -1,24 +1,59 @@
 # Humans Rights First Document Database
 
-You can find the deployed project at [HRF DOCDB](https://a.humanrightsfirstdocdb.dev/login).
+![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
+
+See the deployed project [here](https://a.humanrightsfirstdocdb.dev/login).
 
 ## Contributors
 
-|                                                      [Andrew Busby](https://github.com/andrewsbusby)                                                       |                                                       [Luiza Coelho](https://github.com/lncpadawan)                                                        |                                                      [Philip Lee](https://github.com/pflee1989)                                                       |                                                       [Joshua Araujo](https://github.com/joshua-araujo)                                                                                                                  |                                                  |
- :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://avatars.githubusercontent.com/u/64098862?v=4" width = "200" />](https://github.com/andrewsbusby) | [<img src="https://avatars.githubusercontent.com/u/46506254?v=4" width = "200" />](https://github.com/lncpadawan) | [<img src="https://avatars.githubusercontent.com/u/81424588?v=4" width = "200" />](https://github.com/pflee1989) | [<img src="https://ca.slack-edge.com/ESZCHB482-U01PTMVFSBT-578fe115794f-512g" width = "200" />](https://github.com/joshua-araujo)                |                           |                                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)                           |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)                            |
-|                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/andrew-busby-817056197/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/luiza-coelho-08499112a/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/pflee/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |
+<!-- Format
+
+|name|name|name|name|
+|:--:|:--:|:--:|:--:|
+|pic |pic |pic |pic |
+| LI | LI | LI | LI |
+
+name: [name](GH_link)
+picture: [<img src="avatarlink" width = "200" />](GH_link)
+linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](LI_link)
+
+-->
+
+|[Andrew Busby](https://github.com/andrewsbusby)|[Luiza Coelho](https://github.com/lncpadawan)|[Bailey Evanger](https://github.com/bevanger)|[Philip Lee](https://github.com/pflee1989)|
+|:--:|:--:|:--:|:--:|
+|[<img src="https://avatars.githubusercontent.com/u/64098862?v=4" width = "200" />](https://github.com/andrewsbusby)|[<img src="https://avatars.githubusercontent.com/u/46506254?v=4" width = "200" />](https://github.com/lncpadawan)|[<img src="https://avatars.githubusercontent.com/u/84409941?v=4" width = "200" />](https://github.com/bevanger)|[<img src="https://avatars.githubusercontent.com/u/81424588?v=4" width = "200" />](https://github.com/pflee1989)|
+|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/andrew-busby-817056197/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/luiza-coelho-08499112a/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](www.linkedin.com/in/bailey-evanger)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/pflee/)| 
+
+|[Jesse Leegwater](https://github.com/JLeegwater)|[Cara Locke](https://github.com/caralocke)|[Dharmik Savaliya](https://github.com/makeityourself121)|[Andrew Schaer](https://github.com/Andrewschaer)|
+|:--:|:--:|:--:|:--:|
+|[<img src="https://avatars.githubusercontent.com/u/41308539?v=4" width = "200" />](https://github.com/JLeegwater)|[<img src="https://avatars.githubusercontent.com/u/81659057?v=4" width = "200" />](https://github.com/caralocke)|[<img src="https://avatars.githubusercontent.com/u/84363151?v=4" width = "200" />](https://github.com/makeityourself121)|[<img src="https://avatars.githubusercontent.com/u/24277559?v=4" width = "200" />](https://github.com/Andrewschaer)|
+🚫|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/cara-locke/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](http://www.linkedin.com/in/dharmiksavaliya)|🚫|
+
+[Romy Shockey](https://github.com/rkshockey)|[Jacob Shomali](https://github.com/collerhatguy)|contributor|contributor|
+|:--:|:--:|:--:|:--:|
+|[<img src="https://avatars.githubusercontent.com/u/84862108?v=4" width = "200" />](https://github.com/rkshockey)|[<img src="https://avatars.githubusercontent.com/u/67057792?v=4" width = "200" />](https://github.com/collerhatguy)|📷|📷|
+| 🚫 |[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/jacob-shomali-a206aa1ba/)|  |  |
 
 <br>
 <br>
 
-🚫 Optional examples of using images with links for your tech stack, make sure to change these to fit your project
+## Technical Project Managers
 
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
+|[Nora Corser](https://github.com/nora-exe)|[Jack Orth](https://github.com/JackOrth)|[Brandon Verfurth](https://github.com/bverfurth)|[Tawnya Wessar](https://github.com/tdubs42)|
+|:--:|:--:|:--:|:--:|
+|[<img src="https://avatars.githubusercontent.com/u/34663084?v=4" width = "200" />](https://github.com/nora-exe)|[<img src="https://avatars.githubusercontent.com/u/79072077?v=4" width = "200" />](https://github.com/JackOrth)|[<img src="https://avatars.githubusercontent.com/u/78745926?v=4" width = "200" />](https://github.com/bverfurth)|[<img src="https://avatars.githubusercontent.com/u/76195439?v=4" width = "200" />](https://github.com/tdubs42)|
+|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/noco/)| 🚫 | 🚫 | 🚫 |
 
-🚫 more info on using badges [here](https://github.com/badges/shields)
+## Release Manager
+
+|[Paul St.Germain](https://github.com/paulstgermain)|
+|:--:|
+|[<img src="https://avatars.githubusercontent.com/u/55460082?v=4" width = "200" />](https://github.com/paulstgermain)|
+|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/paul-stgermain/)|
+
+<br>
+<br>
 
 - Fork and clone the repo to install it as your own remote.
   - **note** please [be sure to set your remote](https://help.github.jp/enterprise/2.11/user/articles/changing-a-remote-s-url/) for this repo to point to your Labs Team Front End Repository.
