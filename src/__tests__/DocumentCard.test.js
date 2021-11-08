@@ -36,6 +36,7 @@ describe('<Landing Card /> testing suite', () => {
     const FilledBookmark = getByTestId('filled-bookmark');
     expect(FilledBookmark).toBeInTheDocument();
     rerender(<DocumentCard {...testDocument} favorited={false} />);
+
     const OutlinedBookmark = getByTestId('outlined-bookmark');
     expect(OutlinedBookmark).toBeInTheDocument();
   });
