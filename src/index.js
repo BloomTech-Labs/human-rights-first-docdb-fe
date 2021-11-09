@@ -15,12 +15,10 @@ import docsReducer from './state/reducers';
 import 'antd/dist/antd.less';
 
 import { NotFoundPage } from './components/pages/NotFound';
-import { DocumentList } from './components/pages/DocumentList';
-import { ProfileListPage } from './components/pages/ProfileList';
+import { Search } from './components/pages/Search';
+import { Admin } from './components/pages/Admin';
 import { LoginPage } from './components/pages/Login';
-import { HomePage } from './components/pages/Home';
 import { LandingPage } from './components/pages/Landing';
-import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 
@@ -59,9 +57,8 @@ function App() {
           exact
           component={() => <LandingPage LoadingComponent={LoadingComponent} />}
         />
-        <SecureRoute path="/document-list" component={DocumentList} />
-        <SecureRoute path="/profile-list" component={ProfileListPage} />
-        <SecureRoute path="/datavis" component={ExampleDataViz} />
+        <SecureRoute path="/search" component={Search} />
+        <SecureRoute path="/admin" component={Admin} />
         <Route component={NotFoundPage} />
       </Switch>
     </Security>
