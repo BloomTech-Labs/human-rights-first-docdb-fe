@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { LoadingComponent, ReduxList, Header } from '../../common';
 import { connect } from 'react-redux';
 import { getDocs } from '../../../state/actions';
 import LandingCardList from './LandingCardList';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
+import { Pagination } from 'antd';
 
 function RenderLandingPage(props) {
   const { getDocs, isFetching } = props;
@@ -12,24 +12,13 @@ function RenderLandingPage(props) {
   return (
     <div>
       <Header />
-      <div>
-        <h1>Welcome to Labs Basic SPA</h1>
-        <div>
-          <p>
-            This is an example of how we'd like for you to approach
-            page/routable components.
-          </p>
-          <p>
-            <Link to="/document-list">Documents</Link>
-          </p>
-        </div>
-      </div>
       <ReduxList
         getItemsData={() => getDocs(authState)}
         RenderItems={LandingCardList}
         LoadingComponent={() => <LoadingComponent message="...Loading" />}
         isFetching={isFetching}
       />
+      <Pagination />
     </div>
   );
 }

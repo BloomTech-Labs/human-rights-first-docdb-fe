@@ -1,15 +1,18 @@
 import React from 'react';
 import LandingCard from './LandingCard';
 import { connect } from 'react-redux';
+import { Row, Col } from 'antd';
 
 function LandingCardList(props) {
   const { docs } = props;
   return (
-    <div>
+    <Row>
       {docs.map((doc, index) => (
-        <LandingCard {...doc} key={index} />
+        <Col span={6} key={index}>
+          <LandingCard {...doc} />
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 }
 
