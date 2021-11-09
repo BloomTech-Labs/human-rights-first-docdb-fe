@@ -4,13 +4,7 @@ import { connect } from 'react-redux';
 
 function DocmentCardList(props) {
   const { docs } = props;
-  return (
-    <div>
-      {docs.map(doc => (
-        <DocumentCard {...doc} />
-      ))}
-    </div>
-  );
+  return <div>{docs.map(DocumentCard)}</div>;
 }
 
 const mapStateToProps = state => ({
