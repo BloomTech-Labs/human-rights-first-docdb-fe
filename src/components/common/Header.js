@@ -4,7 +4,7 @@ import { Avatar, Layout, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './header.css';
-import logo from '../../assets/HRF_Logo.webp';
+import logo from '../../assets/HRF_Logo.jpg';
 import { useOktaAuth } from '@okta/okta-react';
 import { useLocation, Link } from 'react-router-dom';
 
