@@ -21,14 +21,14 @@ function MainHeader(props) {
       <Header className="header_div">
         <img src={logo} className="header_img" alt="HRF logo" />
         <Search className="search_bar" placeholder="Search" />
-        <Button onClick={logout} className="logout_button" type="default">
-          Logout
-        </Button>
         <Link to="/">
           <Button className="bookmark_button" type="default">
             Bookmarks
           </Button>
         </Link>
+        <Button onClick={logout} className="logout_button" type="default">
+          Logout
+        </Button>
         <Avatar className="avatars" size={45} icon={<UserOutlined />} />
       </Header>
     </Layout>
