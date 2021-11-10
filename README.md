@@ -30,10 +30,10 @@ linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" w
 |[<img src="https://avatars.githubusercontent.com/u/41308539?v=4" width = "200" />](https://github.com/JLeegwater)|[<img src="https://avatars.githubusercontent.com/u/81659057?v=4" width = "200" />](https://github.com/caralocke)|[<img src="https://avatars.githubusercontent.com/u/84363151?v=4" width = "200" />](https://github.com/makeityourself121)|[<img src="https://avatars.githubusercontent.com/u/24277559?v=4" width = "200" />](https://github.com/Andrewschaer)|
 [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/jesse-leegwater/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/cara-locke/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](http://www.linkedin.com/in/dharmiksavaliya)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](http://www.linkedin.com/in/andrewschaer)|
 
-[Romy Shockey](https://github.com/rkshockey)|[Jacob Shomali](https://github.com/collerhatguy)|contributor|contributor|
+[Romy Shockey](https://github.com/rkshockey)|[Jacob Shomali](https://github.com/collerhatguy)|[Rimsha Saleem](https://github.com/RimshaSaleem)|contributor|
 |:--:|:--:|:--:|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/84862108?v=4" width = "200" />](https://github.com/rkshockey)|[<img src="https://avatars.githubusercontent.com/u/67057792?v=4" width = "200" />](https://github.com/collerhatguy)|📷|📷|
-| [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/romy-shockey/) |[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/jacob-shomali-a206aa1ba/)|  |  |
+|[<img src="https://avatars.githubusercontent.com/u/84862108?v=4" width = "200" />](https://github.com/rkshockey)|[<img src="https://avatars.githubusercontent.com/u/67057792?v=4" width = "200" />](https://github.com/collerhatguy)|[<img src="https://avatars.githubusercontent.com/u/84862108?v=4" width = "200" />](https://github.com/RimshaSaleem)|📷|
+| [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/romy-shockey/) |[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/jacob-shomali-a206aa1ba/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/rimsha-saleem-384622215/) |  |
 
 <br>
 <br>
