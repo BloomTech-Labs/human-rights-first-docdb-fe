@@ -7,17 +7,19 @@ See the deployed project [here](https://a.humanrightsfirstdocdb.dev/login).
 
 ## Contributors
 
-<!-- Format
+<!------------- Table Format
+For adding more contributors
 
 |name|name|name|name|
 |:--:|:--:|:--:|:--:|
 |pic |pic |pic |pic |
 | LI | LI | LI | LI |
 
-name: [name](GH_link)
-picture: [<img src="avatarlink" width = "200" />](GH_link)
-linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](LI_link)
+-------------------- Values
 
+name: [name](GH_URL)
+picture: [<img src="avatar_URL" width = "200" />](GH_URL)
+linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](LI_URL)
 -->
 
 |[Andrew Busby](https://github.com/andrewsbusby)|[Luiza Coelho](https://github.com/lncpadawan)|[Bailey Evanger](https://github.com/bevanger)|[Philip Lee](https://github.com/pflee1989)|
@@ -30,10 +32,10 @@ linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" w
 |[<img src="https://avatars.githubusercontent.com/u/41308539?v=4" width = "200" />](https://github.com/JLeegwater)|[<img src="https://avatars.githubusercontent.com/u/81659057?v=4" width = "200" />](https://github.com/caralocke)|[<img src="https://avatars.githubusercontent.com/u/84363151?v=4" width = "200" />](https://github.com/makeityourself121)|[<img src="https://avatars.githubusercontent.com/u/24277559?v=4" width = "200" />](https://github.com/Andrewschaer)|
 [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/jesse-leegwater/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/cara-locke/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](http://www.linkedin.com/in/dharmiksavaliya)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](http://www.linkedin.com/in/andrewschaer)|
 
-[Romy Shockey](https://github.com/rkshockey)|[Jacob Shomali](https://github.com/collerhatguy)|[Rimsha Saleem](https://github.com/RimshaSaleem)|contributor|
+[Romy Shockey](https://github.com/rkshockey)|[Jacob Shomali](https://github.com/collerhatguy)|[Rimsha Saleem](https://github.com/RimshaSaleem)|[Juliane Nguyen](https://github.com/juliane1999)|
 |:--:|:--:|:--:|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/84862108?v=4" width = "200" />](https://github.com/rkshockey)|[<img src="https://avatars.githubusercontent.com/u/67057792?v=4" width = "200" />](https://github.com/collerhatguy)|[<img src="https://avatars.githubusercontent.com/u/84863368?v=4" width = "200" />](https://github.com/RimshaSaleem)|📷|
-| [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/romy-shockey/) |[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/jacob-shomali-a206aa1ba/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/rimsha-saleem-384622215/) |  |
+|[<img src="https://avatars.githubusercontent.com/u/84862108?v=4" width = "200" />](https://github.com/rkshockey)|[<img src="https://avatars.githubusercontent.com/u/67057792?v=4" width = "200" />](https://github.com/collerhatguy)|[<img src="https://avatars.githubusercontent.com/u/84863368?v=4" width = "200" />](https://github.com/RimshaSaleem)|[<img src="https://avatars.githubusercontent.com/u/83479573?v=4" width = "200" />](https://github.com/juliane1999)|
+| [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/romy-shockey/) |[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/jacob-shomali-a206aa1ba/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/rimsha-saleem-384622215/) |[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/juliane-nguyen-8858a5206/)|
 
 <br>
 <br>
@@ -57,7 +59,9 @@ linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" w
 <br>
 <br>
 
-- Fork and clone the repo to install it as your own remote.
+<!-- TO DO
+
+ - Fork and clone the repo to install it as your own remote.
   - **note** please [be sure to set your remote](https://help.github.jp/enterprise/2.11/user/articles/changing-a-remote-s-url/) for this repo to point to your Labs Team Front End Repository.
 - run: `npm install` to download all dependencies.
 - run: `npm start` to start your local development server.
@@ -151,3 +155,5 @@ Remember that this project is licensed under the MIT license, and by submitting 
 ## Documentation
 
 See [Backend Documentation](🚫*link to your backend API SWAGGER DOCS here*) for details on the backend of our project.
+
+-->
