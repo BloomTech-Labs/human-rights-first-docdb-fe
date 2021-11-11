@@ -15,3 +15,7 @@
 .search_bar {
   width: 40%;
 }
+
+a {
+  text-decoration: none;
+}

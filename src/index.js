@@ -20,7 +20,7 @@ import { Admin } from './components/pages/Admin';
 import { LoginPage } from './components/pages/Login';
 import { LandingPage } from './components/pages/Landing';
 import { config } from './utils/oktaConfig';
-import { LoadingComponent } from './components/common';
+import { LoadingComponent, Header } from './components/common';
 
 const store = createStore(docsReducer, applyMiddleware(thunk));
 
@@ -48,6 +48,7 @@ function App() {
 
   return (
     <Security {...config} onAuthRequired={authHandler}>
+      <Header />
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
