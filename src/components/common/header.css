@@ -1,0 +1,21 @@
+.header_img {
+  width: 30%;
+  max-width: 260px;
+  height: auto;
+}
+.header_div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #dbc6b2;
+  width: auto;
+  height: 65px;
+  padding: 0;
+}
+.search_bar {
+  width: 40%;
+}
+
+a {
+  text-decoration: none;
+}
