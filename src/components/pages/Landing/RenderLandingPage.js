@@ -11,7 +11,7 @@ function RenderLandingPage(props) {
   const { authState } = useOktaAuth();
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <ReduxList
         getItemsData={() => getDocs(authState)}
         RenderItems={LandingCardList}
