@@ -12,8 +12,9 @@ const ReduxList = props => {
 
 ReduxList.propTypes = {
   LoadingComponent: PropTypes.func.isRequired,
-  RenderItems: PropTypes.object.isRequired,
+  RenderItems: PropTypes.any.isRequired,
   getItemsData: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 };
 
 export default ReduxList;
