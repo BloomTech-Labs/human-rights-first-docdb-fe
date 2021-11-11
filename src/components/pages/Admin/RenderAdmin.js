@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const RenderProfileListPage = props => (
+const RenderAdmin = props => (
   <div>
     <p>
       <Link to="/">Home</Link>
@@ -18,10 +18,10 @@ const RenderProfileListPage = props => (
   </div>
 );
 
-export default RenderProfileListPage;
+export default RenderAdmin;
 
 // Don't forget your prop types! It will save you a lot of debugging headache as you add more features.
-RenderProfileListPage.propTypes = {
+RenderAdmin.propTypes = {
   data: PropTypes.arrayOf(
     // Here is an example of enforcing an object structure that we expect to receive in our props:
     PropTypes.shape({
