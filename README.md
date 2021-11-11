@@ -22,8 +22,8 @@ HRF and the [Pat Finucane Centre](https://www.patfinucanecentre.org) need a way 
 
 ## Features
 
-- Use **Optical Character Recognition** (OCR) to interpret document files
-- Provide a clean, simple interface to search & view documents
+- Interprets document files using **Optical Character Recognition** (OCR)
+- Clean, simple interface to search & view documents
 - Bookmark documents & add tags
 - Scrape documents for fields of interest
 
