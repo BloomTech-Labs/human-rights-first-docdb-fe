@@ -4,7 +4,6 @@ const initialState = {
   docs: [],
   isFetching: false,
   page: 'bookmarks',
-  searchTerm: '',
 };
 
 const docsReducer = (state = initialState, action) => {

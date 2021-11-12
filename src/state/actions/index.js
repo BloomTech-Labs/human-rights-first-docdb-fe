@@ -4,7 +4,7 @@
 // You can have multiple action creators per file if it makes sense to the purpose those action creators are serving.
 // Declare action TYPES at the top of the file
 
-// import { getDSData } from '../../api';
+import { getDSData } from '../../api';
 
 export const BOOKMARKS = 'BOOKMARKS';
 
@@ -41,9 +41,19 @@ export const START_FETCH = 'START_FETCH';
 export const getDocs = authState => dispatch => {
   dispatch({ type: START_FETCH });
   dispatch({ type: SET_DOCS, payload: testDocs });
-  // getDSData(null, authState)
+  // getDSData("/search", authState)
   //   .then(data => dispatch({ type: SET_DOCS, payload: data }))
   //   .catch(console.error);
+};
+
+export const searchDocs = (search, authState) => dispatch => {
+  dispatch({ type: START_FETCH });
+  getDSData(`/search/${search}`, authState)
+    .then(data => {
+      console.log(data);
+      if (data) dispatch({ type: SET_DOCS, payload: data.Response });
+    })
+    .catch(console.error);
 };
 
 export const bookmarks = () => ({ type: BOOKMARKS });
