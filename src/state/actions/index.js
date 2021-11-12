@@ -42,7 +42,7 @@ export const getDocs = authState => dispatch => {
   dispatch({ type: START_FETCH });
   dispatch({ type: SET_DOCS, payload: testDocs });
   // getDSData("/search", authState)
-  //   .then(data => dispatch({ type: SET_DOCS, payload: data }))
+  //   .then(data => dispatch({ type: SET_DOCS, payload: data.Response }))
   //   .catch(console.error);
 };
 
@@ -50,8 +50,7 @@ export const searchDocs = (search, authState) => dispatch => {
   dispatch({ type: START_FETCH });
   getDSData(`/search/${search}`, authState)
     .then(data => {
-      console.log(data);
-      if (data) dispatch({ type: SET_DOCS, payload: data.Response });
+      dispatch({ type: SET_DOCS, payload: data.Response });
     })
     .catch(console.error);
 };

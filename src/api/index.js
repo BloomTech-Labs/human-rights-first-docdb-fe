@@ -23,7 +23,7 @@ const getDSData = (path, authState) => {
 
   return axios
     .get(dsUrl + path, { headers })
-    .then(console.log)
+    .then(res => res.data)
     .catch(err => err);
 };
 

@@ -10,6 +10,7 @@ import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import docsReducer from './state/reducers';
 
 import 'antd/dist/antd.less';
@@ -22,7 +23,7 @@ import { LandingPage } from './components/pages/Landing';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent, Header } from './components/common';
 
-const store = createStore(docsReducer, applyMiddleware(thunk));
+const store = createStore(docsReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <Provider store={store}>
