@@ -9,12 +9,19 @@ import { Tags } from '../../common';
 const { Meta } = Card;
 
 function LandingCard(props) {
-  const { title, preview, tags, favorited } = props;
+  const { name, url, tags, favorited } = props;
 
   return (
     <Card
-      title={<ArrowsAltOutlined rotate={90} />}
-      cover={<img src={preview} alt={title} />}
+      name={<ArrowsAltOutlined rotate={90} />}
+      // cover={<img src={null} alt={name} />}
+      cover={
+        <img
+          src={`https://simg.nicepng.com/png/small/370-3706418_change-of-information-document-icon-free-vector.png`}
+          alt={name}
+        />
+      }
+      anchor={<url src={url} />}
       extra={
         favorited ? (
           <img
@@ -36,7 +43,7 @@ function LandingCard(props) {
       bodyStyle={{ padding: '12px' }}
     >
       <Meta
-        title={title}
+        title={name}
         style={{ textAlign: 'center', marginBottom: '10px' }}
       />
       <Tags tagArray={tags} size={8} />
