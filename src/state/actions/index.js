@@ -5,36 +5,13 @@
 // Declare action TYPES at the top of the file
 
 import { getDSData } from '../../api';
+import { testDocs } from '../../__mocks__';
 
 export const BOOKMARKS = 'BOOKMARKS';
 
 export const SEARCH = 'SEARCH';
 
 export const SET_DOCS = 'SET_DOCS';
-
-const testDocs = [
-  {
-    name: 'test',
-    preview:
-      'https://static8.depositphotos.com/1263295/875/i/600/depositphotos_8758503-stock-photo-any-questions.jpg',
-    tags: ['tag1', 'tag2', 'tag3'],
-    favorited: true,
-  },
-  {
-    name: 'test',
-    preview:
-      'https://static8.depositphotos.com/1263295/875/i/600/depositphotos_8758503-stock-photo-any-questions.jpg',
-    tags: ['tag1'],
-    favorited: false,
-  },
-  {
-    name: 'test',
-    preview:
-      'https://static8.depositphotos.com/1263295/875/i/600/depositphotos_8758503-stock-photo-any-questions.jpg',
-    tags: ['tag1', 'tag2'],
-    favorited: true,
-  },
-];
 
 export const START_FETCH = 'START_FETCH';
 
