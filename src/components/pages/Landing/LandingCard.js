@@ -15,7 +15,6 @@ function LandingCard(props) {
     <div onClick={() => window.open(url)}>
       <Card
         name={<ArrowsAltOutlined rotate={90} />}
-        // cover={<img src={null} alt={name} />}
         cover={
           <img
             src={`https://simg.nicepng.com/png/small/370-3706418_change-of-information-document-icon-free-vector.png`}
