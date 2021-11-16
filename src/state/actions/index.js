@@ -17,10 +17,10 @@ export const START_FETCH = 'START_FETCH';
 
 export const getDocs = authState => dispatch => {
   dispatch({ type: START_FETCH });
-  dispatch({ type: SET_DOCS, payload: testDocs });
-  // getDSData("/search", authState)
-  //   .then(data => dispatch({ type: SET_DOCS, payload: data.Response }))
-  //   .catch(console.error);
+  // london is a placeholder. In future versions, ideally we would call the users bookmarked docs.
+  getDSData('/search/london', authState)
+    .then(data => dispatch({ type: SET_DOCS, payload: data.Response }))
+    .catch(console.error);
 };
 
 export const searchDocs = (search, authState) => dispatch => {
