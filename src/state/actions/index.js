@@ -5,7 +5,6 @@
 // Declare action TYPES at the top of the file
 
 import { getDSData } from '../../api';
-import { testDocs } from '../../__mocks__';
 
 export const BOOKMARKS = 'BOOKMARKS';
 
