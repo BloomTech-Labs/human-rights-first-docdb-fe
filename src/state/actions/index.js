@@ -5,7 +5,6 @@
 // Declare action TYPES at the top of the file
 
 import { getDSData } from '../../api';
-import { testDocs } from '../../__mocks__';
 
 export const BOOKMARKS = 'BOOKMARKS';
 
@@ -17,10 +16,10 @@ export const START_FETCH = 'START_FETCH';
 
 export const getDocs = authState => dispatch => {
   dispatch({ type: START_FETCH });
-  dispatch({ type: SET_DOCS, payload: testDocs });
-  // getDSData("/search", authState)
-  //   .then(data => dispatch({ type: SET_DOCS, payload: data.Response }))
-  //   .catch(console.error);
+  // london is a placeholder. In future versions, ideally we would call the users bookmarked docs.
+  getDSData('/search/london', authState)
+    .then(data => dispatch({ type: SET_DOCS, payload: data.Response }))
+    .catch(console.error);
 };
 
 export const searchDocs = (search, authState) => dispatch => {
