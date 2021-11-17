@@ -7,8 +7,8 @@ function LandingCardList(props) {
   const { docs } = props;
   return (
     <Row>
-      {docs.map((doc, index) => (
-        <Col span={6} key={index}>
+      {docs.map(doc => (
+        <Col span={6} key={doc.box_id}>
           <LandingCard {...doc} />
         </Col>
       ))}

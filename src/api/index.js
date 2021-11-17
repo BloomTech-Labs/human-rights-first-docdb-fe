@@ -2,17 +2,7 @@ import axios from 'axios';
 
 // we will define a bunch of API calls here.
 const apiUrl = `${process.env.REACT_APP_API_URI}/profiles`;
-
-const sleep = time =>
-  new Promise(resolve => {
-    setTimeout(resolve, time);
-  });
-
-const getExampleData = () => {
-  return axios
-    .get(`https://jsonplaceholder.typicode.com/photos?albumId=1`)
-    .then(response => response.data);
-};
+const dsUrl = process.env.REACT_APP_DS_API_URI;
 
 const getAuthHeader = authState => {
   const { isAuthenticated, idToken } = authState;
@@ -22,16 +12,18 @@ const getAuthHeader = authState => {
   return { Authorization: `Bearer ${idToken}` };
 };
 
-const getDSData = (url, authState) => {
+const getDSData = (path, authState) => {
   // here's another way you can compose together your API calls.
   // Note the use of GetAuthHeader here is a little different than in the getProfileData call.
   const headers = getAuthHeader(authState);
-  if (!url) {
-    throw new Error('No URL provided');
+
+  if (!path) {
+    throw new Error('no path');
   }
+
   return axios
-    .get(url, { headers })
-    .then(res => JSON.parse(res.data))
+    .get(dsUrl + path, { headers })
+    .then(res => res.data)
     .catch(err => err);
 };
 
@@ -50,4 +42,4 @@ const getProfileData = authState => {
   }
 };
 
-export { sleep, getExampleData, getProfileData, getDSData };
+export { getProfileData, getDSData };

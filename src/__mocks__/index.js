@@ -20,3 +20,30 @@ export const testDocument = {
   ],
   favorited: true,
 };
+
+export const testDocs = [
+  {
+    name: 'test',
+    url:
+      'https://static8.depositphotos.com/1263295/875/i/600/depositphotos_8758503-stock-photo-any-questions.jpg',
+    tags: ['tag1', 'tag2', 'tag3'],
+    box_id: 1,
+    favorited: true,
+  },
+  {
+    name: 'test',
+    url:
+      'https://static8.depositphotos.com/1263295/875/i/600/depositphotos_8758503-stock-photo-any-questions.jpg',
+    tags: ['tag1'],
+    box_id: 2,
+    favorited: false,
+  },
+  {
+    name: 'test',
+    url:
+      'https://static8.depositphotos.com/1263295/875/i/600/depositphotos_8758503-stock-photo-any-questions.jpg',
+    tags: ['tag1', 'tag2'],
+    box_id: 3,
+    favorited: true,
+  },
+];

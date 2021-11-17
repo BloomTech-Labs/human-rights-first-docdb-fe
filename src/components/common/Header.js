@@ -7,20 +7,32 @@ import './header.css';
 import logo from '../../assets/HRF_Logo.jpg';
 import { useOktaAuth } from '@okta/okta-react';
 import { useLocation, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { searchDocs } from '../../state/actions';
 
 const { Header } = Layout;
 
 function MainHeader(props) {
-  const { logout } = useOktaAuth().authService;
+  const { searchDocs } = props;
+  const {
+    authService: { logout },
+    authState,
+  } = useOktaAuth();
   const { pathname } = useLocation();
 
   if (pathname === '/login') return null;
+
+  const onSearch = value => searchDocs(value, authState);
 
   return (
     <Layout>
       <Header className="header_div">
         <img src={logo} className="header_img" alt="HRF logo" />
-        <Search className="search_bar" placeholder="Search" />
+        <Search
+          className="search_bar"
+          placeholder="Search"
+          onSearch={onSearch}
+        />
         <Link to="/">
           <Button className="bookmark_button" type="default">
             Bookmarks
@@ -34,4 +46,4 @@ function MainHeader(props) {
     </Layout>
   );
 }
-export default MainHeader;
+export default connect(null, { searchDocs })(MainHeader);
