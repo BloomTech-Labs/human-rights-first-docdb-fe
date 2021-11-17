@@ -5,6 +5,7 @@ import bookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import bookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
 import { Tags } from '../../common';
+import './LandingCard.css';
 
 const { Meta } = Card;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;

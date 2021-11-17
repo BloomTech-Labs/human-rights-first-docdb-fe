@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getDocs } from '../../../state/actions';
 import LandingCardList from './LandingCardList';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
-import { Pagination } from 'antd';
+import { Spin } from 'antd';
 
 function RenderLandingPage(props) {
   const { getDocs, isFetching } = props;
@@ -14,10 +14,9 @@ function RenderLandingPage(props) {
       <ReduxList
         getItemsData={() => getDocs(authState)}
         RenderItems={LandingCardList}
-        LoadingComponent={() => <LoadingComponent message="...Loading" />}
+        LoadingComponent={() => <Spin size="large" />}
         isFetching={isFetching}
       />
-      <Pagination />
     </div>
   );
 }
