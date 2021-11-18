@@ -13,10 +13,16 @@ function LandingCard(props) {
   const { name, url, box_id, tags, favorited } = props;
 
   return (
-    <div onClick={() => window.open(url)}>
+    <div>
       <Card
         name={<ArrowsAltOutlined rotate={90} />}
-        cover={<img src={`${thumbUrl}/${box_id}`} alt={name} />}
+        cover={
+          <img
+            onClick={() => window.open(url)}
+            src={`${thumbUrl}/${box_id}`}
+            alt={name}
+          />
+        }
         extra={
           favorited ? (
             <img
