@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingComponent, ReduxList } from '../../common';
+import { ReduxList } from '../../common';
 import { connect } from 'react-redux';
 import { getDocs } from '../../../state/actions';
 import LandingCardList from './LandingCardList';
