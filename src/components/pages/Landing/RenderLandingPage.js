@@ -9,6 +9,7 @@ import { Pagination } from 'antd';
 function RenderLandingPage(props) {
   const { getDocs, isFetching } = props;
   const { authState } = useOktaAuth();
+
   return (
     <div>
       <ReduxList

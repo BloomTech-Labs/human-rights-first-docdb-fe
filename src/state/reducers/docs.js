@@ -20,6 +20,8 @@ const docsReducer = (state = initialState, action) => {
       return { ...state, isFetching: true };
     case SET_DOCS:
       return { ...state, isFetching: false, docs: payload };
+    case SET_BOOKMARKS:
+      return { ...state, isFetching: false, bookmarkedDocs: payload };
     case BOOKMARKS:
       return { ...state, page: 'bookmarks' };
     case SEARCH:

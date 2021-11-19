@@ -38,12 +38,13 @@ export const SET_BOOKMARKS = 'SET_BOOKMARKS';
 
 export const getBookmarks = authState => async dispatch => {
   try {
+    dispatch({ type: START_FETCH });
     const { data } = await axiosWithAuth(authState).get(`${apiURI}/bookmarks`);
-    if (!data.length) return;
     const ids = data.map(b => b.fileId).join(' ');
-    const { Response } = await (
-      await axiosWithAuth(authState).get(`${dsApiURI}/search/${ids}`)
-    ).data;
+    const { Response } = await axiosWithAuth(authState).get(
+      `${dsApiURI}/search/${ids}`
+    );
+
     dispatch({ type: SET_BOOKMARKS, payload: Response });
   } catch (err) {
     console.log(err);
