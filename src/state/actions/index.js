@@ -37,10 +37,14 @@ const dsApiURI = process.env.REACT_APP_DS_API_URI;
 export const getBookmarks = authState => async dispatch => {
   try {
     const { data } = await axiosWithAuth(authState).get(`${apiURI}/bookmarks`);
+    if (!data.length) return;
+    const ids = data.map(b => b.fileId).join(' ');
     const { Response } = await (
-      await axiosWithAuth(authState).get(`${dsApiURI}/search/${data.join(' ')}`)
+      await axiosWithAuth(authState).get(`${dsApiURI}/search/${ids}`)
     ).data;
-  } catch {}
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const bookmarks = () => ({ type: BOOKMARKS });
