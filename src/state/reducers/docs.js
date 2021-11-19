@@ -1,7 +1,14 @@
-import { SET_DOCS, START_FETCH, BOOKMARKS, SEARCH } from '../actions';
+import {
+  SET_DOCS,
+  SET_BOOKMARKS,
+  START_FETCH,
+  BOOKMARKS,
+  SEARCH,
+} from '../actions';
 
 const initialState = {
   docs: [],
+  bookmarkedDocs: [],
   isFetching: false,
   page: 'bookmarks',
 };

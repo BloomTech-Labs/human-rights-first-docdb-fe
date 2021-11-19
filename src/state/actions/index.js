@@ -34,6 +34,8 @@ export const searchDocs = (search, authState) => dispatch => {
 const apiURI = process.env.REACT_APP_API_URI;
 const dsApiURI = process.env.REACT_APP_DS_API_URI;
 
+export const SET_BOOKMARKS = 'SET_BOOKMARKS';
+
 export const getBookmarks = authState => async dispatch => {
   try {
     const { data } = await axiosWithAuth(authState).get(`${apiURI}/bookmarks`);
@@ -42,6 +44,7 @@ export const getBookmarks = authState => async dispatch => {
     const { Response } = await (
       await axiosWithAuth(authState).get(`${dsApiURI}/search/${ids}`)
     ).data;
+    dispatch({ type: SET_BOOKMARKS, payload: Response });
   } catch (err) {
     console.log(err);
   }
