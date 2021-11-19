@@ -4,7 +4,7 @@
 // You can have multiple action creators per file if it makes sense to the purpose those action creators are serving.
 // Declare action TYPES at the top of the file
 
-import { getDSData } from '../../api';
+import { getDSData, axiosWithAuth } from '../../api';
 
 export const BOOKMARKS = 'BOOKMARKS';
 
@@ -29,6 +29,18 @@ export const searchDocs = (search, authState) => dispatch => {
       dispatch({ type: SET_DOCS, payload: data.Response });
     })
     .catch(console.error);
+};
+
+const apiURI = process.env.REACT_APP_API_URI;
+const dsApiURI = process.env.REACT_APP_DS_API_URI;
+
+export const getBookmarks = authState => async dispatch => {
+  try {
+    const { data } = await axiosWithAuth(authState).get(`${apiURI}/bookmarks`);
+    const { Response } = await (
+      await axiosWithAuth(authState).get(`${dsApiURI}/search/${data.join(' ')}`)
+    ).data;
+  } catch {}
 };
 
 export const bookmarks = () => ({ type: BOOKMARKS });
