@@ -50,4 +50,10 @@ const getProfileData = authState => {
 const axiosWithAuth = authState =>
   axios.create({ headers: getAuthHeader(authState) });
 
+const useDSApi = (path, authState) =>
+  axios.create({
+    headers: getAuthHeader(authState),
+    baseUrl: process.env.REACT_APP_API_URI,
+  });
+
 export { getProfileData, getDSData, axiosWithAuth };
