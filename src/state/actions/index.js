@@ -4,7 +4,7 @@
 // You can have multiple action creators per file if it makes sense to the purpose those action creators are serving.
 // Declare action TYPES at the top of the file
 
-import { getDSData, axiosWithAuth } from '../../api';
+import { createDSApi, axiosWithAuth } from '../../api';
 
 export const BOOKMARKS = 'BOOKMARKS';
 
@@ -17,14 +17,16 @@ export const START_FETCH = 'START_FETCH';
 export const getDocs = authState => dispatch => {
   dispatch({ type: START_FETCH });
   // london is a placeholder. In future versions, ideally we would call the users bookmarked docs.
-  getDSData('/search/london', authState)
+  createDSApi(authState)
+    .get('/search/london')
     .then(data => dispatch({ type: SET_DOCS, payload: data.Response }))
     .catch(console.error);
 };
 
 export const searchDocs = (search, authState) => dispatch => {
   dispatch({ type: START_FETCH });
-  getDSData(`/search/${search}`, authState)
+  createDSApi(authState)
+    .get(`/search/${search}`)
     .then(data => {
       dispatch({ type: SET_DOCS, payload: data.Response });
     })

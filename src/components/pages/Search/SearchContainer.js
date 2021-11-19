@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { getDSData } from '../../../api';
+import { createDSApi } from '../../../api';
 import { useOktaAuth } from '@okta/okta-react';
+
 //This is where our ant design will go. We might need to make another file to fetch the data
 const Search = () => {
   const { authState } = useOktaAuth();
   useEffect(() => {
-    getDSData('/search/London', authState)
+    createDSApi(authState)
+      .get('/search/London')
       .then(console.log)
       .catch(console.log);
   }, []); // eslint-disable-line
