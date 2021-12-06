@@ -6,9 +6,9 @@ import { Row, Col } from 'antd';
 function LandingCardList(props) {
   const { docs } = props;
   return (
-    <Row>
+    <Row gutter={[48, 40]}>
       {docs.map(doc => (
-        <Col span={6} key={doc.box_id}>
+        <Col xs={24} md={12} lg={6} key={doc.box_id}>
           <LandingCard {...doc} />
         </Col>
       ))}
