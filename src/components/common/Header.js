@@ -22,7 +22,10 @@ function MainHeader(props) {
 
   if (pathname === '/login') return null;
 
-  const onSearch = value => searchDocs(value, authState);
+  const onSearch = value => {
+    if (!value) return alert('Search bar cannot be empty');
+    searchDocs(value, authState);
+  };
 
   return (
     <Layout>
