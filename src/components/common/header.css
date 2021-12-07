@@ -1,9 +1,6 @@
-.header_img {
-  width: 30%;
-  max-width: 260px;
-  height: auto;
-}
 .header_div {
+  /* position: fixed;
+  top: 0; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -12,10 +9,11 @@
   height: 65px;
   padding: 0;
 }
+.header_img {
+  width: 30%;
+  max-width: 260px;
+  height: auto;
+}
 .search_bar {
   width: 40%;
-}
-
-a {
-  text-decoration: none;
 }
