@@ -97,6 +97,11 @@ linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" w
 |[<img src="https://avatars.githubusercontent.com/u/34663084?v=4" width = "200" />](https://github.com/nora-exe)|[<img src="https://avatars.githubusercontent.com/u/79072077?v=4" width = "200" />](https://github.com/JackOrth)|[<img src="https://avatars.githubusercontent.com/u/78745926?v=4" width = "200" />](https://github.com/bverfurth)|[<img src="https://avatars.githubusercontent.com/u/76195439?v=4" width = "200" />](https://github.com/tdubs42)|
 |[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/noco/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jack-orth/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/btverfurth/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/tdubs42)|
 
+|[Klove Adams](https://github.com/Klove-A)|contributor|contributor|contributor|
+|:--:|:--:|:--:|:--:|
+|[<img src="https://avatars.githubusercontent.com/u/85120316?s=400&u=ca2b76b02abb363d63300866d44ca64b8f876d94&v=4" width = "200" />](https://github.com/Klove-A)|📷|📷|📷|
+|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/klove-adams/)|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|
+
 <br>
 
 ## Release Manager
