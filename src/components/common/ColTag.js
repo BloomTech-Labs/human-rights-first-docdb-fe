@@ -1,8 +1,12 @@
 import React from 'react';
 import { Col, Tag, Tooltip } from 'antd';
+import { connect } from 'react-redux';
+import { searchDocs } from '../../state/actions';
+import { useOktaAuth } from '@okta/okta-react';
 
 function ColTag(props) {
-  const { tag } = props;
+  const { searchDocs, tag } = props;
+  const { authState } = useOktaAuth();
 
   return (
     <Col
@@ -10,7 +14,12 @@ function ColTag(props) {
       span={6}
       style={{ display: 'flex', justifyContent: 'center' }}
     >
-      <Tag data-testid="doc-tag">
+      <Tag
+        data-testid="doc-tag"
+        onClick={() => {
+          searchDocs(tag, authState);
+        }}
+      >
         {tag.length < 8 ? (
           tag
         ) : (
@@ -21,4 +30,4 @@ function ColTag(props) {
   );
 }
 
-export default ColTag;
+export default connect(null, { searchDocs })(ColTag);
