@@ -1,11 +1,15 @@
+.layout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
+}
 .header_div {
-  /* position: fixed;
-  top: 0; */
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: #dbc6b2;
-  width: auto;
   height: 65px;
   padding: 0;
 }

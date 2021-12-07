@@ -28,7 +28,7 @@ function MainHeader(props) {
   };
 
   return (
-    <Layout>
+    <Layout className="layout">
       <Header className="header_div">
         <img src={logo2} className="header_img" alt="HRF logo" />
         <Search
