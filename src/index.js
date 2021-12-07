@@ -22,6 +22,7 @@ import { LoginPage } from './components/pages/Login';
 import { LandingPage } from './components/pages/Landing';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent, Header } from './components/common';
+import './reset.css';
 
 const store = createStore(docsReducer, applyMiddleware(thunk, logger));
 

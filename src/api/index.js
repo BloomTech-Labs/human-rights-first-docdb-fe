@@ -47,4 +47,7 @@ const getProfileData = authState => {
   }
 };
 
-export { getProfileData, getDSData };
+const axiosWithAuth = authState =>
+  axios.create({ headers: getAuthHeader(authState) });
+
+export { getProfileData, getDSData, axiosWithAuth };

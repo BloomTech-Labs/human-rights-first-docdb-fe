@@ -1,7 +1,14 @@
-import { SET_DOCS, START_FETCH, BOOKMARKS, SEARCH } from '../actions';
+import {
+  SET_DOCS,
+  SET_BOOKMARKS,
+  START_FETCH,
+  BOOKMARKS,
+  SEARCH,
+} from '../actions';
 
 const initialState = {
   docs: [],
+  bookmarkedDocs: [],
   isFetching: false,
   page: 'bookmarks',
 };
@@ -13,6 +20,8 @@ const docsReducer = (state = initialState, action) => {
       return { ...state, isFetching: true };
     case SET_DOCS:
       return { ...state, isFetching: false, docs: payload };
+    case SET_BOOKMARKS:
+      return { ...state, isFetching: false, bookmarkedDocs: payload };
     case BOOKMARKS:
       return { ...state, page: 'bookmarks' };
     case SEARCH:
