@@ -1,5 +1,6 @@
 import {
   SET_DOCS,
+  SET_BOOKMARKS,
   START_FETCH,
   BOOKMARKS,
   SEARCH,
@@ -9,6 +10,7 @@ import {
 
 const initialState = {
   docs: [],
+  bookmarkedDocs: [],
   isFetching: false,
   page: 'bookmarks',
   cardView: true,
@@ -21,6 +23,8 @@ const docsReducer = (state = initialState, action) => {
       return { ...state, isFetching: true };
     case SET_DOCS:
       return { ...state, isFetching: false, docs: payload };
+    case SET_BOOKMARKS:
+      return { ...state, isFetching: false, bookmarkedDocs: payload };
     case BOOKMARKS:
       return { ...state, page: 'bookmarks' };
     case SEARCH:
