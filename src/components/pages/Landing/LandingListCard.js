@@ -34,18 +34,18 @@ function LandingCardList(props) {
         style={{ width: '100%' }}
         bodyStyle={{ padding: '12px' }}
       >
-        <div>
+        <div onClick={() => window.open(url)}>
           <img
             onClick={() => window.open(url)}
             src={`${thumbUrl}/${box_id}`}
             alt={name}
           />
+          <Meta
+            title={name}
+            description={path}
+            style={{ textAlign: 'center', marginBottom: '10px' }}
+          />
         </div>
-        <Meta
-          title={name}
-          description={path}
-          style={{ textAlign: 'center', marginBottom: '10px' }}
-        />
         <Tags tagArray={tags} size={10} />
       </Card>
     </div>
