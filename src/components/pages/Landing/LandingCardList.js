@@ -2,19 +2,10 @@ import React from 'react';
 import LandingCard from './LandingCard';
 import LandingListCard from './LandingListCard';
 import { connect } from 'react-redux';
-import { displayListView, displayThumbnail } from '../../../state/actions';
-import { Row, Col, Pagination, Switch } from 'antd';
+import { Row, Col, Pagination } from 'antd';
 
 function LandingCardList(props) {
-  const { docs, displayListView, cardView, displayThumbnail } = props;
-
-  function onChange(cardView) {
-    if (cardView === true) {
-      displayThumbnail();
-    } else {
-      displayListView();
-    }
-  }
+  const { docs, cardView } = props;
 
   return (
     <>
@@ -43,6 +34,4 @@ const mapStateToProps = state => ({
   cardView: state.cardView,
 });
 
-export default connect(mapStateToProps, { displayListView, displayThumbnail })(
-  LandingCardList
-);
+export default connect(mapStateToProps)(LandingCardList);
