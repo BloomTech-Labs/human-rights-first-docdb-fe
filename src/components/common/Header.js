@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Search from 'antd/es/input/Search';
 import { Avatar, Layout, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
@@ -28,8 +28,8 @@ function MainHeader(props) {
   };
 
   return (
-    <Layout className="layout">
-      <Header className="header_div">
+    <Layout id="layout">
+      <Header className={`header_div`}>
         <img src={logo2} className="header_img" alt="HRF logo" />
         <Search
           className="search_bar"
