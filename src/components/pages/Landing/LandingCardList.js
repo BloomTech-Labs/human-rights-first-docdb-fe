@@ -3,7 +3,7 @@ import LandingCard from './LandingCard';
 import LandingListCard from './LandingListCard';
 import { connect } from 'react-redux';
 import { displayListView, displayThumbnail } from '../../../state/actions';
-import { Row, Col, Switch,Pagination } from 'antd';
+import { Row, Col, Pagination, Switch } from 'antd';
 
 function LandingCardList(props) {
   const { docs, displayListView, cardView, displayThumbnail } = props;
@@ -19,17 +19,16 @@ function LandingCardList(props) {
   return (
     <>
       <Row gutter={{ xs: 16, sm: 24, md: 32, lg: 48 }} justify="center">
-        <Switch onChange={onChange} />
         {cardView
           ? //For the Thumbnail Display
             docs.map(doc => (
-              <Col span={6} key={doc.box_id}>
+              <Col className="gutter-row" span={6} key={doc.box_id}>
                 <LandingCard {...doc} />
               </Col>
             ))
           : //For the List Display
             docs.map(doc => (
-              <Col span={19} key={doc.box_id}>
+              <Col className="gutter-row" span={19} key={doc.box_id}>
                 <LandingListCard {...doc} />
               </Col>
             ))}
