@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card } from 'antd';
 import { ArrowsAltOutlined } from '@ant-design/icons';
-import { ReactComponent as BookmarkOutlined } from '../../../assets/OutlineBookMark.svg';
-import { ReactComponent as BookmarkFilled } from '../../../assets/FilledBookMark.svg';
+import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
+import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
 import { Tags } from '../../common';
 import './LandingCard.css';
@@ -37,9 +37,20 @@ function LandingCard(props) {
         }
         extra={
           isFavorite ? (
-            <BookmarkFilled onClick={handleSave} />
+            <img
+              src={BookmarkFilled}
+              alt="bookmark filled"
+              width="50"
+              data-testid="filled-bookmark"
+            />
           ) : (
-            <BookmarkOutlined />
+            <img
+              src={BookmarkOutlined}
+              alt="bookmark outlined"
+              width="50"
+              data-testid="outlined-bookmark"
+              onClick={handleSave}
+            />
           )
         }
         style={{ width: 300 }}
