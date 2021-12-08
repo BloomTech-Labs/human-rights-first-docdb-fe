@@ -3,6 +3,7 @@ import {
   SET_BOOKMARKS,
   START_FETCH,
   BOOKMARKS,
+  SAVE_BOOKMARKS,
   SEARCH,
 } from '../actions';
 
@@ -24,6 +25,8 @@ const docsReducer = (state = initialState, action) => {
       return { ...state, isFetching: false, bookmarkedDocs: payload };
     case BOOKMARKS:
       return { ...state, page: 'bookmarks' };
+    case SAVE_BOOKMARKS:
+      return { ...state, bookmarkedDocs: [...state.bookmarkedDocs, payload] };
     case SEARCH:
       return { ...state, page: 'search', searchTerm: payload };
     default:
