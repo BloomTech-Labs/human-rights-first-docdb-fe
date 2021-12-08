@@ -35,11 +35,13 @@ function LandingCardList(props) {
         bodyStyle={{ padding: '12px' }}
       >
         <div onClick={() => window.open(url)}>
-          <img
-            onClick={() => window.open(url)}
-            src={`${thumbUrl}/${box_id}`}
-            alt={name}
-          />
+          <div>
+            <img
+              onClick={() => window.open(url)}
+              src={`${thumbUrl}/${box_id}`}
+              alt={name}
+            />
+          </div>
           <Meta
             title={name}
             description={path}
