@@ -67,6 +67,29 @@ picture: [<img src="avatar_URL" width = "200" />](GH_URL)
 linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](LI_URL)
 -->
 
+### LABS FT 41
+[Stu Darsley]()
+[Alex Edwards]()
+[Sarah Herren]()
+[Allison Homem]()
+[Amy Lam]()
+[Jennifer Misch]()
+[Thomas Moore]()
+[Robert Taveras]()
+[Jonah Tillman]()
+
+<br>
+
+#### Technical Project Managers
+
+[Klove Adams]()
+[Mason Mostella]()
+[Michael Greenwald]()
+[Michael Steiner]()
+
+
+
+
 
 ### LABS FT 40
 
