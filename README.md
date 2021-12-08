@@ -67,49 +67,37 @@ picture: [<img src="avatar_URL" width = "200" />](GH_URL)
 linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](LI_URL)
 -->
 
-|[Andrew Busby](https://github.com/andrewsbusby)|[Luiza Coelho](https://github.com/lncpadawan)|[Bailey Evanger](https://github.com/bevanger)|[Ryan Ishimaru](https://github.com/rishimaru23)|
-|:--:|:--:|:--:|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/64098862?v=4" width = "200" />](https://github.com/andrewsbusby)|[<img src="https://avatars.githubusercontent.com/u/46506254?v=4" width = "200" />](https://github.com/lncpadawan)|[<img src="https://avatars.githubusercontent.com/u/84409941?v=4" width = "200" />](https://github.com/bevanger)|[<img src="https://ca.slack-edge.com/ESZCHB482-U01HKBERMU1-1dce894e7b23-512" width = "200" />](https://github.com/rishimaru23) |
-|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/andrew-busby-817056197/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/luiza-coelho-08499112a/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](www.linkedin.com/in/bailey-evanger)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](www.linkedin.com/in/rishimaru23)|
 
-|[Philip Lee](https://github.com/pflee1989)|[Jesse Leegwater](https://github.com/JLeegwater)|[Cara Locke](https://github.com/caralocke)|[Juliane Nguyen](https://github.com/juliane1999)|
-|:--:|:--:|:--:|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/81424588?v=4" width = "200" />](https://github.com/pflee1989)|[<img src="https://avatars.githubusercontent.com/u/41308539?v=4" width = "200" />](https://github.com/JLeegwater)|[<img src="https://avatars.githubusercontent.com/u/81659057?v=4" width = "200" />](https://github.com/caralocke)|[<img src="https://avatars.githubusercontent.com/u/83479573?v=4" width = "200" />](https://github.com/juliane1999)|
-|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/pflee/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/jesse-leegwater/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/cara-locke/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/juliane-nguyen-8858a5206/)|
+### LABS FT 40
 
-|[Rimsha Saleem](https://github.com/RimshaSaleem)|[Dharmik Savaliya](https://github.com/makeityourself121)|[Andrew Schaer](https://github.com/Andrewschaer)|[Romy Shockey](https://github.com/rkshockey)|
-|:--:|:--:|:--:|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/84863368?v=4" width = "200" />](https://github.com/RimshaSaleem)|[<img src="https://avatars.githubusercontent.com/u/84363151?v=4" width = "200" />](https://github.com/makeityourself121)|[<img src="https://avatars.githubusercontent.com/u/24277559?v=4" width = "200" />](https://github.com/Andrewschaer)|[<img src="https://avatars.githubusercontent.com/u/84862108?v=4" width = "200" />](https://github.com/rkshockey)|
-|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/rimsha-saleem-384622215/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](http://www.linkedin.com/in/dharmiksavaliya)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](http://www.linkedin.com/in/andrewschaer)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/romy-shockey/)|
-
-|[Jacob Shomali](https://github.com/collerhatguy)|contributor|contributor|contributor|
-|:--:|:--:|:--:|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/67057792?v=4" width = "200" />](https://github.com/collerhatguy)|📷|📷|📷|
-|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/jacob-shomali-a206aa1ba/)|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|
-
-<br>
-<br>
-
-## Technical Project Managers
-
-|[Nora Corser](https://github.com/nora-exe)|[Jack Orth](https://github.com/JackOrth)|[Brandon Verfurth](https://github.com/bverfurth)|[Tawnya Wessar](https://github.com/tdubs42)|
-|:--:|:--:|:--:|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/34663084?v=4" width = "200" />](https://github.com/nora-exe)|[<img src="https://avatars.githubusercontent.com/u/79072077?v=4" width = "200" />](https://github.com/JackOrth)|[<img src="https://avatars.githubusercontent.com/u/78745926?v=4" width = "200" />](https://github.com/bverfurth)|[<img src="https://avatars.githubusercontent.com/u/76195439?v=4" width = "200" />](https://github.com/tdubs42)|
-|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/noco/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jack-orth/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/btverfurth/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/tdubs42)|
-
-|[Klove Adams](https://github.com/Klove-A)|contributor|contributor|contributor|
-|:--:|:--:|:--:|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/85120316?s=400&u=ca2b76b02abb363d63300866d44ca64b8f876d94&v=4" width = "200" />](https://github.com/Klove-A)|📷|📷|📷|
-|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/klove-adams/)|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|
+[Andrew Busby](https://github.com/andrewsbusby)
+[Luiza Coelho](https://github.com/lncpadawan)
+[Bailey Evanger](https://github.com/bevanger)
+[Ryan Ishimaru](https://github.com/rishimaru23)
+[Philip Lee](https://github.com/pflee1989)
+[Jesse Leegwater](https://github.com/JLeegwater)
+[Cara Locke](https://github.com/caralocke)
+[Juliane Nguyen](https://github.com/juliane1999)
+[Rimsha Saleem](https://github.com/RimshaSaleem)
+[Dharmik Savaliya](https://github.com/makeityourself121)
+[Andrew Schaer](https://github.com/Andrewschaer)
+[Romy Shockey](https://github.com/rkshockey)
+[Jacob Shomali](https://github.com/collerhatguy)
 
 <br>
 
-## Release Manager
+#### Technical Project Managers
 
-|[Paul St.Germain](https://github.com/paulstgermain)|
-|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/55460082?v=4" width = "200" />](https://github.com/paulstgermain)|
-|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/paul-stgermain/)|
+[Nora Corser](https://github.com/nora-exe)
+[Jack Orth](https://github.com/JackOrth)
+[Brandon Verfurth](https://github.com/bverfurth)
+[Tawnya Wessar](https://github.com/tdubs42)
+
+<br>
+
+#### Release Manager
+
+[Paul St.Germain](https://github.com/paulstgermain)
 
 <br>
 <br>
