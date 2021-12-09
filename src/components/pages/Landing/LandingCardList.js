@@ -15,19 +15,25 @@ function LandingCardList(props) {
   return (
     <>
       <Row gutter={{ xs: 16, sm: 24, md: 32, lg: 48 }} justify="center">
-        {cardView
-          ? //For the Thumbnail Display
+        {docs ? (
+          cardView ? (
+            //For the Thumbnail Display
             docs.map(doc => (
               <Col className="gutter-row" span={6} key={doc.box_id}>
                 <LandingCard {...doc} />
               </Col>
             ))
-          : //For the List Display
+          ) : (
+            //For the List Display
             docs.map(doc => (
               <Col className="gutter-row" span={19} key={doc.box_id}>
                 <LandingListCard {...doc} />
               </Col>
-            ))}
+            ))
+          )
+        ) : (
+          <div> no results </div>
+        )}
       </Row>
       <Pagination
         current={page}
@@ -38,6 +44,7 @@ function LandingCardList(props) {
         }}
         total={total}
         pageSizeOptions={[10, 25, 50]}
+        hideOnSinglePage={true}
       />
 
       {/* @API.post("/search")
