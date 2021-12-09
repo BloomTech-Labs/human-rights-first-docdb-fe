@@ -3,9 +3,9 @@ import RenderLandingPage from './RenderLandingPage';
 
 function LandingContainer() {
   return (
-    <>
+    <div style={{ marginTop: '80px' }}>
       <RenderLandingPage />
-    </>
+    </div>
   );
 }
 
