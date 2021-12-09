@@ -15,26 +15,25 @@ const { Header } = Layout;
 function MainHeader(props) {
   const [showHeader, setShowHeader] = useState();
 
+  let lastScroll = 0;
   useEffect(() => {
     setShowHeader(true);
-    console.log('useeffect scrollY', window.scrollY);
+    // console.log('useeffect scrollY', window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  let lastScroll = 0;
-
   const handleScroll = () => {
     const currentScroll = window.scrollY;
     if (currentScroll <= 0) {
       setShowHeader(true);
-      console.log('currentscroll <= 0');
+      // console.log('currentscroll <= 0');
     }
     if (currentScroll > lastScroll) {
       setShowHeader(false);
-      console.log('currentscroll > lastscroll', showHeader);
+      // console.log('currentscroll > lastscroll', showHeader);
     }
     if (currentScroll < lastScroll) {
       setShowHeader(true);
@@ -65,8 +64,8 @@ function MainHeader(props) {
   };
 
   return (
-    <Layout class={``}>
-      <Header className={`header_div ${showHeader ? 'show' : 'hidden'}`}>
+    <Layout class={`${showHeader ? 'show' : 'hidden'}`}>
+      <Header className={`header_div`}>
         <img src={logo2} className="header_img" alt="HRF logo" />
         <Search
           className={`search_bar ${showHeader ? 'show' : 'hidden'}`}
@@ -74,14 +73,12 @@ function MainHeader(props) {
           onSearch={onSearch}
         />
         <Link to="/">
-          <Button className="bookmark_button" type="default">
-            Bookmarks
-          </Button>
+          <Button type="default">Bookmarks</Button>
         </Link>
-        <Button onClick={logout} className="logout_button" type="default">
+        <Button onClick={logout} type="default">
           Logout
         </Button>
-        <Avatar className="avatars" size={45} icon={<UserOutlined />} />
+        <Avatar size={45} icon={<UserOutlined />} />
       </Header>
     </Layout>
   );
