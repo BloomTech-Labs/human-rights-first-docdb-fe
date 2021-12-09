@@ -24,7 +24,7 @@ const getDSData = (path, authState) => {
   console.log(dsUrl, path);
 
   return axios
-    .get(dsUrl + path, { headers })
+    .post(dsUrl + path, { headers })
     .then(res => {
       console.log(res);
       return res.data;

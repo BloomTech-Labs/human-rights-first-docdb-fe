@@ -12,7 +12,7 @@ import {
 
 const initialState = {
   docs: [],
-  totalDocsCount: 200,
+  totalDocsCount: 11,
   pageCount: 1,
 
   bookmarkedDocs: [],
@@ -35,6 +35,7 @@ const docsReducer = (state = initialState, action) => {
         docs: payload.Response,
         count: payload.Count,
         pageCount: payload.Pages,
+        totalDocsCount: payload.Count,
       };
     case SET_BOOKMARKS:
       return { ...state, isFetching: false, bookmarkedDocs: payload };

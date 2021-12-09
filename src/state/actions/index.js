@@ -43,7 +43,10 @@ export const getDocs = authState => async dispatch => {
 
 export const searchDocs = (search, authState) => dispatch => {
   dispatch({ type: START_FETCH });
-  getDSData(`/search/${search}/1/10`, authState)
+  getDSData(
+    `/search?query=${search}&page_number=0&results_per_page=10`,
+    authState
+  )
     .then(data => {
       dispatch({ type: SET_DOCS, payload: data });
     })
