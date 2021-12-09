@@ -68,7 +68,7 @@ function MainHeader(props) {
       <Header className={`header_div`}>
         <img src={logo2} className="header_img" alt="HRF logo" />
         <Search
-          className={`search_bar ${showHeader ? 'show' : 'hidden'}`}
+          className={`search_bar`}
           placeholder="Search"
           onSearch={onSearch}
         />
