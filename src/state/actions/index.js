@@ -8,9 +8,11 @@ import { getDSData, axiosWithAuth } from '../../api';
 
 export const BOOKMARKS = 'BOOKMARKS';
 
+export const SAVE_BOOKMARKS = 'SAVE_BOOKMARKS';
 export const THUMBNAIL = 'THUMBNAIL';
 
 export const LIST_VIEW = 'LIST_VIEW';
+
 
 export const SEARCH = 'SEARCH';
 
@@ -52,6 +54,18 @@ export const getBookmarks = authState => async dispatch => {
     dispatch({ type: SET_BOOKMARKS, payload: Response });
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const saveBookmarks = (authState, bookmarkId) => async dispatch => {
+  try {
+    await axiosWithAuth(authState).post(
+      `${process.env.REACT_APP_API_URI}/bookmarks/${bookmarkId}`,
+      bookmarkId
+    );
+    dispatch({ type: SAVE_BOOKMARKS, payload: bookmarkId });
+  } catch (err) {
+    console.error(err);
   }
 };
 
