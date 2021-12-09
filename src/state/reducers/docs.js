@@ -5,6 +5,7 @@ import {
   BOOKMARKS,
   SAVE_BOOKMARKS,
   SEARCH,
+  FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
 } from '../actions';
@@ -22,6 +23,8 @@ const docsReducer = (state = initialState, action) => {
   switch (type) {
     case START_FETCH:
       return { ...state, isFetching: true };
+    case FINISH_FETCH:
+      return { ...state, isFetching: false };
     case SET_DOCS:
       return { ...state, isFetching: false, docs: payload };
     case SET_BOOKMARKS:
