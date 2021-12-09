@@ -24,7 +24,27 @@ function LandingCardList(props) {
               </Col>
             ))}
       </Row>
-      <Pagination />
+      <Pagination
+        defaultCurrent={1}
+        total={200}
+        pageSizeOptions={[10, 25, 50]}
+      />
+
+      {/* @API.post("/search")
+          async def search(query: str, page_number: int = 0, results_per_page: int = 100):
+            start = page_number * results_per_page
+            stop = start + results_per_page
+            search_results = API.db.search(query)[start:stop]
+            count = API.db.count({"$text": {"$search": query}})
+            n_pages = ceil(count / results_per_page)
+
+            return {"Pages": n_pages, "Count": count, "Response": list(search_results)} 
+            
+            
+         Example Request URL: http://127.0.0.1:8000/search?query=bullet&page_number=0&results_per_page=10   
+        
+         ReactDOM.render(<Pagination defaultCurrent={6} total={500} />, mountNode);
+      */}
     </>
   );
 }
