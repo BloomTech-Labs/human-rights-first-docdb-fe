@@ -3,8 +3,11 @@ import {
   SET_BOOKMARKS,
   START_FETCH,
   BOOKMARKS,
+  SAVE_BOOKMARKS,
   SEARCH,
   FINISH_FETCH,
+  THUMBNAIL,
+  LIST_VIEW,
 } from '../actions';
 
 const initialState = {
@@ -12,6 +15,7 @@ const initialState = {
   bookmarkedDocs: [],
   isFetching: false,
   page: 'bookmarks',
+  cardView: true,
 };
 
 const docsReducer = (state = initialState, action) => {
@@ -27,8 +31,14 @@ const docsReducer = (state = initialState, action) => {
       return { ...state, isFetching: false, bookmarkedDocs: payload };
     case BOOKMARKS:
       return { ...state, page: 'bookmarks' };
+    case SAVE_BOOKMARKS:
+      return { ...state, bookmarkedDocs: [...state.bookmarkedDocs, payload] };
     case SEARCH:
       return { ...state, page: 'search', searchTerm: payload };
+    case THUMBNAIL:
+      return { ...state, cardView: true };
+    case LIST_VIEW:
+      return { ...state, cardView: false };
     default:
       return state;
   }

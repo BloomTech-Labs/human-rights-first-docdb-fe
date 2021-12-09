@@ -15,6 +15,7 @@ function ColTag(props) {
       style={{ display: 'flex', justifyContent: 'center' }}
     >
       <Tag
+        style={{ cursor: 'pointer' }}
         data-testid="doc-tag"
         onClick={() => {
           searchDocs(tag, authState);
