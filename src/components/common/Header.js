@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Search from 'antd/es/input/Search';
 import { Avatar, Layout, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
@@ -8,12 +8,16 @@ import logo2 from '../../assets/HRF_Logo2.png';
 import { useOktaAuth } from '@okta/okta-react';
 import { useLocation, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { searchDocs } from '../../state/actions';
+import {
+  searchDocs,
+  displayListView,
+  displayThumbnail,
+} from '../../state/actions';
 
 const { Header } = Layout;
 
 function MainHeader(props) {
-  const { searchDocs } = props;
+  const { searchDocs, displayListView, displayThumbnail } = props;
   const {
     authService: { logout },
     authState,
@@ -27,15 +31,25 @@ function MainHeader(props) {
     searchDocs(value, authState);
   };
 
+  //Buttons For Display modes
+  const thumbnailView = () => {
+    displayThumbnail();
+  };
+  const listView = () => {
+    displayListView();
+  };
+
   return (
-    <Layout>
-      <Header className="header_div">
+    <Layout id="layout">
+      <Header className={`header_div`}>
         <img src={logo2} className="header_img" alt="HRF logo" />
         <Search
           className="search_bar"
           placeholder="Search"
           onSearch={onSearch}
         />
+        <Button onClick={listView}>List</Button>
+        <Button onClick={thumbnailView}>Thumbnail</Button>
         <Link to="/">
           <Button className="bookmark_button" type="default">
             Bookmarks
@@ -49,4 +63,6 @@ function MainHeader(props) {
     </Layout>
   );
 }
-export default connect(null, { searchDocs })(MainHeader);
+export default connect(null, { searchDocs, displayListView, displayThumbnail })(
+  MainHeader
+);
