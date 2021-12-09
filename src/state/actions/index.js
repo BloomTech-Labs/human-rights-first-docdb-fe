@@ -8,6 +8,10 @@ import { getDSData, axiosWithAuth } from '../../api';
 
 export const BOOKMARKS = 'BOOKMARKS';
 
+export const THUMBNAIL = 'THUMBNAIL';
+
+export const LIST_VIEW = 'LIST_VIEW';
+
 export const SEARCH = 'SEARCH';
 
 export const SET_DOCS = 'SET_DOCS';
@@ -52,3 +56,7 @@ export const getBookmarks = authState => async dispatch => {
 };
 
 export const bookmarks = () => ({ type: BOOKMARKS });
+
+export const displayListView = () => ({ type: LIST_VIEW });
+
+export const displayThumbnail = () => ({ type: THUMBNAIL });

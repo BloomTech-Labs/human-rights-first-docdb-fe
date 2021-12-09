@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Card } from 'antd';
 import { ArrowsAltOutlined } from '@ant-design/icons';
 import { ReactComponent as BookmarkOutlined } from '../../../assets/OutlineBookMark.svg';

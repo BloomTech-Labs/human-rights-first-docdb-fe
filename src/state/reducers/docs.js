@@ -4,6 +4,8 @@ import {
   START_FETCH,
   BOOKMARKS,
   SEARCH,
+  THUMBNAIL,
+  LIST_VIEW,
 } from '../actions';
 
 const initialState = {
@@ -11,6 +13,7 @@ const initialState = {
   bookmarkedDocs: [],
   isFetching: false,
   page: 'bookmarks',
+  cardView: true,
 };
 
 const docsReducer = (state = initialState, action) => {
@@ -26,6 +29,10 @@ const docsReducer = (state = initialState, action) => {
       return { ...state, page: 'bookmarks' };
     case SEARCH:
       return { ...state, page: 'search', searchTerm: payload };
+    case THUMBNAIL:
+      return { ...state, cardView: true };
+    case LIST_VIEW:
+      return { ...state, cardView: false };
     default:
       return state;
   }
