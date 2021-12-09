@@ -16,6 +16,8 @@ export const SET_DOCS = 'SET_DOCS';
 
 export const START_FETCH = 'START_FETCH';
 
+export const FINISH_FETCH = 'FINISH_FETCH';
+
 const apiURI = process.env.REACT_APP_API_URI;
 
 export const getDocs = authState => async dispatch => {
@@ -28,7 +30,7 @@ export const getDocs = authState => async dispatch => {
       const { Response } = await getDSData(`/search/${ids}`, authState);
       dispatch({ type: SET_DOCS, payload: Response });
     } else {
-      return null;
+      dispatch({ type: FINISH_FETCH });
     }
   } catch (err) {
     console.log(err);
