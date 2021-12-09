@@ -13,6 +13,64 @@ import { searchDocs } from '../../state/actions';
 const { Header } = Layout;
 
 function MainHeader(props) {
+  // const handleScroll = () => {
+  //   const currentScroll = window.pageYOffset;
+  //   // console.log('last: ', lastScroll,'current: ', currentScroll, 'showHeader: ', showHeader);
+  //   if (currentScroll <= lastScroll) {
+  //     setShowHeader(false);
+  //   }
+
+  //   if (lastScroll > currentScroll) {
+  //     setShowHeader(true);
+  //   }
+  //   // const visible = lastScroll > currentScroll
+  //   console.log('last: ', lastScroll,'current: ', currentScroll, 'showHeader: ', showHeader);
+  //   lastScroll = currentScroll;
+  // };
+
+  // let lastScroll = 0;
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // });
+
+  const [showHeader, setShowHeader] = useState();
+
+  let lastScroll = 0;
+
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll <= 0) {
+      setShowHeader(true);
+      console.log('currentscroll <= 0');
+    }
+    if (currentScroll > lastScroll && !(showHeader === true)) {
+      setShowHeader(false);
+      console.log('currentscroll > lastscroll', showHeader);
+    }
+    if (currentScroll < lastScroll && !(showHeader === true)) {
+      setShowHeader(true);
+    }
+    lastScroll = currentScroll;
+    console.log(
+      'last: ',
+      lastScroll,
+      'current: ',
+      currentScroll,
+      'showHeader: ',
+      showHeader
+    );
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const { searchDocs } = props;
   const {
     authService: { logout },
@@ -28,8 +86,8 @@ function MainHeader(props) {
   };
 
   return (
-    <Layout id="layout">
-      <Header className={`header_div`}>
+    <Layout class={``}>
+      <Header className={`header_div ${showHeader ? 'show' : 'hidden'}`}>
         <img src={logo2} className="header_img" alt="HRF logo" />
         <Search
           className="search_bar"

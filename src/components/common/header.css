@@ -18,3 +18,11 @@
 .search_bar {
   width: 40%;
 }
+.hidden {
+  visibility: hidden;
+  transition: ease-out 0.2s;
+}
+.show {
+  visibility: visible;
+  transition: ease-in 0.2s;
+}
