@@ -13,30 +13,16 @@ import { searchDocs } from '../../state/actions';
 const { Header } = Layout;
 
 function MainHeader(props) {
-  // const handleScroll = () => {
-  //   const currentScroll = window.pageYOffset;
-  //   // console.log('last: ', lastScroll,'current: ', currentScroll, 'showHeader: ', showHeader);
-  //   if (currentScroll <= lastScroll) {
-  //     setShowHeader(false);
-  //   }
-
-  //   if (lastScroll > currentScroll) {
-  //     setShowHeader(true);
-  //   }
-  //   // const visible = lastScroll > currentScroll
-  //   console.log('last: ', lastScroll,'current: ', currentScroll, 'showHeader: ', showHeader);
-  //   lastScroll = currentScroll;
-  // };
-
-  // let lastScroll = 0;
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // });
-
   const [showHeader, setShowHeader] = useState();
+
+  useEffect(() => {
+    setShowHeader(true);
+    console.log('useeffect scrollY', window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   let lastScroll = 0;
 
@@ -46,11 +32,11 @@ function MainHeader(props) {
       setShowHeader(true);
       console.log('currentscroll <= 0');
     }
-    if (currentScroll > lastScroll && !(showHeader === true)) {
+    if (currentScroll > lastScroll) {
       setShowHeader(false);
       console.log('currentscroll > lastscroll', showHeader);
     }
-    if (currentScroll < lastScroll && !(showHeader === true)) {
+    if (currentScroll < lastScroll) {
       setShowHeader(true);
     }
     lastScroll = currentScroll;
@@ -63,13 +49,6 @@ function MainHeader(props) {
       showHeader
     );
   };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   const { searchDocs } = props;
   const {
@@ -90,7 +69,7 @@ function MainHeader(props) {
       <Header className={`header_div ${showHeader ? 'show' : 'hidden'}`}>
         <img src={logo2} className="header_img" alt="HRF logo" />
         <Search
-          className="search_bar"
+          className={`search_bar ${showHeader ? 'show' : 'hidden'}`}
           placeholder="Search"
           onSearch={onSearch}
         />
