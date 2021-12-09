@@ -14,7 +14,6 @@ export const THUMBNAIL = 'THUMBNAIL';
 
 export const LIST_VIEW = 'LIST_VIEW';
 
-
 export const SEARCH = 'SEARCH';
 
 export const SET_DOCS = 'SET_DOCS';
@@ -44,9 +43,9 @@ export const getDocs = authState => async dispatch => {
 
 export const searchDocs = (search, authState) => dispatch => {
   dispatch({ type: START_FETCH });
-  getDSData(`/search/${search}`, authState)
+  getDSData(`/search/${search}/1/10`, authState)
     .then(data => {
-      dispatch({ type: SET_DOCS, payload: data.Response });
+      dispatch({ type: SET_DOCS, payload: data });
     })
     .catch(console.error);
 };
