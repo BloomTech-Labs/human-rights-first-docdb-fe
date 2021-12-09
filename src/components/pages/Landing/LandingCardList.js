@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import LandingCard from './LandingCard';
 import LandingListCard from './LandingListCard';
 import { connect } from 'react-redux';
 import { Row, Col, Pagination } from 'antd';
 
 function LandingCardList(props) {
-  const { docs, cardView } = props;
+  const { docs, cardView, total } = props;
 
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  useEffect(() => {
+    console.log('page: ', page, ' page size: ', pageSize);
+  }, [page, pageSize]);
   return (
     <>
       <Row gutter={{ xs: 16, sm: 24, md: 32, lg: 48 }} justify="center">
@@ -25,8 +30,13 @@ function LandingCardList(props) {
             ))}
       </Row>
       <Pagination
-        defaultCurrent={1}
-        total={200}
+        current={page}
+        pageSize={pageSize}
+        onChange={(page, pageSize) => {
+          setPage(page);
+          setPageSize(pageSize);
+        }}
+        total={total}
         pageSizeOptions={[10, 25, 50]}
       />
 
@@ -52,6 +62,7 @@ function LandingCardList(props) {
 const mapStateToProps = state => ({
   docs: state.docs,
   cardView: state.cardView,
+  total: state.totalDocsCount,
 });
 
 export default connect(mapStateToProps)(LandingCardList);

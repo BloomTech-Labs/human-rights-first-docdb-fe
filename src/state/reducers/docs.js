@@ -12,7 +12,7 @@ import {
 
 const initialState = {
   docs: [],
-  totalDocsCount: 0,
+  totalDocsCount: 200,
   pageCount: 1,
 
   bookmarkedDocs: [],
