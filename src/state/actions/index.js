@@ -63,12 +63,11 @@ export const saveBookmarks = (authState, bookmarkId) => async dispatch => {
   }
 };
 
-export const removeBookmark = (authState, bookmarkId) => async dispatch => {
+export const removeBookmarks = (authState, bookmarkId) => async dispatch => {
   try {
     await axiosWithAuth(authState).delete(
       `
-      ${apiURI}/bookmarks/${bookmarkId}`,
-      bookmarkId
+      ${apiURI}/bookmarks/${bookmarkId}`
     );
     dispatch({ type: REMOVE_BOOKMARKS, payload: bookmarkId });
   } catch (err) {
