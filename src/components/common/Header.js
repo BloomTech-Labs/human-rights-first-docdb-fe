@@ -13,45 +13,31 @@ import {
   displayListView,
   displayThumbnail,
 } from '../../state/actions';
+import { debounce } from '../../utils/debounce';
 
 const { Header } = Layout;
 
+const scrollStyles = {
+  position: 'fixed',
+  width: '100%',
+  transition: 'top ease-in 0.2s',
+  zIndex: '9999',
+};
+
 function MainHeader(props) {
-  const [showHeader, setShowHeader] = useState();
+  const [oldScroll, setOldScroll] = useState(0);
+  const [showHeader, setShowHeader] = useState(true);
 
-  let lastScroll = 0;
+  const handleScroll = debounce(() => {
+    const scrollPos = window.scrollY;
+    setShowHeader(oldScroll > scrollPos || scrollPos < 10);
+    setOldScroll(scrollPos);
+  }, 25);
+
   useEffect(() => {
-    setShowHeader(true);
-    // console.log('useeffect scrollY', window.scrollY);
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const handleScroll = () => {
-    const currentScroll = window.scrollY;
-    if (currentScroll <= 0) {
-      setShowHeader(true);
-      // console.log('currentscroll <= 0');
-    }
-    if (currentScroll > lastScroll) {
-      setShowHeader(false);
-      // console.log('currentscroll > lastscroll', showHeader);
-    }
-    if (currentScroll < lastScroll) {
-      setShowHeader(true);
-    }
-    lastScroll = currentScroll;
-    console.log(
-      'last: ',
-      lastScroll,
-      'current: ',
-      currentScroll,
-      'showHeader: ',
-      showHeader
-    );
-  };
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [oldScroll, showHeader, handleScroll]);
 
   const { searchDocs } = props;
   const {
@@ -76,11 +62,11 @@ function MainHeader(props) {
   };
 
   return (
-    <Layout class={`${showHeader ? 'show' : 'hidden'}`}>
-      <Header className={`header_div`}>
+    <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
+      <Header className="header_div">
         <img src={logo2} className="header_img" alt="HRF logo" />
         <Search
-          className={`search_bar`}
+          className="search_bar"
           placeholder="Search"
           onSearch={onSearch}
         />
