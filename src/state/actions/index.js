@@ -9,11 +9,11 @@ import { getDSData, axiosWithAuth } from '../../api';
 export const BOOKMARKS = 'BOOKMARKS';
 
 export const SET_BOOKMARKS = 'SET_BOOKMARKS';
+export const REMOVE_BOOKMARKS = 'REMOVE_BOOKMARKS';
 export const SAVE_BOOKMARKS = 'SAVE_BOOKMARKS';
 export const THUMBNAIL = 'THUMBNAIL';
 
 export const LIST_VIEW = 'LIST_VIEW';
-
 
 export const SEARCH = 'SEARCH';
 
@@ -54,12 +54,25 @@ export const searchDocs = (search, authState) => dispatch => {
 export const saveBookmarks = (authState, bookmarkId) => async dispatch => {
   try {
     await axiosWithAuth(authState).post(
-      `${process.env.REACT_APP_API_URI}/bookmarks/${bookmarkId}`,
+      `${apiURI}/bookmarks/${bookmarkId}`,
       bookmarkId
     );
     dispatch({ type: SAVE_BOOKMARKS, payload: bookmarkId });
   } catch (err) {
     console.error(err);
+  }
+};
+
+export const removeBookmark = (authState, bookmarkId) => async dispatch => {
+  try {
+    await axiosWithAuth(authState).delete(
+      `
+      ${apiURI}/bookmarks/${bookmarkId}`,
+      bookmarkId
+    );
+    dispatch({ type: REMOVE_BOOKMARKS, payload: bookmarkId });
+  } catch (err) {
+    console.log(err);
   }
 };
 
