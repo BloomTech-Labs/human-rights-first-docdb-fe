@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Card } from 'antd';
-import { ArrowsAltOutlined } from '@ant-design/icons';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
