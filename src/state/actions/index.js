@@ -7,20 +7,13 @@
 import { getDSData, axiosWithAuth } from '../../api';
 
 export const BOOKMARKS = 'BOOKMARKS';
-
 export const SET_BOOKMARKS = 'SET_BOOKMARKS';
 export const SAVE_BOOKMARKS = 'SAVE_BOOKMARKS';
 export const THUMBNAIL = 'THUMBNAIL';
-
 export const LIST_VIEW = 'LIST_VIEW';
-
-
 export const SEARCH = 'SEARCH';
-
 export const SET_DOCS = 'SET_DOCS';
-
 export const START_FETCH = 'START_FETCH';
-
 export const FINISH_FETCH = 'FINISH_FETCH';
 
 const apiURI = process.env.REACT_APP_API_URI;
