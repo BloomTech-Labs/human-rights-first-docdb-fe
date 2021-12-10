@@ -38,16 +38,22 @@ export const getDocs = authState => async dispatch => {
   }
 };
 
-export const searchDocs = (search, authState) => dispatch => {
+export const searchDocs = (search, authState, page, pageSize) => dispatch => {
   dispatch({ type: START_FETCH });
+  // dispatch({ type: SEARCH, payload: [page, pageSize] });
+  console.log('pages', page, pageSize);
   getDSData(
-    `/search?query=${search}&page_number=0&results_per_page=10`,
+    `/search?query=${search}&page_number=${page}&results_per_page=${pageSize}`,
     authState
   )
     .then(data => {
       dispatch({ type: SET_DOCS, payload: data });
     })
     .catch(console.error);
+};
+
+export const pageParams = (page, pageSize) => dispatch => {
+  dispatch({ type: SEARCH, payload: [page, pageSize] });
 };
 
 export const saveBookmarks = (authState, bookmarkId) => async dispatch => {

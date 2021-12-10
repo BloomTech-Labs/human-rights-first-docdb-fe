@@ -12,6 +12,7 @@ import {
   searchDocs,
   displayListView,
   displayThumbnail,
+  pageParams,
 } from '../../state/actions';
 import { debounce } from '../../utils/debounce';
 
@@ -50,7 +51,7 @@ function MainHeader(props) {
 
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
-    searchDocs(value, authState);
+    searchDocs(value, authState, props.currentPage, props.pageSize);
   };
 
   //Buttons For Display modes

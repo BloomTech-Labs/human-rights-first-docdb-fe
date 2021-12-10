@@ -1,17 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import LandingCard from './LandingCard';
 import LandingListCard from './LandingListCard';
+import { searchDocs, pageParams } from '../../../state/actions';
 import { connect } from 'react-redux';
 import { Row, Col, Pagination } from 'antd';
+import { useOktaAuth } from '@okta/okta-react';
 
 function LandingCardList(props) {
-  const { docs, cardView, total } = props;
+  const { docs, cardView, total, searchTerm } = props;
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
+
+  const handleChange = (page, pageSize) => {
+    setPage(page);
+    setPageSize(pageSize);
+  };
+
+  // const {
+  //   authService: { logout },
+  //   authState,
+  // } = useOktaAuth();
+
   useEffect(() => {
-    console.log('page: ', page, ' page size: ', pageSize);
-  }, [page, pageSize]);
+    pageParams(page, pageSize);
+    // searchDocs(search) where do we get the search term?
+  }, [page, pageSize, pageParams]);
+
   return (
     <>
       <Row gutter={{ xs: 16, sm: 24, md: 32, lg: 48 }} justify="center">
@@ -38,10 +53,7 @@ function LandingCardList(props) {
       <Pagination
         current={page}
         pageSize={pageSize}
-        onChange={(page, pageSize) => {
-          setPage(page);
-          setPageSize(pageSize);
-        }}
+        onChange={handleChange}
         total={total}
         pageSizeOptions={[10, 25, 50]}
         hideOnSinglePage={true}
@@ -70,6 +82,9 @@ const mapStateToProps = state => ({
   docs: state.docs,
   cardView: state.cardView,
   total: state.totalDocsCount,
+  searchTerm: state.searchTerm,
 });
 
-export default connect(mapStateToProps)(LandingCardList);
+export default connect(mapStateToProps, { searchDocs, pageParams })(
+  LandingCardList
+);

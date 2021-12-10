@@ -15,6 +15,9 @@ const initialState = {
   docs: [],
   totalDocsCount: 11,
   pageCount: 1,
+  searchTerm: '',
+  currentPage: 0,
+  pageSize: 10,
 
   bookmarkedDocs: [],
   isFetching: false,
@@ -51,7 +54,12 @@ const docsReducer = (state = initialState, action) => {
         bookmarkedDocs: state.bookmarkedDocs.filter(id => id !== payload),
       };
     case SEARCH:
-      return { ...state, page: 'search', searchTerm: payload };
+      return {
+        ...state,
+        page: 'search',
+        currentPage: payload[0],
+        pageSize: payload[1],
+      };
     case THUMBNAIL:
       return { ...state, cardView: true };
     case LIST_VIEW:
