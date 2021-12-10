@@ -52,68 +52,75 @@ To learn more about the data science behind the project, please visit [our DS te
 
 ## Contributors
 
-<!------------- Table Format
-For adding more contributors
-
-|name|name|name|name|
-|:--:|:--:|:--:|:--:|
-|pic |pic |pic |pic |
-| LI | LI | LI | LI |
-
--------------------- Values
-
-name: [name](GH_URL)
-picture: [<img src="avatar_URL" width = "200" />](GH_URL)
-linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](LI_URL)
--->
-
 ### LABS FT 41
 [Stu Darsley]()
+
 [Alex Edwards]()
+
 [Sarah Herren]()
+
 [Allison Homem]()
+
 [Amy Lam]()
+
 [Jennifer Misch]()
+
 [Thomas Moore]()
+
 [Robert Taveras]()
+
 [Jonah Tillman]()
 
-<br>
 
 #### Technical Project Managers
 
 [Klove Adams]()
+
 [Mason Mostella]()
+
 [Michael Greenwald]()
+
 [Michael Steiner]()
 
-
-
-
+<br>
 
 ### LABS FT 40
 
 [Andrew Busby](https://github.com/andrewsbusby)
+
 [Luiza Coelho](https://github.com/lncpadawan)
+
 [Bailey Evanger](https://github.com/bevanger)
+
 [Ryan Ishimaru](https://github.com/rishimaru23)
+
 [Philip Lee](https://github.com/pflee1989)
+
 [Jesse Leegwater](https://github.com/JLeegwater)
+
 [Cara Locke](https://github.com/caralocke)
+
 [Juliane Nguyen](https://github.com/juliane1999)
+
 [Rimsha Saleem](https://github.com/RimshaSaleem)
+
 [Dharmik Savaliya](https://github.com/makeityourself121)
+
 [Andrew Schaer](https://github.com/Andrewschaer)
+
 [Romy Shockey](https://github.com/rkshockey)
+
 [Jacob Shomali](https://github.com/collerhatguy)
 
-<br>
 
 #### Technical Project Managers
 
 [Nora Corser](https://github.com/nora-exe)
+
 [Jack Orth](https://github.com/JackOrth)
+
 [Brandon Verfurth](https://github.com/bverfurth)
+
 [Tawnya Wessar](https://github.com/tdubs42)
 
 <br>
