@@ -28,8 +28,6 @@ function LandingCard(props) {
   return (
     <div>
       <Card
-        // name={<ArrowsAltOutlined rotate={90} />}
-        // if we want to go back and use ^^ this, the attribute needs to be changed to title.
         cover={
           <img
             onClick={() => window.open(url)}
