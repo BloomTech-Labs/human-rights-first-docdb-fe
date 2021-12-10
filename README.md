@@ -52,7 +52,7 @@ To learn more about the data science behind the project, please visit [our DS te
 
 ## Contributors
 
-### LABS FT 41
+#### LABS FT 41
 [Stu Darsley]()
 
 [Alex Edwards]()
@@ -72,7 +72,7 @@ To learn more about the data science behind the project, please visit [our DS te
 [Jonah Tillman]()
 
 
-#### Technical Project Managers
+##### Technical Project Managers
 
 [Klove Adams]()
 
@@ -84,7 +84,7 @@ To learn more about the data science behind the project, please visit [our DS te
 
 <br>
 
-### LABS FT 40
+#### LABS FT 40
 
 [Andrew Busby](https://github.com/andrewsbusby)
 
@@ -113,7 +113,7 @@ To learn more about the data science behind the project, please visit [our DS te
 [Jacob Shomali](https://github.com/collerhatguy)
 
 
-#### Technical Project Managers
+##### Technical Project Managers
 
 [Nora Corser](https://github.com/nora-exe)
 
@@ -125,7 +125,7 @@ To learn more about the data science behind the project, please visit [our DS te
 
 <br>
 
-#### Release Manager
+##### Release Manager
 
 [Paul St.Germain](https://github.com/paulstgermain)
 
