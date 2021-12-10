@@ -50,11 +50,11 @@ function MainHeader(props) {
         />
         <Button onClick={listView}>List</Button>
         <Button onClick={thumbnailView}>Thumbnail</Button>
-        <Link to="/">
+        {/* <Link to="/">
           <Button className="bookmark_button" type="default">
             Bookmarks
           </Button>
-        </Link>
+        </Link> */}
         <Button onClick={logout} className="logout_button" type="default">
           Logout
         </Button>
