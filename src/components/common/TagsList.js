@@ -10,8 +10,8 @@ function TagsList(props) {
   if (tagArray.length <= size)
     return (
       <Row>
-        {tagArray.map(tag => (
-          <ColTagList classList="colTag" tag={tag} />
+        {tagArray.map((tag, index) => (
+          <ColTagList classList="colTag" tag={tag} key={index} />
         ))}
       </Row>
     );
@@ -21,8 +21,8 @@ function TagsList(props) {
 
   return (
     <Row className="tagsListRow">
-      {shownTags.map(tag => (
-        <ColTagList classList="colTag" tag={tag} />
+      {shownTags.map((tag, index) => (
+        <ColTagList classList="colTag" tag={tag} key={index} />
       ))}
       <Col
         style={{
@@ -36,8 +36,8 @@ function TagsList(props) {
           classList="colTag"
           content={
             <Row>
-              {hiddenTags.map(tag => (
-                <ColTagList tag={tag} />
+              {hiddenTags.map((tag, index) => (
+                <ColTagList tag={tag} key={index} />
               ))}
             </Row>
           }
