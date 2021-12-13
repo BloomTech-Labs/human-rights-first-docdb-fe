@@ -39,7 +39,7 @@ function MainHeader(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [oldScroll, showHeader, handleScroll]);
 
-  const { searchDocs } = props;
+  const { searchDocs, displayListView, displayThumbnail } = props;
   const {
     authService: { logout },
     authState,
