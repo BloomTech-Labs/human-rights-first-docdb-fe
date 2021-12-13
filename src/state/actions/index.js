@@ -43,6 +43,7 @@ export const searchDocs = (search, authState) => dispatch => {
   getDSData(`/search/${search}`, authState)
     .then(data => {
       dispatch({ type: SET_DOCS, payload: data.Response });
+      dispatch({ type: SEARCH, payload: search });
     })
     .catch(console.error);
 };

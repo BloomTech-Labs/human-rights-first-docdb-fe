@@ -17,7 +17,7 @@ const initialState = {
   isFetching: false,
   page: 'bookmarks',
   cardView: true,
-  query: '',
+  searchTerm: '',
 };
 
 const docsReducer = (state = initialState, action) => {
