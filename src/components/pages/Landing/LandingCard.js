@@ -49,7 +49,7 @@ function LandingCard(props) {
             alt={name}
             // alt is the attribute that adds accessibility
             fallback={`${thumbUrl}/${box_id}`}
-            // fallback is the attribute to display another image should the doc preview doesn't load.
+            // fallback is the attribute to display another image should the doc preview not load
             style={{ height: 300 }}
           />
         }
