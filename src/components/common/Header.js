@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Search from 'antd/es/input/Search';
 import { Avatar, Layout, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
@@ -12,7 +12,7 @@ import {
   searchDocs,
   displayListView,
   displayThumbnail,
-  pageParams,
+  setCurrentSearch,
 } from '../../state/actions';
 import { debounce } from '../../utils/debounce';
 
@@ -40,7 +40,12 @@ function MainHeader(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [oldScroll, showHeader, handleScroll]);
 
-  const { searchDocs } = props;
+  const {
+    searchDocs,
+    setCurrentSearch,
+    displayListView,
+    displayThumbnail,
+  } = props;
   const {
     authService: { logout },
     authState,
@@ -51,7 +56,8 @@ function MainHeader(props) {
 
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
-    searchDocs(value, authState, props.currentPage, props.pageSize);
+    setCurrentSearch(value, 1, props.pageSize);
+    searchDocs(value, authState, 1, props.pageSize);
   };
 
   //Buttons For Display modes
@@ -85,6 +91,13 @@ function MainHeader(props) {
   );
 }
 
-export default connect(null, { searchDocs, displayListView, displayThumbnail })(
-  MainHeader
-);
+const mapStateToProps = state => ({
+  pageSize: state.pageSize,
+});
+
+export default connect(mapStateToProps, {
+  searchDocs,
+  displayListView,
+  displayThumbnail,
+  setCurrentSearch,
+})(MainHeader);

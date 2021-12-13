@@ -5,20 +5,18 @@ import {
   BOOKMARKS,
   SAVE_BOOKMARKS,
   REMOVE_BOOKMARKS,
-  SEARCH,
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
+  CURRENT_SEARCH,
 } from '../actions';
 
 const initialState = {
   docs: [],
-  totalDocsCount: 11,
-  pageCount: 1,
-  searchTerm: '',
-  currentPage: 0,
+  totalDocsCount: 0,
+  currentSearch: '',
+  currentPage: 1,
   pageSize: 10,
-
   bookmarkedDocs: [],
   isFetching: false,
   page: 'bookmarks',
@@ -38,8 +36,6 @@ const docsReducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         docs: payload.Response,
-        count: payload.Count,
-        pageCount: payload.Pages,
         totalDocsCount: payload.Count,
       };
     case SET_BOOKMARKS:
@@ -53,12 +49,12 @@ const docsReducer = (state = initialState, action) => {
         ...state,
         bookmarkedDocs: state.bookmarkedDocs.filter(id => id !== payload),
       };
-    case SEARCH:
+    case CURRENT_SEARCH:
       return {
         ...state,
-        page: 'search',
-        currentPage: payload[0],
-        pageSize: payload[1],
+        currentSearch: payload.currentSearch,
+        currentPage: payload.currentPage,
+        pageSize: payload.pageSize,
       };
     case THUMBNAIL:
       return { ...state, cardView: true };
