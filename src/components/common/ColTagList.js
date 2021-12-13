@@ -9,17 +9,9 @@ function ColTagList(props) {
   const { authState } = useOktaAuth();
 
   return (
-    <Col
-      key={tag}
-      span={6}
-      style={{
-        display: 'flex',
-        justifyContent: 'space-evenly',
-        marginBottom: '2%',
-      }}
-    >
+    <Col key={tag} span={6} className="columnTag">
       <Tag
-        style={{ cursor: 'pointer', margin: '0 auto' }}
+        className="innerTag"
         data-testid="doc-tag"
         onClick={() => {
           searchDocs(tag, authState);
