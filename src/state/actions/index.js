@@ -8,9 +8,11 @@ import { getDSData, axiosWithAuth } from '../../api';
 
 export const BOOKMARKS = 'BOOKMARKS';
 export const SET_BOOKMARKS = 'SET_BOOKMARKS';
+export const REMOVE_BOOKMARKS = 'REMOVE_BOOKMARKS';
 export const SAVE_BOOKMARKS = 'SAVE_BOOKMARKS';
 export const THUMBNAIL = 'THUMBNAIL';
 export const LIST_VIEW = 'LIST_VIEW';
+
 export const SEARCH = 'SEARCH';
 export const SET_DOCS = 'SET_DOCS';
 export const START_FETCH = 'START_FETCH';
@@ -23,7 +25,8 @@ export const getDocs = authState => async dispatch => {
     dispatch({ type: START_FETCH });
     const { data } = await axiosWithAuth(authState).get(`${apiURI}/bookmarks`);
     if (data.length > 0) {
-      dispatch({ type: SET_BOOKMARKS, payload: data });
+      const fileIds = data.map(d => d.fileId);
+      dispatch({ type: SET_BOOKMARKS, payload: fileIds });
       const ids = data.map(b => b.fileId).join(' ');
       const { Response } = await getDSData(`/search/${ids}`, authState);
       dispatch({ type: SET_DOCS, payload: Response });
@@ -47,12 +50,24 @@ export const searchDocs = (search, authState) => dispatch => {
 export const saveBookmarks = (authState, bookmarkId) => async dispatch => {
   try {
     await axiosWithAuth(authState).post(
-      `${process.env.REACT_APP_API_URI}/bookmarks/${bookmarkId}`,
+      `${apiURI}/bookmarks/${bookmarkId}`,
       bookmarkId
     );
     dispatch({ type: SAVE_BOOKMARKS, payload: bookmarkId });
   } catch (err) {
     console.error(err);
+  }
+};
+
+export const removeBookmarks = (authState, bookmarkId) => async dispatch => {
+  try {
+    await axiosWithAuth(authState).delete(
+      `
+      ${apiURI}/bookmarks/${bookmarkId}`
+    );
+    dispatch({ type: REMOVE_BOOKMARKS, payload: bookmarkId });
+  } catch (err) {
+    console.log(err);
   }
 };
 

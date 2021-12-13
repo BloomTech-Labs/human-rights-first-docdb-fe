@@ -8,13 +8,21 @@ import { Tags } from '../../common';
 import './LandingCard.css';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
-import { saveBookmarks } from '../../../state/actions';
+import { removeBookmarks, saveBookmarks } from '../../../state/actions';
 
 const { Meta } = Card;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;
 
 function LandingCard(props) {
-  const { name, url, box_id, tags, bookmarkedDocs, saveBookmarks } = props;
+  const {
+    name,
+    url,
+    box_id,
+    tags,
+    bookmarkedDocs,
+    saveBookmarks,
+    removeBookmarks,
+  } = props;
   const { authState } = useOktaAuth();
 
   let isFavorite = false;
@@ -22,6 +30,10 @@ function LandingCard(props) {
 
   const handleSave = () => {
     saveBookmarks(authState, box_id);
+  };
+
+  const handleRemove = () => {
+    removeBookmarks(authState, box_id);
   };
 
   return (
@@ -34,7 +46,7 @@ function LandingCard(props) {
             alt={name}
             // alt is the attribute that adds accessibility
             fallback={`${thumbUrl}/${box_id}`}
-            // fallback is the attribute to display another image should the doc preview doesn't load.
+            // fallback is the attribute to display another image should the doc preview not load
             style={{ height: 300 }}
           />
         }
@@ -45,6 +57,7 @@ function LandingCard(props) {
               alt="bookmark filled"
               width="50"
               data-testid="filled-bookmark"
+              onClick={handleRemove}
             />
           ) : (
             <img
@@ -77,4 +90,6 @@ const mapStateToProps = state => ({
   bookmarkedDocs: state.bookmarkedDocs,
 });
 
-export default connect(mapStateToProps, { saveBookmarks })(LandingCard);
+export default connect(mapStateToProps, { saveBookmarks, removeBookmarks })(
+  LandingCard
+);
