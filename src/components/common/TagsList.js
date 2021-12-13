@@ -20,7 +20,7 @@ function TagsList(props) {
   const hiddenTags = tagArray.slice(size - 1, tagArray.length);
 
   return (
-    <Row style={{ width: '70%', margin: '0 auto' }}>
+    <Row className="tagsListRow">
       {shownTags.map(tag => (
         <ColTagList classList="colTag" tag={tag} />
       ))}
