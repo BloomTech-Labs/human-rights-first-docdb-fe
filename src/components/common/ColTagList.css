@@ -1,0 +1,9 @@
+.ant-col {
+    display: 'flex';
+    justify-content: 'space-evenly';
+    margin-bottom: '0 auto 2% auto';
+}
+.ant_row{
+    width:'70%';
+    border:100px solid black;
+}

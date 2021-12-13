@@ -2,6 +2,7 @@ import React from 'react';
 import { Tag, Popover, Row, Col } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 import ColTagList from './ColTagList';
+import './ColTagList.css';
 
 function TagsList(props) {
   const { size, tagArray } = props;
@@ -10,7 +11,7 @@ function TagsList(props) {
     return (
       <Row>
         {tagArray.map(tag => (
-          <ColTagList tag={tag} />
+          <ColTagList classList="colTag" tag={tag} />
         ))}
       </Row>
     );
@@ -19,13 +20,20 @@ function TagsList(props) {
   const hiddenTags = tagArray.slice(size - 1, tagArray.length);
 
   return (
-    <Row>
+    <Row style={{ width: '70%', margin: '0 auto' }}>
       {shownTags.map(tag => (
-        <ColTagList tag={tag} />
+        <ColTagList classList="colTag" tag={tag} />
       ))}
-      <Col>
+      <Col
+        style={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          margin: '0 auto 2% auto',
+        }}
+      >
         <Popover
           title="Tags cont."
+          classList="colTag"
           content={
             <Row>
               {hiddenTags.map(tag => (
