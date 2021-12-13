@@ -5,10 +5,6 @@
   background-color: #dbc6b2;
   height: 65px;
   padding: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: 999;
 }
 .header_img {
   width: 30%;

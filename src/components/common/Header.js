@@ -13,11 +13,33 @@ import {
   displayListView,
   displayThumbnail,
 } from '../../state/actions';
+import { debounce } from '../../utils/debounce';
 
 const { Header } = Layout;
 
+const scrollStyles = {
+  position: 'fixed',
+  width: '100%',
+  transition: 'top ease-in 0.2s',
+  zIndex: '9999',
+};
+
 function MainHeader(props) {
-  const { searchDocs, displayListView, displayThumbnail } = props;
+  const [oldScroll, setOldScroll] = useState(0);
+  const [showHeader, setShowHeader] = useState(true);
+
+  const handleScroll = debounce(() => {
+    const scrollPos = window.scrollY;
+    setShowHeader(oldScroll > scrollPos || scrollPos < 10);
+    setOldScroll(scrollPos);
+  }, 25);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [oldScroll, showHeader, handleScroll]);
+
+  const { searchDocs } = props;
   const {
     authService: { logout },
     authState,
@@ -40,8 +62,8 @@ function MainHeader(props) {
   };
 
   return (
-    <Layout id="layout">
-      <Header className={`header_div`}>
+    <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
+      <Header className="header_div">
         <img src={logo2} className="header_img" alt="HRF logo" />
         <Search
           className="search_bar"
@@ -51,14 +73,12 @@ function MainHeader(props) {
         <Button onClick={listView}>List</Button>
         <Button onClick={thumbnailView}>Thumbnail</Button>
         <Link to="/">
-          <Button className="bookmark_button" type="default">
-            Bookmarks
-          </Button>
+          <Button type="default">Bookmarks</Button>
         </Link>
-        <Button onClick={logout} className="logout_button" type="default">
+        <Button onClick={logout} type="default">
           Logout
         </Button>
-        <Avatar className="avatars" size={45} icon={<UserOutlined />} />
+        <Avatar size={45} icon={<UserOutlined />} />
       </Header>
     </Layout>
   );
