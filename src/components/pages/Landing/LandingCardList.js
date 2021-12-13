@@ -1,31 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import LandingCard from './LandingCard';
 import LandingListCard from './LandingListCard';
-import { searchDocs, pageParams } from '../../../state/actions';
+import { setCurrentSearch, searchDocs } from '../../../state/actions';
 import { connect } from 'react-redux';
 import { Row, Col, Pagination } from 'antd';
 import { useOktaAuth } from '@okta/okta-react';
 
 function LandingCardList(props) {
-  const { docs, cardView, total, searchTerm } = props;
+  const {
+    docs,
+    cardView,
+    total,
+    currentSearch,
+    setCurrentSearch,
+    searchDocs,
+    currentPage,
+  } = props;
 
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
+  const { authState } = useOktaAuth();
 
   const handleChange = (page, pageSize) => {
-    setPage(page);
-    setPageSize(pageSize);
+    // for when the page size stays the same
+    if (pageSize === props.pageSize) {
+      setCurrentSearch(currentSearch, page, pageSize);
+      searchDocs(currentSearch, authState, page, pageSize);
+    }
+    // when page size changes, this keeps track of where you were
+    else {
+      const newPage =
+        Math.floor(((currentPage - 1) * props.pageSize + 1) / pageSize) + 1;
+      setCurrentSearch(currentSearch, newPage, pageSize);
+      searchDocs(currentSearch, authState, newPage, pageSize);
+    }
   };
-
-  // const {
-  //   authService: { logout },
-  //   authState,
-  // } = useOktaAuth();
-
-  useEffect(() => {
-    pageParams(page, pageSize);
-    // searchDocs(search) where do we get the search term?
-  }, [page, pageSize, pageParams]);
 
   return (
     <>
@@ -51,29 +58,13 @@ function LandingCardList(props) {
         )}
       </Row>
       <Pagination
-        current={page}
-        pageSize={pageSize}
+        current={currentPage}
+        pageSize={props.pageSize}
         onChange={handleChange}
         total={total}
-        pageSizeOptions={[10, 25, 50]}
+        pageSizeOptions={[10, 25, 50, 100]}
         hideOnSinglePage={true}
       />
-
-      {/* @API.post("/search")
-          async def search(query: str, page_number: int = 0, results_per_page: int = 100):
-            start = page_number * results_per_page
-            stop = start + results_per_page
-            search_results = API.db.search(query)[start:stop]
-            count = API.db.count({"$text": {"$search": query}})
-            n_pages = ceil(count / results_per_page)
-
-            return {"Pages": n_pages, "Count": count, "Response": list(search_results)} 
-            
-            
-         Example Request URL: http://127.0.0.1:8000/search?query=bullet&page_number=0&results_per_page=10   
-        
-         ReactDOM.render(<Pagination defaultCurrent={6} total={500} />, mountNode);
-      */}
     </>
   );
 }
@@ -82,9 +73,12 @@ const mapStateToProps = state => ({
   docs: state.docs,
   cardView: state.cardView,
   total: state.totalDocsCount,
-  searchTerm: state.searchTerm,
+  currentSearch: state.currentSearch,
+  currentPage: state.currentPage,
+  pageSize: state.pageSize,
 });
 
-export default connect(mapStateToProps, { searchDocs, pageParams })(
-  LandingCardList
-);
+export default connect(mapStateToProps, {
+  searchDocs,
+  setCurrentSearch,
+})(LandingCardList);

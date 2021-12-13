@@ -11,15 +11,13 @@ export const BOOKMARKS = 'BOOKMARKS';
 export const SET_BOOKMARKS = 'SET_BOOKMARKS';
 export const SAVE_BOOKMARKS = 'SAVE_BOOKMARKS';
 export const THUMBNAIL = 'THUMBNAIL';
-
 export const LIST_VIEW = 'LIST_VIEW';
 
-export const SEARCH = 'SEARCH';
+export const CURRENT_SEARCH = 'CURRENT_SEARCH';
 
 export const SET_DOCS = 'SET_DOCS';
 
 export const START_FETCH = 'START_FETCH';
-
 export const FINISH_FETCH = 'FINISH_FETCH';
 
 const apiURI = process.env.REACT_APP_API_URI;
@@ -43,10 +41,9 @@ export const getDocs = authState => async dispatch => {
 
 export const searchDocs = (search, authState, page, pageSize) => dispatch => {
   dispatch({ type: START_FETCH });
-  // dispatch({ type: SEARCH, payload: [page, pageSize] });
-  console.log('pages', page, pageSize);
   getDSData(
-    `/search?query=${search}&page_number=${page}&results_per_page=${pageSize}`,
+    `/search?query=${search}&page_number=${page -
+      1}&results_per_page=${pageSize}`,
     authState
   )
     .then(data => {
@@ -55,8 +52,15 @@ export const searchDocs = (search, authState, page, pageSize) => dispatch => {
     .catch(console.error);
 };
 
-export const pageParams = (page, pageSize) => dispatch => {
-  dispatch({ type: SEARCH, payload: [page, pageSize] });
+export const setCurrentSearch = (
+  currentSearch,
+  currentPage,
+  pageSize
+) => dispatch => {
+  dispatch({
+    type: CURRENT_SEARCH,
+    payload: { currentSearch, currentPage, pageSize },
+  });
 };
 
 export const saveBookmarks = (authState, bookmarkId) => async dispatch => {

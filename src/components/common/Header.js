@@ -12,13 +12,18 @@ import {
   searchDocs,
   displayListView,
   displayThumbnail,
-  pageParams,
+  setCurrentSearch,
 } from '../../state/actions';
 
 const { Header } = Layout;
 
 function MainHeader(props) {
-  const { searchDocs, displayListView, displayThumbnail } = props;
+  const {
+    searchDocs,
+    setCurrentSearch,
+    displayListView,
+    displayThumbnail,
+  } = props;
   const {
     authService: { logout },
     authState,
@@ -29,7 +34,8 @@ function MainHeader(props) {
 
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
-    searchDocs(value, authState, props.currentPage, props.pageSize);
+    setCurrentSearch(value, 1, props.pageSize);
+    searchDocs(value, authState, 1, props.pageSize);
   };
 
   //Buttons For Display modes
@@ -66,7 +72,6 @@ function MainHeader(props) {
 }
 
 const mapStateToProps = state => ({
-  currentPage: state.currentPage,
   pageSize: state.pageSize,
 });
 
@@ -74,5 +79,5 @@ export default connect(mapStateToProps, {
   searchDocs,
   displayListView,
   displayThumbnail,
-  pageParams,
+  setCurrentSearch,
 })(MainHeader);
