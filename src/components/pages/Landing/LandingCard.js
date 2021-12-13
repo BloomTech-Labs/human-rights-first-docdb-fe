@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Card } from 'antd';
-import { ArrowsAltOutlined } from '@ant-design/icons';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
@@ -40,8 +39,6 @@ function LandingCard(props) {
   return (
     <div>
       <Card
-        // name={<ArrowsAltOutlined rotate={90} />}
-        // if we want to go back and use ^^ this, the attribute needs to be changed to title.
         cover={
           <img
             onClick={() => window.open(url)}
