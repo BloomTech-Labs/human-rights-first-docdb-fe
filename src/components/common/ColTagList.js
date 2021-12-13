@@ -12,7 +12,11 @@ function ColTagList(props) {
     <Col
       key={tag}
       span={6}
-      style={{ display: 'flex', justifyContent: 'center' }}
+      style={{
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        marginBottom: '2%',
+      }}
     >
       <Tag
         style={{ cursor: 'pointer' }}

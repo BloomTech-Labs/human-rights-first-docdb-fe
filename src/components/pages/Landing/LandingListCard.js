@@ -33,8 +33,12 @@ function LandingCardList(props) {
 
   return (
     <div>
-      <Card>
+      <Card
+        style={{ marginBottom: '3%' }}
+        //Separate each card
+      >
         <div
+          //This is to make the contents in the card horizontal
           style={{
             width: '100%',
             display: 'flex',
@@ -42,13 +46,13 @@ function LandingCardList(props) {
             alignItems: 'center',
           }}
         >
-          <div style={{ width: '30%' }}>
+          <div style={{ width: '15%', margin: 'auto' }}>
             <img
               onClick={() => window.open(url)}
               src={`${thumbUrl}/${box_id}`}
               alt={name}
               fallback={`${thumbUrl}/${box_id}`}
-              style={{ height: 300, marginLeft: 'auto' }}
+              style={{ width: '100%', margin: 'auto' }}
             />
           </div>
           <div style={{ width: '60%' }}>
@@ -59,7 +63,8 @@ function LandingCardList(props) {
             />
             <TagsList tagArray={tags} size={8} />
           </div>
-          <div style={{ alignSelf: 'flex-start' }}>
+          {/* To place the bookmark on the top right corner */}
+          <div style={{ alignSelf: 'flex-start', marginLeft: '10%' }}>
             {isFavorite ? (
               <img
                 src={bookmarkFilled}
