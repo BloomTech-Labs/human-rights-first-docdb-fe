@@ -9,8 +9,8 @@ function Tags(props) {
   if (tagArray.length <= size)
     return (
       <Row>
-        {tagArray.map(tag => (
-          <ColTag tag={tag} />
+        {tagArray.map((tag, index) => (
+          <ColTag tag={tag} key={index} />
         ))}
       </Row>
     );
@@ -20,16 +20,16 @@ function Tags(props) {
 
   return (
     <Row>
-      {shownTags.map(tag => (
-        <ColTag tag={tag} />
+      {shownTags.map((tag, index) => (
+        <ColTag tag={tag} key={index} />
       ))}
       <Col>
         <Popover
           title="Tags cont."
           content={
             <Row>
-              {hiddenTags.map(tag => (
-                <ColTag tag={tag} />
+              {hiddenTags.map((tag, index) => (
+                <ColTag tag={tag} key={index} />
               ))}
             </Row>
           }
