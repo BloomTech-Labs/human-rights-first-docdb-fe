@@ -7,15 +7,22 @@
 import { getDSData, axiosWithAuth } from '../../api';
 
 export const BOOKMARKS = 'BOOKMARKS';
+
 export const SET_BOOKMARKS = 'SET_BOOKMARKS';
 export const REMOVE_BOOKMARKS = 'REMOVE_BOOKMARKS';
 export const SAVE_BOOKMARKS = 'SAVE_BOOKMARKS';
 export const THUMBNAIL = 'THUMBNAIL';
+
 export const LIST_VIEW = 'LIST_VIEW';
 
 export const SEARCH = 'SEARCH';
+
+export const SEARCH_BAR = 'SEARCH_BAR';
+
 export const SET_DOCS = 'SET_DOCS';
+
 export const START_FETCH = 'START_FETCH';
+
 export const FINISH_FETCH = 'FINISH_FETCH';
 
 const apiURI = process.env.REACT_APP_API_URI;
@@ -32,6 +39,7 @@ export const getDocs = authState => async dispatch => {
       dispatch({ type: SET_DOCS, payload: Response });
     } else {
       dispatch({ type: FINISH_FETCH });
+      dispatch({ type: SEARCH_BAR });
     }
   } catch (err) {
     console.log(err);

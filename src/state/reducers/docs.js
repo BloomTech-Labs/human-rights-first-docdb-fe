@@ -6,6 +6,7 @@ import {
   SAVE_BOOKMARKS,
   REMOVE_BOOKMARKS,
   SEARCH,
+  SEARCH_BAR,
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
@@ -42,6 +43,8 @@ const docsReducer = (state = initialState, action) => {
       };
     case SEARCH:
       return { ...state, page: 'search', searchTerm: payload };
+    case SEARCH_BAR:
+      return { ...state, page: 'bar' };
     case THUMBNAIL:
       return { ...state, cardView: true };
     case LIST_VIEW:
