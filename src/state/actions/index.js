@@ -50,8 +50,14 @@ export const searchDocs = (search, authState) => dispatch => {
   dispatch({ type: START_FETCH });
   getDSData(`/search/${search}`, authState)
     .then(data => {
-      dispatch({ type: SET_DOCS, payload: data.Response });
-      dispatch({ type: SEARCH, payload: search });
+      if (data.Response.length === 0) {
+        alert('No search results');
+        dispatch({ type: SEARCH_BAR });
+        dispatch({ type: FINISH_FETCH });
+      } else {
+        dispatch({ type: SET_DOCS, payload: data.Response });
+        dispatch({ type: SEARCH, payload: search });
+      }
     })
     .catch(console.error);
 };
