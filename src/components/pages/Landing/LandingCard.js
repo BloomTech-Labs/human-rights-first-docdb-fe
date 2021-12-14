@@ -69,7 +69,7 @@ function LandingCard(props) {
             />
           )
         }
-        style={{ width: 300 }}
+        style={{ width: 300, marginBottom: '17%' }}
         bodyStyle={{ padding: 12 }}
       >
         <Meta title={name} style={{ textAlign: 'center', marginBottom: 10 }} />
