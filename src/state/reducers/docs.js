@@ -30,7 +30,7 @@ const docsReducer = (state = initialState, action) => {
     case SET_DOCS:
       return { ...state, isFetching: false, docs: payload };
     case SET_BOOKMARKS:
-      return { ...state, isFetching: false, bookmarkedDocs: payload };
+      return { ...state, bookmarkedDocs: payload };
     case BOOKMARKS:
       return { ...state, page: 'bookmarks' };
     case SAVE_BOOKMARKS:
