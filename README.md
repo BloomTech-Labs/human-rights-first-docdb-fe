@@ -53,34 +53,29 @@ To learn more about the data science behind the project, please visit [our DS te
 ## Contributors
 
 #### LABS FT 41
-[Stu Darsley]()
+[Klove Adams](https://github.com/Klove-A)
 
-[Alex Edwards]()
+[Stu Darsley](http://www.github.com/stu-wd)
 
-[Sarah Herren]()
+[Michael Greenwald](https://github.com/mgreenwaldm)
 
-[Allison Homem]()
+[Sarah Herren](https://github.com/sarahdherren)
 
-[Amy Lam]()
+[Allison Homem](https://github.com/allisonhomem)
 
-[Jennifer Misch]()
+[Amy Lam](https://github.com/SomeiLam)
 
-[Thomas Moore]()
+[Jennifer Misch](https://github.com/jMisch44)
 
-[Robert Taveras]()
+[Thomas Moore](https://github.com/techwulf)
 
-[Jonah Tillman]()
+[Mason Mostella](https://github.com/MMostella)
 
+[Michael Steiner](https://github.com/steinmikey)
 
-##### Technical Project Managers
+[Robert Taveras](https://github.com/Bobby-Tav)
 
-[Klove Adams]()
-
-[Mason Mostella]()
-
-[Michael Greenwald]()
-
-[Michael Steiner]()
+[Jonah Tillman](https://github.com/jonahjtr)
 
 <br>
 
@@ -89,6 +84,8 @@ To learn more about the data science behind the project, please visit [our DS te
 [Andrew Busby](https://github.com/andrewsbusby)
 
 [Luiza Coelho](https://github.com/lncpadawan)
+
+[Nora Corser](https://github.com/nora-exe)
 
 [Bailey Evanger](https://github.com/bevanger)
 
@@ -102,6 +99,8 @@ To learn more about the data science behind the project, please visit [our DS te
 
 [Juliane Nguyen](https://github.com/juliane1999)
 
+[Jack Orth](https://github.com/JackOrth)
+
 [Rimsha Saleem](https://github.com/RimshaSaleem)
 
 [Dharmik Savaliya](https://github.com/makeityourself121)
@@ -111,13 +110,6 @@ To learn more about the data science behind the project, please visit [our DS te
 [Romy Shockey](https://github.com/rkshockey)
 
 [Jacob Shomali](https://github.com/collerhatguy)
-
-
-##### Technical Project Managers
-
-[Nora Corser](https://github.com/nora-exe)
-
-[Jack Orth](https://github.com/JackOrth)
 
 [Brandon Verfurth](https://github.com/bverfurth)
 
