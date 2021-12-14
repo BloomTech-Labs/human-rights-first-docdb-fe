@@ -8,13 +8,23 @@ import LandingSearchCard from './LandingSearchCard';
 function LandingCardList(props) {
   const { docs, bookmarkedDocs, page, cardView } = props;
 
+  const headerStyle = {
+    fontSize: '2rem',
+    padding: '2rem',
+    textAlign: 'center',
+  };
+
   return (
     <>
       {bookmarkedDocs.length === 0 && docs.length === 0 ? (
         <LandingSearchCard />
       ) : (
         <>
-          {page === 'bookmarks' ? <h1>Bookmarks</h1> : <h1>Directory</h1>}
+          {page === 'bookmarks' ? (
+            <h1 style={{ ...headerStyle }}>Bookmarks</h1>
+          ) : (
+            <h1 style={{ ...headerStyle }}>Directory</h1>
+          )}
           <Row gutter={{ xs: 16, sm: 24, md: 32, lg: 48 }} justify="center">
             {cardView
               ? //For the Thumbnail Display
