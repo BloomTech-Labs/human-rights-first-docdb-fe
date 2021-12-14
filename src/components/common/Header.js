@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Search from 'antd/es/input/Search';
 import { Avatar, Layout, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
@@ -9,6 +9,7 @@ import { useOktaAuth } from '@okta/okta-react';
 import { useLocation, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
+  getDocs,
   searchDocs,
   displayListView,
   displayThumbnail,
@@ -39,12 +40,16 @@ function MainHeader(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [oldScroll, showHeader, handleScroll]);
 
-  const { searchDocs } = props;
+  const { getDocs, searchDocs } = props;
   const {
     authService: { logout },
     authState,
   } = useOktaAuth();
   const { pathname } = useLocation();
+
+  const bookmarksButton = () => {
+    getDocs(authState);
+  };
 
   if (pathname === '/login') return null;
 
@@ -72,9 +77,9 @@ function MainHeader(props) {
         />
         <Button onClick={listView}>List</Button>
         <Button onClick={thumbnailView}>Thumbnail</Button>
-        <Link to="/">
-          <Button type="default">Bookmarks</Button>
-        </Link>
+        <Button onClick={bookmarksButton} type="default">
+          Bookmarks
+        </Button>
         <Button onClick={logout} type="default">
           Logout
         </Button>
@@ -84,6 +89,9 @@ function MainHeader(props) {
   );
 }
 
-export default connect(null, { searchDocs, displayListView, displayThumbnail })(
-  MainHeader
-);
+export default connect(null, {
+  getDocs,
+  searchDocs,
+  displayListView,
+  displayThumbnail,
+})(MainHeader);
