@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 import './header.css';
 import logo2 from '../../assets/HRF_Logo2.png';
 import { useOktaAuth } from '@okta/okta-react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   getDocs,
