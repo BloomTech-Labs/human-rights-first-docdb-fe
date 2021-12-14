@@ -3,7 +3,13 @@ import RenderLandingPage from './RenderLandingPage';
 
 function LandingContainer() {
   return (
-    <div style={{ marginTop: '80px' }}>
+    <div
+      style={{
+        paddingTop: '80px',
+        paddingLeft: '4%',
+        backgroundColor: '#f7ede2',
+      }}
+    >
       <RenderLandingPage />
     </div>
   );
