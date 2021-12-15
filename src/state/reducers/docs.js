@@ -10,11 +10,16 @@ import {
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
+  CURRENT_SEARCH,
   SET_SEARCH_QUERY,
 } from '../actions';
 
 const initialState = {
   docs: [],
+  totalDocsCount: 0,
+  currentSearch: '',
+  currentPage: 1,
+  pageSize: 10,
   bookmarkedDocs: [],
   isFetching: false,
   page: 'bookmarks',
@@ -31,7 +36,12 @@ const docsReducer = (state = initialState, action) => {
     case FINISH_FETCH:
       return { ...state, isFetching: false };
     case SET_DOCS:
-      return { ...state, isFetching: false, docs: payload };
+      return {
+        ...state,
+        isFetching: false,
+        docs: payload.Response,
+        totalDocsCount: payload.Count,
+      };
     case SET_BOOKMARKS:
       return { ...state, isFetching: false, bookmarkedDocs: payload };
     case BOOKMARKS:
@@ -42,6 +52,13 @@ const docsReducer = (state = initialState, action) => {
       return {
         ...state,
         bookmarkedDocs: state.bookmarkedDocs.filter(id => id !== payload),
+      };
+    case CURRENT_SEARCH:
+      return {
+        ...state,
+        currentSearch: payload.currentSearch,
+        currentPage: payload.currentPage,
+        pageSize: payload.pageSize,
       };
     case SEARCH:
       return { ...state, page: 'search', searchTerm: payload };
