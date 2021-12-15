@@ -12,7 +12,7 @@ export const REMOVE_BOOKMARKS = 'REMOVE_BOOKMARKS';
 export const SAVE_BOOKMARKS = 'SAVE_BOOKMARKS';
 export const THUMBNAIL = 'THUMBNAIL';
 export const LIST_VIEW = 'LIST_VIEW';
-
+export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SEARCH = 'SEARCH';
 export const SET_DOCS = 'SET_DOCS';
 export const START_FETCH = 'START_FETCH';
@@ -40,6 +40,7 @@ export const getDocs = authState => async dispatch => {
 
 export const searchDocs = (search, authState) => dispatch => {
   dispatch({ type: START_FETCH });
+  dispatch({ type: SET_SEARCH_QUERY, payload: search });
   getDSData(`/search/${search}`, authState)
     .then(data => {
       dispatch({ type: SET_DOCS, payload: data.Response });

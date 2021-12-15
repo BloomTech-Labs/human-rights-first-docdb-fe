@@ -9,6 +9,7 @@ import {
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
+  SET_SEARCH_QUERY,
 } from '../actions';
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   page: 'bookmarks',
   cardView: true,
   query: '',
+  searchTerm: '',
 };
 
 const docsReducer = (state = initialState, action) => {
@@ -46,6 +48,8 @@ const docsReducer = (state = initialState, action) => {
       return { ...state, cardView: true };
     case LIST_VIEW:
       return { ...state, cardView: false };
+    case SET_SEARCH_QUERY:
+      return { ...state, searchTerm: payload };
     default:
       return state;
   }
