@@ -58,6 +58,7 @@ function LandingCard(props) {
               width="50"
               data-testid="filled-bookmark"
               onClick={handleRemove}
+              style={{ right: 5, top: 5, position: 'absolute' }}
             />
           ) : (
             <img
@@ -66,11 +67,18 @@ function LandingCard(props) {
               width="50"
               data-testid="outlined-bookmark"
               onClick={handleSave}
+              style={{ right: 5, top: 5, position: 'absolute' }}
             />
           )
         }
-        style={{ width: 300 }}
+        style={{
+          width: 300,
+          marginBottom: '17%',
+          border: '3px outset #DAC6B2',
+        }}
+        headStyle={{ height: 35, padding: 0 }}
         bodyStyle={{ padding: 12 }}
+        hoverable={true}
       >
         <Meta title={name} style={{ textAlign: 'center', marginBottom: 10 }} />
         <Tags tagArray={tags} size={8} />
