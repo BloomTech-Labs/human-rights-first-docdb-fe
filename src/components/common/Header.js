@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Search from 'antd/es/input/Search';
 import { Avatar, Layout, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
@@ -6,9 +6,10 @@ import 'antd/dist/antd.css';
 import './header.css';
 import logo2 from '../../assets/HRF_Logo2.png';
 import { useOktaAuth } from '@okta/okta-react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
+  getDocs,
   searchDocs,
   displayListView,
   displayThumbnail,
@@ -41,18 +42,25 @@ function MainHeader(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [oldScroll, showHeader, handleScroll]);
 
+
   const {
+    getDocs,
     searchDocs,
     setCurrentSearch,
     displayListView,
     displayThumbnail,
     currentSearch,
   } = props;
+
   const {
     authService: { logout },
     authState,
   } = useOktaAuth();
   const { pathname } = useLocation();
+
+  const bookmarksButton = () => {
+    getDocs(authState);
+  };
 
   useEffect(() => {
     setQuery(currentSearch);
@@ -82,6 +90,7 @@ function MainHeader(props) {
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
+
         {props.page === 'bar' ? (
           <></>
         ) : (
@@ -96,9 +105,9 @@ function MainHeader(props) {
             />
             <Button onClick={listView}>List</Button>
             <Button onClick={thumbnailView}>Thumbnail</Button>
-            <Link to="/">
-              <Button type="default">Bookmarks</Button>
-            </Link>
+            <Button onClick={bookmarksButton} type="default">
+              Bookmarks
+            </Button>
           </>
         )}
 
@@ -111,6 +120,7 @@ function MainHeader(props) {
   );
 }
 
+
 const mapStateToProps = state => ({
   pageSize: state.pageSize,
   page: state.page,
@@ -118,6 +128,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
+  getDocs,
   searchDocs,
   displayListView,
   displayThumbnail,

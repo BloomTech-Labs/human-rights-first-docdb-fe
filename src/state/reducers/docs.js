@@ -43,7 +43,7 @@ const docsReducer = (state = initialState, action) => {
         totalDocsCount: payload.Count,
       };
     case SET_BOOKMARKS:
-      return { ...state, isFetching: false, bookmarkedDocs: payload };
+      return { ...state, bookmarkedDocs: payload };
     case BOOKMARKS:
       return { ...state, page: 'bookmarks' };
     case SAVE_BOOKMARKS:
