@@ -1,11 +1,11 @@
 import React from 'react';
 import { Col, Tag, Tooltip } from 'antd';
 import { connect } from 'react-redux';
-import { searchDocs } from '../../state/actions';
+import { searchDocs, setCurrentSearch } from '../../state/actions';
 import { useOktaAuth } from '@okta/okta-react';
 
 function ColTagList(props) {
-  const { searchDocs, tag } = props;
+  const { searchDocs, tag, pageSize } = props;
   const { authState } = useOktaAuth();
 
   return (
@@ -14,17 +14,23 @@ function ColTagList(props) {
         className="innerTag"
         data-testid="doc-tag"
         onClick={() => {
-          searchDocs(tag, authState);
+          searchDocs(tag, authState, 1, pageSize);
+          setCurrentSearch(tag, 1, pageSize);
         }}
       >
-        {tag.length < 45 ? (
+        {tag.length < 40 ? (
           tag
         ) : (
-          <Tooltip title={tag}>{tag.slice(0, 16)}...</Tooltip>
+          <Tooltip title={tag}>{tag.slice(0, 30)}...</Tooltip>
         )}
       </Tag>
     </Col>
   );
 }
+const mapStateToProps = state => ({
+  pageSize: state.pageSize,
+});
 
-export default connect(null, { searchDocs })(ColTagList);
+export default connect(mapStateToProps, { searchDocs, setCurrentSearch })(
+  ColTagList
+);
