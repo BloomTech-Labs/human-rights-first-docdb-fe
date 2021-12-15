@@ -61,7 +61,7 @@ const docsReducer = (state = initialState, action) => {
         pageSize: payload.pageSize,
       };
     case SEARCH:
-      return { ...state, page: 'search', searchTerm: payload };
+      return { ...state, page: 'search', currentSearch: payload };
     case SEARCH_BAR:
       return { ...state, page: 'bar' };
     case THUMBNAIL:
@@ -69,7 +69,7 @@ const docsReducer = (state = initialState, action) => {
     case LIST_VIEW:
       return { ...state, cardView: false };
     case SET_SEARCH_QUERY:
-      return { ...state, searchTerm: payload };
+      return { ...state, currentSearch: payload };
     default:
       return state;
   }

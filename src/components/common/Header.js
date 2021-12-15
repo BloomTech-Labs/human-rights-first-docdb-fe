@@ -46,7 +46,7 @@ function MainHeader(props) {
     setCurrentSearch,
     displayListView,
     displayThumbnail,
-    searchTerm,
+    currentSearch,
   } = props;
   const {
     authService: { logout },
@@ -55,8 +55,8 @@ function MainHeader(props) {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    setQuery(searchTerm);
-  }, [searchTerm]);
+    setQuery(currentSearch);
+  }, [currentSearch]);
 
   if (pathname === '/login') return null;
 
@@ -68,7 +68,7 @@ function MainHeader(props) {
     if (!value) return alert('Search bar cannot be empty');
     setCurrentSearch(value, 1, props.pageSize);
     searchDocs(value, authState, 1, props.pageSize);
-    e.target.value = '';
+    // e.target.value = '';
   };
 
   //Buttons For Display modes
@@ -114,7 +114,7 @@ function MainHeader(props) {
 const mapStateToProps = state => ({
   pageSize: state.pageSize,
   page: state.page,
-  searchTerm: state.searchTerm,
+  currentSearch: state.currentSearch,
 });
 
 export default connect(mapStateToProps, {

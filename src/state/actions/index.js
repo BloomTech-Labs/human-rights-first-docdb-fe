@@ -49,6 +49,7 @@ export const getDocs = authState => async dispatch => {
 
 export const searchDocs = (search, authState, page, pageSize) => dispatch => {
   dispatch({ type: START_FETCH });
+  dispatch({ type: SET_SEARCH_QUERY, payload: search });
   getDSData(
     `/search?query=${search}&page_number=${page -
       1}&results_per_page=${pageSize}`,
