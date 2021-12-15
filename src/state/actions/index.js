@@ -7,15 +7,22 @@
 import { getDSData, axiosWithAuth } from '../../api';
 
 export const BOOKMARKS = 'BOOKMARKS';
+
 export const SET_BOOKMARKS = 'SET_BOOKMARKS';
 export const REMOVE_BOOKMARKS = 'REMOVE_BOOKMARKS';
 export const SAVE_BOOKMARKS = 'SAVE_BOOKMARKS';
 export const THUMBNAIL = 'THUMBNAIL';
+
 export const LIST_VIEW = 'LIST_VIEW';
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SEARCH = 'SEARCH';
+
+export const SEARCH_BAR = 'SEARCH_BAR';
+
 export const SET_DOCS = 'SET_DOCS';
+
 export const START_FETCH = 'START_FETCH';
+
 export const FINISH_FETCH = 'FINISH_FETCH';
 
 const apiURI = process.env.REACT_APP_API_URI;
@@ -32,6 +39,7 @@ export const getDocs = authState => async dispatch => {
       dispatch({ type: SET_DOCS, payload: Response });
     } else {
       dispatch({ type: FINISH_FETCH });
+      dispatch({ type: SEARCH_BAR });
     }
   } catch (err) {
     console.log(err);
@@ -43,7 +51,13 @@ export const searchDocs = (search, authState) => dispatch => {
   dispatch({ type: SET_SEARCH_QUERY, payload: search });
   getDSData(`/search/${search}`, authState)
     .then(data => {
-      dispatch({ type: SET_DOCS, payload: data.Response });
+      if (data.Response.length === 0) {
+        alert('No search results');
+        dispatch({ type: FINISH_FETCH });
+      } else {
+        dispatch({ type: SET_DOCS, payload: data.Response });
+        dispatch({ type: SEARCH, payload: search });
+      }
     })
     .catch(console.error);
 };

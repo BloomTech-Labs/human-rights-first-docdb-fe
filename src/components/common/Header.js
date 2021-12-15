@@ -74,19 +74,26 @@ function MainHeader(props) {
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
-        <img src={logo2} className="header_img" alt="HRF logo" />
-        <Search
-          className="search_bar"
-          placeholder="Search"
-          onSearch={onSearch}
-          value={query}
-          onChange={changeHandler}
-        />
-        <Button onClick={listView}>List</Button>
-        <Button onClick={thumbnailView}>Thumbnail</Button>
-        <Link to="/">
-          <Button type="default">Bookmarks</Button>
-        </Link>
+        {props.page === 'bar' ? (
+          <></>
+        ) : (
+          <>
+            <img src={logo2} className="header_img" alt="HRF logo" />
+            <Search
+              className="search_bar"
+              placeholder="Search"
+              onSearch={onSearch}
+              value={query}
+              onChange={changeHandler}
+            />
+            <Button onClick={listView}>List</Button>
+            <Button onClick={thumbnailView}>Thumbnail</Button>
+            <Link to="/">
+              <Button type="default">Bookmarks</Button>
+            </Link>
+          </>
+        )}
+
         <Button onClick={logout} type="default">
           Logout
         </Button>
@@ -96,11 +103,10 @@ function MainHeader(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    searchTerm: state.searchTerm,
-  };
-};
+const mapStateToProps = state => ({
+  page: state.page,
+  searchTerm: state.searchTerm,
+});
 
 export default connect(mapStateToProps, {
   searchDocs,
