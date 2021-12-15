@@ -27,6 +27,7 @@ const scrollStyles = {
 function MainHeader(props) {
   const [oldScroll, setOldScroll] = useState(0);
   const [showHeader, setShowHeader] = useState(true);
+  const [query, setQuery] = useState('');
 
   const handleScroll = debounce(() => {
     const scrollPos = window.scrollY;
@@ -39,18 +40,27 @@ function MainHeader(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [oldScroll, showHeader, handleScroll]);
 
-  const { searchDocs } = props;
+  const { searchDocs, displayListView, displayThumbnail, searchTerm } = props;
   const {
     authService: { logout },
     authState,
   } = useOktaAuth();
   const { pathname } = useLocation();
 
+  useEffect(() => {
+    setQuery(searchTerm);
+  }, [searchTerm]);
+
   if (pathname === '/login') return null;
 
-  const onSearch = value => {
+  const changeHandler = e => {
+    setQuery(e.target.value);
+  };
+
+  const onSearch = (value, e) => {
     if (!value) return alert('Search bar cannot be empty');
     searchDocs(value, authState);
+    e.target.value = '';
   };
 
   //Buttons For Display modes
@@ -73,6 +83,8 @@ function MainHeader(props) {
               className="search_bar"
               placeholder="Search"
               onSearch={onSearch}
+              value={query}
+              onChange={changeHandler}
             />
             <Button onClick={listView}>List</Button>
             <Button onClick={thumbnailView}>Thumbnail</Button>
@@ -81,6 +93,7 @@ function MainHeader(props) {
             </Link>
           </>
         )}
+
         <Button onClick={logout} type="default">
           Logout
         </Button>
@@ -92,6 +105,7 @@ function MainHeader(props) {
 
 const mapStateToProps = state => ({
   page: state.page,
+  searchTerm: state.searchTerm,
 });
 
 export default connect(mapStateToProps, {
