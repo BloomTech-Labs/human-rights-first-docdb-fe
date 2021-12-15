@@ -1,0 +1,22 @@
+/* .ant-col {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 0 auto 2% auto;
+} */
+
+.tagsListRow{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.columnTag{
+    display: flex;
+    padding: 0 .1rem;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+.innerTag{
+    cursor: pointer;
+    margin: 0 auto; 
+}

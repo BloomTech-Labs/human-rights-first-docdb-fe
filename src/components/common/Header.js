@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Search from 'antd/es/input/Search';
 import { Avatar, Layout, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
@@ -39,7 +39,7 @@ function MainHeader(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [oldScroll, showHeader, handleScroll]);
 
-  const { searchDocs } = props;
+  const { searchDocs, displayListView, displayThumbnail } = props;
   const {
     authService: { logout },
     authState,
@@ -83,7 +83,6 @@ function MainHeader(props) {
     </Layout>
   );
 }
-
 export default connect(null, { searchDocs, displayListView, displayThumbnail })(
   MainHeader
 );
