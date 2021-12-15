@@ -13,6 +13,7 @@ import {
   searchDocs,
   displayListView,
   displayThumbnail,
+  setCurrentSearch,
 } from '../../state/actions';
 import { debounce } from '../../utils/debounce';
 
@@ -28,6 +29,7 @@ const scrollStyles = {
 function MainHeader(props) {
   const [oldScroll, setOldScroll] = useState(0);
   const [showHeader, setShowHeader] = useState(true);
+  const [query, setQuery] = useState('');
 
   const handleScroll = debounce(() => {
     const scrollPos = window.scrollY;
@@ -40,7 +42,16 @@ function MainHeader(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [oldScroll, showHeader, handleScroll]);
 
-  const { getDocs, searchDocs } = props;
+
+  const {
+    getDocs,
+    searchDocs,
+    setCurrentSearch,
+    displayListView,
+    displayThumbnail,
+    searchTerm,
+  } = props;
+
   const {
     authService: { logout },
     authState,
@@ -51,11 +62,21 @@ function MainHeader(props) {
     getDocs(authState);
   };
 
+  useEffect(() => {
+    setQuery(searchTerm);
+  }, [searchTerm]);
+
   if (pathname === '/login') return null;
 
-  const onSearch = value => {
+  const changeHandler = e => {
+    setQuery(e.target.value);
+  };
+
+  const onSearch = (value, e) => {
     if (!value) return alert('Search bar cannot be empty');
-    searchDocs(value, authState);
+    setCurrentSearch(value, 1, props.pageSize);
+    searchDocs(value, authState, 1, props.pageSize);
+    e.target.value = '';
   };
 
   //Buttons For Display modes
@@ -69,17 +90,27 @@ function MainHeader(props) {
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
-        <img src={logo2} className="header_img" alt="HRF logo" />
-        <Search
-          className="search_bar"
-          placeholder="Search"
-          onSearch={onSearch}
-        />
-        <Button onClick={listView}>List</Button>
-        <Button onClick={thumbnailView}>Thumbnail</Button>
-        <Button onClick={bookmarksButton} type="default">
-          Bookmarks
-        </Button>
+
+        {props.page === 'bar' ? (
+          <></>
+        ) : (
+          <>
+            <img src={logo2} className="header_img" alt="HRF logo" />
+            <Search
+              className="search_bar"
+              placeholder="Search"
+              onSearch={onSearch}
+              value={query}
+              onChange={changeHandler}
+            />
+            <Button onClick={listView}>List</Button>
+            <Button onClick={thumbnailView}>Thumbnail</Button>
+            <Button onClick={bookmarksButton} type="default">
+              Bookmarks
+            </Button>
+          </>
+        )}
+
         <Button onClick={logout} type="default">
           Logout
         </Button>
@@ -89,9 +120,17 @@ function MainHeader(props) {
   );
 }
 
-export default connect(null, {
+
+const mapStateToProps = state => ({
+  pageSize: state.pageSize,
+  page: state.page,
+  searchTerm: state.searchTerm,
+});
+
+export default connect(mapStateToProps, {
   getDocs,
   searchDocs,
   displayListView,
   displayThumbnail,
+  setCurrentSearch,
 })(MainHeader);
