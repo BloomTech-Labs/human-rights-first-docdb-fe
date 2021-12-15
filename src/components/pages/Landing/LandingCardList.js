@@ -49,11 +49,11 @@ function LandingCardList(props) {
         <LandingSearchCard />
       ) : (
         <>
-          {page === 'bookmarks' ? (
-            <h1 style={{ ...headerStyle }}>Bookmarks</h1>
-          ) : (
-            <h1 style={{ ...headerStyle }}>Search Directory</h1>
-          )}
+          <h1 style={{ ...headerStyle }}>
+            {page === 'bookmarks'
+              ? 'Bookmarks'
+              : `Search results for "${currentSearch}"`}
+          </h1>
           <Row gutter={{ xs: 16, sm: 24, md: 32, lg: 48 }} justify="center">
             {cardView
               ? //For the Thumbnail Display
