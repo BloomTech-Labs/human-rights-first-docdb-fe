@@ -5,10 +5,13 @@ import {
   BOOKMARKS,
   SAVE_BOOKMARKS,
   REMOVE_BOOKMARKS,
+  SEARCH,
+  SEARCH_BAR,
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
   CURRENT_SEARCH,
+  SET_SEARCH_QUERY,
 } from '../actions';
 
 const initialState = {
@@ -22,6 +25,7 @@ const initialState = {
   page: 'bookmarks',
   cardView: true,
   query: '',
+  searchTerm: '',
 };
 
 const docsReducer = (state = initialState, action) => {
@@ -56,10 +60,16 @@ const docsReducer = (state = initialState, action) => {
         currentPage: payload.currentPage,
         pageSize: payload.pageSize,
       };
+    case SEARCH:
+      return { ...state, page: 'search', searchTerm: payload };
+    case SEARCH_BAR:
+      return { ...state, page: 'bar' };
     case THUMBNAIL:
       return { ...state, cardView: true };
     case LIST_VIEW:
       return { ...state, cardView: false };
+    case SET_SEARCH_QUERY:
+      return { ...state, searchTerm: payload };
     default:
       return state;
   }
