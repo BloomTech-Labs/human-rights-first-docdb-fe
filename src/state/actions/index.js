@@ -6,7 +6,7 @@
 
 import { getDSData, axiosWithAuth } from '../../api';
 
-export const BOOKMARKS = 'BOOKMARKS';
+export const SET_PAGE = 'SET_PAGE';
 
 export const SET_BOOKMARKS = 'SET_BOOKMARKS';
 export const REMOVE_BOOKMARKS = 'REMOVE_BOOKMARKS';
@@ -17,9 +17,6 @@ export const CURRENT_SEARCH = 'CURRENT_SEARCH';
 export const LIST_VIEW = 'LIST_VIEW';
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SEARCH = 'SEARCH';
-
-export const SEARCH_BAR = 'SEARCH_BAR';
-export const SET_PAGE_TO_SEARCH = 'SET_PAGE_TO_SEARCH';
 export const SET_DOCS = 'SET_DOCS';
 
 export const START_FETCH = 'START_FETCH';
@@ -44,7 +41,7 @@ export const getDocs = (authState, page, pageSize) => async dispatch => {
       dispatch({ type: SET_DOCS, payload: Response });
     } else {
       dispatch({ type: FINISH_FETCH });
-      dispatch({ type: SEARCH_BAR });
+      dispatch({ type: SET_PAGE, payload: 'searchOnly' });
     }
   } catch (err) {
     console.log(err);
@@ -75,7 +72,7 @@ export const onLoadBookmarks = (
       });
     } else {
       dispatch({ type: FINISH_FETCH });
-      dispatch({ type: SEARCH_BAR });
+      dispatch({ type: SET_PAGE, payload: 'searchOnly' });
     }
   } catch (err) {
     console.log(err);
@@ -137,11 +134,14 @@ export const removeBookmarks = (authState, bookmarkId) => async dispatch => {
   }
 };
 
-export const searchPage = () => ({ type: SEARCH_BAR });
+export const searchOnly = () => ({ type: SET_PAGE, payload: 'searchOnly' });
 
-export const search = () => ({ type: SET_PAGE_TO_SEARCH });
+export const searchResults = () => ({
+  type: SET_PAGE,
+  payload: 'searchResults',
+});
 
-export const bookmarks = () => ({ type: BOOKMARKS });
+export const bookmarks = () => ({ type: SET_PAGE, payload: 'bookmarks' });
 
 export const displayListView = () => ({ type: LIST_VIEW });
 
