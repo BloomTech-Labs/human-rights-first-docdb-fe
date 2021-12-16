@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input } from 'antd';
-import { searchDocs, setCurrentSearch } from '../../../state/actions';
+import { searchDocs, setCurrentSearch, search } from '../../../state/actions';
 import { useOktaAuth } from '@okta/okta-react';
 import { connect } from 'react-redux';
 import logo2 from '../../../assets/HRF_Logo2.png';
@@ -14,11 +14,12 @@ const landingSearchStyle = {
 };
 
 function LandingSearchCard(props) {
-  const { searchDocs, page, pageSize } = props;
+  const { searchDocs, pageSize, search } = props;
   const { authState } = useOktaAuth();
 
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
+    search();
     searchDocs(value, authState, 1, pageSize);
     setCurrentSearch(value, 1, props.pageSize);
   };
@@ -45,6 +46,8 @@ const mapStateToProps = state => ({
   pageSize: state.pageSize,
 });
 
-export default connect(mapStateToProps, { searchDocs, setCurrentSearch })(
-  LandingSearchCard
-);
+export default connect(mapStateToProps, {
+  searchDocs,
+  setCurrentSearch,
+  search,
+})(LandingSearchCard);

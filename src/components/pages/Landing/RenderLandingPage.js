@@ -1,9 +1,7 @@
 import React from 'react';
 import { ReduxList } from '../../common';
 import { connect } from 'react-redux';
-import { getDocs } from '../../../state/actions';
 import LandingCardList from './LandingCardList';
-import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { Spin } from 'antd';
 
 function RenderLandingPage(props) {
@@ -27,4 +25,4 @@ const mapStateToProps = state => ({
   bookmarkedDocs: state.bookmarkedDocs,
 });
 
-export default connect(mapStateToProps, { getDocs })(RenderLandingPage);
+export default connect(mapStateToProps)(RenderLandingPage);
