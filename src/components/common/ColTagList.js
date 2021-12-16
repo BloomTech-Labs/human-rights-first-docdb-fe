@@ -18,10 +18,10 @@ function ColTagList(props) {
           setCurrentSearch(tag, 1, pageSize);
         }}
       >
-        {tag.length < 36 ? (
+        {tag.length < 45 ? (
           tag
         ) : (
-          <Tooltip title={tag}>{tag.slice(0, 30)}...</Tooltip>
+          <Tooltip title={tag}>{tag.slice(0, 16)}...</Tooltip>
         )}
       </Tag>
     </Col>
