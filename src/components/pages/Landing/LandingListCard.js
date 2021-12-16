@@ -34,7 +34,9 @@ function LandingCardList(props) {
   return (
     <div>
       <Card
-        style={{ marginBottom: '3%' }}
+        style={{ marginBottom: '3%',
+                 border: '3px outset #DAC6B2' }}
+        hoverable={true}
         //Separate each card
       >
         <div
@@ -59,12 +61,15 @@ function LandingCardList(props) {
             <Meta
               title={name}
               description={path}
-              style={{ textAlign: 'center', marginBottom: '10px' }}
+              style={{ textAlign: 'center', 
+                       marginBottom: '10px'
+                     }}
             />
             <TagsList tagArray={tags} size={8} />
           </div>
           {/* To place the bookmark on the top right corner */}
-          <div style={{ alignSelf: 'flex-start', marginLeft: '10%' }}>
+          <div style={{ alignSelf: 'flex-start', 
+                        marginLeft: '10%' }}>
             {isFavorite ? (
               <img
                 src={bookmarkFilled}
