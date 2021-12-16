@@ -2,12 +2,10 @@ import {
   SET_DOCS,
   SET_BOOKMARKS,
   START_FETCH,
-  BOOKMARKS,
+  SET_PAGE,
   SAVE_BOOKMARKS,
   REMOVE_BOOKMARKS,
   SEARCH,
-  SEARCH_BAR,
-  SET_PAGE_TO_SEARCH,
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
@@ -43,8 +41,8 @@ const docsReducer = (state = initialState, action) => {
       };
     case SET_BOOKMARKS:
       return { ...state, bookmarkedDocs: payload };
-    case BOOKMARKS:
-      return { ...state, page: 'bookmarks' };
+    case SET_PAGE:
+      return { ...state, page: payload };
     case SAVE_BOOKMARKS:
       return { ...state, bookmarkedDocs: [...state.bookmarkedDocs, payload] };
     case REMOVE_BOOKMARKS:
@@ -61,10 +59,6 @@ const docsReducer = (state = initialState, action) => {
       };
     case SEARCH:
       return { ...state, currentSearch: payload };
-    case SET_PAGE_TO_SEARCH:
-      return { ...state, page: 'search' };
-    case SEARCH_BAR:
-      return { ...state, page: 'bar' };
     case THUMBNAIL:
       return { ...state, cardView: true };
     case LIST_VIEW:

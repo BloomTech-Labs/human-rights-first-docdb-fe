@@ -45,7 +45,8 @@ function LandingCardList(props) {
 
   return (
     <>
-      {(bookmarkedDocs.length === 0 && docs.length === 0) || page === 'bar' ? (
+      {(bookmarkedDocs.length === 0 && docs.length === 0) ||
+      page === 'searchOnly' ? (
         <LandingSearchCard />
       ) : (
         <>

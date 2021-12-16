@@ -14,8 +14,8 @@ import {
   displayListView,
   displayThumbnail,
   setCurrentSearch,
-  searchPage,
-  search,
+  searchOnly,
+  searchResults,
   bookmarks,
   onLoadBookmarks,
 } from '../../state/actions';
@@ -55,8 +55,8 @@ function MainHeader(props) {
     pageSize,
     page,
     currentSearch,
-    search,
-    searchPage,
+    searchResults,
+    searchOnly,
   } = props;
 
   const {
@@ -71,14 +71,14 @@ function MainHeader(props) {
   };
 
   const searchButton = () => {
-    searchPage();
+    searchOnly();
   };
 
   if (pathname === '/login') return null;
 
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
-    search();
+    searchResults();
     setCurrentSearch(value, 1, pageSize);
     searchDocs(value, authState, 1, pageSize);
   };
@@ -94,7 +94,7 @@ function MainHeader(props) {
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
-        {page === 'bar' ? (
+        {page === 'searchOnly' ? (
           <></>
         ) : (
           <>
@@ -146,8 +146,8 @@ export default connect(mapStateToProps, {
   displayListView,
   displayThumbnail,
   setCurrentSearch,
-  searchPage,
-  search,
+  searchOnly,
+  searchResults,
   bookmarks,
   onLoadBookmarks,
 })(MainHeader);
