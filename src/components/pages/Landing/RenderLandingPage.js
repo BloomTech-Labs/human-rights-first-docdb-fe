@@ -15,7 +15,7 @@ function RenderLandingPage(props) {
       <ReduxList
         getItemsData={() => getDocs(authState)}
         RenderItems={LandingCardList}
-        LoadingComponent={() => <Spin size="large" />}
+        LoadingComponent={() => <Spin style={{height: '100vh'}} size="large" />}
         isFetching={isFetching}
       />
     </div>
