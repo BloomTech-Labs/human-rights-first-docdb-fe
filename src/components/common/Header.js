@@ -14,6 +14,10 @@ import {
   displayListView,
   displayThumbnail,
   setCurrentSearch,
+  searchPage,
+  search,
+  bookmarks,
+  onLoadBookmarks,
 } from '../../state/actions';
 import { debounce } from '../../utils/debounce';
 
@@ -29,7 +33,6 @@ const scrollStyles = {
 function MainHeader(props) {
   const [oldScroll, setOldScroll] = useState(0);
   const [showHeader, setShowHeader] = useState(true);
-  const [query, setQuery] = useState('');
 
   const handleScroll = debounce(() => {
     const scrollPos = window.scrollY;
@@ -43,15 +46,17 @@ function MainHeader(props) {
   }, [oldScroll, showHeader, handleScroll]);
 
   const {
-    getDocs,
     searchDocs,
     setCurrentSearch,
     displayListView,
     displayThumbnail,
-    currentSearch,
-    bookmarkedDocs,
+    onLoadBookmarks,
+    bookmarks,
     pageSize,
     page,
+    currentSearch,
+    search,
+    searchPage,
   } = props;
 
   const {
@@ -61,26 +66,21 @@ function MainHeader(props) {
   const { pathname } = useLocation();
 
   const bookmarksButton = () => {
-    getDocs(authState, 1, pageSize);
-    const joinedBookmarks = bookmarkedDocs.join(' ');
-    setCurrentSearch(joinedBookmarks, 1, pageSize);
+    bookmarks();
+    onLoadBookmarks(authState, 1, pageSize);
   };
 
-  useEffect(() => {
-    setQuery(currentSearch);
-  }, [currentSearch]);
+  const searchButton = () => {
+    searchPage();
+  };
 
   if (pathname === '/login') return null;
 
-  const changeHandler = e => {
-    setQuery(e.target.value);
-  };
-
-  const onSearch = (value, e) => {
+  const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
+    search();
     setCurrentSearch(value, 1, pageSize);
     searchDocs(value, authState, 1, pageSize);
-    // e.target.value = '';
   };
 
   //Buttons For Display modes
@@ -98,19 +98,29 @@ function MainHeader(props) {
           <></>
         ) : (
           <>
-            <img src={logo2} className="header_img" alt="HRF logo" />
-            <Search
-              className="search_bar"
-              placeholder="Search"
-              onSearch={onSearch}
-              value={query}
-              onChange={changeHandler}
-            />
-            <Button onClick={listView}>List</Button>
-            <Button onClick={thumbnailView}>Thumbnail</Button>
-            <Button onClick={bookmarksButton} type="default">
-              Bookmarks
-            </Button>
+            {page === 'bookmarks' ? (
+              <>
+                <img src={logo2} className="header_img" alt="HRF logo" />
+                <Button onClick={listView}>List</Button>
+                <Button onClick={thumbnailView}>Thumbnail</Button>
+                <Button onClick={searchButton}>Search</Button>
+              </>
+            ) : (
+              <>
+                <img src={logo2} className="header_img" alt="HRF logo" />
+                <Search
+                  className="search_bar"
+                  placeholder="Search"
+                  onSearch={onSearch}
+                  defaultValue={currentSearch}
+                />
+                <Button onClick={listView}>List</Button>
+                <Button onClick={thumbnailView}>Thumbnail</Button>
+                <Button onClick={bookmarksButton} type="default">
+                  Bookmarks
+                </Button>
+              </>
+            )}
           </>
         )}
 
@@ -136,4 +146,8 @@ export default connect(mapStateToProps, {
   displayListView,
   displayThumbnail,
   setCurrentSearch,
+  searchPage,
+  search,
+  bookmarks,
+  onLoadBookmarks,
 })(MainHeader);

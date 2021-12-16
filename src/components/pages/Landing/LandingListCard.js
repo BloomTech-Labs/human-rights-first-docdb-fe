@@ -21,6 +21,7 @@ function LandingCardList(props) {
     tags,
     bookmarkedDocs,
     saveBookmarks,
+    removeBookmarks,
   } = props;
   const { authState } = useOktaAuth();
 
@@ -30,6 +31,10 @@ function LandingCardList(props) {
   const handleSave = () => {
     saveBookmarks(authState, box_id);
   };
+  const handleRemove = () => {
+    removeBookmarks(authState, box_id);
+  };
+
   const handleRemove = () => {
     removeBookmarks(authState, box_id);
   };
@@ -101,4 +106,6 @@ const mapStateToProps = state => ({
   bookmarkedDocs: state.bookmarkedDocs,
 });
 
-export default connect(mapStateToProps, { saveBookmarks })(LandingCardList);
+export default connect(mapStateToProps, { saveBookmarks, removeBookmarks })(
+  LandingCardList
+);

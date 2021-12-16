@@ -7,6 +7,7 @@ import {
   REMOVE_BOOKMARKS,
   SEARCH,
   SEARCH_BAR,
+  SET_PAGE_TO_SEARCH,
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
@@ -24,8 +25,6 @@ const initialState = {
   isFetching: false,
   page: 'bookmarks',
   cardView: true,
-  query: '',
-  searchTerm: '',
 };
 
 const docsReducer = (state = initialState, action) => {
@@ -61,7 +60,9 @@ const docsReducer = (state = initialState, action) => {
         pageSize: payload.pageSize,
       };
     case SEARCH:
-      return { ...state, page: 'search', currentSearch: payload };
+      return { ...state, currentSearch: payload };
+    case SET_PAGE_TO_SEARCH:
+      return { ...state, page: 'search' };
     case SEARCH_BAR:
       return { ...state, page: 'bar' };
     case THUMBNAIL:
