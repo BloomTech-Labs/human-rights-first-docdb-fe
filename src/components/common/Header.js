@@ -42,7 +42,6 @@ function MainHeader(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [oldScroll, showHeader, handleScroll]);
 
-
   const {
     getDocs,
     searchDocs,
@@ -50,6 +49,9 @@ function MainHeader(props) {
     displayListView,
     displayThumbnail,
     currentSearch,
+    bookmarkedDocs,
+    pageSize,
+    page,
   } = props;
 
   const {
@@ -59,7 +61,9 @@ function MainHeader(props) {
   const { pathname } = useLocation();
 
   const bookmarksButton = () => {
-    getDocs(authState);
+    getDocs(authState, 1, pageSize);
+    const joinedBookmarks = bookmarkedDocs.join(' ');
+    setCurrentSearch(joinedBookmarks, 1, pageSize);
   };
 
   useEffect(() => {
@@ -74,8 +78,8 @@ function MainHeader(props) {
 
   const onSearch = (value, e) => {
     if (!value) return alert('Search bar cannot be empty');
-    setCurrentSearch(value, 1, props.pageSize);
-    searchDocs(value, authState, 1, props.pageSize);
+    setCurrentSearch(value, 1, pageSize);
+    searchDocs(value, authState, 1, pageSize);
     // e.target.value = '';
   };
 
@@ -90,8 +94,7 @@ function MainHeader(props) {
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
-
-        {props.page === 'bar' ? (
+        {page === 'bar' ? (
           <></>
         ) : (
           <>
@@ -120,10 +123,10 @@ function MainHeader(props) {
   );
 }
 
-
 const mapStateToProps = state => ({
   pageSize: state.pageSize,
   page: state.page,
+  bookmarkedDocs: state.bookmarkedDocs,
   currentSearch: state.currentSearch,
 });
 

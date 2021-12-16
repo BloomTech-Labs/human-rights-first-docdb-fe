@@ -28,7 +28,7 @@ export const FINISH_FETCH = 'FINISH_FETCH';
 
 const apiURI = process.env.REACT_APP_API_URI;
 
-export const getDocs = authState => async dispatch => {
+export const getDocs = (authState, page, pageSize) => async dispatch => {
   try {
     dispatch({ type: START_FETCH });
     const { data } = await axiosWithAuth(authState).get(`${apiURI}/bookmarks`);
@@ -36,7 +36,11 @@ export const getDocs = authState => async dispatch => {
       const fileIds = data.map(d => d.fileId);
       dispatch({ type: SET_BOOKMARKS, payload: fileIds });
       const ids = data.map(b => b.fileId).join(' ');
-      const { Response } = await getDSData(`/search/${ids}`, authState);
+      const Response = await getDSData(
+        `/search?query=${ids}&page_number=${page -
+          1}&results_per_page=${pageSize}`,
+        authState
+      );
       dispatch({ type: SET_DOCS, payload: Response });
     } else {
       dispatch({ type: FINISH_FETCH });
@@ -69,8 +73,8 @@ export const searchDocs = (search, authState, page, pageSize) => dispatch => {
 
 export const setCurrentSearch = (
   currentSearch,
-  currentPage,
-  pageSize
+  currentPage = 1,
+  pageSize = 10
 ) => dispatch => {
   dispatch({
     type: CURRENT_SEARCH,
