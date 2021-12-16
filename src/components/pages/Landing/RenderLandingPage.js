@@ -7,13 +7,11 @@ import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { Spin } from 'antd';
 
 function RenderLandingPage(props) {
-  const { getDocs, isFetching } = props;
-  const { authState } = useOktaAuth();
+  const { isFetching } = props;
 
   return (
     <div>
       <ReduxList
-        getItemsData={() => getDocs(authState)}
         RenderItems={LandingCardList}
         LoadingComponent={() => <Spin size="large" />}
         isFetching={isFetching}
@@ -24,6 +22,9 @@ function RenderLandingPage(props) {
 
 const mapStateToProps = state => ({
   isFetching: state.isFetching,
+  pageSize: state.pageSize,
+  currentPage: state.currentPage,
+  bookmarkedDocs: state.bookmarkedDocs,
 });
 
 export default connect(mapStateToProps, { getDocs })(RenderLandingPage);
