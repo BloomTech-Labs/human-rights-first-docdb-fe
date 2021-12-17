@@ -19,7 +19,6 @@ function ColTag(props) {
         data-testid="doc-tag"
         onClick={() => {
           searchDocs(tag, authState, 1, pageSize);
-          setCurrentSearch(tag, 1, props.pageSize);
         }}
       >
         {tag.length < 8 ? (
