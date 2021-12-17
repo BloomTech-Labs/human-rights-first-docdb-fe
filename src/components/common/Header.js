@@ -13,9 +13,7 @@ import {
   searchDocs,
   displayListView,
   displayThumbnail,
-  setCurrentSearch,
   searchOnly,
-  searchResults,
   bookmarks,
   onLoadBookmarks,
 } from '../../state/actions';
@@ -65,6 +63,7 @@ function MainHeader(props) {
     } else {
       setQuery('');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentSearch]);
 
   const changeHandler = e => {
@@ -131,7 +130,6 @@ function MainHeader(props) {
             )
           )}
         </>
-
         <Button onClick={logout} type="default">
           Logout
         </Button>

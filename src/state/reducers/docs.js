@@ -10,7 +10,6 @@ import {
   THUMBNAIL,
   LIST_VIEW,
   CURRENT_SEARCH,
-  SET_SEARCH_QUERY,
 } from '../actions';
 
 const initialState = {

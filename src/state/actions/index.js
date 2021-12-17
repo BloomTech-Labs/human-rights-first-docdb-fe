@@ -97,9 +97,9 @@ export const searchDocs = (
         alert('No search results');
         dispatch({ type: FINISH_FETCH });
       } else {
-        if (pageType !== 'bookmarks')
-          dispatch({ type: SET_PAGE, payload: 'search' });
-        searchResults();
+        if (pageType !== 'bookmarks') {
+          dispatch({ type: SET_PAGE, payload: 'searchResult' });
+        }
         setCurrentSearch(search, 1, pageSize);
         dispatch({ type: SET_DOCS, payload: data });
         dispatch({ type: SEARCH, payload: search });
@@ -150,11 +150,6 @@ export const searchOnly = pageSize => dispatch => {
     payload: { currentSearch: '', currentPage: 1, pageSize },
   });
 };
-
-export const searchResults = () => ({
-  type: SET_PAGE,
-  payload: 'searchResults',
-});
 
 export const bookmarks = () => ({ type: SET_PAGE, payload: 'bookmarks' });
 
