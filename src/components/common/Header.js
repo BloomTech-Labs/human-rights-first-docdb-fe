@@ -9,13 +9,12 @@ import { useOktaAuth } from '@okta/okta-react';
 import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
-  getDocs,
   searchDocs,
   displayListView,
   displayThumbnail,
   searchOnly,
   bookmarks,
-  onLoadBookmarks,
+  getDocs,
 } from '../../state/actions';
 import { debounce } from '../../utils/debounce';
 
@@ -37,7 +36,7 @@ function MainHeader(props) {
     searchDocs,
     displayListView,
     displayThumbnail,
-    onLoadBookmarks,
+    getDocs,
     bookmarks,
     pageSize,
     pageType,
@@ -78,7 +77,7 @@ function MainHeader(props) {
 
   const bookmarksButton = () => {
     bookmarks();
-    onLoadBookmarks(authState, 1, pageSize);
+    getDocs(authState, 1, pageSize);
   };
 
   const searchButton = () => {
@@ -147,11 +146,10 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-  getDocs,
   searchDocs,
   displayListView,
   displayThumbnail,
   searchOnly,
   bookmarks,
-  onLoadBookmarks,
+  getDocs,
 })(MainHeader);

@@ -20,9 +20,6 @@ function RenderLandingPage(props) {
 
 const mapStateToProps = state => ({
   isFetching: state.isFetching,
-  pageSize: state.pageSize,
-  currentPage: state.currentPage,
-  bookmarkedDocs: state.bookmarkedDocs,
 });
 
 export default connect(mapStateToProps)(RenderLandingPage);

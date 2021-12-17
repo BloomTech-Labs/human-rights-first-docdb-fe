@@ -39,33 +39,6 @@ export const getDocs = (authState, page, pageSize) => async dispatch => {
         authState
       );
       dispatch({ type: SET_DOCS, payload: Response });
-    } else {
-      dispatch({ type: FINISH_FETCH });
-      dispatch({ type: SET_PAGE, payload: 'searchOnly' });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const onLoadBookmarks = (
-  authState,
-  page,
-  pageSize
-) => async dispatch => {
-  try {
-    dispatch({ type: START_FETCH });
-    const { data } = await axiosWithAuth(authState).get(`${apiURI}/bookmarks`);
-    if (data.length > 0) {
-      const fileIds = data.map(d => d.fileId);
-      dispatch({ type: SET_BOOKMARKS, payload: fileIds });
-      const ids = data.map(b => b.fileId).join(' ');
-      const Response = await getDSData(
-        `/search?query=${ids}&page_number=${page -
-          1}&results_per_page=${pageSize}`,
-        authState
-      );
-      dispatch({ type: SET_DOCS, payload: Response });
       dispatch({
         type: CURRENT_SEARCH,
         payload: { currentSearch: ids, currentPage: page, pageSize },
