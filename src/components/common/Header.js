@@ -33,17 +33,7 @@ const scrollStyles = {
 function MainHeader(props) {
   const [oldScroll, setOldScroll] = useState(0);
   const [showHeader, setShowHeader] = useState(true);
-
-  const handleScroll = debounce(() => {
-    const scrollPos = window.scrollY;
-    setShowHeader(oldScroll > scrollPos || scrollPos < 10);
-    setOldScroll(scrollPos);
-  }, 25);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [oldScroll, showHeader, handleScroll]);
+  const [query, setQuery] = useState('');
 
   const {
     searchDocs,
@@ -58,6 +48,29 @@ function MainHeader(props) {
     searchResults,
     searchOnly,
   } = props;
+
+  const handleScroll = debounce(() => {
+    const scrollPos = window.scrollY;
+    setShowHeader(oldScroll > scrollPos || scrollPos < 10);
+    setOldScroll(scrollPos);
+  }, 25);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [oldScroll, showHeader, handleScroll]);
+
+  useEffect(() => {
+    if (pageType !== 'bookmarks') {
+      setQuery(currentSearch);
+    } else {
+      setQuery('');
+    }
+  }, [currentSearch]);
+
+  const changeHandler = e => {
+    setQuery(e.target.value);
+  };
 
   const {
     authService: { logout },
@@ -103,13 +116,14 @@ function MainHeader(props) {
               className="search_bar"
               placeholder="Search"
               onSearch={onSearch}
-              defaultValue={pageType === 'bookmarks' ? '' : currentSearch}
+              onChange={changeHandler}
+              value={query}
             />
           )}
           <Button onClick={listView}>List</Button>
           <Button onClick={thumbnailView}>Thumbnail</Button>
           {pageType === 'bookmarks' ? (
-            <Button onClick={searchButton}>Search</Button>
+            <Button onClick={searchButton}>Home</Button>
           ) : (
             <Button onClick={bookmarksButton} type="default">
               Bookmarks
