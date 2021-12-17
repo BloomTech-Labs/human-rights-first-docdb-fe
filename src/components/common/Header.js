@@ -45,6 +45,7 @@ function MainHeader(props) {
     pageType,
     currentSearch,
     searchOnly,
+    bookmarkedDocs,
   } = props;
 
   const handleScroll = debounce(() => {
@@ -108,22 +109,26 @@ function MainHeader(props) {
           {pageType === 'searchOnly' ? (
             <></>
           ) : (
-            <Search
-              className="search_bar"
-              placeholder="Search"
-              onSearch={onSearch}
-              onChange={changeHandler}
-              value={query}
-            />
+            <>
+              <Search
+                className="search_bar"
+                placeholder="Search"
+                onSearch={onSearch}
+                onChange={changeHandler}
+                value={query}
+              />
+              <Button onClick={listView}>List</Button>
+              <Button onClick={thumbnailView}>Thumbnail</Button>
+            </>
           )}
-          <Button onClick={listView}>List</Button>
-          <Button onClick={thumbnailView}>Thumbnail</Button>
           {pageType === 'bookmarks' ? (
             <Button onClick={searchButton}>Home</Button>
           ) : (
-            <Button onClick={bookmarksButton} type="default">
-              Bookmarks
-            </Button>
+            bookmarkedDocs.length > 0 && (
+              <Button onClick={bookmarksButton} type="default">
+                Bookmarks
+              </Button>
+            )
           )}
         </>
 
