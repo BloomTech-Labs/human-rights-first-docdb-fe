@@ -11,6 +11,8 @@ const landingSearchStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  backgroundColor: '#f7ede2',
+  height: '100vh',
 };
 
 function LandingSearchCard(props) {
