@@ -93,6 +93,8 @@ function LandingCard(props) {
               style={{
                 // width: '100%',
                 // margin: 'auto',
+                minWidth: 180,
+                minHeight: 140,
                 border: '5px solid black',
               }}
             />
@@ -108,7 +110,8 @@ function LandingCard(props) {
             />
           }
           style={{
-            width: '100%',
+            width: '60vw',
+            height: 300,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',

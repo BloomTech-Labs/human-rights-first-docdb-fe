@@ -16,6 +16,7 @@ function LandingCardResults(props) {
     currentPage,
     bookmarkedDocs,
     page,
+    cardView,
   } = props;
 
   const headerStyle = {
@@ -56,7 +57,7 @@ function LandingCardResults(props) {
           </h1>
           <Row gutter={{ xs: 16, sm: 24, md: 32, lg: 48 }} justify="center">
             {docs.map(doc => (
-              <Col className="gutter-row" key={doc.box_id}>
+              <Col key={doc.box_id}>
                 <LandingCard {...doc} />
               </Col>
             ))}
@@ -83,6 +84,7 @@ const mapStateToProps = state => ({
   currentSearch: state.searches.currentSearch,
   currentPage: state.searches.currentPage,
   pageSize: state.searches.pageSize,
+  cardView: state.docs.cardView,
 });
 
 export default connect(mapStateToProps, {
