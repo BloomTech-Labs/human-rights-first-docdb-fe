@@ -60,7 +60,7 @@ function LandingCardList(props) {
             {cardView
               ? //For the Thumbnail Display
                 docs.map(doc => (
-                  <Col className="gutter-row" span={6} key={doc.box_id}>
+                  <Col className="gutter-row" key={doc.box_id}>
                     <LandingCard {...doc} />
                   </Col>
                 ))
