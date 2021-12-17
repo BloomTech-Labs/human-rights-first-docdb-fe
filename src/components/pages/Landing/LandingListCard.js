@@ -7,7 +7,7 @@ import bookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
 import { TagsList } from '../../common';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
-import { saveBookmarks } from '../../../state/actions';
+import { saveBookmarks, removeBookmarks } from '../../../state/actions';
 
 const { Meta } = Card;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;
@@ -29,6 +29,9 @@ function LandingCardList(props) {
 
   const handleSave = () => {
     saveBookmarks(authState, box_id);
+  };
+  const handleRemove = () => {
+    removeBookmarks(authState, box_id);
   };
 
   return (
@@ -71,7 +74,7 @@ function LandingCardList(props) {
                 alt="bookmark filled"
                 width="50"
                 data-testid="filled-bookmark"
-                onClick={handleSave}
+                onClick={handleRemove}
               />
             ) : (
               <img
@@ -92,7 +95,7 @@ LandingCardList.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string),
-  // isFavorite: PropTypes.bool.isRequired,
+  isFavorite: PropTypes.bool,
 };
 const mapStateToProps = state => ({
   bookmarkedDocs: state.bookmarkedDocs,
