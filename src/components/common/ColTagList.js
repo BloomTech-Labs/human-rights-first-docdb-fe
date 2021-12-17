@@ -5,7 +5,7 @@ import { searchDocs, setCurrentSearch } from '../../state/actions';
 import { useOktaAuth } from '@okta/okta-react';
 
 function ColTagList(props) {
-  const { searchDocs, tag, pageSize } = props;
+  const { searchDocs, tag, page, pageSize } = props;
   const { authState } = useOktaAuth();
 
   return (
