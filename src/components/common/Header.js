@@ -51,6 +51,7 @@ function MainHeader(props) {
     currentSearch,
     page,
     bookmarkedDocs,
+    docs,
   } = props;
 
   const {
@@ -95,7 +96,10 @@ function MainHeader(props) {
           <img src={logo2} className="header_img" alt="HRF logo" />
           <Search
             style={{
-              visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+              visibility:
+                bookmarkedDocs.length === 0 && docs.length === 0
+                  ? 'hidden'
+                  : 'visible',
             }}
             className="search_bar"
             placeholder="Search"
@@ -106,7 +110,10 @@ function MainHeader(props) {
 
           <Button
             style={{
-              visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+              visibility:
+                bookmarkedDocs.length === 0 && docs.length === 0
+                  ? 'hidden'
+                  : 'visible',
             }}
             onClick={listView}
           >
@@ -115,7 +122,10 @@ function MainHeader(props) {
 
           <Button
             style={{
-              visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+              visibility:
+                bookmarkedDocs.length === 0 && docs.length === 0
+                  ? 'hidden'
+                  : 'visible',
             }}
             onClick={thumbnailView}
           >
@@ -124,7 +134,10 @@ function MainHeader(props) {
 
           <Button
             style={{
-              visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+              visibility:
+                bookmarkedDocs.length === 0 && docs.length === 0
+                  ? 'hidden'
+                  : 'visible',
             }}
             onClick={bookmarksButton}
             type="default"
@@ -147,6 +160,7 @@ const mapStateToProps = state => ({
   page: state.bookmarks.page,
   currentSearch: state.docs.currentSearch,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
+  docs: state.docs.docs,
 });
 
 export default connect(mapStateToProps, {

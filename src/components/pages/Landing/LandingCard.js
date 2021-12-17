@@ -68,7 +68,6 @@ function LandingCard(props) {
         }}
         headStyle={{ height: 35, padding: 0 }}
         bodyStyle={{ padding: 12 }}
-        hoverable={true}
       >
         <Meta title={name} style={{ textAlign: 'center', marginBottom: 10 }} />
         <Tags tagArray={tags} size={8} />

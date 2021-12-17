@@ -11,14 +11,12 @@ function RenderLandingPage(props) {
   const { authState } = useOktaAuth();
 
   return (
-    <div>
-      <ReduxList
-        getItemsData={() => getDocs(authState)}
-        RenderItems={LandingCardList}
-        LoadingComponent={() => <Spin size="large" />}
-        isFetching={isFetching}
-      />
-    </div>
+    <ReduxList
+      getItemsData={() => getDocs(authState)}
+      RenderItems={LandingCardList}
+      LoadingComponent={() => <Spin size="large" />}
+      isFetching={isFetching}
+    />
   );
 }
 
