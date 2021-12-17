@@ -91,48 +91,47 @@ function MainHeader(props) {
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
-        {page === 'bar' ? (
-          <></>
-        ) : (
-          <>
-            <img src={logo2} className="header_img" alt="HRF logo" />
-            <Search
-              style={{
-                visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
-              }}
-              className="search_bar"
-              placeholder="Search"
-              onSearch={onSearch}
-              value={query}
-              onChange={changeHandler}
-            />
-            <Button
-              style={{
-                visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
-              }}
-              onClick={listView}
-            >
-              List
-            </Button>
-            <Button
-              style={{
-                visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
-              }}
-              onClick={thumbnailView}
-            >
-              Thumbnail
-            </Button>
-            <Button
-              style={{
-                visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
-              }}
-              onClick={bookmarksButton}
-              type="default"
-            >
-              Bookmarks
-            </Button>
-          </>
-        )}
+        <>
+          <img src={logo2} className="header_img" alt="HRF logo" />
+          <Search
+            style={{
+              visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+            }}
+            className="search_bar"
+            placeholder="Search"
+            onSearch={onSearch}
+            value={query}
+            onChange={changeHandler}
+          />
+
+          <Button
+            style={{
+              visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+            }}
+            onClick={listView}
+          >
+            List
+          </Button>
+
+          <Button
+            style={{
+              visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+            }}
+            onClick={thumbnailView}
+          >
+            Thumbnail
+          </Button>
+
+          <Button
+            style={{
+              visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+            }}
+            onClick={bookmarksButton}
+            type="default"
+          >
+            Bookmarks
+          </Button>
+        </>
 
         <Button onClick={logout} type="default">
           Logout
