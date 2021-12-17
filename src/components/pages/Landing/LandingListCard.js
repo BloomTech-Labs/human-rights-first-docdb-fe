@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Card } from 'antd';
-import bookmarkOutlined from '../../../assets/OutlineBookMark.svg';
-import bookmarkFilled from '../../../assets/FilledBookMark.svg';
+import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
+import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
 import { TagsList } from '../../common';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
-import { saveBookmarks } from '../../../state/actions';
+import { removeBookmarks, saveBookmarks } from '../../../state/actions';
 
 const { Meta } = Card;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;
@@ -29,6 +29,10 @@ function LandingCardList(props) {
 
   const handleSave = () => {
     saveBookmarks(authState, box_id);
+  };
+
+  const handleRemove = () => {
+    removeBookmarks(authState, box_id);
   };
 
   return (
@@ -65,23 +69,14 @@ function LandingCardList(props) {
           </div>
           {/* To place the bookmark on the top right corner */}
           <div style={{ alignSelf: 'flex-start', marginLeft: '10%' }}>
-            {isFavorite ? (
-              <img
-                src={bookmarkFilled}
-                alt="bookmark filled"
-                width="50"
-                data-testid="filled-bookmark"
-                onClick={handleSave}
-              />
-            ) : (
-              <img
-                src={bookmarkOutlined}
-                alt="bookmark outlined"
-                width="50"
-                data-testid="outlined-bookmark"
-                onClick={handleSave}
-              />
-            )}
+            <img
+              src={isFavorite ? BookmarkFilled : BookmarkOutlined}
+              alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
+              width={50}
+              data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
+              onClick={isFavorite ? handleRemove : handleSave}
+              style={{ right: 5, top: 5, position: 'absolute' }}
+            />
           </div>
         </div>
       </Card>
@@ -98,4 +93,6 @@ const mapStateToProps = state => ({
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
 });
 
-export default connect(mapStateToProps, { saveBookmarks })(LandingCardList);
+export default connect(mapStateToProps, { removeBookmarks, saveBookmarks })(
+  LandingCardList
+);

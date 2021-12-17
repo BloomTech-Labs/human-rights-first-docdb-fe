@@ -70,6 +70,13 @@ function LandingCardList(props) {
                     <LandingListCard {...doc} />
                   </Col>
                 ))}
+            {/* {
+                docs.map(doc => (
+                  <Col className='gutter-row' key={doc.box_id} span={!cardView ? 19 : ''}>
+                    <LandingCard {...doc} />
+                  </Col>
+                ))
+              } */}
           </Row>
           <Pagination
             current={currentPage}
