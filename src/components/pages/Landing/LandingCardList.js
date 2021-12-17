@@ -46,7 +46,9 @@ function LandingCardList(props) {
   return (
     <>
       {bookmarkedDocs.length === 0 && docs.length === 0 ? (
-        <LandingSearchCard />
+        <>
+          <LandingSearchCard />
+        </>
       ) : (
         <>
           <h1 style={{ ...headerStyle }}>

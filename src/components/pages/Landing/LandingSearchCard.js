@@ -14,7 +14,7 @@ const landingSearchStyle = {
 };
 
 function LandingSearchCard(props) {
-  const { searchDocs, page, pageSize } = props;
+  const { searchDocs, pageSize } = props;
   const { authState } = useOktaAuth();
 
   const onSearch = value => {

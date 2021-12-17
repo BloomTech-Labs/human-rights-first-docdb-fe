@@ -29,8 +29,8 @@ export const FINISH_FETCH = 'FINISH_FETCH';
 const apiURI = process.env.REACT_APP_API_URI;
 
 export const getDocs = authState => async dispatch => {
+  dispatch({ type: START_FETCH });
   try {
-    dispatch({ type: START_FETCH });
     const { data } = await axiosWithAuth(authState).get(`${apiURI}/bookmarks`);
     if (data.length > 0) {
       const fileIds = data.map(d => d.fileId);
@@ -43,7 +43,7 @@ export const getDocs = authState => async dispatch => {
       dispatch({ type: SEARCH_BAR });
     }
   } catch (err) {
-    console.log(err);
+    console.log('GETDOCS ERROR', err);
   }
 };
 
