@@ -50,6 +50,7 @@ function MainHeader(props) {
     currentSearch,
     bookmarkedDocs,
     docs,
+    cardView,
   } = props;
 
   const {
@@ -106,29 +107,32 @@ function MainHeader(props) {
             onChange={changeHandler}
           />
 
-          <Button
-            style={{
-              visibility:
-                bookmarkedDocs.length === 0 && docs.length === 0
-                  ? 'hidden'
-                  : 'visible',
-            }}
-            onClick={listView}
-          >
-            List
-          </Button>
+          <div>
+            <Button
+              style={{
+                visibility:
+                  (bookmarkedDocs.length === 0 && docs.length === 0) ||
+                  !cardView
+                    ? 'hidden'
+                    : 'visible',
+              }}
+              onClick={listView}
+            >
+              List
+            </Button>
 
-          <Button
-            style={{
-              visibility:
-                bookmarkedDocs.length === 0 && docs.length === 0
-                  ? 'hidden'
-                  : 'visible',
-            }}
-            onClick={thumbnailView}
-          >
-            Thumbnail
-          </Button>
+            <Button
+              style={{
+                visibility:
+                  (bookmarkedDocs.length === 0 && docs.length === 0) || cardView
+                    ? 'hidden'
+                    : 'visible',
+              }}
+              onClick={thumbnailView}
+            >
+              Thumbnail
+            </Button>
+          </div>
 
           <Button
             style={{
@@ -159,6 +163,7 @@ const mapStateToProps = state => ({
   currentSearch: state.searches.currentSearch,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
   docs: state.docs.docs,
+  cardView: state.docs.cardView,
 });
 
 export default connect(mapStateToProps, {

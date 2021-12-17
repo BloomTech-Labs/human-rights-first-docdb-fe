@@ -49,9 +49,7 @@ function LandingCard(props) {
               onClick={() => window.open(url)}
               src={`${thumbUrl}/${box_id}`}
               alt={name}
-              // alt is the attribute that adds accessibility
               fallback={`${thumbUrl}/${box_id}`}
-              // fallback is the attribute to display another image should the doc preview not load
               style={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -76,8 +74,6 @@ function LandingCard(props) {
             marginBottom: '17%',
             border: '3px outset #DAC6B2',
           }}
-          // headStyle={{ height: 35, padding: 0 }}
-          // bodyStyle={{ padding: 12 }}
         >
           <Meta
             title={name}
@@ -88,49 +84,44 @@ function LandingCard(props) {
       ) : (
         // displays the results in list view
         <Card
-          style={{ marginBottom: '3%' }}
-          //Separate each card
+          cover={
+            <img
+              onClick={() => window.open(url)}
+              src={`${thumbUrl}/${box_id}`}
+              alt={name}
+              fallback={`${thumbUrl}/${box_id}`}
+              style={{
+                // width: '100%',
+                // margin: 'auto',
+                border: '5px solid black',
+              }}
+            />
+          }
+          extra={
+            <img
+              src={isFavorite ? BookmarkFilled : BookmarkOutlined}
+              alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
+              width={50}
+              data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
+              onClick={isFavorite ? handleRemove : handleSave}
+              style={{ right: 5, top: 5, position: 'absolute' }}
+            />
+          }
+          style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: '3%',
+            border: '5px solid green',
+          }}
         >
-          <div
-            //This is to make the contents in the card horizontal
-            style={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <div style={{ width: '15%', margin: 'auto' }}>
-              <img
-                onClick={() => window.open(url)}
-                src={`${thumbUrl}/${box_id}`}
-                alt={name}
-                fallback={`${thumbUrl}/${box_id}`}
-                style={{ width: '100%', margin: 'auto' }}
-              />
-            </div>
-            <div style={{ width: '60%' }}>
-              <Meta
-                title={name}
-                description={path}
-                style={{ textAlign: 'center', marginBottom: '10px' }}
-              />
-              <Tags tagArray={tags} size={8} />
-            </div>
-            {/* To place the bookmark on the top right corner */}
-            <div style={{ alignSelf: 'flex-start', marginLeft: '10%' }}>
-              <img
-                src={isFavorite ? BookmarkFilled : BookmarkOutlined}
-                alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
-                width={50}
-                data-testid={
-                  isFavorite ? 'filled-bookmark' : 'outlined-bookmark'
-                }
-                onClick={isFavorite ? handleRemove : handleSave}
-                style={{ right: 5, top: 5, position: 'absolute' }}
-              />
-            </div>
-          </div>
+          <Meta
+            title={name}
+            description={path}
+            style={{ textAlign: 'center', marginBottom: '10px' }}
+          />
+          <Tags tagArray={tags} size={8} />
         </Card>
       )}
       ;
