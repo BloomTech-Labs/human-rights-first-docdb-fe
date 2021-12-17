@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { onLoadBookmarks } from '../../state/actions';
+import { getDocs } from '../../state/actions';
 import { connect } from 'react-redux';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 
 const ReduxList = props => {
-  const { onLoadBookmarks, LoadingComponent, RenderItems, isFetching } = props;
+  const { getDocs, LoadingComponent, RenderItems, isFetching } = props;
   const { authState } = useOktaAuth();
 
   useEffect(() => {
-    onLoadBookmarks(authState, 1, 10);
+    getDocs(authState, 1, 10);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -27,4 +27,4 @@ const mapStateToProps = state => ({
   bookmarkedDocs: state.bookmarkedDocs,
 });
 
-export default connect(mapStateToProps, { onLoadBookmarks })(ReduxList);
+export default connect(mapStateToProps, { getDocs })(ReduxList);
