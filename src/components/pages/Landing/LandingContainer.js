@@ -8,7 +8,6 @@ function LandingContainer() {
         backgroundColor: '#f7ede2',
         paddingTop: '80px',
         paddingLeft: '4%',
-        // height: '100vh',
       }}
     >
       <RenderLandingPage />
