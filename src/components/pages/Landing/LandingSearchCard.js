@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input } from 'antd';
-import { searchDocs, setCurrentSearch } from '../../../state/actions';
+import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
 import { useOktaAuth } from '@okta/okta-react';
 import { connect } from 'react-redux';
 import logo2 from '../../../assets/HRF_Logo2.png';

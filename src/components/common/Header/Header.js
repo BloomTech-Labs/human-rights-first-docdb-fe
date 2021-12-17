@@ -10,11 +10,10 @@ import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   getDocs,
-  searchDocs,
   displayListView,
   displayThumbnail,
-  setCurrentSearch,
 } from '../../../state/actions';
+import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
 import { debounce } from '../../../utils/debounce';
 
 const { Header } = Layout;

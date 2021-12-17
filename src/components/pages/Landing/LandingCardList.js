@@ -2,7 +2,7 @@ import React from 'react';
 import LandingCard from './LandingCard';
 import LandingListCard from './LandingListCard';
 import LandingSearchCard from './LandingSearchCard';
-import { setCurrentSearch, searchDocs } from '../../../state/actions';
+import { setCurrentSearch, searchDocs } from '../../../state/actions/searches';
 import { connect } from 'react-redux';
 import { Row, Col, Pagination } from 'antd';
 import { useOktaAuth } from '@okta/okta-react';

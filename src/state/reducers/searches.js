@@ -1,10 +1,9 @@
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import {
   SEARCH,
   SEARCH_BAR,
   CURRENT_SEARCH,
   SET_SEARCH_QUERY,
-} from '../actions';
+} from '../actions/searches';
 
 const initialState = {
   currentSearch: '',

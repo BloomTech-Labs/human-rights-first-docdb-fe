@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Tag, Tooltip } from 'antd';
 import { connect } from 'react-redux';
-import { searchDocs } from '../../state/actions';
+import { searchDocs } from '../../state/actions/searches';
 import { useOktaAuth } from '@okta/okta-react';
 
 function ColTagList(props) {
