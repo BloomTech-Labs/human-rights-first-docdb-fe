@@ -44,7 +44,7 @@ function LandingSearchCard(props) {
 
 const mapStateToProps = state => ({
   page: state.bookmarks.page,
-  pageSize: state.docs.pageSize,
+  pageSize: state.searches.pageSize,
 });
 
 export default connect(mapStateToProps, { searchDocs, setCurrentSearch })(

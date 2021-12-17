@@ -49,7 +49,6 @@ function MainHeader(props) {
     displayListView,
     displayThumbnail,
     currentSearch,
-    page,
     bookmarkedDocs,
     docs,
   } = props;
@@ -156,9 +155,9 @@ function MainHeader(props) {
 }
 
 const mapStateToProps = state => ({
-  pageSize: state.docs.pageSize,
+  pageSize: state.searches.pageSize,
   page: state.bookmarks.page,
-  currentSearch: state.docs.currentSearch,
+  currentSearch: state.searches.currentSearch,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
   docs: state.docs.docs,
 });

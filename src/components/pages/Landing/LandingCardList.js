@@ -91,9 +91,9 @@ const mapStateToProps = state => ({
   page: state.bookmarks.page,
   cardView: state.docs.cardView,
   total: state.docs.totalDocsCount,
-  currentSearch: state.docs.currentSearch,
-  currentPage: state.docs.currentPage,
-  pageSize: state.docs.pageSize,
+  currentSearch: state.searches.currentSearch,
+  currentPage: state.searches.currentPage,
+  pageSize: state.searches.pageSize,
 });
 
 export default connect(mapStateToProps, {

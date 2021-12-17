@@ -12,9 +12,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import docsReducer from './state/reducers';
-
 import 'antd/dist/antd.less';
-
 import { NotFoundPage } from './components/pages/NotFound';
 import { Admin } from './components/pages/Admin';
 import { LoginPage } from './components/pages/Login';
