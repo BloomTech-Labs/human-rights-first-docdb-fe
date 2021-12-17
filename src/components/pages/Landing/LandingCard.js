@@ -60,25 +60,6 @@ function LandingCard(props) {
             onClick={isFavorite ? handleRemove : handleSave}
             style={{ right: 5, top: 5, position: 'absolute' }}
           />
-          // isFavorite ? (
-          //   <img
-          //     src={BookmarkFilled}
-          //     alt="bookmark filled"
-          //     width="50"
-          //     data-testid="filled-bookmark"
-          //     onClick={handleRemove}
-          //     style={{ right: 5, top: 5, position: 'absolute' }}
-          //   />
-          // ) : (
-          //   <img
-          //     src={BookmarkOutlined}
-          //     alt="bookmark outlined"
-          //     width="50"
-          //     data-testid="outlined-bookmark"
-          //     onClick={handleSave}
-          //     style={{ right: 5, top: 5, position: 'absolute' }}
-          //   />
-          // )
         }
         style={{
           width: 300,
