@@ -2,7 +2,7 @@ import React from 'react';
 import { ReduxList } from '../../common';
 import { connect } from 'react-redux';
 import { getDocs } from '../../../state/actions/docs';
-import LandingCardList from './LandingCardList';
+import LandingCardResults from './LandingCardResults';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { Spin } from 'antd';
 
@@ -13,7 +13,7 @@ function RenderLandingPage(props) {
   return (
     <ReduxList
       getItemsData={() => getDocs(authState)}
-      RenderItems={LandingCardList}
+      RenderItems={LandingCardResults}
       LoadingComponent={() => (
         <div
           style={{

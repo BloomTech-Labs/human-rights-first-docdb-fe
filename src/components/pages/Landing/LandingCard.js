@@ -42,6 +42,7 @@ function LandingCard(props) {
   return (
     <>
       {cardView ? (
+        // displays the results in card view
         <Card
           cover={
             <img
@@ -85,6 +86,7 @@ function LandingCard(props) {
           <Tags tagArray={tags} size={8} />
         </Card>
       ) : (
+        // displays the results in list view
         <Card
           style={{ marginBottom: '3%' }}
           //Separate each card
@@ -113,7 +115,7 @@ function LandingCard(props) {
                 description={path}
                 style={{ textAlign: 'center', marginBottom: '10px' }}
               />
-              {/* <TagsList tagArray={tags} size={8} /> */}
+              <Tags tagArray={tags} size={8} />
             </div>
             {/* To place the bookmark on the top right corner */}
             <div style={{ alignSelf: 'flex-start', marginLeft: '10%' }}>
@@ -131,6 +133,7 @@ function LandingCard(props) {
           </div>
         </Card>
       )}
+      ;
     </>
   );
 }

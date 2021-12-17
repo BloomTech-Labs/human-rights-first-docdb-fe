@@ -5,9 +5,8 @@ import { setCurrentSearch, searchDocs } from '../../../state/actions/searches';
 import { connect } from 'react-redux';
 import { Row, Col, Pagination } from 'antd';
 import { useOktaAuth } from '@okta/okta-react';
-import './LandingCard.css';
 
-function LandingCardList(props) {
+function LandingCardResults(props) {
   const {
     docs,
     total,
@@ -89,4 +88,4 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   searchDocs,
   setCurrentSearch,
-})(LandingCardList);
+})(LandingCardResults);
