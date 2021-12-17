@@ -17,7 +17,7 @@ function LandingCardList(props) {
     searchDocs,
     currentPage,
     bookmarkedDocs,
-    page,
+    pageType,
   } = props;
 
   const headerStyle = {
@@ -46,12 +46,12 @@ function LandingCardList(props) {
   return (
     <>
       {(bookmarkedDocs.length === 0 && docs.length === 0) ||
-      page === 'searchOnly' ? (
+      pageType === 'searchOnly' ? (
         <LandingSearchCard />
       ) : (
         <>
           <h1 style={{ ...headerStyle }}>
-            {page === 'bookmarks'
+            {pageType === 'bookmarks'
               ? 'Bookmarks'
               : `Search results for "${currentSearch}"`}
           </h1>
@@ -87,7 +87,7 @@ function LandingCardList(props) {
 const mapStateToProps = state => ({
   docs: state.docs,
   bookmarkedDocs: state.bookmarkedDocs,
-  page: state.page,
+  pageType: state.pageType,
   cardView: state.cardView,
   total: state.totalDocsCount,
   currentSearch: state.currentSearch,
