@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReduxList } from '../../common';
 import { connect } from 'react-redux';
-import { getDocs } from '../../../state/actions';
+import { getDocs } from '../../../state/actions/docs';
 import LandingCardList from './LandingCardList';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { Spin } from 'antd';

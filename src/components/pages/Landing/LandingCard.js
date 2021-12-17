@@ -6,8 +6,10 @@ import PropTypes from 'prop-types';
 import { Tags } from '../../common';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
-// import { removeBookmarks, saveBookmarks } from '../../../state/actions';
-import { removeBookmarks, saveBookmarks } from '../../../state/actions';
+import {
+  removeBookmarks,
+  saveBookmarks,
+} from '../../../state/actions/bookmarks';
 
 const { Meta } = Card;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;

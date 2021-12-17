@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { Card } from 'antd';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
 import { TagsList } from '../../common';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
-import { removeBookmarks, saveBookmarks } from '../../../state/actions';
+import {
+  removeBookmarks,
+  saveBookmarks,
+} from '../../../state/actions/bookmarks';
 
 const { Meta } = Card;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;

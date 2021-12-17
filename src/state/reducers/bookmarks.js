@@ -3,7 +3,7 @@ import {
   BOOKMARKS,
   SAVE_BOOKMARKS,
   REMOVE_BOOKMARKS,
-} from '../actions';
+} from '../actions/bookmarks';
 
 const initialState = {
   bookmarkedDocs: [],

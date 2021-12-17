@@ -4,7 +4,7 @@ import {
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
-} from '../actions';
+} from '../actions/docs';
 
 const initialState = {
   docs: [],

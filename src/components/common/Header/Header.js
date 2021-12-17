@@ -12,7 +12,7 @@ import {
   getDocs,
   displayListView,
   displayThumbnail,
-} from '../../../state/actions';
+} from '../../../state/actions/docs';
 import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
 import { debounce } from '../../../utils/debounce';
 
