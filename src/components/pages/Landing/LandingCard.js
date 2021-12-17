@@ -95,7 +95,7 @@ LandingCard.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  bookmarkedDocs: state.bookmarkedDocs,
+  bookmarkedDocs: state.bookmarks.bookmarkedDocs,
 });
 
 export default connect(mapStateToProps, { saveBookmarks, removeBookmarks })(

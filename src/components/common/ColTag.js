@@ -33,8 +33,8 @@ function ColTag(props) {
 }
 
 const mapStateToProps = state => ({
-  page: state.page,
-  pageSize: state.pageSize,
+  page: state.bookmarks.page,
+  pageSize: state.docs.pageSize,
 });
 
 export default connect(mapStateToProps, { searchDocs, setCurrentSearch })(

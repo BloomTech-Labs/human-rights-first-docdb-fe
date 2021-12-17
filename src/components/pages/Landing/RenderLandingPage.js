@@ -23,7 +23,7 @@ function RenderLandingPage(props) {
 }
 
 const mapStateToProps = state => ({
-  isFetching: state.isFetching,
+  isFetching: state.docs.isFetching,
 });
 
 export default connect(mapStateToProps, { getDocs })(RenderLandingPage);

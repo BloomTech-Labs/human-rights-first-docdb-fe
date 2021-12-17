@@ -32,7 +32,7 @@ function LandingCardList(props) {
     // for when the page size stays the same
     if (pageSize === props.pageSize) {
       setCurrentSearch(currentSearch, page, pageSize);
-      searchDocs(currentSearch, authState, page, pageSize);
+      searchDocs(currentSearch, authState, page, props.pageSize);
     }
     // when page size changes, this keeps track of where you were
     else {
@@ -84,14 +84,14 @@ function LandingCardList(props) {
 }
 
 const mapStateToProps = state => ({
-  docs: state.docs,
-  bookmarkedDocs: state.bookmarkedDocs,
-  page: state.page,
-  cardView: state.cardView,
-  total: state.totalDocsCount,
-  currentSearch: state.currentSearch,
-  currentPage: state.currentPage,
-  pageSize: state.pageSize,
+  docs: state.docs.docs,
+  bookmarkedDocs: state.bookmarks.bookmarkedDocs,
+  page: state.bookmarks.page,
+  cardView: state.docs.cardView,
+  total: state.docs.totalDocsCount,
+  currentSearch: state.docs.currentSearch,
+  currentPage: state.docs.currentPage,
+  pageSize: state.docs.pageSize,
 });
 
 export default connect(mapStateToProps, {

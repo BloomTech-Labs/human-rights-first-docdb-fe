@@ -42,7 +42,6 @@ function MainHeader(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [oldScroll, showHeader, handleScroll]);
 
-
   const {
     getDocs,
     searchDocs,
@@ -50,6 +49,7 @@ function MainHeader(props) {
     displayListView,
     displayThumbnail,
     currentSearch,
+    page,
   } = props;
 
   const {
@@ -90,8 +90,7 @@ function MainHeader(props) {
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
-
-        {props.page === 'bar' ? (
+        {page === 'bar' ? (
           <></>
         ) : (
           <>
@@ -120,11 +119,10 @@ function MainHeader(props) {
   );
 }
 
-
 const mapStateToProps = state => ({
-  pageSize: state.pageSize,
-  page: state.page,
-  currentSearch: state.currentSearch,
+  pageSize: state.docs.pageSize,
+  page: state.bookmarks.page,
+  currentSearch: state.docs.currentSearch,
 });
 
 export default connect(mapStateToProps, {

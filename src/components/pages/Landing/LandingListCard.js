@@ -95,7 +95,7 @@ LandingCardList.propTypes = {
   // isFavorite: PropTypes.bool.isRequired,
 };
 const mapStateToProps = state => ({
-  bookmarkedDocs: state.bookmarkedDocs,
+  bookmarkedDocs: state.bookmarks.bookmarkedDocs,
 });
 
 export default connect(mapStateToProps, { saveBookmarks })(LandingCardList);

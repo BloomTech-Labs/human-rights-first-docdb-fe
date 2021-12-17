@@ -56,6 +56,7 @@ export const searchDocs = (search, authState, page, pageSize) => dispatch => {
     authState
   )
     .then(data => {
+      console.log(data);
       if (data.Response.length === 0) {
         alert('No search results');
         dispatch({ type: FINISH_FETCH });

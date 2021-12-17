@@ -1,10 +1,10 @@
 import {
   SET_DOCS,
-  SET_BOOKMARKS,
+  // SET_BOOKMARKS,
   START_FETCH,
-  BOOKMARKS,
-  SAVE_BOOKMARKS,
-  REMOVE_BOOKMARKS,
+  // BOOKMARKS,
+  // SAVE_BOOKMARKS,
+  // REMOVE_BOOKMARKS,
   SEARCH,
   SEARCH_BAR,
   FINISH_FETCH,
@@ -20,15 +20,15 @@ const initialState = {
   currentSearch: '',
   currentPage: 1,
   pageSize: 10,
-  bookmarkedDocs: [],
+  // bookmarkedDocs: [],
   isFetching: false,
-  page: 'bookmarks',
+  // page: 'bookmarks',
   cardView: true,
   query: '',
   searchTerm: '',
 };
 
-const docsReducer = (state = initialState, action) => {
+export const docsReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case START_FETCH:
@@ -42,17 +42,17 @@ const docsReducer = (state = initialState, action) => {
         docs: payload.Response,
         totalDocsCount: payload.Count,
       };
-    case SET_BOOKMARKS:
-      return { ...state, bookmarkedDocs: payload };
-    case BOOKMARKS:
-      return { ...state, page: 'bookmarks' };
-    case SAVE_BOOKMARKS:
-      return { ...state, bookmarkedDocs: [...state.bookmarkedDocs, payload] };
-    case REMOVE_BOOKMARKS:
-      return {
-        ...state,
-        bookmarkedDocs: state.bookmarkedDocs.filter(id => id !== payload),
-      };
+    // case SET_BOOKMARKS:
+    //   return { ...state, bookmarkedDocs: payload };
+    // case BOOKMARKS:
+    //   return { ...state, page: 'bookmarks' };
+    // case SAVE_BOOKMARKS:
+    //   return { ...state, bookmarkedDocs: [...state.bookmarkedDocs, payload] };
+    // case REMOVE_BOOKMARKS:
+    //   return {
+    //     ...state,
+    //     bookmarkedDocs: state.bookmarkedDocs.filter(id => id !== payload),
+    //   };
     case CURRENT_SEARCH:
       return {
         ...state,
@@ -74,5 +74,3 @@ const docsReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default docsReducer;
