@@ -6,7 +6,7 @@ import Button from './Button';
 import ReduxList from './ReduxList';
 import Tags from './Tags';
 import ColTag from './ColTag';
-import Header from './Header';
+import Header from './Header/Header';
 import TagsList from './TagsList';
 import ColTagList from './ColTagList';
 

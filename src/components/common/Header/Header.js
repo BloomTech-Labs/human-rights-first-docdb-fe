@@ -4,7 +4,7 @@ import { Avatar, Layout, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './header.css';
-import logo2 from '../../assets/HRF_Logo2.png';
+import logo2 from '../../../assets/HRF_Logo2.png';
 import { useOktaAuth } from '@okta/okta-react';
 import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -14,8 +14,8 @@ import {
   displayListView,
   displayThumbnail,
   setCurrentSearch,
-} from '../../state/actions';
-import { debounce } from '../../utils/debounce';
+} from '../../../state/actions';
+import { debounce } from '../../../utils/debounce';
 
 const { Header } = Layout;
 
