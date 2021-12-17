@@ -3,7 +3,7 @@ import { Card } from 'antd';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
-import { Tags } from '../../common';
+import Tags from '../../common/Tags/Tags';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
 import {

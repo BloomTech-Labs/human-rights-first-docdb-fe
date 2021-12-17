@@ -4,7 +4,7 @@ import { Card } from 'antd';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
-import { TagsList } from '../../common';
+import TagsList from '../../common/Tags/TagsList';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import {
   removeBookmarks,

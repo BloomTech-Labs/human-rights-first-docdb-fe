@@ -4,10 +4,10 @@ import List from './List';
 import LoadingComponent from './LoadingComponent';
 import Button from './Button';
 import ReduxList from './ReduxList';
-import Tags from './Tags';
+import Tags from './Tags/Tags';
 import ColTag from './ColTag/ColTag';
 import Header from './Header/Header';
-import TagsList from './TagsList';
+import TagsList from './Tags/TagsList';
 import ColTagList from './ColTag/ColTagList';
 
 // notice we're building out a 'package' of reusables here and exporting them as an object of component properties.
