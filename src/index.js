@@ -16,7 +16,6 @@ import docsReducer from './state/reducers';
 import 'antd/dist/antd.less';
 
 import { NotFoundPage } from './components/pages/NotFound';
-import { Search } from './components/pages/Search';
 import { Admin } from './components/pages/Admin';
 import { LoginPage } from './components/pages/Login';
 import { LandingPage } from './components/pages/Landing';
@@ -56,7 +55,6 @@ function App() {
           exact
           component={() => <LandingPage LoadingComponent={LoadingComponent} />}
         />
-        <SecureRoute path="/search" component={Search} />
         <SecureRoute path="/admin" component={Admin} />
         <Route component={NotFoundPage} />
       </Switch>
