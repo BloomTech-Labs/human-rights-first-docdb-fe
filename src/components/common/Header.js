@@ -50,6 +50,7 @@ function MainHeader(props) {
     displayThumbnail,
     currentSearch,
     page,
+    bookmarkedDocs,
   } = props;
 
   const {
@@ -96,14 +97,31 @@ function MainHeader(props) {
           <>
             <img src={logo2} className="header_img" alt="HRF logo" />
             <Search
+              style={{
+                visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+              }}
               className="search_bar"
               placeholder="Search"
               onSearch={onSearch}
               value={query}
               onChange={changeHandler}
             />
-            <Button onClick={listView}>List</Button>
-            <Button onClick={thumbnailView}>Thumbnail</Button>
+            <Button
+              style={{
+                visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+              }}
+              onClick={listView}
+            >
+              List
+            </Button>
+            <Button
+              style={{
+                visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+              }}
+              onClick={thumbnailView}
+            >
+              Thumbnail
+            </Button>
             <Button onClick={bookmarksButton} type="default">
               Bookmarks
             </Button>
@@ -123,6 +141,7 @@ const mapStateToProps = state => ({
   pageSize: state.docs.pageSize,
   page: state.bookmarks.page,
   currentSearch: state.docs.currentSearch,
+  bookmarkedDocs: state.bookmarks.bookmarkedDocs,
 });
 
 export default connect(mapStateToProps, {

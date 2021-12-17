@@ -42,17 +42,6 @@ export const docsReducer = (state = initialState, action) => {
         docs: payload.Response,
         totalDocsCount: payload.Count,
       };
-    // case SET_BOOKMARKS:
-    //   return { ...state, bookmarkedDocs: payload };
-    // case BOOKMARKS:
-    //   return { ...state, page: 'bookmarks' };
-    // case SAVE_BOOKMARKS:
-    //   return { ...state, bookmarkedDocs: [...state.bookmarkedDocs, payload] };
-    // case REMOVE_BOOKMARKS:
-    //   return {
-    //     ...state,
-    //     bookmarkedDocs: state.bookmarkedDocs.filter(id => id !== payload),
-    //   };
     case CURRENT_SEARCH:
       return {
         ...state,
