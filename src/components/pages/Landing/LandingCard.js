@@ -8,6 +8,7 @@ import { Tags } from '../../common';
 import './LandingCard.css';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
+// import { removeBookmarks, saveBookmarks } from '../../../state/actions';
 import { removeBookmarks, saveBookmarks } from '../../../state/actions';
 
 const { Meta } = Card;
@@ -51,25 +52,33 @@ function LandingCard(props) {
           />
         }
         extra={
-          isFavorite ? (
-            <img
-              src={BookmarkFilled}
-              alt="bookmark filled"
-              width="50"
-              data-testid="filled-bookmark"
-              onClick={handleRemove}
-              style={{ right: 5, top: 5, position: 'absolute' }}
-            />
-          ) : (
-            <img
-              src={BookmarkOutlined}
-              alt="bookmark outlined"
-              width="50"
-              data-testid="outlined-bookmark"
-              onClick={handleSave}
-              style={{ right: 5, top: 5, position: 'absolute' }}
-            />
-          )
+          <img
+            src={isFavorite ? BookmarkFilled : BookmarkOutlined}
+            alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
+            width={50}
+            data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
+            onClick={isFavorite ? handleRemove : handleSave}
+            style={{ right: 5, top: 5, position: 'absolute' }}
+          />
+          // isFavorite ? (
+          //   <img
+          //     src={BookmarkFilled}
+          //     alt="bookmark filled"
+          //     width="50"
+          //     data-testid="filled-bookmark"
+          //     onClick={handleRemove}
+          //     style={{ right: 5, top: 5, position: 'absolute' }}
+          //   />
+          // ) : (
+          //   <img
+          //     src={BookmarkOutlined}
+          //     alt="bookmark outlined"
+          //     width="50"
+          //     data-testid="outlined-bookmark"
+          //     onClick={handleSave}
+          //     style={{ right: 5, top: 5, position: 'absolute' }}
+          //   />
+          // )
         }
         style={{
           width: 300,
