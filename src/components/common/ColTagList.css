@@ -3,21 +3,16 @@
     justify-content: space-evenly;
     margin-bottom: 0 auto 2% auto;
 } */
-
-.tagsListRow{
-    width: 80%;
-    margin: 0 auto;
+.ant-row-space-between{
+    justify-content: start;
 }
 
 .columnTag{
-    display: flex;
     padding: 0 .1rem;
-    justify-content: flex-start;
-    margin-bottom: 2%;
 }
 
 .innerTag{
     cursor: pointer;
-    margin: 0; 
-
+    margin: 0;
+    overflow: hidden; 
 }
