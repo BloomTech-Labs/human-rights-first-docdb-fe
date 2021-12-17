@@ -95,7 +95,6 @@ function LandingCard(props) {
                 // margin: 'auto',
                 minWidth: 180,
                 minHeight: 140,
-                border: '5px solid black',
               }}
             />
           }
@@ -116,7 +115,6 @@ function LandingCard(props) {
             justifyContent: 'center',
             alignItems: 'center',
             marginBottom: '3%',
-            border: '5px solid green',
           }}
         >
           <Meta
