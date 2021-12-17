@@ -91,6 +91,9 @@ export const searchDocs = (search, authState, page, pageSize) => dispatch => {
         alert('No search results');
         dispatch({ type: FINISH_FETCH });
       } else {
+        dispatch({ type: SET_PAGE, payload: 'search' });
+        searchResults();
+        setCurrentSearch(search, 1, pageSize);
         dispatch({ type: SET_DOCS, payload: data });
         dispatch({ type: SEARCH, payload: search });
       }
