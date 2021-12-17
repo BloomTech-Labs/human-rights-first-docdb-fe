@@ -12,11 +12,12 @@
 .columnTag{
     display: flex;
     padding: 0 .1rem;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 2%;
 }
 
 .innerTag{
     cursor: pointer;
-    margin: 0 auto; 
+    margin: 0; 
+
 }
