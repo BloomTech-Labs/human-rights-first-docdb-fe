@@ -122,7 +122,13 @@ function MainHeader(props) {
             >
               Thumbnail
             </Button>
-            <Button onClick={bookmarksButton} type="default">
+            <Button
+              style={{
+                visibility: bookmarkedDocs.length === 0 ? 'hidden' : 'visible',
+              }}
+              onClick={bookmarksButton}
+              type="default"
+            >
               Bookmarks
             </Button>
           </>
