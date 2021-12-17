@@ -27,8 +27,8 @@ function TagsList(props) {
       <Col
         style={{
           display: 'flex',
-          justifyContent: 'space-evenly',
-          margin: '0 auto 2% auto',
+          justifyContent: 'flex-start',
+          margin: '0',
         }}
       >
         <Popover

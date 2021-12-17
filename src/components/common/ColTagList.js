@@ -9,7 +9,7 @@ function ColTagList(props) {
   const { authState } = useOktaAuth();
 
   return (
-    <Col key={tag} span={6} className="columnTag">
+    <Col key={tag} flex={6} justify={'start'} className="columnTag">
       <Tag
         className="innerTag"
         data-testid="doc-tag"
