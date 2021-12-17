@@ -81,7 +81,6 @@ export const onLoadBookmarks = (
 
 export const searchDocs = (search, authState, page, pageSize) => dispatch => {
   dispatch({ type: START_FETCH });
-  dispatch({ type: SET_SEARCH_QUERY, payload: search });
   getDSData(
     `/search?query=${search}&page_number=${page -
       1}&results_per_page=${pageSize}`,
@@ -134,7 +133,13 @@ export const removeBookmarks = (authState, bookmarkId) => async dispatch => {
   }
 };
 
-export const searchOnly = () => ({ type: SET_PAGE, payload: 'searchOnly' });
+export const searchOnly = pageSize => dispatch => {
+  dispatch({ type: SET_PAGE, payload: 'searchOnly' });
+  dispatch({
+    type: CURRENT_SEARCH,
+    payload: { currentSearch: '', currentPage: 1, pageSize },
+  });
+};
 
 export const searchResults = () => ({
   type: SET_PAGE,

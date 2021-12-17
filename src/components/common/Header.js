@@ -53,7 +53,7 @@ function MainHeader(props) {
     onLoadBookmarks,
     bookmarks,
     pageSize,
-    page,
+    pageType,
     currentSearch,
     searchResults,
     searchOnly,
@@ -71,7 +71,7 @@ function MainHeader(props) {
   };
 
   const searchButton = () => {
-    searchOnly();
+    searchOnly(pageSize);
   };
 
   if (pathname === '/login') return null;
@@ -94,35 +94,28 @@ function MainHeader(props) {
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
-        {page === 'searchOnly' ? (
-          <></>
-        ) : (
-          <>
-            {page === 'bookmarks' ? (
-              <>
-                <img src={logo2} className="header_img" alt="HRF logo" />
-                <Button onClick={listView}>List</Button>
-                <Button onClick={thumbnailView}>Thumbnail</Button>
-                <Button onClick={searchButton}>Search</Button>
-              </>
-            ) : (
-              <>
-                <img src={logo2} className="header_img" alt="HRF logo" />
-                <Search
-                  className="search_bar"
-                  placeholder="Search"
-                  onSearch={onSearch}
-                  defaultValue={currentSearch}
-                />
-                <Button onClick={listView}>List</Button>
-                <Button onClick={thumbnailView}>Thumbnail</Button>
-                <Button onClick={bookmarksButton} type="default">
-                  Bookmarks
-                </Button>
-              </>
-            )}
-          </>
-        )}
+        <>
+          <img src={logo2} className="header_img" alt="HRF logo" />
+          {pageType === 'searchOnly' ? (
+            <></>
+          ) : (
+            <Search
+              className="search_bar"
+              placeholder="Search"
+              onSearch={onSearch}
+              defaultValue={pageType === 'bookmarks' ? '' : currentSearch}
+            />
+          )}
+          <Button onClick={listView}>List</Button>
+          <Button onClick={thumbnailView}>Thumbnail</Button>
+          {pageType === 'bookmarks' ? (
+            <Button onClick={searchButton}>Search</Button>
+          ) : (
+            <Button onClick={bookmarksButton} type="default">
+              Bookmarks
+            </Button>
+          )}
+        </>
 
         <Button onClick={logout} type="default">
           Logout
@@ -135,7 +128,7 @@ function MainHeader(props) {
 
 const mapStateToProps = state => ({
   pageSize: state.pageSize,
-  page: state.page,
+  pageType: state.pageType,
   bookmarkedDocs: state.bookmarkedDocs,
   currentSearch: state.currentSearch,
 });

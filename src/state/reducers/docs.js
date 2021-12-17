@@ -21,7 +21,7 @@ const initialState = {
   pageSize: 10,
   bookmarkedDocs: [],
   isFetching: false,
-  page: 'bookmarks',
+  pageType: 'bookmarks',
   cardView: true,
 };
 
@@ -42,7 +42,7 @@ const docsReducer = (state = initialState, action) => {
     case SET_BOOKMARKS:
       return { ...state, bookmarkedDocs: payload };
     case SET_PAGE:
-      return { ...state, page: payload };
+      return { ...state, pageType: payload };
     case SAVE_BOOKMARKS:
       return { ...state, bookmarkedDocs: [...state.bookmarkedDocs, payload] };
     case REMOVE_BOOKMARKS:
@@ -63,8 +63,6 @@ const docsReducer = (state = initialState, action) => {
       return { ...state, cardView: true };
     case LIST_VIEW:
       return { ...state, cardView: false };
-    case SET_SEARCH_QUERY:
-      return { ...state, currentSearch: payload };
     default:
       return state;
   }
