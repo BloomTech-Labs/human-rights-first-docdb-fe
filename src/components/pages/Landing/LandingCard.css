@@ -1,0 +1,17 @@
+.ant-card-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card {
+  border: 10px solid black;
+}
+
+.list {
+  width: '100%';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
