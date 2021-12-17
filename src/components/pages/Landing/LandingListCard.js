@@ -95,7 +95,7 @@ LandingCardList.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string),
-  isFavorite: PropTypes.bool.isRequired,
+  isFavorite: PropTypes.bool,
 };
 const mapStateToProps = state => ({
   bookmarkedDocs: state.bookmarkedDocs,
