@@ -1,11 +1,9 @@
 import React from 'react';
-
 import { Card } from 'antd';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
 import { Tags } from '../../common';
-import './LandingCard.css';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
 // import { removeBookmarks, saveBookmarks } from '../../../state/actions';
@@ -48,7 +46,13 @@ function LandingCard(props) {
             // alt is the attribute that adds accessibility
             fallback={`${thumbUrl}/${box_id}`}
             // fallback is the attribute to display another image should the doc preview not load
-            style={{ height: 300 }}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '1rem',
+              height: 300,
+            }}
           />
         }
         extra={
@@ -66,8 +70,8 @@ function LandingCard(props) {
           marginBottom: '17%',
           border: '3px outset #DAC6B2',
         }}
-        headStyle={{ height: 35, padding: 0 }}
-        bodyStyle={{ padding: 12 }}
+        // headStyle={{ height: 35, padding: 0 }}
+        // bodyStyle={{ padding: 12 }}
       >
         <Meta title={name} style={{ textAlign: 'center', marginBottom: 10 }} />
         <Tags tagArray={tags} size={8} />
