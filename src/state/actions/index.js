@@ -79,7 +79,13 @@ export const onLoadBookmarks = (
   }
 };
 
-export const searchDocs = (search, authState, page, pageSize) => dispatch => {
+export const searchDocs = (
+  search,
+  authState,
+  page,
+  pageSize,
+  pageType
+) => dispatch => {
   dispatch({ type: START_FETCH });
   getDSData(
     `/search?query=${search}&page_number=${page -
@@ -91,7 +97,8 @@ export const searchDocs = (search, authState, page, pageSize) => dispatch => {
         alert('No search results');
         dispatch({ type: FINISH_FETCH });
       } else {
-        dispatch({ type: SET_PAGE, payload: 'search' });
+        if (pageType !== 'bookmarks')
+          dispatch({ type: SET_PAGE, payload: 'search' });
         searchResults();
         setCurrentSearch(search, 1, pageSize);
         dispatch({ type: SET_DOCS, payload: data });
