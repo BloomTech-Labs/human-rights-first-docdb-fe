@@ -37,7 +37,6 @@ function MainHeader(props) {
 
   const {
     searchDocs,
-    setCurrentSearch,
     displayListView,
     displayThumbnail,
     onLoadBookmarks,
@@ -45,7 +44,6 @@ function MainHeader(props) {
     pageSize,
     pageType,
     currentSearch,
-    searchResults,
     searchOnly,
   } = props;
 
@@ -91,8 +89,6 @@ function MainHeader(props) {
 
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
-    searchResults();
-    setCurrentSearch(value, 1, pageSize);
     searchDocs(value, authState, 1, pageSize);
   };
 
@@ -152,9 +148,7 @@ export default connect(mapStateToProps, {
   searchDocs,
   displayListView,
   displayThumbnail,
-  setCurrentSearch,
   searchOnly,
-  searchResults,
   bookmarks,
   onLoadBookmarks,
 })(MainHeader);
