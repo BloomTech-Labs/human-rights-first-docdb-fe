@@ -10,7 +10,6 @@ import './LandingCard.css';
 function LandingCardList(props) {
   const {
     docs,
-    cardView,
     total,
     currentSearch,
     setCurrentSearch,
@@ -81,7 +80,6 @@ const mapStateToProps = state => ({
   docs: state.docs.docs,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
   page: state.bookmarks.page,
-  cardView: state.docs.cardView,
   total: state.docs.totalDocsCount,
   currentSearch: state.searches.currentSearch,
   currentPage: state.searches.currentPage,
