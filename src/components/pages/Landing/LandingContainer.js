@@ -6,9 +6,9 @@ function LandingContainer() {
     <div
       style={{
         backgroundColor: '#f7ede2',
-        // backgroundSize: 'cover',
         paddingTop: '80px',
         paddingLeft: '4%',
+        height: '100vh',
       }}
     >
       <RenderLandingPage />
