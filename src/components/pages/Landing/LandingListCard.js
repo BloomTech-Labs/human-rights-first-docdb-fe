@@ -64,7 +64,7 @@ function LandingCardList(props) {
               description={path}
               style={{ textAlign: 'center', marginBottom: '10px' }}
             />
-            <TagsList tagArray={tags} size={8} />
+            <TagsList tagArray={tags} size={50} />
           </div>
           {/* To place the bookmark on the top right corner */}
           <div style={{ alignSelf: 'start', marginLeft: '10%' }}>
