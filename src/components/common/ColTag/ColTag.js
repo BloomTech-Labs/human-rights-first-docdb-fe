@@ -11,8 +11,8 @@ function ColTag(props) {
   return (
     <Col
       key={tag}
-      span={6}
-      style={{ display: 'flex', justifyContent: 'center' }}
+      push={1}
+      //style={{ display: 'flex', justifyContent: 'center' }}
     >
       <Tag
         style={{ cursor: 'pointer' }}
