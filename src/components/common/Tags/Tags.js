@@ -8,7 +8,7 @@ function Tags(props) {
 
   if (tagArray.length <= size)
     return (
-      <Row>
+      <Row align="middle" justify="start" gutter={[0, 5]}>
         {tagArray.map((tag, index) => (
           <ColTag tag={tag} key={index} />
         ))}
