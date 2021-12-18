@@ -35,10 +35,6 @@ function LandingCardList(props) {
     removeBookmarks(authState, box_id);
   };
 
-  const handleRemove = () => {
-    removeBookmarks(authState, box_id);
-  };
-
   return (
     <div>
       <Card
