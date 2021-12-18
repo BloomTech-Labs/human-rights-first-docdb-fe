@@ -17,11 +17,7 @@ function ColTagList(props) {
           searchDocs(tag, authState);
         }}
       >
-        {tag.length < 45 ? (
-          <p>{tag}</p>
-        ) : (
-          <Tooltip title={tag}>{tag.slice(0, 16)}...</Tooltip>
-        )}
+        {tag}
       </Tag>
     </Col>
   );
