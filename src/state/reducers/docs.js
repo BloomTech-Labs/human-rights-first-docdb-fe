@@ -2,16 +2,14 @@ import {
   SET_DOCS,
   SET_BOOKMARKS,
   START_FETCH,
-  BOOKMARKS,
+  SET_PAGE,
   SAVE_BOOKMARKS,
   REMOVE_BOOKMARKS,
   SEARCH,
-  SEARCH_BAR,
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
   CURRENT_SEARCH,
-  SET_SEARCH_QUERY,
 } from '../actions';
 
 const initialState = {
@@ -22,10 +20,8 @@ const initialState = {
   pageSize: 10,
   bookmarkedDocs: [],
   isFetching: false,
-  page: 'bookmarks',
+  pageType: 'bookmarks',
   cardView: true,
-  query: '',
-  searchTerm: '',
 };
 
 const docsReducer = (state = initialState, action) => {
@@ -44,8 +40,8 @@ const docsReducer = (state = initialState, action) => {
       };
     case SET_BOOKMARKS:
       return { ...state, bookmarkedDocs: payload };
-    case BOOKMARKS:
-      return { ...state, page: 'bookmarks' };
+    case SET_PAGE:
+      return { ...state, pageType: payload };
     case SAVE_BOOKMARKS:
       return { ...state, bookmarkedDocs: [...state.bookmarkedDocs, payload] };
     case REMOVE_BOOKMARKS:
@@ -61,15 +57,11 @@ const docsReducer = (state = initialState, action) => {
         pageSize: payload.pageSize,
       };
     case SEARCH:
-      return { ...state, page: 'search', currentSearch: payload };
-    case SEARCH_BAR:
-      return { ...state, page: 'bar' };
+      return { ...state, currentSearch: payload };
     case THUMBNAIL:
       return { ...state, cardView: true };
     case LIST_VIEW:
       return { ...state, cardView: false };
-    case SET_SEARCH_QUERY:
-      return { ...state, currentSearch: payload };
     default:
       return state;
   }

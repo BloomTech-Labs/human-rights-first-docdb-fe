@@ -6,7 +6,7 @@
 
 import { getDSData, axiosWithAuth } from '../../api';
 
-export const BOOKMARKS = 'BOOKMARKS';
+export const SET_PAGE = 'SET_PAGE';
 
 export const SET_BOOKMARKS = 'SET_BOOKMARKS';
 export const REMOVE_BOOKMARKS = 'REMOVE_BOOKMARKS';
@@ -17,9 +17,6 @@ export const CURRENT_SEARCH = 'CURRENT_SEARCH';
 export const LIST_VIEW = 'LIST_VIEW';
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SEARCH = 'SEARCH';
-
-export const SEARCH_BAR = 'SEARCH_BAR';
-
 export const SET_DOCS = 'SET_DOCS';
 
 export const START_FETCH = 'START_FETCH';
@@ -28,7 +25,7 @@ export const FINISH_FETCH = 'FINISH_FETCH';
 
 const apiURI = process.env.REACT_APP_API_URI;
 
-export const getDocs = authState => async dispatch => {
+export const getDocs = (authState, page, pageSize) => async dispatch => {
   try {
     dispatch({ type: START_FETCH });
     const { data } = await axiosWithAuth(authState).get(`${apiURI}/bookmarks`);
@@ -36,20 +33,33 @@ export const getDocs = authState => async dispatch => {
       const fileIds = data.map(d => d.fileId);
       dispatch({ type: SET_BOOKMARKS, payload: fileIds });
       const ids = data.map(b => b.fileId).join(' ');
-      const { Response } = await getDSData(`/search/${ids}`, authState);
+      const Response = await getDSData(
+        `/search?query=${ids}&page_number=${page -
+          1}&results_per_page=${pageSize}`,
+        authState
+      );
       dispatch({ type: SET_DOCS, payload: Response });
+      dispatch({
+        type: CURRENT_SEARCH,
+        payload: { currentSearch: ids, currentPage: page, pageSize },
+      });
     } else {
       dispatch({ type: FINISH_FETCH });
-      dispatch({ type: SEARCH_BAR });
+      dispatch({ type: SET_PAGE, payload: 'searchOnly' });
     }
   } catch (err) {
     console.log(err);
   }
 };
 
-export const searchDocs = (search, authState, page, pageSize) => dispatch => {
+export const searchDocs = (
+  search,
+  authState,
+  page,
+  pageSize,
+  pageType
+) => dispatch => {
   dispatch({ type: START_FETCH });
-  dispatch({ type: SET_SEARCH_QUERY, payload: search });
   getDSData(
     `/search?query=${search}&page_number=${page -
       1}&results_per_page=${pageSize}`,
@@ -60,6 +70,10 @@ export const searchDocs = (search, authState, page, pageSize) => dispatch => {
         alert('No search results');
         dispatch({ type: FINISH_FETCH });
       } else {
+        if (pageType !== 'bookmarks') {
+          dispatch({ type: SET_PAGE, payload: 'searchResult' });
+        }
+        setCurrentSearch(search, 1, pageSize);
         dispatch({ type: SET_DOCS, payload: data });
         dispatch({ type: SEARCH, payload: search });
       }
@@ -69,8 +83,8 @@ export const searchDocs = (search, authState, page, pageSize) => dispatch => {
 
 export const setCurrentSearch = (
   currentSearch,
-  currentPage,
-  pageSize
+  currentPage = 1,
+  pageSize = 10
 ) => dispatch => {
   dispatch({
     type: CURRENT_SEARCH,
@@ -102,7 +116,15 @@ export const removeBookmarks = (authState, bookmarkId) => async dispatch => {
   }
 };
 
-export const bookmarks = () => ({ type: BOOKMARKS });
+export const searchOnly = pageSize => dispatch => {
+  dispatch({ type: SET_PAGE, payload: 'searchOnly' });
+  dispatch({
+    type: CURRENT_SEARCH,
+    payload: { currentSearch: '', currentPage: 1, pageSize },
+  });
+};
+
+export const bookmarks = () => ({ type: SET_PAGE, payload: 'bookmarks' });
 
 export const displayListView = () => ({ type: LIST_VIEW });
 

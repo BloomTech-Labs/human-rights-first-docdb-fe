@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { getDocs } from '../../state/actions';
+import { connect } from 'react-redux';
+import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 
 const ReduxList = props => {
-  const { LoadingComponent, RenderItems, getItemsData, isFetching } = props;
+  const { getDocs, LoadingComponent, RenderItems, isFetching } = props;
+  const { authState } = useOktaAuth();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(getItemsData, []);
+  useEffect(() => {
+    getDocs(authState, 1, 10);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return isFetching ? <LoadingComponent /> : <RenderItems />;
 };
@@ -13,8 +19,12 @@ const ReduxList = props => {
 ReduxList.propTypes = {
   LoadingComponent: PropTypes.func.isRequired,
   RenderItems: PropTypes.any.isRequired,
-  getItemsData: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
 };
 
-export default ReduxList;
+const mapStateToProps = state => ({
+  pageSize: state.pageSize,
+  bookmarkedDocs: state.bookmarkedDocs,
+});
+
+export default connect(mapStateToProps, { getDocs })(ReduxList);

@@ -9,11 +9,12 @@ import { useOktaAuth } from '@okta/okta-react';
 import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
-  getDocs,
   searchDocs,
   displayListView,
   displayThumbnail,
-  setCurrentSearch,
+  searchOnly,
+  bookmarks,
+  getDocs,
 } from '../../state/actions';
 import { debounce } from '../../utils/debounce';
 
@@ -31,6 +32,19 @@ function MainHeader(props) {
   const [showHeader, setShowHeader] = useState(true);
   const [query, setQuery] = useState('');
 
+  const {
+    searchDocs,
+    displayListView,
+    displayThumbnail,
+    getDocs,
+    bookmarks,
+    pageSize,
+    pageType,
+    currentSearch,
+    searchOnly,
+    bookmarkedDocs,
+  } = props;
+
   const handleScroll = debounce(() => {
     const scrollPos = window.scrollY;
     setShowHeader(oldScroll > scrollPos || scrollPos < 10);
@@ -42,15 +56,18 @@ function MainHeader(props) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [oldScroll, showHeader, handleScroll]);
 
+  useEffect(() => {
+    if (pageType !== 'bookmarks') {
+      setQuery(currentSearch);
+    } else {
+      setQuery('');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentSearch]);
 
-  const {
-    getDocs,
-    searchDocs,
-    setCurrentSearch,
-    displayListView,
-    displayThumbnail,
-    currentSearch,
-  } = props;
+  const changeHandler = e => {
+    setQuery(e.target.value);
+  };
 
   const {
     authService: { logout },
@@ -59,24 +76,19 @@ function MainHeader(props) {
   const { pathname } = useLocation();
 
   const bookmarksButton = () => {
-    getDocs(authState);
+    bookmarks();
+    getDocs(authState, 1, pageSize);
   };
 
-  useEffect(() => {
-    setQuery(currentSearch);
-  }, [currentSearch]);
+  const searchButton = () => {
+    searchOnly(pageSize);
+  };
 
   if (pathname === '/login') return null;
 
-  const changeHandler = e => {
-    setQuery(e.target.value);
-  };
-
-  const onSearch = (value, e) => {
+  const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
-    setCurrentSearch(value, 1, props.pageSize);
-    searchDocs(value, authState, 1, props.pageSize);
-    // e.target.value = '';
+    searchDocs(value, authState, 1, pageSize);
   };
 
   //Buttons For Display modes
@@ -90,27 +102,33 @@ function MainHeader(props) {
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
-
-        {props.page === 'bar' ? (
-          <></>
-        ) : (
-          <>
-            <img src={logo2} className="header_img" alt="HRF logo" />
-            <Search
-              className="search_bar"
-              placeholder="Search"
-              onSearch={onSearch}
-              value={query}
-              onChange={changeHandler}
-            />
-            <Button onClick={listView}>List</Button>
-            <Button onClick={thumbnailView}>Thumbnail</Button>
-            <Button onClick={bookmarksButton} type="default">
-              Bookmarks
-            </Button>
-          </>
-        )}
-
+        <>
+          <img src={logo2} className="header_img" alt="HRF logo" />
+          {pageType === 'searchOnly' ? (
+            <></>
+          ) : (
+            <>
+              <Search
+                className="search_bar"
+                placeholder="Search"
+                onSearch={onSearch}
+                onChange={changeHandler}
+                value={query}
+              />
+              <Button onClick={listView}>List</Button>
+              <Button onClick={thumbnailView}>Thumbnail</Button>
+            </>
+          )}
+          {pageType === 'bookmarks' ? (
+            <Button onClick={searchButton}>Home</Button>
+          ) : (
+            bookmarkedDocs.length > 0 && (
+              <Button onClick={bookmarksButton} type="default">
+                Bookmarks
+              </Button>
+            )
+          )}
+        </>
         <Button onClick={logout} type="default">
           Logout
         </Button>
@@ -120,17 +138,18 @@ function MainHeader(props) {
   );
 }
 
-
 const mapStateToProps = state => ({
   pageSize: state.pageSize,
-  page: state.page,
+  pageType: state.pageType,
+  bookmarkedDocs: state.bookmarkedDocs,
   currentSearch: state.currentSearch,
 });
 
 export default connect(mapStateToProps, {
-  getDocs,
   searchDocs,
   displayListView,
   displayThumbnail,
-  setCurrentSearch,
+  searchOnly,
+  bookmarks,
+  getDocs,
 })(MainHeader);
