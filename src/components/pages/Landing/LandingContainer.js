@@ -7,7 +7,7 @@ function LandingContainer() {
       style={{
         paddingTop: '80px',
         paddingLeft: '4%',
-        backgroundColor: '#f7ede2',
+        backgroundColor: '#f7ede2'
       }}
     >
       <RenderLandingPage />
