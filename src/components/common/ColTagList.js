@@ -9,7 +9,7 @@ function ColTagList(props) {
   const { authState } = useOktaAuth();
 
   return (
-    <Col key={tag} flex={6} justify={'start'} className="columnTag">
+    <Col key={tag} flex={'0 0 auto'} className="columnTag">
       <Tag
         className="innerTag"
         data-testid="doc-tag"
@@ -19,7 +19,7 @@ function ColTagList(props) {
         }}
       >
         {tag.length < 45 ? (
-          tag
+          <p>{tag}</p>
         ) : (
           <Tooltip title={tag}>{tag.slice(0, 16)}...</Tooltip>
         )}

@@ -49,7 +49,7 @@ function LandingCardList(props) {
             alignItems: 'center',
           }}
         >
-          <div style={{ width: '15%', margin: 'auto' }}>
+          <div style={{ width: '20%', margin: 'auto' }}>
             <img
               onClick={() => window.open(url)}
               src={`${thumbUrl}/${box_id}`}
@@ -67,7 +67,7 @@ function LandingCardList(props) {
             <TagsList tagArray={tags} size={8} />
           </div>
           {/* To place the bookmark on the top right corner */}
-          <div style={{ alignSelf: 'flex-start', marginLeft: '10%' }}>
+          <div style={{ alignSelf: 'start', marginLeft: '10%' }}>
             {isFavorite ? (
               <img
                 src={bookmarkFilled}
@@ -95,7 +95,7 @@ LandingCardList.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string),
-  isFavorite: PropTypes.bool,
+  isFavorite: PropTypes.bool.isRequired,
 };
 const mapStateToProps = state => ({
   bookmarkedDocs: state.bookmarkedDocs,
