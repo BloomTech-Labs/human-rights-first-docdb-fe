@@ -37,8 +37,7 @@ function LandingCardList(props) {
   return (
     <div>
       <Card
-        style={{ marginBottom: '3%',
-                 border: '1px solid #E6E0DA' }}
+        style={{ marginBottom: '3%', border: '1px solid #E6E0DA' }}
         hoverable={true}
         //Separate each card
       >
@@ -51,7 +50,7 @@ function LandingCardList(props) {
             alignItems: 'center',
           }}
         >
-          <div style={{ width: '15%', margin: 'auto' }}>
+          <div style={{ width: '20%', margin: 'auto' }}>
             <img
               onClick={() => window.open(url)}
               src={`${thumbUrl}/${box_id}`}
@@ -64,15 +63,12 @@ function LandingCardList(props) {
             <Meta
               title={name}
               description={path}
-              style={{ textAlign: 'center', 
-                       marginBottom: '10px'
-                     }}
+              style={{ textAlign: 'center', marginBottom: '10px' }}
             />
             <TagsList tagArray={tags} size={8} />
           </div>
           {/* To place the bookmark on the top right corner */}
-          <div style={{ alignSelf: 'flex-start', 
-                        marginLeft: '10%' }}>
+          <div style={{ alignSelf: 'start', marginLeft: '10%' }}>
             {isFavorite ? (
               <img
                 src={bookmarkFilled}
@@ -100,7 +96,7 @@ LandingCardList.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string),
-  isFavorite: PropTypes.bool,
+  isFavorite: PropTypes.bool.isRequired,
 };
 const mapStateToProps = state => ({
   bookmarkedDocs: state.bookmarkedDocs,

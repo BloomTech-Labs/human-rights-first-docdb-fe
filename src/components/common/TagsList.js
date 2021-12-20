@@ -9,7 +9,7 @@ function TagsList(props) {
 
   if (tagArray.length <= size)
     return (
-      <Row>
+      <Row justify={'space-between'} gutter={['8', '8']}>
         {tagArray.map((tag, index) => (
           <ColTagList classList="colTag" tag={tag} key={index} />
         ))}
@@ -20,17 +20,11 @@ function TagsList(props) {
   const hiddenTags = tagArray.slice(size - 1, tagArray.length);
 
   return (
-    <Row className="tagsListRow">
+    <Row justify={'start'} gutter={['8', '8']}>
       {shownTags.map((tag, index) => (
         <ColTagList classList="colTag" tag={tag} key={index} />
       ))}
-      <Col
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-start',
-          margin: '0',
-        }}
-      >
+      <Col>
         <Popover
           title="Tags cont."
           classList="colTag"
