@@ -29,6 +29,19 @@ const getDSData = (path, authState) => {
     .catch(err => err);
 };
 
+const addTagDS = (path, body) => {
+  if (!path) {
+    throw new Error('no path');
+  }
+
+  return axios
+    .post(dsUrl + path, body)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => err);
+};
+
 const apiAuthGet = authHeader => {
   return axios.get(apiUrl, { headers: authHeader });
 };
@@ -46,4 +59,4 @@ const getProfileData = authState => {
 const axiosWithAuth = authState =>
   axios.create({ headers: getAuthHeader(authState) });
 
-export { getProfileData, getDSData, axiosWithAuth };
+export { getProfileData, getDSData, addTagDS, axiosWithAuth };
