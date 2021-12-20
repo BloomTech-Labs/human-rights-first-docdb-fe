@@ -42,6 +42,19 @@ const addTagDS = (path, body) => {
     .catch(err => err);
 };
 
+const deleteTagDS = (path, body) => {
+  if (!path) {
+    throw new Error('no path');
+  }
+
+  return axios
+    .delete(dsUrl + path, body)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => err);
+};
+
 const apiAuthGet = authHeader => {
   return axios.get(apiUrl, { headers: authHeader });
 };
@@ -59,4 +72,4 @@ const getProfileData = authState => {
 const axiosWithAuth = authState =>
   axios.create({ headers: getAuthHeader(authState) });
 
-export { getProfileData, getDSData, addTagDS, axiosWithAuth };
+export { getProfileData, getDSData, addTagDS, deleteTagDS, axiosWithAuth };
