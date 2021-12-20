@@ -26,6 +26,8 @@ HRF and the [Pat Finucane Centre](https://www.patfinucanecentre.org) need a way 
 - Clean, simple interface to search & view documents
 - Bookmark documents & add tags
 - Scrape documents for fields of interest
+- Search the content of documents using a combination of Title and Document Content
+- User selectable view of documents in either Grid or List view
 
 <br><br>
 
