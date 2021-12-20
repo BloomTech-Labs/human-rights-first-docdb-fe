@@ -2,22 +2,28 @@ import React, { useState, useEffect } from 'react';
 import Querystring from 'querystring';
 import { connect } from 'react-redux';
 import { Modal, Input as Add, Tag, Tooltip } from 'antd';
-import { handleModal, setDocTags, addCustomTag } from '../../state/actions';
+import {
+  handleModal,
+  setDocTags,
+  addCustomTag,
+  deleteTag,
+} from '../../state/actions';
 
 function TagModal(props) {
-  const { openModal, handleModal, setDocTags, docTags, addCustomTag } = props;
+  const {
+    openModal,
+    handleModal,
+    setDocTags,
+    docTags,
+    addCustomTag,
+    deleteTag,
+  } = props;
 
-  const [modalState, setModalState] = useState([]);
   const [newTag, setNewTag] = useState('');
   const [markForDeletion, setMarkForDeletion] = useState('');
   const [confirmDelete, setConfirmDelete] = useState(false);
 
-  useEffect(() => {
-    setModalState(docTags.tags);
-  }, [docTags]);
-
-  const handleOk = () => {
-    //push local tag state to update tags in store
+  const handleDone = () => {
     handleModal();
   };
 
@@ -36,27 +42,22 @@ function TagModal(props) {
       file_id: docTags.file_id,
       tag: newTag,
     });
-    //invoke action to make api call w/ file_id & tagToAdd to DS add tag endpoint
     addCustomTag(body);
-    //setModalState([...modalState, newTag]); //this update isn't needed once updating store
     setNewTag('');
   };
 
   const handleDelete = e => {
-    console.log(e.target, e.target.value);
     setMarkForDeletion(e.target.value);
-    console.log(markForDeletion);
     setConfirmDelete(true);
   };
 
   const handleDeleteConfirmed = () => {
-    //invoke action to make api call w/ file_id & tagToDelete to DS delete tag endpoint
-    setModalState(
-      modalState.filter(tags => {
-        // this filter isn't needed once updating store
-        return tags !== markForDeletion;
-      })
-    );
+    const body = Querystring['stringify']({
+      file_id: docTags.file_id,
+      tag: markForDeletion,
+    });
+    console.log(body);
+    deleteTag(body);
     setConfirmDelete(false);
     setMarkForDeletion('');
   };
@@ -71,7 +72,7 @@ function TagModal(props) {
       title="Create and Edit Tags"
       visible={openModal}
       okText="Done"
-      onOk={handleOk}
+      onOk={handleDone}
       onCancel={handleCancel}
       cancelButtonProps={{ style: { display: 'none' } }}
     >
@@ -81,7 +82,7 @@ function TagModal(props) {
         value={newTag}
         onChange={changeHandler}
       />
-      {docTags
+      {docTags.tags
         ? docTags.tags.map(tag => (
             <Tag>
               {tag}
@@ -125,4 +126,5 @@ export default connect(mapStateToProps, {
   handleModal,
   setDocTags,
   addCustomTag,
+  deleteTag,
 })(TagModal);
