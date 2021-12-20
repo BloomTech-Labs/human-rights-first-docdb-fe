@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Querystring from 'querystring';
 import { connect } from 'react-redux';
 import { Modal, Input as Add, Tag, Tooltip } from 'antd';
-import { handleModal, setDocTags } from '../../state/actions';
+import { handleModal, setDocTags, addCustomTag } from '../../state/actions';
 
 function TagModal(props) {
-  const { openModal, handleModal, setDocTags, docTags } = props;
+  const { openModal, handleModal, setDocTags, docTags, addCustomTag } = props;
 
   const [modalState, setModalState] = useState([]);
   const [newTag, setNewTag] = useState('');
@@ -31,8 +32,13 @@ function TagModal(props) {
 
   const handleAdd = e => {
     e.preventDefault();
+    const body = Querystring['stringify']({
+      file_id: docTags.file_id,
+      tag: newTag,
+    });
     //invoke action to make api call w/ file_id & tagToAdd to DS add tag endpoint
-    setModalState([...modalState, newTag]); //this update isn't needed once updating store
+    addCustomTag(body);
+    //setModalState([...modalState, newTag]); //this update isn't needed once updating store
     setNewTag('');
   };
 
@@ -45,6 +51,12 @@ function TagModal(props) {
 
   const handleDeleteConfirmed = () => {
     //invoke action to make api call w/ file_id & tagToDelete to DS delete tag endpoint
+    setModalState(
+      modalState.filter(tags => {
+        // this filter isn't needed once updating store
+        return tags !== markForDeletion;
+      })
+    );
     setConfirmDelete(false);
     setMarkForDeletion('');
   };
@@ -69,8 +81,8 @@ function TagModal(props) {
         value={newTag}
         onChange={changeHandler}
       />
-      {modalState
-        ? modalState.map(tag => (
+      {docTags
+        ? docTags.tags.map(tag => (
             <Tag>
               {tag}
               <Tooltip title="click to confirm tag deletion">
@@ -109,4 +121,8 @@ const mapStateToProps = state => ({
   docTags: state.docTags,
 });
 
-export default connect(mapStateToProps, { handleModal, setDocTags })(TagModal);
+export default connect(mapStateToProps, {
+  handleModal,
+  setDocTags,
+  addCustomTag,
+})(TagModal);
