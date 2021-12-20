@@ -35,7 +35,7 @@ function LandingCardList(props) {
     <div>
       <Card
         style={{ marginBottom: '3%',
-                 border: '3px outset #DAC6B2' }}
+                 border: '1px solid #E6E0DA' }}
         hoverable={true}
         //Separate each card
       >
