@@ -84,9 +84,9 @@ linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" w
 |[<img src="https://avatars.githubusercontent.com/u/84863368?v=4" width = "200" />](https://github.com/RimshaSaleem)|[<img src="https://avatars.githubusercontent.com/u/84363151?v=4" width = "200" />](https://github.com/makeityourself121)|[<img src="https://avatars.githubusercontent.com/u/24277559?v=4" width = "200" />](https://github.com/Andrewschaer)|[<img src="https://avatars.githubusercontent.com/u/84862108?v=4" width = "200" />](https://github.com/rkshockey)|
 |[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/rimsha-saleem-384622215/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](http://www.linkedin.com/in/dharmiksavaliya)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](http://www.linkedin.com/in/andrewschaer)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/romy-shockey/)|
 
-|[Jacob Shomali](https://github.com/collerhatguy)|contributor|contributor|contributor|
+|[Jacob Shomali](https://github.com/collerhatguy)|[Michael Greenwald](https://github.com/mgreenwaldm)|[Klove Adams](https://github.com/klove-a)|contributor|
 |:--:|:--:|:--:|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/67057792?v=4" width = "200" />](https://github.com/collerhatguy)|📷|📷|📷|
+|[<img src="https://avatars.githubusercontent.com/u/67057792?v=4" width = "200" />](https://github.com/collerhatguy)|[<img src="https://avatars.githubusercontent.com/u/79072077?v=4" width = "200" />](https://github.com/mgreenwaldm)||📷|📷|
 |[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/jacob-shomali-a206aa1ba/)|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">|
 
 <br>
@@ -94,10 +94,21 @@ linked in: [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" w
 
 ## Technical Project Managers
 
-|[Nora Corser](https://github.com/nora-exe)|[Jack Orth](https://github.com/JackOrth)|[Brandon Verfurth](https://github.com/bverfurth)|[Tawnya Wessar](https://github.com/tdubs42)|[Michael Greenwald](https://github.com/mgreenwaldm)|[Mason Mostella](https://github.com/MMostella)|[Xiao Song](https://github.com/xsong0306)|[Klove Adams](https://github.com/Klove-A)|[Stuart Darsey](https://github.com/stu-wd)
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|[<img src="https://avatars.githubusercontent.com/u/34663084?v=4" width = "200" />](https://github.com/nora-exe)|[<img src="https://avatars.githubusercontent.com/u/79072077?v=4" width = "200" />](https://github.com/JackOrth)|[<img src="https://avatars.githubusercontent.com/u/78745926?v=4" width = "200" />](https://github.com/bverfurth)|[<img src="https://avatars.githubusercontent.com/u/76195439?v=4" width = "200" />](https://github.com/tdubs42)|[<img src="https://avatars.githubusercontent.com/u/25250696?s=40&v=4" width = "200" />](https://github.com/mgreenwaldm)|[<img src="https://avatars.githubusercontent.com/u/25250696?s=40&v=4" width = "200" />](https://github.com/mmostella)|[<img src="https://avatars.githubusercontent.com/u/25250696?s=40&v=4" width = "200" />](https://github.com/xsong0306)|[<img src="https://avatars.githubusercontent.com/u/25250696?s=40&v=4" width = "200" />](https://github.com/klove-a)|[<img src="https://avatars.githubusercontent.com/u/25250696?s=40&v=4" width = "200" />](https://github.com/stu-wd)|
-|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/noco/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jack-orth/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/btverfurth/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/tdubs42)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/mgreenwaldm)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/mmostella)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/xsong0306)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/klove-adams)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/studarsey)|
+|[Nora Corser](https://github.com/nora-exe)|[Jack Orth](https://github.com/JackOrth)|[Brandon Verfurth](https://github.com/bverfurth)|[Tawnya Wessar](https://github.com/tdubs42)|
+|:--:|:--:|:--:|:--:|
+|[<img src="https://avatars.githubusercontent.com/u/34663084?v=4" width = "200" />](https://github.com/nora-exe)|[<img src="https://avatars.githubusercontent.com/u/79072077?v=4" width = "200" />](https://github.com/JackOrth)|[<img src="https://avatars.githubusercontent.com/u/78745926?v=4" width = "200" />](https://github.com/bverfurth)|[<img src="https://avatars.githubusercontent.com/u/76195439?v=4" width = "200" />](https://github.com/tdubs42)|
+|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/noco/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jack-orth/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/btverfurth/)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/tdubs42)|
+
+
+|[Michael Greenwald](https://github.com/mgreenwaldm)|[Mason Mostella](https://github.com/MMostella)|[Xiao Song](https://github.com/xsong0306)|[Klove Adams](https://github.com/Klove-A)|
+|:--:|:--:|:--:|:--:|
+[<img src="https://avatars.githubusercontent.com/u/25250696?s=40&v=4" width = "200" />](https://github.com/mgreenwaldm)|[<img src="https://avatars.githubusercontent.com/u/84754249?v=4" width = "200" />](https://github.com/mmostella)|[<img src="https://avatars.githubusercontent.com/u/25250696?s=40&v=4" width = "200" />](https://github.com/xsong0306)|[<img src="https://avatars.githubusercontent.com/u/25250696?s=40&v=4" width = "200" />](https://github.com/klove-a)|
+|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/mgreenwaldm)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/mmostella)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/xsong0306)|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/klove-adams)|
+
+|[Stuart Darsey](https://github.com/stu-wd)|
+|:--:|
+|[<img src="https://avatars.githubusercontent.com/u/25250696?s=40&v=4" width = "200" />](https://github.com/stu-wd)|
+|[<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/studarsey)|
 
 <br>
 
