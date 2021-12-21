@@ -70,13 +70,21 @@ function TagModal(props) {
     <Modal
       title="Create and Edit Tags"
       visible={openModal}
+      centered="true"
       okText="Done"
       onOk={handleDone}
       onCancel={handleCancel}
+      okButtonProps={{
+        style: {
+          backgroundColor: '#F3F3F3',
+          color: '#000',
+          borderColor: '#CCC',
+        },
+      }}
       cancelButtonProps={{ style: { display: 'none' } }}
     >
-      <Row justify="center" gutter={[16, 16]}>
-        <Col>
+      <Row align="center" gutter={[16, 16]}>
+        <Col span={19}>
           <Add
             placeholder="Add new tag..."
             onPressEnter={handleAdd}
@@ -84,9 +92,11 @@ function TagModal(props) {
             onChange={changeHandler}
           />
         </Col>
-        <Col>
-          {docTags.tags
-            ? docTags.tags.map(tag => (
+      </Row>
+      <Row gutter={[0, 5]}>
+        {docTags.tags
+          ? docTags.tags.map(tag => (
+              <Col>
                 <Tag>
                   {tag}
                   <Tooltip title="click to confirm tag deletion">
@@ -105,9 +115,9 @@ function TagModal(props) {
                     </button>
                   </Tooltip>
                 </Tag>
-              ))
-            : null}
-        </Col>
+              </Col>
+            ))
+          : null}
       </Row>
       <Modal
         title="Confirm Deletion"
