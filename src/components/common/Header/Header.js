@@ -12,8 +12,10 @@ import {
   getDocs,
   displayListView,
   displayThumbnail,
+  searchOnly,
 } from '../../../state/actions/docs';
 import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
+import { bookmarks } from '../../../state/actions/bookmarks';
 import { debounce } from '../../../utils/debounce';
 
 const { Header } = Layout;
@@ -48,10 +50,26 @@ function MainHeader(props) {
     displayListView,
     displayThumbnail,
     currentSearch,
+    bookmarks,
     bookmarkedDocs,
     docs,
     cardView,
+    pageType,
+    pageSize
   } = props;
+
+  useEffect(() => {
+    if (pageType !== 'bookmarks') {
+      setQuery(currentSearch);
+    } else {
+      setQuery('');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentSearch]);
+
+  const changeHandler = e => {
+    setQuery(e.target.value);
+  };
 
   const {
     authService: { logout },
@@ -60,24 +78,20 @@ function MainHeader(props) {
   const { pathname } = useLocation();
 
   const bookmarksButton = () => {
-    getDocs(authState);
+    bookmarks();
+    console.log(pageType);
+    getDocs(authState, 1, pageSize);
   };
 
-  useEffect(() => {
-    setQuery(currentSearch);
-  }, [currentSearch]);
+  const searchButton = () => {
+    searchOnly(pageSize);
+  };
 
   if (pathname === '/login') return null;
 
-  const changeHandler = e => {
-    setQuery(e.target.value);
-  };
-
-  const onSearch = (value, e) => {
+  const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
-    setCurrentSearch(value, 1, props.pageSize);
-    searchDocs(value, authState, 1, props.pageSize);
-    // e.target.value = '';
+    searchDocs(value, authState, 1, pageSize);
   };
 
   //Buttons For Display modes
@@ -93,7 +107,11 @@ function MainHeader(props) {
       <Header className="header_div">
         <>
           <img src={logo2} className="header_img" alt="HRF logo" />
-          <Search
+          {pageType === 'searchOnly' ? (
+            <></>
+          ) : (
+            <>
+              <Search
             style={{
               visibility:
                 bookmarkedDocs.length === 0 && docs.length === 0
@@ -106,9 +124,7 @@ function MainHeader(props) {
             value={query}
             onChange={changeHandler}
           />
-
-          <div>
-            <Button
+              <Button
               style={{
                 visibility:
                   (bookmarkedDocs.length === 0 && docs.length === 0) ||
@@ -120,7 +136,6 @@ function MainHeader(props) {
             >
               List
             </Button>
-
             <Button
               style={{
                 visibility:
@@ -132,9 +147,13 @@ function MainHeader(props) {
             >
               Thumbnail
             </Button>
-          </div>
-
-          <Button
+            </>
+          )}
+          {pageType === 'bookmarks' ? (
+            <Button onClick={searchButton}>Home</Button>
+          ) : (
+            bookmarkedDocs.length > 0 && (
+              <Button
             style={{
               visibility:
                 bookmarkedDocs.length === 0 && docs.length === 0
@@ -143,11 +162,10 @@ function MainHeader(props) {
             }}
             onClick={bookmarksButton}
             type="default"
-          >
-            Bookmarks
-          </Button>
+          >Bookmarks</Button>
+            )
+          )}
         </>
-
         <Button onClick={logout} type="default">
           Logout
         </Button>
@@ -163,13 +181,15 @@ const mapStateToProps = state => ({
   currentSearch: state.searches.currentSearch,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
   docs: state.docs.docs,
+  pageType: state.bookmarks.pageType,
   cardView: state.docs.cardView,
 });
 
 export default connect(mapStateToProps, {
-  getDocs,
   searchDocs,
   displayListView,
   displayThumbnail,
-  setCurrentSearch,
+  searchOnly,
+  bookmarks,
+  getDocs,
 })(MainHeader);

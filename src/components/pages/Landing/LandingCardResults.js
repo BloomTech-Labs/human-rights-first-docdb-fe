@@ -17,6 +17,7 @@ function LandingCardResults(props) {
     bookmarkedDocs,
     page,
     cardView,
+    pageType,
   } = props;
 
   const headerStyle = {
@@ -31,27 +32,26 @@ function LandingCardResults(props) {
     // for when the page size stays the same
     if (pageSize === props.pageSize) {
       setCurrentSearch(currentSearch, page, pageSize);
-      searchDocs(currentSearch, authState, page, props.pageSize);
+      searchDocs(currentSearch, authState, page, props.pageSize, pageType);
     }
     // when page size changes, this keeps track of where you were
     else {
       const newPage =
         Math.floor(((currentPage - 1) * props.pageSize + 1) / pageSize) + 1;
       setCurrentSearch(currentSearch, newPage, pageSize);
-      searchDocs(currentSearch, authState, newPage, pageSize);
+      searchDocs(currentSearch, authState, newPage, pageSize, pageType);
     }
   };
 
   return (
     <>
-      {bookmarkedDocs.length === 0 && docs.length === 0 ? (
-        <>
-          <LandingSearchCard />
-        </>
+      {(bookmarkedDocs.length === 0 && docs.length === 0) ||
+      pageType === 'searchOnly' ? (
+        <LandingSearchCard />
       ) : (
         <>
           <h1 style={{ ...headerStyle }}>
-            {page === 'bookmarks'
+            {pageType === 'bookmarks'
               ? 'Bookmarks'
               : `Search results for "${currentSearch}"`}
           </h1>
@@ -79,6 +79,7 @@ function LandingCardResults(props) {
 const mapStateToProps = state => ({
   docs: state.docs.docs,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
+  pageType: state.bookmarks.pageType,
   page: state.bookmarks.page,
   total: state.docs.totalDocsCount,
   currentSearch: state.searches.currentSearch,

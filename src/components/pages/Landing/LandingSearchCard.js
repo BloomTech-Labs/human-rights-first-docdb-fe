@@ -22,7 +22,6 @@ function LandingSearchCard(props) {
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
     searchDocs(value, authState, 1, pageSize);
-    setCurrentSearch(value, 1, props.pageSize);
   };
 
   return (
@@ -47,6 +46,6 @@ const mapStateToProps = state => ({
   pageSize: state.searches.pageSize,
 });
 
-export default connect(mapStateToProps, { searchDocs, setCurrentSearch })(
-  LandingSearchCard
-);
+export default connect(mapStateToProps, {
+  searchDocs,
+})(LandingSearchCard);

@@ -127,6 +127,21 @@ function LandingCard(props) {
       )}
       ;
     </>
+    //       )
+    //     }
+    //     style={{
+    //       width: 300,
+    //       marginBottom: '17%',
+    //       border: '1px solid #DAC6B2',
+    //     }}
+    //     headStyle={{ height: 35, padding: 0 }}
+    //     bodyStyle={{ padding: 12 }}
+    //     hoverable={true}
+    //   >
+    //     <Meta title={name} style={{ textAlign: 'center', marginBottom: 10 }} />
+    //     <Tags tagArray={tags} size={8} />
+    //   </Card>
+    // </div>
   );
 }
 

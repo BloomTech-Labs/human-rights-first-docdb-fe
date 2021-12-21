@@ -7,14 +7,14 @@ import {
 
 const initialState = {
   bookmarkedDocs: [],
-  page: '',
+  pageType: '',
 };
 
 export const bookmarksReducer = (state = initialState, action) => {
   const { payload, type } = action;
   switch (type) {
     case BOOKMARKS:
-      return { ...state, page: 'bookmarks' };
+      return { ...state, pageType: 'bookmarks' };
     case SAVE_BOOKMARKS:
       return { ...state, bookmarkedDocs: [...state.bookmarkedDocs, payload] };
     case REMOVE_BOOKMARKS:

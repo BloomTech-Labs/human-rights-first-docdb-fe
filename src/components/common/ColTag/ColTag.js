@@ -5,7 +5,7 @@ import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
 import { useOktaAuth } from '@okta/okta-react';
 
 function ColTag(props) {
-  const { searchDocs, tag, page, pageSize } = props;
+  const { searchDocs, tag, pageSize } = props;
   const { authState } = useOktaAuth();
 
   return (
@@ -19,7 +19,6 @@ function ColTag(props) {
         data-testid="doc-tag"
         onClick={() => {
           searchDocs(tag, authState, 1, pageSize);
-          setCurrentSearch(tag, 1, props.pageSize);
         }}
       >
         {tag.length < 8 ? (
@@ -33,7 +32,6 @@ function ColTag(props) {
 }
 
 const mapStateToProps = state => ({
-  page: state.bookmarks.page,
   pageSize: state.searches.pageSize,
 });
 
