@@ -3,7 +3,7 @@
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 
-[View the project.](https://a.humanrightsfirstdocdb.dev/login)
+[View the project.](https://humanrightsfirstdocdb.dev/login)
 *(Login required during development.)*
 
 <br>
