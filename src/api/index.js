@@ -48,7 +48,7 @@ const deleteTagDS = (path, body) => {
   }
 
   return axios
-    .delete(dsUrl + path, body)
+    .delete(dsUrl + path, { body })
     .then(res => {
       return res.data;
     })
