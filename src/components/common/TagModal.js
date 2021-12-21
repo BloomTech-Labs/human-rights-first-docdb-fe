@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Querystring from 'querystring';
 import { connect } from 'react-redux';
-import { Modal, Input as Add, Tag, Tooltip, Row, Col } from 'antd';
+import { Modal, Input as Add, Tag, Tooltip, Row, Col, Button } from 'antd';
 import {
   handleModal,
   setDocTags,
@@ -83,7 +83,7 @@ function TagModal(props) {
       }}
       cancelButtonProps={{ style: { display: 'none' } }}
     >
-      <Row align="center" gutter={[16, 16]}>
+      <Row justify="center" gutter={[16, 16]}>
         <Col span={19}>
           <Add
             placeholder="Add new tag..."
@@ -119,15 +119,20 @@ function TagModal(props) {
             ))
           : null}
       </Row>
-      <Modal
-        title="Confirm Deletion"
-        visible={confirmDelete}
-        onOk={handleDeleteConfirmed}
-        onCancel={handleDeleteCancel}
-      >
-        <div>Are you sure you would like to delete the tag:</div>
-        <div>{`"${markForDeletion}"?`}</div>
-      </Modal>
+      {confirmDelete ? (
+        <Row justify="center" align="bottom" gutter={[16, 8]}>
+          <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold' }}>
+            Are you sure you would like to delete the tag{' '}
+            {`"${markForDeletion}"?`}
+          </Col>
+          <Col>
+            <Button onClick={handleDeleteCancel}>Cancel</Button>
+          </Col>
+          <Col>
+            <Button onClick={handleDeleteConfirmed}>Confirm Deletion</Button>
+          </Col>
+        </Row>
+      ) : null}
     </Modal>
   );
 }
