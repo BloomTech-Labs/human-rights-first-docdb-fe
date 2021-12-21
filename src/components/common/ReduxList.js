@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getDocs } from '../../state/actions';
+import { getDocs } from '../../state/actions/docs';
 import { connect } from 'react-redux';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 

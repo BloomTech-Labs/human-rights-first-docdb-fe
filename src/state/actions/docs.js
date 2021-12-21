@@ -6,6 +6,8 @@
 
 import { getDSData, axiosWithAuth } from '../../api';
 
+import { CURRENT_SEARCH } from './searches';
+
 export const SET_PAGE = 'SET_PAGE';
 
 export const SET_BOOKMARKS = 'SET_BOOKMARKS';
@@ -13,21 +15,19 @@ export const REMOVE_BOOKMARKS = 'REMOVE_BOOKMARKS';
 export const SAVE_BOOKMARKS = 'SAVE_BOOKMARKS';
 export const THUMBNAIL = 'THUMBNAIL';
 
-export const CURRENT_SEARCH = 'CURRENT_SEARCH';
 export const LIST_VIEW = 'LIST_VIEW';
-export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
-export const SEARCH = 'SEARCH';
 export const SET_DOCS = 'SET_DOCS';
 
 export const START_FETCH = 'START_FETCH';
 
 export const FINISH_FETCH = 'FINISH_FETCH';
 
+
 const apiURI = process.env.REACT_APP_API_URI;
 
 export const getDocs = (authState, page, pageSize) => async dispatch => {
+  dispatch({ type: START_FETCH });
   try {
-    dispatch({ type: START_FETCH });
     const { data } = await axiosWithAuth(authState).get(`${apiURI}/bookmarks`);
     if (data.length > 0) {
       const fileIds = data.map(d => d.fileId);
@@ -45,51 +45,12 @@ export const getDocs = (authState, page, pageSize) => async dispatch => {
       });
     } else {
       dispatch({ type: FINISH_FETCH });
+      // dispatch({ type: SEARCH_BAR });
       dispatch({ type: SET_PAGE, payload: 'searchOnly' });
     }
   } catch (err) {
-    console.log(err);
+    console.log('GETDOCS ERROR', err);
   }
-};
-
-export const searchDocs = (
-  search,
-  authState,
-  page,
-  pageSize,
-  pageType
-) => dispatch => {
-  dispatch({ type: START_FETCH });
-  getDSData(
-    `/search?query=${search}&page_number=${page -
-      1}&results_per_page=${pageSize}`,
-    authState
-  )
-    .then(data => {
-      if (data.Response.length === 0) {
-        alert('No search results');
-        dispatch({ type: FINISH_FETCH });
-      } else {
-        if (pageType !== 'bookmarks') {
-          dispatch({ type: SET_PAGE, payload: 'searchResult' });
-        }
-        setCurrentSearch(search, 1, pageSize);
-        dispatch({ type: SET_DOCS, payload: data });
-        dispatch({ type: SEARCH, payload: search });
-      }
-    })
-    .catch(console.error);
-};
-
-export const setCurrentSearch = (
-  currentSearch,
-  currentPage = 1,
-  pageSize = 10
-) => dispatch => {
-  dispatch({
-    type: CURRENT_SEARCH,
-    payload: { currentSearch, currentPage, pageSize },
-  });
 };
 
 export const saveBookmarks = (authState, bookmarkId) => async dispatch => {

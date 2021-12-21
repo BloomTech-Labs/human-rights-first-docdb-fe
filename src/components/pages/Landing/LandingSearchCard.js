@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input } from 'antd';
-import { searchDocs } from '../../../state/actions';
+import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
 import { useOktaAuth } from '@okta/okta-react';
 import { connect } from 'react-redux';
 import logo2 from '../../../assets/HRF_Logo2.png';
@@ -11,6 +11,8 @@ const landingSearchStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  backgroundColor: '#f7ede2',
+  height: '100vh',
 };
 
 function LandingSearchCard(props) {
@@ -40,7 +42,8 @@ function LandingSearchCard(props) {
 }
 
 const mapStateToProps = state => ({
-  pageSize: state.pageSize,
+  page: state.bookmarks.page,
+  pageSize: state.searches.pageSize,
 });
 
 export default connect(mapStateToProps, {

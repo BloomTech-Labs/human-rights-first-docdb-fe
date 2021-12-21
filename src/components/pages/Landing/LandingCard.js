@@ -1,14 +1,15 @@
 import React from 'react';
-
 import { Card } from 'antd';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
-import { Tags } from '../../common';
-import './LandingCard.css';
+import Tags from '../../common/Tags/Tags';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
-import { removeBookmarks, saveBookmarks } from '../../../state/actions';
+import {
+  removeBookmarks,
+  saveBookmarks,
+} from '../../../state/actions/bookmarks';
 
 const { Meta } = Card;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;
@@ -22,6 +23,8 @@ function LandingCard(props) {
     bookmarkedDocs,
     saveBookmarks,
     removeBookmarks,
+    cardView,
+    path,
   } = props;
   const { authState } = useOktaAuth();
 
@@ -37,53 +40,108 @@ function LandingCard(props) {
   };
 
   return (
-    <div>
-      <Card
-        cover={
-          <img
-            onClick={() => window.open(url)}
-            src={`${thumbUrl}/${box_id}`}
-            alt={name}
-            // alt is the attribute that adds accessibility
-            fallback={`${thumbUrl}/${box_id}`}
-            // fallback is the attribute to display another image should the doc preview not load
-            style={{ height: 300 }}
+    <>
+      {cardView ? (
+        // displays the results in card view
+        <Card
+          cover={
+            <img
+              onClick={() => window.open(url)}
+              src={`${thumbUrl}/${box_id}`}
+              alt={name}
+              fallback={`${thumbUrl}/${box_id}`}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '1rem',
+                height: 300,
+              }}
+            />
+          }
+          extra={
+            <img
+              src={isFavorite ? BookmarkFilled : BookmarkOutlined}
+              alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
+              width={50}
+              data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
+              onClick={isFavorite ? handleRemove : handleSave}
+              style={{ right: 5, top: 5, position: 'absolute' }}
+            />
+          }
+          style={{
+            width: 300,
+            marginBottom: '17%',
+            border: '3px outset #DAC6B2',
+          }}
+        >
+          <Meta
+            title={name}
+            style={{ textAlign: 'center', marginBottom: 10 }}
           />
-        }
-        extra={
-          isFavorite ? (
+          <Tags tagArray={tags} size={8} />
+        </Card>
+      ) : (
+        // displays the results in list view
+        <Card
+          cover={
             <img
-              src={BookmarkFilled}
-              alt="bookmark filled"
-              width="50"
-              data-testid="filled-bookmark"
-              onClick={handleRemove}
+              onClick={() => window.open(url)}
+              src={`${thumbUrl}/${box_id}`}
+              alt={name}
+              fallback={`${thumbUrl}/${box_id}`}
+              style={{
+                // width: '100%',
+                // margin: 'auto',
+                minWidth: 180,
+                minHeight: 140,
+              }}
+            />
+          }
+          extra={
+            <img
+              src={isFavorite ? BookmarkFilled : BookmarkOutlined}
+              alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
+              width={50}
+              data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
+              onClick={isFavorite ? handleRemove : handleSave}
               style={{ right: 5, top: 5, position: 'absolute' }}
             />
-          ) : (
-            <img
-              src={BookmarkOutlined}
-              alt="bookmark outlined"
-              width="50"
-              data-testid="outlined-bookmark"
-              onClick={handleSave}
-              style={{ right: 5, top: 5, position: 'absolute' }}
-            />
-          )
-        }
-        style={{
-          width: 300,
-          marginBottom: '17%',
-          border: '1px solid #DAC6B2',
-        }}
-        headStyle={{ height: 35, padding: 0 }}
-        bodyStyle={{ padding: 12 }}
-        hoverable={true}
-      >
-        <Meta title={name} style={{ textAlign: 'center', marginBottom: 10 }} />
-        <Tags tagArray={tags} size={8} />
-      </Card>
-    </div>
+          }
+          style={{
+            width: '60vw',
+            height: 300,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: '3%',
+          }}
+        >
+          <Meta
+            title={name}
+            description={path}
+            style={{ textAlign: 'center', marginBottom: '10px' }}
+          />
+          <Tags tagArray={tags} size={8} />
+        </Card>
+      )}
+      ;
+    </>
+    //       )
+    //     }
+    //     style={{
+    //       width: 300,
+    //       marginBottom: '17%',
+    //       border: '1px solid #DAC6B2',
+    //     }}
+    //     headStyle={{ height: 35, padding: 0 }}
+    //     bodyStyle={{ padding: 12 }}
+    //     hoverable={true}
+    //   >
+    //     <Meta title={name} style={{ textAlign: 'center', marginBottom: 10 }} />
+    //     <Tags tagArray={tags} size={8} />
+    //   </Card>
+    // </div>
   );
 }
 
@@ -95,7 +153,8 @@ LandingCard.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  bookmarkedDocs: state.bookmarkedDocs,
+  bookmarkedDocs: state.bookmarks.bookmarkedDocs,
+  cardView: state.docs.cardView,
 });
 
 export default connect(mapStateToProps, { saveBookmarks, removeBookmarks })(

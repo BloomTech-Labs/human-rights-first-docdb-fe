@@ -1,22 +1,22 @@
 import React from 'react';
 import LandingCard from './LandingCard';
-import LandingListCard from './LandingListCard';
 import LandingSearchCard from './LandingSearchCard';
-import { setCurrentSearch, searchDocs } from '../../../state/actions';
+import { setCurrentSearch, searchDocs } from '../../../state/actions/searches';
 import { connect } from 'react-redux';
 import { Row, Col, Pagination } from 'antd';
 import { useOktaAuth } from '@okta/okta-react';
 
-function LandingCardList(props) {
+function LandingCardResults(props) {
   const {
     docs,
-    cardView,
     total,
     currentSearch,
     setCurrentSearch,
     searchDocs,
     currentPage,
     bookmarkedDocs,
+    page,
+    cardView,
     pageType,
   } = props;
 
@@ -32,7 +32,7 @@ function LandingCardList(props) {
     // for when the page size stays the same
     if (pageSize === props.pageSize) {
       setCurrentSearch(currentSearch, page, pageSize);
-      searchDocs(currentSearch, authState, page, pageSize, pageType);
+      searchDocs(currentSearch, authState, page, props.pageSize, pageType);
     }
     // when page size changes, this keeps track of where you were
     else {
@@ -56,19 +56,11 @@ function LandingCardList(props) {
               : `Search results for "${currentSearch}"`}
           </h1>
           <Row gutter={{ xs: 16, sm: 24, md: 32, lg: 48 }} justify="center">
-            {cardView
-              ? //For the Thumbnail Display
-                docs.map(doc => (
-                  <Col className="gutter-row" span={6} key={doc.box_id}>
-                    <LandingCard {...doc} />
-                  </Col>
-                ))
-              : //For the List Display
-                docs.map(doc => (
-                  <Col className="gutter-row" span={19} key={doc.box_id}>
-                    <LandingListCard {...doc} />
-                  </Col>
-                ))}
+            {docs.map(doc => (
+              <Col key={doc.box_id}>
+                <LandingCard {...doc} />
+              </Col>
+            ))}
           </Row>
           <Pagination
             current={currentPage}
@@ -85,17 +77,18 @@ function LandingCardList(props) {
 }
 
 const mapStateToProps = state => ({
-  docs: state.docs,
-  bookmarkedDocs: state.bookmarkedDocs,
-  pageType: state.pageType,
-  cardView: state.cardView,
-  total: state.totalDocsCount,
-  currentSearch: state.currentSearch,
-  currentPage: state.currentPage,
-  pageSize: state.pageSize,
+  docs: state.docs.docs,
+  bookmarkedDocs: state.bookmarks.bookmarkedDocs,
+  pageType: state.bookmarks.pageType,
+  page: state.bookmarks.page,
+  total: state.docs.totalDocsCount,
+  currentSearch: state.searches.currentSearch,
+  currentPage: state.searches.currentPage,
+  pageSize: state.searches.pageSize,
+  cardView: state.docs.cardView,
 });
 
 export default connect(mapStateToProps, {
   searchDocs,
   setCurrentSearch,
-})(LandingCardList);
+})(LandingCardResults);

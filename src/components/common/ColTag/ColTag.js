@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Tag, Tooltip } from 'antd';
 import { connect } from 'react-redux';
-import { searchDocs, setCurrentSearch } from '../../state/actions';
+import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
 import { useOktaAuth } from '@okta/okta-react';
 
 function ColTag(props) {
@@ -32,7 +32,7 @@ function ColTag(props) {
 }
 
 const mapStateToProps = state => ({
-  pageSize: state.pageSize,
+  pageSize: state.searches.pageSize,
 });
 
 export default connect(mapStateToProps, { searchDocs, setCurrentSearch })(

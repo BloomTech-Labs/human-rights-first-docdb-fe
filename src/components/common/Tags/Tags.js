@@ -1,17 +1,16 @@
 import React from 'react';
 import { Tag, Popover, Row, Col } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
-import ColTagList from './ColTagList';
-import './ColTagList.css';
+import ColTag from '../ColTag/ColTag';
 
-function TagsList(props) {
+function Tags(props) {
   const { size, tagArray } = props;
 
   if (tagArray.length <= size)
     return (
       <Row>
         {tagArray.map((tag, index) => (
-          <ColTagList classList="colTag" tag={tag} key={index} />
+          <ColTag tag={tag} key={index} />
         ))}
       </Row>
     );
@@ -20,24 +19,17 @@ function TagsList(props) {
   const hiddenTags = tagArray.slice(size - 1, tagArray.length);
 
   return (
-    <Row className="tagsListRow">
+    <Row>
       {shownTags.map((tag, index) => (
-        <ColTagList classList="colTag" tag={tag} key={index} />
+        <ColTag tag={tag} key={index} />
       ))}
-      <Col
-        style={{
-          display: 'flex',
-          justifyContent: 'space-evenly',
-          margin: '0 auto 2% auto',
-        }}
-      >
+      <Col>
         <Popover
           title="Tags cont."
-          classList="colTag"
           content={
             <Row>
               {hiddenTags.map((tag, index) => (
-                <ColTagList tag={tag} key={index} />
+                <ColTag tag={tag} key={index} />
               ))}
             </Row>
           }
@@ -51,4 +43,4 @@ function TagsList(props) {
   );
 }
 
-export default TagsList;
+export default Tags;
