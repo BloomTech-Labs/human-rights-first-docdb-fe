@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Search from 'antd/es/input/Search';
 import { Avatar, Layout, Button } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, AppstoreFilled, BarsOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './header.css';
 import logo2 from '../../../assets/HRF_Logo2.png';
@@ -112,41 +112,25 @@ function MainHeader(props) {
           ) : (
             <>
               <Search
-            style={{
-              visibility:
-                bookmarkedDocs.length === 0 && docs.length === 0
-                  ? 'hidden'
-                  : 'visible',
-            }}
-            className="search_bar"
-            placeholder="Search"
-            onSearch={onSearch}
-            value={query}
-            onChange={changeHandler}
-          />
-              <Button
-              style={{
-                visibility:
-                  (bookmarkedDocs.length === 0 && docs.length === 0) ||
-                  !cardView
-                    ? 'hidden'
-                    : 'visible',
-              }}
-              onClick={listView}
-            >
-              List
-            </Button>
-            <Button
-              style={{
-                visibility:
-                  (bookmarkedDocs.length === 0 && docs.length === 0) || cardView
-                    ? 'hidden'
-                    : 'visible',
-              }}
-              onClick={thumbnailView}
-            >
-              Thumbnail
-            </Button>
+                style={{
+                  visibility:
+                    bookmarkedDocs.length === 0 && docs.length === 0
+                      ? 'hidden'
+                      : 'visible',
+                }}
+                className="search_bar"
+                placeholder="Search"
+                onSearch={onSearch}
+                value={query}
+                onChange={changeHandler}
+              />
+              {cardView ? (
+                <><Avatar size={40} icon={<AppstoreFilled style={{ color: '#696969' }} />} onClick={thumbnailView} />
+                  <Avatar size={40} icon={<BarsOutlined />} onClick={listView} /></>
+              ) : (
+                <><Avatar size={40} icon={<AppstoreFilled />} onClick={thumbnailView} />
+                  <Avatar size={40} icon={<BarsOutlined style={{ color: '#696969' }} />} onClick={listView} /></>
+              )}
             </>
           )}
           {pageType === 'bookmarks' ? (
@@ -154,15 +138,15 @@ function MainHeader(props) {
           ) : (
             bookmarkedDocs.length > 0 && (
               <Button
-            style={{
-              visibility:
-                bookmarkedDocs.length === 0 && docs.length === 0
-                  ? 'hidden'
-                  : 'visible',
-            }}
-            onClick={bookmarksButton}
-            type="default"
-          >Bookmarks</Button>
+                style={{
+                  visibility:
+                    bookmarkedDocs.length === 0 && docs.length === 0
+                      ? 'hidden'
+                      : 'visible',
+                }}
+                onClick={bookmarksButton}
+                type="default"
+              >Bookmarks</Button>
             )
           )}
         </>
