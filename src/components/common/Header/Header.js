@@ -14,7 +14,7 @@ import {
   displayThumbnail,
   searchOnly,
 } from '../../../state/actions/docs';
-import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
+import { searchDocs } from '../../../state/actions/searches';
 import { bookmarks } from '../../../state/actions/bookmarks';
 import { debounce } from '../../../utils/debounce';
 
@@ -46,7 +46,6 @@ function MainHeader(props) {
   const {
     getDocs,
     searchDocs,
-    setCurrentSearch,
     displayListView,
     displayThumbnail,
     currentSearch,
