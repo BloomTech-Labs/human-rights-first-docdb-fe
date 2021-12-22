@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
+import { AlignCenterOutlined as Summary } from '@ant-design/icons';
 import Button from './Stock/Button';
 
 const SummaryModal = props => {
@@ -15,7 +16,7 @@ const SummaryModal = props => {
 
   return (
     <>
-      <Button classType="modal" buttonText="Summary" handleClick={showModal} />
+      <Summary onClick={showModal} />
 
       <Modal
         title={name}

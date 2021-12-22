@@ -34,6 +34,7 @@ function LandingCard(props) {
   } = props;
   const { authState } = useOktaAuth();
 
+  const { Panel } = Collapse;
   let isFavorite = false;
   if (bookmarkedDocs.includes(box_id)) isFavorite = true;
 
@@ -106,7 +107,9 @@ function LandingCard(props) {
         >
           <Row wrap="false">
             <Col span={2}>
-              <SummaryModal name={name} summary={summary} />
+              <Tooltip title="Document Summary">
+                <SummaryModal name={name} summary={summary} />
+              </Tooltip>
               <Tooltip title="Add/Edit Tags">
                 <EditTags
                   style={{ fontSize: 18, cursor: 'pointer' }}
@@ -129,56 +132,60 @@ function LandingCard(props) {
               alt={name}
               fallback={`${thumbUrl}/${box_id}`}
               style={{
-                // width: '100%',
-                // margin: 'auto',
+                width: '100%',
+                margin: 'auto',
+                padding: '1rem',
                 minWidth: 180,
                 minHeight: 140,
               }}
             />
           }
-          extra={
-            <img
-              src={isFavorite ? BookmarkFilled : BookmarkOutlined}
-              alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
-              width={50}
-              data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
-              onClick={isFavorite ? handleRemove : handleSave}
-              style={{ right: 5, top: 5, position: 'absolute' }}
-            />
-          }
+          // extra={
+          //   <img
+          //     src={isFavorite ? BookmarkFilled : BookmarkOutlined}
+          //     alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
+          //     width={50}
+          //     data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
+          //     onClick={isFavorite ? handleRemove : handleSave}
+          //     style={{ right: 5, top: 5, position: 'absolute' }}
+          //   />
+          // }
           style={{
             width: '60vw',
-            height: 300,
             display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: 'left',
             marginBottom: '3%',
           }}
+          bodyStyle={{ overflow: 'auto', whiteSpace: 'normal' }}
         >
+          <img
+            src={isFavorite ? BookmarkFilled : BookmarkOutlined}
+            alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
+            width={50}
+            data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
+            onClick={isFavorite ? handleRemove : handleSave}
+            style={{ right: 5, top: 5, position: 'absolute' }}
+          />
           <Meta
             title={name}
             description={path}
-            style={{ textAlign: 'center', marginBottom: '10px' }}
+            style={{ marginBottom: '10px' }}
           />
+          <Collapse defaultActiveKey={['0']} ghost>
+            <Panel header="Summary" key="1">
+              <p>{summary}</p>
+            </Panel>
+          </Collapse>
           <Tags tagArray={tags} size={8} />
+          <Tooltip title="Add/Edit Tags">
+            <EditTags
+              style={{ fontSize: 18, cursor: 'pointer' }}
+              onClick={loadTagModal}
+            />
+          </Tooltip>
         </Card>
       )}
     </>
-    //       )
-    //     }
-    //     style={{
-    //       width: 300,
-    //       marginBottom: '17%',
-    //       border: '1px solid #DAC6B2',
-    //     }}
-    //     headStyle={{ height: 35, padding: 0 }}
-    //     bodyStyle={{ padding: 12 }}
-    //     hoverable={true}
-    //   >
-    //     <Meta title={name} style={{ textAlign: 'center', marginBottom: 10 }} />
-    //     <Tags tagArray={tags} size={8} />
-    //   </Card>
-    // </div>
   );
 }
 
