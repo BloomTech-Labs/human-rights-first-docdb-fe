@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Collapse } from 'antd';
+import { Card, Collapse, Col, Row, Tooltip } from 'antd';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
@@ -83,8 +83,16 @@ function LandingCard(props) {
             title={name}
             style={{ textAlign: 'center', marginBottom: 10 }}
           />
-          <SummaryModal name={name} summary={summary} />
-          <Tags tagArray={tags} size={8} />
+          <Row wrap="false">
+            <Col span={2}>
+              <Tooltip title="Document Summary">
+                <SummaryModal name={name} summary={summary} />
+              </Tooltip>
+            </Col>
+            <Col span={22}>
+              <Tags tagArray={tags} size={8} />
+            </Col>
+          </Row>
         </Card>
       ) : (
         // displays the results in list view
