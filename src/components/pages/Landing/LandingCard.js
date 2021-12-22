@@ -125,7 +125,6 @@ function LandingCard(props) {
           <Tags tagArray={tags} size={8} />
         </Card>
       )}
-      ;
     </>
     //       )
     //     }
