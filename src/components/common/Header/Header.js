@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Search from 'antd/es/input/Search';
-import { Avatar, Layout, Button } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { Tooltip, Avatar, Layout, Button } from 'antd';
+import { UserOutlined, AppstoreFilled, BarsOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './header.css';
 import logo2 from '../../../assets/HRF_Logo2.png';
@@ -129,30 +129,21 @@ function MainHeader(props) {
                 value={query}
                 onChange={changeHandler}
               />
-              <Button
-                style={{
-                  visibility:
-                    (bookmarkedDocs.length === 0 && docs.length === 0) ||
-                    !cardView
-                      ? 'hidden'
-                      : 'visible',
-                }}
-                onClick={listView}
-              >
-                List
-              </Button>
-              <Button
-                style={{
-                  visibility:
-                    (bookmarkedDocs.length === 0 && docs.length === 0) ||
-                    cardView
-                      ? 'hidden'
-                      : 'visible',
-                }}
-                onClick={thumbnailView}
-              >
-                Thumbnail
-              </Button>
+              {cardView ? (
+                <><Tooltip placement="bottom" title={'Grid View'}>
+                  <Avatar size={40} icon={<AppstoreFilled style={{ color: '#696969' }} />} onClick={thumbnailView} />
+                </Tooltip>
+                  <Tooltip placement="bottom" title={'List View'}>
+                    <Avatar size={40} icon={<BarsOutlined />} onClick={listView} />
+                  </Tooltip></>
+              ) : (
+                <><Tooltip placement="bottom" title={'Grid View'}>
+                  <Avatar size={40} icon={<AppstoreFilled />} onClick={thumbnailView} />
+                </Tooltip>
+                  <Tooltip placement="bottom" title={'List View'}>
+                    <Avatar size={40} icon={<BarsOutlined style={{ color: '#696969' }} />} onClick={listView} />
+                  </Tooltip></>
+              )}
             </>
           )}
           {pageType === 'bookmarks' ? (
