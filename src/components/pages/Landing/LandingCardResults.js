@@ -15,8 +15,6 @@ function LandingCardResults(props) {
     searchDocs,
     currentPage,
     bookmarkedDocs,
-    page,
-    cardView,
     pageType,
   } = props;
 
@@ -79,7 +77,7 @@ function LandingCardResults(props) {
 const mapStateToProps = state => ({
   docs: state.docs.docs,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
-  pageType: state.bookmarks.pageType,
+  pageType: state.docs.pageType,
   page: state.bookmarks.page,
   total: state.docs.totalDocsCount,
   currentSearch: state.searches.currentSearch,

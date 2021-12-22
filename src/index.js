@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import docsReducer from './state/reducers';
+import reducer from './state/reducers';
 import 'antd/dist/antd.less';
 import { NotFoundPage } from './components/pages/NotFound';
 import { Admin } from './components/pages/Admin';
@@ -21,7 +21,7 @@ import { config } from './utils/oktaConfig';
 import { LoadingComponent, Header } from './components/common';
 import './reset.css';
 
-const store = createStore(docsReducer, applyMiddleware(thunk, logger));
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <Provider store={store}>

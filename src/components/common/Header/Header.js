@@ -14,7 +14,10 @@ import {
   displayThumbnail,
   searchOnly,
 } from '../../../state/actions/docs';
-import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
+import {
+  searchDocs,
+  setPageToSearchResults,
+} from '../../../state/actions/searches';
 import { bookmarks } from '../../../state/actions/bookmarks';
 import { debounce } from '../../../utils/debounce';
 
@@ -46,26 +49,16 @@ function MainHeader(props) {
   const {
     getDocs,
     searchDocs,
-    setCurrentSearch,
+    setPageToSearchResults,
     displayListView,
     displayThumbnail,
-    currentSearch,
     bookmarks,
     bookmarkedDocs,
     docs,
     cardView,
     pageType,
-    pageSize
+    pageSize,
   } = props;
-
-  useEffect(() => {
-    if (pageType !== 'bookmarks') {
-      setQuery(currentSearch);
-    } else {
-      setQuery('');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentSearch]);
 
   const changeHandler = e => {
     setQuery(e.target.value);
@@ -78,8 +71,8 @@ function MainHeader(props) {
   const { pathname } = useLocation();
 
   const bookmarksButton = () => {
+    setQuery('');
     bookmarks();
-    console.log(pageType);
     getDocs(authState, 1, pageSize);
   };
 
@@ -91,6 +84,7 @@ function MainHeader(props) {
 
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
+    setPageToSearchResults();
     searchDocs(value, authState, 1, pageSize);
   };
 
@@ -112,41 +106,42 @@ function MainHeader(props) {
           ) : (
             <>
               <Search
-            style={{
-              visibility:
-                bookmarkedDocs.length === 0 && docs.length === 0
-                  ? 'hidden'
-                  : 'visible',
-            }}
-            className="search_bar"
-            placeholder="Search"
-            onSearch={onSearch}
-            value={query}
-            onChange={changeHandler}
-          />
+                style={{
+                  visibility:
+                    bookmarkedDocs.length === 0 && docs.length === 0
+                      ? 'hidden'
+                      : 'visible',
+                }}
+                className="search_bar"
+                placeholder="Search"
+                onSearch={onSearch}
+                value={query}
+                onChange={changeHandler}
+              />
               <Button
-              style={{
-                visibility:
-                  (bookmarkedDocs.length === 0 && docs.length === 0) ||
-                  !cardView
-                    ? 'hidden'
-                    : 'visible',
-              }}
-              onClick={listView}
-            >
-              List
-            </Button>
-            <Button
-              style={{
-                visibility:
-                  (bookmarkedDocs.length === 0 && docs.length === 0) || cardView
-                    ? 'hidden'
-                    : 'visible',
-              }}
-              onClick={thumbnailView}
-            >
-              Thumbnail
-            </Button>
+                style={{
+                  visibility:
+                    (bookmarkedDocs.length === 0 && docs.length === 0) ||
+                    !cardView
+                      ? 'hidden'
+                      : 'visible',
+                }}
+                onClick={listView}
+              >
+                List
+              </Button>
+              <Button
+                style={{
+                  visibility:
+                    (bookmarkedDocs.length === 0 && docs.length === 0) ||
+                    cardView
+                      ? 'hidden'
+                      : 'visible',
+                }}
+                onClick={thumbnailView}
+              >
+                Thumbnail
+              </Button>
             </>
           )}
           {pageType === 'bookmarks' ? (
@@ -154,15 +149,17 @@ function MainHeader(props) {
           ) : (
             bookmarkedDocs.length > 0 && (
               <Button
-            style={{
-              visibility:
-                bookmarkedDocs.length === 0 && docs.length === 0
-                  ? 'hidden'
-                  : 'visible',
-            }}
-            onClick={bookmarksButton}
-            type="default"
-          >Bookmarks</Button>
+                style={{
+                  visibility:
+                    bookmarkedDocs.length === 0 && docs.length === 0
+                      ? 'hidden'
+                      : 'visible',
+                }}
+                onClick={bookmarksButton}
+                type="default"
+              >
+                Bookmarks
+              </Button>
             )
           )}
         </>
@@ -192,4 +189,5 @@ export default connect(mapStateToProps, {
   searchOnly,
   bookmarks,
   getDocs,
+  setPageToSearchResults,
 })(MainHeader);

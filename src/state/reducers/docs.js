@@ -4,6 +4,7 @@ import {
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
+  SET_PAGE,
 } from '../actions/docs';
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   totalDocsCount: 0,
   isFetching: false,
   cardView: true,
+  pageType: 'bookmarks',
 };
 
 export const docsReducer = (state = initialState, action) => {
@@ -31,6 +33,8 @@ export const docsReducer = (state = initialState, action) => {
       return { ...state, cardView: true };
     case LIST_VIEW:
       return { ...state, cardView: false };
+    case SET_PAGE:
+      return { ...state, pageType: payload };
     default:
       return state;
   }

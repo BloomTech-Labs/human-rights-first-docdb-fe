@@ -1,9 +1,9 @@
 import { getDSData } from '../../api';
+import { SET_PAGE } from './docs';
 
 export const CURRENT_SEARCH = 'CURRENT_SEARCH';
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SEARCH = 'SEARCH';
-export const SEARCH_BAR = 'SEARCH_BAR';
 
 export const START_FETCH = 'START_FETCH';
 export const FINISH_FETCH = 'FINISH_FETCH';
@@ -19,13 +19,12 @@ export const searchDocs = (search, authState, page, pageSize) => dispatch => {
     authState
   )
     .then(data => {
-      console.log(data);
       if (data.Response.length === 0) {
         alert('No search results');
         dispatch({ type: FINISH_FETCH });
       } else {
         dispatch({ type: SET_DOCS, payload: data });
-        dispatch({ type: SEARCH, payload: search });
+        setCurrentSearch(search, page, pageSize);
       }
     })
     .catch(console.error);
@@ -40,4 +39,8 @@ export const setCurrentSearch = (
     type: CURRENT_SEARCH,
     payload: { currentSearch, currentPage, pageSize },
   });
+};
+
+export const setPageToSearchResults = () => dispatch => {
+  dispatch({ type: SET_PAGE, payload: 'searchResults' });
 };

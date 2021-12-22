@@ -22,7 +22,6 @@ export const START_FETCH = 'START_FETCH';
 
 export const FINISH_FETCH = 'FINISH_FETCH';
 
-
 const apiURI = process.env.REACT_APP_API_URI;
 
 export const getDocs = (authState, page, pageSize) => async dispatch => {
@@ -45,7 +44,6 @@ export const getDocs = (authState, page, pageSize) => async dispatch => {
       });
     } else {
       dispatch({ type: FINISH_FETCH });
-      // dispatch({ type: SEARCH_BAR });
       dispatch({ type: SET_PAGE, payload: 'searchOnly' });
     }
   } catch (err) {
