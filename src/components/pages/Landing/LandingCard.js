@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Col, Tooltip } from 'antd';
+import { Card, Row, Col, Tooltip, Collapse } from 'antd';
 import { DiffOutlined as EditTags } from '@ant-design/icons';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
