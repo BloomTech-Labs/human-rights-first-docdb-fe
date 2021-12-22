@@ -3,7 +3,7 @@ import { SEARCH, CURRENT_SEARCH, SET_SEARCH_QUERY } from '../actions/searches';
 const initialState = {
   currentSearch: '',
   currentPage: 1,
-  pageSize: 10,
+  pageSize: 20,
   query: '',
   searchTerm: '',
 };
