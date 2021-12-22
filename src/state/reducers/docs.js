@@ -4,6 +4,10 @@ import {
   FINISH_FETCH,
   THUMBNAIL,
   LIST_VIEW,
+  HANDLE_MODAL,
+  SET_DOC_TAGS,
+  UPDATE_DOC_TAGS,
+  DELETE_DOC_TAG,
 } from '../actions/docs';
 
 const initialState = {
@@ -11,6 +15,11 @@ const initialState = {
   totalDocsCount: 0,
   isFetching: false,
   cardView: true,
+  openModal: false,
+  docTags: {
+    file_id: '',
+    tags: [],
+  },
 };
 
 export const docsReducer = (state = initialState, action) => {
@@ -31,6 +40,29 @@ export const docsReducer = (state = initialState, action) => {
       return { ...state, cardView: true };
     case LIST_VIEW:
       return { ...state, cardView: false };
+    case HANDLE_MODAL:
+      return { ...state, openModal: !state.openModal };
+    case SET_DOC_TAGS:
+      return {
+        ...state,
+        docTags: payload,
+      };
+    case UPDATE_DOC_TAGS:
+      return {
+        ...state,
+        docTags: {
+          ...state.docTags,
+          tags: [...state.docTags.tags, payload],
+        },
+      };
+    case DELETE_DOC_TAG:
+      return {
+        ...state,
+        docTags: {
+          ...state.docTags,
+          tags: state.docTags.tags.filter(tag => tag !== payload),
+        },
+      };
     default:
       return state;
   }
