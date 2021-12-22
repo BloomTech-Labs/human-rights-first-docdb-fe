@@ -12,6 +12,7 @@ import {
   saveBookmarks,
 } from '../../../state/actions/bookmarks';
 import { handleModal, setDocTags } from '../../../state/actions/docs';
+import SummaryModal from './../../common/SummaryModal';
 
 const { Meta } = Card;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;
@@ -29,6 +30,7 @@ function LandingCard(props) {
     path,
     handleModal,
     setDocTags,
+    summary,
   } = props;
   const { authState } = useOktaAuth();
 
@@ -104,6 +106,7 @@ function LandingCard(props) {
         >
           <Row wrap="false">
             <Col span={2}>
+              <SummaryModal name={name} summary={summary} />
               <Tooltip title="Add/Edit Tags">
                 <EditTags
                   style={{ fontSize: 18, cursor: 'pointer' }}
@@ -160,7 +163,6 @@ function LandingCard(props) {
           <Tags tagArray={tags} size={8} />
         </Card>
       )}
-      ;
     </>
     //       )
     //     }
