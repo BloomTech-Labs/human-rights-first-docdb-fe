@@ -49,16 +49,27 @@ function MainHeader(props) {
   const {
     getDocs,
     searchDocs,
+    searchOnly,
     setPageToSearchResults,
     displayListView,
     displayThumbnail,
     bookmarks,
     bookmarkedDocs,
     docs,
+    currentSearch,
     cardView,
     pageType,
     pageSize,
   } = props;
+
+  useEffect(() => {
+    if (pageType !== 'bookmarks') {
+      setQuery(currentSearch);
+    } else {
+      setQuery('');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentSearch]);
 
   const changeHandler = e => {
     setQuery(e.target.value);
@@ -174,11 +185,10 @@ function MainHeader(props) {
 
 const mapStateToProps = state => ({
   pageSize: state.searches.pageSize,
-  page: state.bookmarks.page,
   currentSearch: state.searches.currentSearch,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
   docs: state.docs.docs,
-  pageType: state.bookmarks.pageType,
+  pageType: state.docs.pageType,
   cardView: state.docs.cardView,
 });
 

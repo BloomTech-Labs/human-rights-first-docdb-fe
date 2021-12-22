@@ -10,7 +10,12 @@ export const FINISH_FETCH = 'FINISH_FETCH';
 
 export const SET_DOCS = 'SET_DOCS';
 
-export const searchDocs = (search, authState, page, pageSize) => dispatch => {
+export const searchDocs = (
+  search,
+  authState,
+  page = 1,
+  pageSize
+) => dispatch => {
   dispatch({ type: START_FETCH });
   dispatch({ type: SET_SEARCH_QUERY, payload: search });
   getDSData(
