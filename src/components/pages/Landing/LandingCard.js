@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Row, Tooltip, Meta } from 'antd';
+import { Card, Col, Row, Tooltip } from 'antd';
 import { DiffOutlined as EditTags } from '@ant-design/icons';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
@@ -13,6 +13,7 @@ import {
 } from '../../../state/actions/bookmarks';
 import { handleModal, setDocTags } from '../../../state/actions/docs';
 
+const { Meta } = Card;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;
 
 function LandingCard(props) {
