@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Querystring from 'querystring';
 import { connect } from 'react-redux';
-import { Modal, Input as Add, Tag, Tooltip } from 'antd';
+import { Modal, Input as Add, Tag, Tooltip, Row, Col } from 'antd';
 import {
   handleModal,
   setDocTags,
@@ -56,7 +56,6 @@ function TagModal(props) {
       file_id: docTags.file_id,
       tag: markForDeletion,
     });
-    console.log(body);
     deleteTag(body);
     setConfirmDelete(false);
     setMarkForDeletion('');
@@ -76,34 +75,40 @@ function TagModal(props) {
       onCancel={handleCancel}
       cancelButtonProps={{ style: { display: 'none' } }}
     >
-      <Add
-        placeholder="Add new tag..."
-        onPressEnter={handleAdd}
-        value={newTag}
-        onChange={changeHandler}
-      />
-      {docTags.tags
-        ? docTags.tags.map(tag => (
-            <Tag>
-              {tag}
-              <Tooltip title="click to confirm tag deletion">
-                <button
-                  style={{
-                    border: 'none',
-                    paddingLeft: '10px',
-                    backgroundColor: '#F8F8F8',
-                    cursor: 'pointer',
-                  }}
-                  type="text"
-                  value={tag}
-                  onClick={handleDelete}
-                >
-                  x
-                </button>
-              </Tooltip>
-            </Tag>
-          ))
-        : null}
+      <Row justify="center" gutter={[16, 16]}>
+        <Col>
+          <Add
+            placeholder="Add new tag..."
+            onPressEnter={handleAdd}
+            value={newTag}
+            onChange={changeHandler}
+          />
+        </Col>
+        <Col>
+          {docTags.tags
+            ? docTags.tags.map(tag => (
+                <Tag>
+                  {tag}
+                  <Tooltip title="click to confirm tag deletion">
+                    <button
+                      style={{
+                        border: 'none',
+                        paddingLeft: '10px',
+                        backgroundColor: '#F8F8F8',
+                        cursor: 'pointer',
+                      }}
+                      type="text"
+                      value={tag}
+                      onClick={handleDelete}
+                    >
+                      x
+                    </button>
+                  </Tooltip>
+                </Tag>
+              ))
+            : null}
+        </Col>
+      </Row>
       <Modal
         title="Confirm Deletion"
         visible={confirmDelete}
