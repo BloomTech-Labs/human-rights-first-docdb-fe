@@ -19,7 +19,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.4.0"
+    "redux-thunk": "^2.4.0",
+    "watchpack-chokidar2": "^2.0.1"
   },
   "scripts": {
     "start": "craco start",
