@@ -4,7 +4,7 @@
 // You can have multiple action creators per file if it makes sense to the purpose those action creators are serving.
 // Declare action TYPES at the top of the file
 
-import { getDSData, axiosWithAuth, addTagDS, deleteTagDS } from '../../api';
+import { getDSData, addTagDS, deleteTagDS, axiosWithAuth } from '../../api';
 
 import { CURRENT_SEARCH } from './searches';
 
@@ -67,14 +67,14 @@ export const addCustomTag = body => dispatch => {
   });
 };
 
-export const setDocTags = docTags => dispatch => {
-  dispatch({ type: SET_DOC_TAGS, payload: docTags });
-};
-
 export const deleteTag = body => dispatch => {
   deleteTagDS('/remove_tag', body).then(data => {
     dispatch({ type: DELETE_DOC_TAG, payload: data.tag });
   });
+};
+
+export const setDocTags = docTags => dispatch => {
+  dispatch({ type: SET_DOC_TAGS, payload: docTags });
 };
 
 export const saveBookmarks = (authState, bookmarkId) => async dispatch => {
