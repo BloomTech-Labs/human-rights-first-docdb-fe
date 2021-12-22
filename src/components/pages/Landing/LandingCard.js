@@ -13,6 +13,7 @@ import {
 } from '../../../state/actions/bookmarks';
 import { handleModal, setDocTags } from '../../../state/actions/docs';
 import SummaryModal from './../../common/SummaryModal';
+import './LandingCard.css';
 
 const { Meta } = Card;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;
