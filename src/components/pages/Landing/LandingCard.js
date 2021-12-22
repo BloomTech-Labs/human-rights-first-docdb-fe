@@ -10,6 +10,7 @@ import {
   removeBookmarks,
   saveBookmarks,
 } from '../../../state/actions/bookmarks';
+import SummaryModal from '../../common/SummaryModal';
 import './LandingCard.css';
 
 const { Meta } = Card;
@@ -82,6 +83,7 @@ function LandingCard(props) {
             title={name}
             style={{ textAlign: 'center', marginBottom: 10 }}
           />
+          <SummaryModal name={name} summary={summary} />
           <Tags tagArray={tags} size={8} />
         </Card>
       ) : (
