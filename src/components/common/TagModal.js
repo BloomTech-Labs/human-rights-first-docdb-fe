@@ -7,7 +7,7 @@ import {
   setDocTags,
   addCustomTag,
   deleteTag,
-} from '../../state/actions';
+} from '../../state/actions/docs';
 
 function TagModal(props) {
   const {
@@ -138,8 +138,8 @@ function TagModal(props) {
 }
 
 const mapStateToProps = state => ({
-  openModal: state.openModal,
-  docTags: state.docTags,
+  openModal: state.docs.openModal,
+  docTags: state.docs.docTags,
 });
 
 export default connect(mapStateToProps, {
