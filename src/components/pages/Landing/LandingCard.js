@@ -4,6 +4,7 @@ import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
 import Tags from '../../common/Tags/Tags';
+import TagsList from '../../common/Tags/TagsList';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
 import {
@@ -122,26 +123,11 @@ function LandingCard(props) {
             description={path}
             style={{ textAlign: 'center', marginBottom: '10px' }}
           />
-          <Tags tagArray={tags} size={8} />
+          <TagsList tagArray={tags} size={8} />
         </Card>
       )}
       ;
     </>
-    //       )
-    //     }
-    //     style={{
-    //       width: 300,
-    //       marginBottom: '17%',
-    //       border: '1px solid #DAC6B2',
-    //     }}
-    //     headStyle={{ height: 35, padding: 0 }}
-    //     bodyStyle={{ padding: 12 }}
-    //     hoverable={true}
-    //   >
-    //     <Meta title={name} style={{ textAlign: 'center', marginBottom: 10 }} />
-    //     <Tags tagArray={tags} size={8} />
-    //   </Card>
-    // </div>
   );
 }
 
