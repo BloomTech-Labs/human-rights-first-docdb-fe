@@ -14,7 +14,8 @@ export const searchDocs = (
   search,
   authState,
   page = 1,
-  pageSize
+  pageSize,
+  pageType
 ) => dispatch => {
   dispatch({ type: START_FETCH });
   dispatch({ type: SET_SEARCH_QUERY, payload: search });
@@ -29,7 +30,13 @@ export const searchDocs = (
         dispatch({ type: FINISH_FETCH });
       } else {
         dispatch({ type: SET_DOCS, payload: data });
-        setCurrentSearch(search, page, pageSize);
+        dispatch({
+          type: CURRENT_SEARCH,
+          payload: { currentSearch: search, currentPage: page, pageSize },
+        });
+        if (pageType !== 'bookmarks') {
+          dispatch({ type: SET_PAGE, payload: 'searchResults' });
+        }
       }
     })
     .catch(console.error);

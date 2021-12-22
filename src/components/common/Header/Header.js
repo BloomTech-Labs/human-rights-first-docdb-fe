@@ -69,7 +69,7 @@ function MainHeader(props) {
       setQuery('');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentSearch]);
+  }, [pageType, currentSearch]);
 
   const changeHandler = e => {
     setQuery(e.target.value);
