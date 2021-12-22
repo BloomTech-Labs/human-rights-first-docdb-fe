@@ -42,8 +42,33 @@ const getProfileData = authState => {
     });
   }
 };
+const addTagDS = (path, body) => {
+  if (!path) {
+    throw new Error('no path');
+  }
+
+  return axios
+    .post(dsUrl + path, body)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => err);
+};
+
+const deleteTagDS = (path, body) => {
+  if (!path) {
+    throw new Error('no path');
+  }
+
+  return axios
+    .delete(dsUrl + path + '?' + body)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => err);
+};
 
 const axiosWithAuth = authState =>
   axios.create({ headers: getAuthHeader(authState) });
 
-export { getProfileData, getDSData, axiosWithAuth };
+export { getProfileData, getDSData, axiosWithAuth, addTagDS, deleteTagDS };

@@ -5,6 +5,7 @@ import { setCurrentSearch, searchDocs } from '../../../state/actions/searches';
 import { connect } from 'react-redux';
 import { Row, Col, Pagination } from 'antd';
 import { useOktaAuth } from '@okta/okta-react';
+import TagModal from '../../common/TagModal';
 
 function LandingCardResults(props) {
   const {
@@ -45,6 +46,7 @@ function LandingCardResults(props) {
 
   return (
     <>
+      <TagModal />
       {(bookmarkedDocs.length === 0 && docs.length === 0) ||
       pageType === 'searchOnly' ? (
         <LandingSearchCard />

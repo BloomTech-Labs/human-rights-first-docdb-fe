@@ -9,11 +9,7 @@ function ColTag(props) {
   const { authState } = useOktaAuth();
 
   return (
-    <Col
-      key={tag}
-      span={6}
-      style={{ display: 'flex', justifyContent: 'center' }}
-    >
+    <Col key={tag} push={1}>
       <Tag
         style={{ cursor: 'pointer' }}
         data-testid="doc-tag"
