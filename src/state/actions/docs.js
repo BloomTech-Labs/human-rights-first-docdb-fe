@@ -4,7 +4,7 @@
 // You can have multiple action creators per file if it makes sense to the purpose those action creators are serving.
 // Declare action TYPES at the top of the file
 
-import { getDSData, axiosWithAuth } from '../../api';
+import { getDSData, axiosWithAuth, addTagDS, deleteTagDS } from '../../api';
 
 import { CURRENT_SEARCH } from './searches';
 
@@ -22,6 +22,10 @@ export const START_FETCH = 'START_FETCH';
 
 export const FINISH_FETCH = 'FINISH_FETCH';
 
+export const HANDLE_MODAL = 'HANDLE_MODAL';
+export const SET_DOC_TAGS = 'SET_DOC_TAGS';
+export const UPDATE_DOC_TAGS = 'UPDATE_DOC_TAGS';
+export const DELETE_DOC_TAG = 'DELETE_DOC_TAG';
 
 const apiURI = process.env.REACT_APP_API_URI;
 
@@ -51,6 +55,26 @@ export const getDocs = (authState, page, pageSize) => async dispatch => {
   } catch (err) {
     console.log('GETDOCS ERROR', err);
   }
+};
+
+export const handleModal = () => dispatch => {
+  dispatch({ type: HANDLE_MODAL });
+};
+
+export const addCustomTag = body => dispatch => {
+  addTagDS('/add_tag', body).then(data => {
+    dispatch({ type: UPDATE_DOC_TAGS, payload: data.tag });
+  });
+};
+
+export const deleteTag = body => dispatch => {
+  deleteTagDS('/remove_tag', body).then(data => {
+    dispatch({ type: DELETE_DOC_TAG, payload: data.tag });
+  });
+};
+
+export const setDocTags = docTags => dispatch => {
+  dispatch({ type: SET_DOC_TAGS, payload: docTags });
 };
 
 export const saveBookmarks = (authState, bookmarkId) => async dispatch => {
