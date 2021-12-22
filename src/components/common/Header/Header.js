@@ -124,17 +124,17 @@ function MainHeader(props) {
                 onChange={changeHandler}
               />
               {cardView ? (
-                <><Tooltip placement="bottom" title={'Thumbnail view'}>
+                <><Tooltip placement="bottom" title={'Grid View'}>
                   <Avatar size={40} icon={<AppstoreFilled style={{ color: '#696969' }} />} onClick={thumbnailView} />
                 </Tooltip>
-                  <Tooltip placement="bottom" title={'List view'}>
+                  <Tooltip placement="bottom" title={'List View'}>
                     <Avatar size={40} icon={<BarsOutlined />} onClick={listView} />
                   </Tooltip></>
               ) : (
-                <><Tooltip placement="bottom" title={'Thumbnail view'}>
+                <><Tooltip placement="bottom" title={'Grid View'}>
                   <Avatar size={40} icon={<AppstoreFilled />} onClick={thumbnailView} />
                 </Tooltip>
-                  <Tooltip placement="bottom" title={'List view'}>
+                  <Tooltip placement="bottom" title={'List View'}>
                     <Avatar size={40} icon={<BarsOutlined style={{ color: '#696969' }} />} onClick={listView} />
                   </Tooltip></>
               )}
