@@ -67,14 +67,14 @@ export const addCustomTag = body => dispatch => {
   });
 };
 
+export const setDocTags = docTags => dispatch => {
+  dispatch({ type: SET_DOC_TAGS, payload: docTags });
+};
+
 export const deleteTag = body => dispatch => {
   deleteTagDS('/remove_tag', body).then(data => {
     dispatch({ type: DELETE_DOC_TAG, payload: data.tag });
   });
-};
-
-export const setDocTags = docTags => dispatch => {
-  dispatch({ type: SET_DOC_TAGS, payload: docTags });
 };
 
 export const saveBookmarks = (authState, bookmarkId) => async dispatch => {
