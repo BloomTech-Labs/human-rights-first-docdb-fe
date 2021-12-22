@@ -1,9 +1,4 @@
-import {
-  SEARCH,
-  SEARCH_BAR,
-  CURRENT_SEARCH,
-  SET_SEARCH_QUERY,
-} from '../actions/searches';
+import { SEARCH, CURRENT_SEARCH, SET_SEARCH_QUERY } from '../actions/searches';
 
 const initialState = {
   currentSearch: '',
@@ -17,9 +12,7 @@ export const searchesReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case SEARCH:
-      return { ...state, page: 'search', currentSearch: payload };
-    case SEARCH_BAR:
-      return { ...state, page: 'bar' };
+      return { ...state, pageType: 'searchResults', currentSearch: payload };
     case SET_SEARCH_QUERY:
       return { ...state, currentSearch: payload };
     case CURRENT_SEARCH:

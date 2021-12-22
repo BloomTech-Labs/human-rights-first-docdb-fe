@@ -14,7 +14,10 @@ import {
   displayThumbnail,
   searchOnly,
 } from '../../../state/actions/docs';
-import { searchDocs } from '../../../state/actions/searches';
+import {
+  searchDocs,
+  setPageToSearchResults,
+} from '../../../state/actions/searches';
 import { bookmarks } from '../../../state/actions/bookmarks';
 import { debounce } from '../../../utils/debounce';
 
@@ -46,15 +49,17 @@ function MainHeader(props) {
   const {
     getDocs,
     searchDocs,
+    searchOnly,
+    setPageToSearchResults,
     displayListView,
     displayThumbnail,
-    currentSearch,
     bookmarks,
     bookmarkedDocs,
     docs,
+    currentSearch,
     cardView,
     pageType,
-    pageSize
+    pageSize,
   } = props;
 
   useEffect(() => {
@@ -77,8 +82,8 @@ function MainHeader(props) {
   const { pathname } = useLocation();
 
   const bookmarksButton = () => {
+    setQuery('');
     bookmarks();
-    console.log(pageType);
     getDocs(authState, 1, pageSize);
   };
 
@@ -90,6 +95,7 @@ function MainHeader(props) {
 
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
+    setPageToSearchResults();
     searchDocs(value, authState, 1, pageSize);
   };
 
@@ -153,7 +159,9 @@ function MainHeader(props) {
                 }}
                 onClick={bookmarksButton}
                 type="default"
-              >Bookmarks</Button>
+              >
+                Bookmarks
+              </Button>
             )
           )}
         </>
@@ -168,11 +176,10 @@ function MainHeader(props) {
 
 const mapStateToProps = state => ({
   pageSize: state.searches.pageSize,
-  page: state.bookmarks.page,
   currentSearch: state.searches.currentSearch,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
   docs: state.docs.docs,
-  pageType: state.bookmarks.pageType,
+  pageType: state.docs.pageType,
   cardView: state.docs.cardView,
 });
 
@@ -183,4 +190,5 @@ export default connect(mapStateToProps, {
   searchOnly,
   bookmarks,
   getDocs,
+  setPageToSearchResults,
 })(MainHeader);

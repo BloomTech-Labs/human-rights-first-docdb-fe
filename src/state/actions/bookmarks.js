@@ -1,4 +1,5 @@
-import { getDSData, axiosWithAuth } from '../../api';
+import { axiosWithAuth } from '../../api';
+import { SET_PAGE } from './docs';
 const apiURI = process.env.REACT_APP_API_URI;
 
 export const BOOKMARKS = 'BOOKMARKS';
@@ -30,4 +31,4 @@ export const removeBookmarks = (authState, bookmarkId) => async dispatch => {
   }
 };
 
-export const bookmarks = () => ({ type: BOOKMARKS });
+export const bookmarks = () => ({ type: SET_PAGE, payload: 'bookmarks' });
