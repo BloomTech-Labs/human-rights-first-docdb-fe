@@ -11,12 +11,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import docsReducer from './state/reducers';
-
+import reducer from './state/reducers';
 import 'antd/dist/antd.less';
-
 import { NotFoundPage } from './components/pages/NotFound';
-import { Search } from './components/pages/Search';
 import { Admin } from './components/pages/Admin';
 import { LoginPage } from './components/pages/Login';
 import { LandingPage } from './components/pages/Landing';
@@ -24,7 +21,7 @@ import { config } from './utils/oktaConfig';
 import { LoadingComponent, Header } from './components/common';
 import './reset.css';
 
-const store = createStore(docsReducer, applyMiddleware(thunk, logger));
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -56,7 +53,6 @@ function App() {
           exact
           component={() => <LandingPage LoadingComponent={LoadingComponent} />}
         />
-        <SecureRoute path="/search" component={Search} />
         <SecureRoute path="/admin" component={Admin} />
         <Route component={NotFoundPage} />
       </Switch>

@@ -20,13 +20,10 @@ const getDSData = (path, authState) => {
   if (!path) {
     throw new Error('no path');
   }
-  console.log(process.env);
-  console.log(dsUrl, path);
 
   return axios
-    .get(dsUrl + path, { headers })
+    .post(dsUrl + path, { headers })
     .then(res => {
-      console.log(res);
       return res.data;
     })
     .catch(err => err);
@@ -41,7 +38,6 @@ const getProfileData = authState => {
     return apiAuthGet(getAuthHeader(authState)).then(response => response.data);
   } catch (error) {
     return new Promise(() => {
-      console.log(error);
       return [];
     });
   }
