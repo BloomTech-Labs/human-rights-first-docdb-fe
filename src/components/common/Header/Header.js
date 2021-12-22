@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Search from 'antd/es/input/Search';
-import { Avatar, Layout, Button } from 'antd';
+import { Tooltip, Avatar, Layout, Button } from 'antd';
 import { UserOutlined, AppstoreFilled, BarsOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './header.css';
@@ -124,11 +124,19 @@ function MainHeader(props) {
                 onChange={changeHandler}
               />
               {cardView ? (
-                <><Avatar size={40} icon={<AppstoreFilled style={{ color: '#696969' }} />} onClick={thumbnailView} />
-                  <Avatar size={40} icon={<BarsOutlined />} onClick={listView} /></>
+                <><Tooltip placement="bottom" title={'Thumbnail view'}>
+                  <Avatar size={40} icon={<AppstoreFilled style={{ color: '#696969' }} />} onClick={thumbnailView} />
+                </Tooltip>
+                  <Tooltip placement="bottom" title={'List view'}>
+                    <Avatar size={40} icon={<BarsOutlined />} onClick={listView} />
+                  </Tooltip></>
               ) : (
-                <><Avatar size={40} icon={<AppstoreFilled />} onClick={thumbnailView} />
-                  <Avatar size={40} icon={<BarsOutlined style={{ color: '#696969' }} />} onClick={listView} /></>
+                <><Tooltip placement="bottom" title={'Thumbnail view'}>
+                  <Avatar size={40} icon={<AppstoreFilled />} onClick={thumbnailView} />
+                </Tooltip>
+                  <Tooltip placement="bottom" title={'List view'}>
+                    <Avatar size={40} icon={<BarsOutlined style={{ color: '#696969' }} />} onClick={listView} />
+                  </Tooltip></>
               )}
             </>
           )}
