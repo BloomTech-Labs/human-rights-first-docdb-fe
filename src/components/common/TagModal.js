@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Querystring from 'querystring';
 import { connect } from 'react-redux';
 import { Modal, Input as Add, Tag, Tooltip, Row, Col, Button } from 'antd';
