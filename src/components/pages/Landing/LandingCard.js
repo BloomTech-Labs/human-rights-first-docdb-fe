@@ -5,6 +5,7 @@ import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
 import Tags from '../../common/Tags/Tags';
+import TagsList from '../../common/Tags/TagsList';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
 import {
@@ -179,7 +180,7 @@ function LandingCard(props) {
               <p>{summary}</p>
             </Panel>
           </Collapse>
-          <Tags tagArray={tags} size={8} />
+          <TagsList tagArray={tags} size={8} />
           <Tooltip title="Add/Edit Tags">
             <EditTags
               style={{ fontSize: 18, cursor: 'pointer' }}
