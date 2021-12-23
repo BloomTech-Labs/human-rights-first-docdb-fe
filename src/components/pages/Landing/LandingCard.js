@@ -116,6 +116,7 @@ function LandingCard(props) {
                   style={{ fontSize: 18, cursor: 'pointer' }}
                   onClick={loadTagModal}
                 />
+              </Tooltip>
             </Col>
             <Col span={22}>
               <Tags tagArray={tags} size={8} />
