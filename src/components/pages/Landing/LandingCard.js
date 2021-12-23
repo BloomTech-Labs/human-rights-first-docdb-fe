@@ -180,7 +180,7 @@ function LandingCard(props) {
               <p>{summary}</p>
             </Panel>
           </Collapse>
-          <TagsList tagArray={tags} size={8} />
+          <TagsList tagArray={tags} />
           <Tooltip title="Add/Edit Tags">
             <EditTags
               style={{ fontSize: 18, cursor: 'pointer' }}
