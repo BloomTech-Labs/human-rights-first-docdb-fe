@@ -7,7 +7,6 @@ import {
 
 const initialState = {
   bookmarkedDocs: [],
-  pageType: '',
 };
 
 export const bookmarksReducer = (state = initialState, action) => {

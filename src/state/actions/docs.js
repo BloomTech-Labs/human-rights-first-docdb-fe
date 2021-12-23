@@ -49,7 +49,6 @@ export const getDocs = (authState, page, pageSize) => async dispatch => {
       });
     } else {
       dispatch({ type: FINISH_FETCH });
-      // dispatch({ type: SEARCH_BAR });
       dispatch({ type: SET_PAGE, payload: 'searchOnly' });
     }
   } catch (err) {

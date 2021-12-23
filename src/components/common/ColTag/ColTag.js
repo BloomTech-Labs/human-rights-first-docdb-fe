@@ -1,7 +1,11 @@
 import React from 'react';
 import { Col, Tag, Tooltip } from 'antd';
 import { connect } from 'react-redux';
-import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
+import {
+  searchDocs,
+  setCurrentSearch,
+  setPageToSearchResults,
+} from '../../../state/actions/searches';
 import { useOktaAuth } from '@okta/okta-react';
 
 function ColTag(props) {
@@ -14,6 +18,7 @@ function ColTag(props) {
         style={{ cursor: 'pointer' }}
         data-testid="doc-tag"
         onClick={() => {
+          setPageToSearchResults();
           searchDocs(tag, authState, 1, pageSize);
         }}
       >
@@ -31,6 +36,8 @@ const mapStateToProps = state => ({
   pageSize: state.searches.pageSize,
 });
 
-export default connect(mapStateToProps, { searchDocs, setCurrentSearch })(
-  ColTag
-);
+export default connect(mapStateToProps, {
+  searchDocs,
+  setCurrentSearch,
+  setPageToSearchResults,
+})(ColTag);

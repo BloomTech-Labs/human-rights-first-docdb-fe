@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Row, Tooltip } from 'antd';
+import { Card, Collapse, Col, Row, Tooltip } from 'antd';
 import { DiffOutlined as EditTags } from '@ant-design/icons';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
@@ -12,8 +12,11 @@ import {
   saveBookmarks,
 } from '../../../state/actions/bookmarks';
 import { handleModal, setDocTags } from '../../../state/actions/docs';
+import SummaryModal from '../../common/SummaryModal';
+import './LandingCard.css';
 
 const { Meta } = Card;
+const { Panel } = Collapse;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;
 
 function LandingCard(props) {
@@ -29,6 +32,7 @@ function LandingCard(props) {
     path,
     handleModal,
     setDocTags,
+    summary,
   } = props;
   const { authState } = useOktaAuth();
 
@@ -104,12 +108,14 @@ function LandingCard(props) {
         >
           <Row wrap="false">
             <Col span={2}>
+              <Tooltip title="Document Summary">
+                <SummaryModal name={name} summary={summary} />
+              </Tooltip>
               <Tooltip title="Add/Edit Tags">
                 <EditTags
                   style={{ fontSize: 18, cursor: 'pointer' }}
                   onClick={loadTagModal}
                 />
-              </Tooltip>
             </Col>
             <Col span={22}>
               <Tags tagArray={tags} size={8} />
@@ -134,6 +140,16 @@ function LandingCard(props) {
               }}
             />
           }
+          // extra={
+          //   <img
+          //     src={isFavorite ? BookmarkFilled : BookmarkOutlined}
+          //     alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
+          //     width={50}
+          //     data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
+          //     onClick={isFavorite ? handleRemove : handleSave}
+          //     style={{ right: 5, top: 5, position: 'absolute' }}
+          //   />
+          // }
           style={{
             width: '60vw',
             display: 'flex',
@@ -155,8 +171,13 @@ function LandingCard(props) {
           <Meta
             title={name}
             description={path}
-            style={{ textAlign: 'center', marginBottom: '10px' }}
+            style={{ marginBottom: '10px' }}
           />
+          <Collapse defaultActiveKey={['0']} ghost>
+            <Panel header="Summary" key="1">
+              <p>{summary}</p>
+            </Panel>
+          </Collapse>
           <Tags tagArray={tags} size={8} />
           <Tooltip title="Add/Edit Tags">
             <EditTags

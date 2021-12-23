@@ -23,8 +23,8 @@ ReduxList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  pageSize: state.pageSize,
-  bookmarkedDocs: state.bookmarkedDocs,
+  pageSize: state.searches.pageSize,
+  bookmarkedDocs: state.bookmarks.bookmarkedDocs,
 });
 
 export default connect(mapStateToProps, { getDocs })(ReduxList);

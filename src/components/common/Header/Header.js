@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Search from 'antd/es/input/Search';
-import { Avatar, Layout, Button } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { Tooltip, Avatar, Layout, Button } from 'antd';
+import { UserOutlined, AppstoreFilled, BarsOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './header.css';
 import logo2 from '../../../assets/HRF_Logo2.png';
@@ -14,7 +14,10 @@ import {
   displayThumbnail,
   searchOnly,
 } from '../../../state/actions/docs';
-import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
+import {
+  searchDocs,
+  setPageToSearchResults,
+} from '../../../state/actions/searches';
 import { bookmarks } from '../../../state/actions/bookmarks';
 import { debounce } from '../../../utils/debounce';
 
@@ -46,16 +49,17 @@ function MainHeader(props) {
   const {
     getDocs,
     searchDocs,
-    setCurrentSearch,
+    searchOnly,
+    setPageToSearchResults,
     displayListView,
     displayThumbnail,
-    currentSearch,
     bookmarks,
     bookmarkedDocs,
     docs,
+    currentSearch,
     cardView,
     pageType,
-    pageSize
+    pageSize,
   } = props;
 
   useEffect(() => {
@@ -65,7 +69,7 @@ function MainHeader(props) {
       setQuery('');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentSearch]);
+  }, [pageType, currentSearch]);
 
   const changeHandler = e => {
     setQuery(e.target.value);
@@ -78,8 +82,8 @@ function MainHeader(props) {
   const { pathname } = useLocation();
 
   const bookmarksButton = () => {
+    setQuery('');
     bookmarks();
-    console.log(pageType);
     getDocs(authState, 1, pageSize);
   };
 
@@ -91,6 +95,7 @@ function MainHeader(props) {
 
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
+    setPageToSearchResults();
     searchDocs(value, authState, 1, pageSize);
   };
 
@@ -112,41 +117,33 @@ function MainHeader(props) {
           ) : (
             <>
               <Search
-            style={{
-              visibility:
-                bookmarkedDocs.length === 0 && docs.length === 0
-                  ? 'hidden'
-                  : 'visible',
-            }}
-            className="search_bar"
-            placeholder="Search"
-            onSearch={onSearch}
-            value={query}
-            onChange={changeHandler}
-          />
-              <Button
-              style={{
-                visibility:
-                  (bookmarkedDocs.length === 0 && docs.length === 0) ||
-                  !cardView
-                    ? 'hidden'
-                    : 'visible',
-              }}
-              onClick={listView}
-            >
-              List
-            </Button>
-            <Button
-              style={{
-                visibility:
-                  (bookmarkedDocs.length === 0 && docs.length === 0) || cardView
-                    ? 'hidden'
-                    : 'visible',
-              }}
-              onClick={thumbnailView}
-            >
-              Thumbnail
-            </Button>
+                style={{
+                  visibility:
+                    bookmarkedDocs.length === 0 && docs.length === 0
+                      ? 'hidden'
+                      : 'visible',
+                }}
+                className="search_bar"
+                placeholder="Search"
+                onSearch={onSearch}
+                value={query}
+                onChange={changeHandler}
+              />
+              {cardView ? (
+                <><Tooltip placement="bottom" title={'Grid View'}>
+                  <Avatar size={40} icon={<AppstoreFilled style={{ color: '#696969' }} />} onClick={thumbnailView} />
+                </Tooltip>
+                  <Tooltip placement="bottom" title={'List View'}>
+                    <Avatar size={40} icon={<BarsOutlined />} onClick={listView} />
+                  </Tooltip></>
+              ) : (
+                <><Tooltip placement="bottom" title={'Grid View'}>
+                  <Avatar size={40} icon={<AppstoreFilled />} onClick={thumbnailView} />
+                </Tooltip>
+                  <Tooltip placement="bottom" title={'List View'}>
+                    <Avatar size={40} icon={<BarsOutlined style={{ color: '#696969' }} />} onClick={listView} />
+                  </Tooltip></>
+              )}
             </>
           )}
           {pageType === 'bookmarks' ? (
@@ -154,15 +151,17 @@ function MainHeader(props) {
           ) : (
             bookmarkedDocs.length > 0 && (
               <Button
-            style={{
-              visibility:
-                bookmarkedDocs.length === 0 && docs.length === 0
-                  ? 'hidden'
-                  : 'visible',
-            }}
-            onClick={bookmarksButton}
-            type="default"
-          >Bookmarks</Button>
+                style={{
+                  visibility:
+                    bookmarkedDocs.length === 0 && docs.length === 0
+                      ? 'hidden'
+                      : 'visible',
+                }}
+                onClick={bookmarksButton}
+                type="default"
+              >
+                Bookmarks
+              </Button>
             )
           )}
         </>
@@ -177,11 +176,10 @@ function MainHeader(props) {
 
 const mapStateToProps = state => ({
   pageSize: state.searches.pageSize,
-  page: state.bookmarks.page,
   currentSearch: state.searches.currentSearch,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
   docs: state.docs.docs,
-  pageType: state.bookmarks.pageType,
+  pageType: state.docs.pageType,
   cardView: state.docs.cardView,
 });
 
@@ -192,4 +190,5 @@ export default connect(mapStateToProps, {
   searchOnly,
   bookmarks,
   getDocs,
+  setPageToSearchResults,
 })(MainHeader);

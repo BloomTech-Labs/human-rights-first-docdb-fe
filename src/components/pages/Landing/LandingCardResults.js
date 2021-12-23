@@ -55,6 +55,15 @@ function LandingCardResults(props) {
               ? 'Bookmarks'
               : `Search results for "${currentSearch}"`}
           </h1>
+          <Pagination
+            style={{ textAlign: 'center', paddingBottom: '2%' }}
+            current={currentPage}
+            pageSize={props.pageSize}
+            onChange={handleChange}
+            total={total}
+            pageSizeOptions={[20, 40, 80]}
+            hideOnSinglePage={true}
+          />
           <Row gutter={{ xs: 16, sm: 24, md: 32, lg: 48 }} justify="center">
             {docs.map(doc => (
               <Col key={doc.box_id}>
@@ -63,11 +72,12 @@ function LandingCardResults(props) {
             ))}
           </Row>
           <Pagination
+            style={{ textAlign: 'center', paddingBottom: '2%' }}
             current={currentPage}
             pageSize={props.pageSize}
             onChange={handleChange}
             total={total}
-            pageSizeOptions={[10, 25, 50, 100]}
+            pageSizeOptions={[20, 40, 80]}
             hideOnSinglePage={true}
           />
         </>
@@ -79,7 +89,7 @@ function LandingCardResults(props) {
 const mapStateToProps = state => ({
   docs: state.docs.docs,
   bookmarkedDocs: state.bookmarks.bookmarkedDocs,
-  pageType: state.bookmarks.pageType,
+  pageType: state.docs.pageType,
   page: state.bookmarks.page,
   total: state.docs.totalDocsCount,
   currentSearch: state.searches.currentSearch,

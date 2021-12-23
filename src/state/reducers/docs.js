@@ -8,6 +8,7 @@ import {
   SET_DOC_TAGS,
   UPDATE_DOC_TAGS,
   DELETE_DOC_TAG,
+  SET_PAGE,
 } from '../actions/docs';
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
     file_id: '',
     tags: [],
   },
+  pageType: 'bookmarks',
 };
 
 export const docsReducer = (state = initialState, action) => {
@@ -63,6 +65,8 @@ export const docsReducer = (state = initialState, action) => {
           tags: state.docTags.tags.filter(tag => tag !== payload),
         },
       };
+    case SET_PAGE:
+      return { ...state, pageType: payload };
     default:
       return state;
   }
