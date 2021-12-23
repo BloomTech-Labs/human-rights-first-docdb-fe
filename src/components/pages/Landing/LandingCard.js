@@ -15,11 +15,7 @@ import {
   removeBookmarks,
   saveBookmarks,
 } from '../../../state/actions/bookmarks';
-import {
-  handleModal,
-  setDocTags,
-  downloadText,
-} from '../../../state/actions/docs';
+import { handleModal, setDocTags } from '../../../state/actions/docs';
 import SummaryModal from '../../common/SummaryModal';
 import './LandingCard.css';
 
