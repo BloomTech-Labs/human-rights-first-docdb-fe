@@ -1,6 +1,9 @@
 import React from 'react';
 import { Card, Collapse, Col, Row, Tooltip } from 'antd';
-import { DiffOutlined as EditTags } from '@ant-design/icons';
+import {
+  DiffOutlined as EditTags,
+  CloudDownloadOutlined,
+} from '@ant-design/icons';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
@@ -11,7 +14,11 @@ import {
   removeBookmarks,
   saveBookmarks,
 } from '../../../state/actions/bookmarks';
-import { handleModal, setDocTags } from '../../../state/actions/docs';
+import {
+  handleModal,
+  setDocTags,
+  downloadText,
+} from '../../../state/actions/docs';
 import SummaryModal from '../../common/SummaryModal';
 import './LandingCard.css';
 
@@ -32,6 +39,7 @@ function LandingCard(props) {
     path,
     handleModal,
     setDocTags,
+    downloadText,
     summary,
   } = props;
   const { authState } = useOktaAuth();
@@ -53,6 +61,10 @@ function LandingCard(props) {
       tags: tags,
     });
     handleModal();
+  };
+
+  const handleDownload = () => {
+    downloadText(box_id, name);
   };
 
   return (
@@ -108,7 +120,7 @@ function LandingCard(props) {
         >
           <Row wrap="false">
             <Col span={2}>
-              <Row style={{ marginTop: 8, marginBottom: 15 }}>
+              <Row style={{ marginTop: 2, marginBottom: 8 }}>
                 <Tooltip title="Document Summary">
                   <SummaryModal name={name} summary={summary} />
                 </Tooltip>
@@ -119,6 +131,11 @@ function LandingCard(props) {
                     style={{ fontSize: 18, cursor: 'pointer' }}
                     onClick={loadTagModal}
                   />
+                </Tooltip>
+              </Row>
+              <Row style={{ marginTop: 8 }}>
+                <Tooltip title="Dowload Raw Text" onClick={handleDownload}>
+                  <CloudDownloadOutlined />
                 </Tooltip>
               </Row>
             </Col>
@@ -213,4 +230,5 @@ export default connect(mapStateToProps, {
   removeBookmarks,
   handleModal,
   setDocTags,
+  downloadText,
 })(LandingCard);
