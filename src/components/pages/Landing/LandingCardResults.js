@@ -2,6 +2,7 @@ import React from 'react';
 import LandingCard from './LandingCard';
 import LandingSearchCard from './LandingSearchCard';
 import { searchDocs } from '../../../state/actions/searches';
+import TagModal from '../../common/TagModal';
 import { connect } from 'react-redux';
 import { Row, Col, Pagination } from 'antd';
 import { useOktaAuth } from '@okta/okta-react';
@@ -40,6 +41,7 @@ function LandingCardResults(props) {
 
   return (
     <>
+      <TagModal />
       {(bookmarkedDocs.length === 0 && docs.length === 0) ||
         pageType === 'searchOnly' ? (
         <LandingSearchCard />
@@ -50,6 +52,15 @@ function LandingCardResults(props) {
               ? 'Bookmarks'
               : `Search results for "${currentSearch}"`}
           </h1>
+          <Pagination
+            style={{ textAlign: 'center', paddingBottom: '2%' }}
+            current={currentPage}
+            pageSize={props.pageSize}
+            onChange={handleChange}
+            total={total}
+            pageSizeOptions={[20, 40, 80]}
+            hideOnSinglePage={true}
+          />
           <Row gutter={{ xs: 16, sm: 24, md: 32, lg: 48 }} justify="center">
             {docs.map(doc => (
               <Col key={doc.box_id}>
@@ -58,11 +69,12 @@ function LandingCardResults(props) {
             ))}
           </Row>
           <Pagination
+            style={{ textAlign: 'center', paddingBottom: '2%' }}
             current={currentPage}
             pageSize={props.pageSize}
             onChange={handleChange}
             total={total}
-            pageSizeOptions={[10, 25, 50, 100]}
+            pageSizeOptions={[20, 40, 80]}
             hideOnSinglePage={true}
           />
         </>
