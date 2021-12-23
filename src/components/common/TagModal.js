@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Querystring from 'querystring';
 import { connect } from 'react-redux';
 import { Modal, Input as Add, Tag, Tooltip, Row, Col, Button } from 'antd';
+import { PlusCircleFilled } from '@ant-design/icons';
 import {
   handleModal,
   setDocTags,
@@ -90,6 +91,12 @@ function TagModal(props) {
             onPressEnter={handleAdd}
             value={newTag}
             onChange={changeHandler}
+          />
+        </Col>
+        <Col span={2}>
+          <PlusCircleFilled
+            onClick={handleAdd}
+            style={{ fontSize: 18, marginTop: 5 }}
           />
         </Col>
       </Row>
