@@ -9,6 +9,7 @@ import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
 import Tags from '../../common/Tags/Tags';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
+import { downloadTextDS } from '../../../api';
 import { connect } from 'react-redux';
 import {
   removeBookmarks,
@@ -39,7 +40,6 @@ function LandingCard(props) {
     path,
     handleModal,
     setDocTags,
-    downloadText,
     summary,
   } = props;
   const { authState } = useOktaAuth();
@@ -64,7 +64,7 @@ function LandingCard(props) {
   };
 
   const handleDownload = () => {
-    downloadText(box_id, name);
+    downloadTextDS(`/raw_text/${box_id}`, name);
   };
 
   return (
@@ -230,5 +230,4 @@ export default connect(mapStateToProps, {
   removeBookmarks,
   handleModal,
   setDocTags,
-  downloadText,
 })(LandingCard);

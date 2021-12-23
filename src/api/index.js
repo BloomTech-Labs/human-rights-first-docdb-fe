@@ -55,6 +55,22 @@ const deleteTagDS = (path, body) => {
     .catch(err => err);
 };
 
+const downloadTextDS = (path, title) => {
+  if (!path) {
+    throw new Error('no path');
+  }
+
+  return axios.get(dsUrl + path).then(res => {
+    console.log(res);
+    const url = window.URL.createObjectURL(new Blob([res.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `${title}.txt`);
+    document.body.appendChild(link);
+    link.click();
+  });
+};
+
 const apiAuthGet = authHeader => {
   return axios.get(apiUrl, { headers: authHeader });
 };
@@ -72,4 +88,11 @@ const getProfileData = authState => {
 const axiosWithAuth = authState =>
   axios.create({ headers: getAuthHeader(authState) });
 
-export { getProfileData, getDSData, addTagDS, deleteTagDS, axiosWithAuth };
+export {
+  getProfileData,
+  getDSData,
+  addTagDS,
+  deleteTagDS,
+  axiosWithAuth,
+  downloadTextDS,
+};
