@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Tag, Tooltip } from 'antd';
 import { connect } from 'react-redux';
-import { searchDocs, setCurrentSearch } from '../../../state/actions/searches';
+import { searchDocs } from '../../../state/actions/searches';
 import { useOktaAuth } from '@okta/okta-react';
 
 function ColTagList(props) {
@@ -15,7 +15,6 @@ function ColTagList(props) {
         data-testid="doc-tag"
         onClick={() => {
           searchDocs(tag, authState, 1, pageSize);
-          setCurrentSearch(tag, 1, pageSize);
         }}
       >
         {tag.length < 45 ? (
@@ -31,6 +30,6 @@ const mapStateToProps = state => ({
   pageSize: state.pageSize,
 });
 
-export default connect(mapStateToProps, { searchDocs, setCurrentSearch })(
+export default connect(mapStateToProps, { searchDocs })(
   ColTagList
 );

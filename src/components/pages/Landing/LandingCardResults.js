@@ -1,7 +1,7 @@
 import React from 'react';
 import LandingCard from './LandingCard';
 import LandingSearchCard from './LandingSearchCard';
-import { setCurrentSearch, searchDocs } from '../../../state/actions/searches';
+import { searchDocs } from '../../../state/actions/searches';
 import { connect } from 'react-redux';
 import { Row, Col, Pagination } from 'antd';
 import { useOktaAuth } from '@okta/okta-react';
@@ -11,7 +11,6 @@ function LandingCardResults(props) {
     docs,
     total,
     currentSearch,
-    setCurrentSearch,
     searchDocs,
     currentPage,
     bookmarkedDocs,
@@ -29,14 +28,12 @@ function LandingCardResults(props) {
   const handleChange = (page, pageSize) => {
     // for when the page size stays the same
     if (pageSize === props.pageSize) {
-      setCurrentSearch(currentSearch, page, pageSize);
       searchDocs(currentSearch, authState, page, props.pageSize, pageType);
     }
     // when page size changes, this keeps track of where you were
     else {
       const newPage =
         Math.floor(((currentPage - 1) * props.pageSize + 1) / pageSize) + 1;
-      setCurrentSearch(currentSearch, newPage, pageSize);
       searchDocs(currentSearch, authState, newPage, pageSize, pageType);
     }
   };
@@ -44,7 +41,7 @@ function LandingCardResults(props) {
   return (
     <>
       {(bookmarkedDocs.length === 0 && docs.length === 0) ||
-      pageType === 'searchOnly' ? (
+        pageType === 'searchOnly' ? (
         <LandingSearchCard />
       ) : (
         <>
@@ -88,5 +85,4 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   searchDocs,
-  setCurrentSearch,
 })(LandingCardResults);
