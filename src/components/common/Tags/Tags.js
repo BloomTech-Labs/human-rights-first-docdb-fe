@@ -8,22 +8,24 @@ function Tags(props) {
 
   if (tagArray.length <= size)
     return (
-      <Row>
+      <Row align="middle" justify="start" gutter={[0, 5]}>
         {tagArray.map((tag, index) => (
-          <ColTag tag={tag} key={index} />
+          <Col span={6}>
+            <ColTag tag={tag} key={index} />
+          </Col>
         ))}
       </Row>
     );
 
-  const shownTags = tagArray.slice(0, size - 1);
-  const hiddenTags = tagArray.slice(size - 1, tagArray.length);
+  const shownTags = tagArray.slice(0, size - 2);
+  const hiddenTags = tagArray.slice(size - 2, tagArray.length);
 
   return (
-    <Row>
+    <Row align="middle" justify="start" gutter={[0, 5]}>
       {shownTags.map((tag, index) => (
         <ColTag tag={tag} key={index} />
       ))}
-      <Col>
+      <Col offset={1}>
         <Popover
           title="Tags cont."
           content={
