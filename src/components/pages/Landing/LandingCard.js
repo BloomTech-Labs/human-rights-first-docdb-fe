@@ -108,7 +108,7 @@ function LandingCard(props) {
         >
           <Row wrap="false">
             <Col span={2}>
-              <Row style={{ marginTop: 10, marginBottom: 15 }}>
+              <Row style={{ marginTop: 8, marginBottom: 15 }}>
                 <Tooltip title="Document Summary">
                   <SummaryModal name={name} summary={summary} />
                 </Tooltip>
