@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'antd';
+import { Card, Collapse, Col, Row, Tooltip } from 'antd';
 import BookmarkOutlined from '../../../assets/OutlineBookMark.svg';
 import BookmarkFilled from '../../../assets/FilledBookMark.svg';
 import PropTypes from 'prop-types';
@@ -10,8 +10,11 @@ import {
   removeBookmarks,
   saveBookmarks,
 } from '../../../state/actions/bookmarks';
+import SummaryModal from '../../common/SummaryModal';
+import './LandingCard.css';
 
 const { Meta } = Card;
+const { Panel } = Collapse;
 const thumbUrl = `${process.env.REACT_APP_DS_API_URI}/thumbnail`;
 
 function LandingCard(props) {
@@ -25,6 +28,7 @@ function LandingCard(props) {
     removeBookmarks,
     cardView,
     path,
+    summary,
   } = props;
   const { authState } = useOktaAuth();
 
@@ -79,7 +83,16 @@ function LandingCard(props) {
             title={name}
             style={{ textAlign: 'center', marginBottom: 10 }}
           />
-          <Tags tagArray={tags} size={8} />
+          <Row wrap="false">
+            <Col span={2}>
+              <Tooltip title="Document Summary">
+                <SummaryModal name={name} summary={summary} />
+              </Tooltip>
+            </Col>
+            <Col span={22}>
+              <Tags tagArray={tags} size={8} />
+            </Col>
+          </Row>
         </Card>
       ) : (
         // displays the results in list view
@@ -91,37 +104,50 @@ function LandingCard(props) {
               alt={name}
               fallback={`${thumbUrl}/${box_id}`}
               style={{
-                // width: '100%',
-                // margin: 'auto',
+                width: '100%',
+                margin: 'auto',
+                padding: '1rem',
                 minWidth: 180,
                 minHeight: 140,
               }}
             />
           }
-          extra={
-            <img
-              src={isFavorite ? BookmarkFilled : BookmarkOutlined}
-              alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
-              width={50}
-              data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
-              onClick={isFavorite ? handleRemove : handleSave}
-              style={{ right: 5, top: 5, position: 'absolute' }}
-            />
-          }
+          // extra={
+          //   <img
+          //     src={isFavorite ? BookmarkFilled : BookmarkOutlined}
+          //     alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
+          //     width={50}
+          //     data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
+          //     onClick={isFavorite ? handleRemove : handleSave}
+          //     style={{ right: 5, top: 5, position: 'absolute' }}
+          //   />
+          // }
           style={{
             width: '60vw',
-            height: 300,
             display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: 'left',
             marginBottom: '3%',
           }}
+          bodyStyle={{ overflow: 'auto', whiteSpace: 'normal' }}
         >
+          <img
+            src={isFavorite ? BookmarkFilled : BookmarkOutlined}
+            alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
+            width={50}
+            data-testid={isFavorite ? 'filled-bookmark' : 'outlined-bookmark'}
+            onClick={isFavorite ? handleRemove : handleSave}
+            style={{ right: 5, top: 5, position: 'absolute' }}
+          />
           <Meta
             title={name}
             description={path}
-            style={{ textAlign: 'center', marginBottom: '10px' }}
+            style={{ marginBottom: '10px' }}
           />
+          <Collapse defaultActiveKey={['0']} ghost>
+            <Panel header="Summary" key="1">
+              <p>{summary}</p>
+            </Panel>
+          </Collapse>
           <Tags tagArray={tags} size={8} />
         </Card>
       )}
