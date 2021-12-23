@@ -14,10 +14,7 @@ import {
   displayThumbnail,
   searchOnly,
 } from '../../../state/actions/docs';
-import {
-  searchDocs,
-  setPageToSearchResults,
-} from '../../../state/actions/searches';
+import { searchDocs } from '../../../state/actions/searches';
 import { bookmarks } from '../../../state/actions/bookmarks';
 import { debounce } from '../../../utils/debounce';
 
@@ -50,7 +47,6 @@ function MainHeader(props) {
     getDocs,
     searchDocs,
     searchOnly,
-    setPageToSearchResults,
     displayListView,
     displayThumbnail,
     bookmarks,
@@ -95,7 +91,6 @@ function MainHeader(props) {
 
   const onSearch = value => {
     if (!value) return alert('Search bar cannot be empty');
-    setPageToSearchResults();
     searchDocs(value, authState, 1, pageSize);
   };
 
@@ -190,5 +185,4 @@ export default connect(mapStateToProps, {
   searchOnly,
   bookmarks,
   getDocs,
-  setPageToSearchResults,
 })(MainHeader);
