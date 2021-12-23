@@ -197,12 +197,21 @@ function LandingCard(props) {
             </Panel>
           </Collapse>
           <Tags tagArray={tags} size={8} />
-          <Tooltip title="Add/Edit Tags">
-            <EditTags
-              style={{ fontSize: 18, cursor: 'pointer' }}
-              onClick={loadTagModal}
-            />
-          </Tooltip>
+          <Row justify="start" align="bottom">
+            <Col span={2}>
+              <Tooltip title="Add/Edit Tags">
+                <EditTags
+                  style={{ fontSize: 18, cursor: 'pointer' }}
+                  onClick={loadTagModal}
+                />
+              </Tooltip>
+            </Col>
+            <Col span={2}>
+              <Tooltip title="Dowload Raw Text" onClick={handleDownload}>
+                <CloudDownloadOutlined />
+              </Tooltip>
+            </Col>
+          </Row>
         </Card>
       )}
     </>
