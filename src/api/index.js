@@ -61,7 +61,6 @@ const downloadTextDS = (path, title) => {
   }
 
   return axios.get(dsUrl + path).then(res => {
-    console.log(res);
     const url = window.URL.createObjectURL(new Blob([res.data]));
     const link = document.createElement('a');
     link.href = url;
