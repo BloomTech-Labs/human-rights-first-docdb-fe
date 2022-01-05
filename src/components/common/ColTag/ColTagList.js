@@ -24,7 +24,7 @@ function ColTagList(props) {
   );
 }
 const mapStateToProps = state => ({
-  pageSize: state.pageSize,
+  pageSize: state.searches.pageSize,
 });
 
 export default connect(mapStateToProps, { searchDocs, setCurrentSearch })(
