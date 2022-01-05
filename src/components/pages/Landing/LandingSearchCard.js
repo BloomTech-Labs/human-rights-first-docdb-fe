@@ -11,7 +11,6 @@ const landingSearchStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  backgroundColor: '#f7ede2',
   height: '100vh',
 };
 
@@ -26,14 +25,8 @@ function LandingSearchCard(props) {
 
   return (
     <div style={{ ...landingSearchStyle }}>
-      <img
-        src={logo2}
-        className="header_img"
-        alt="HRF logo"
-        style={{ margin: '10rem 0 2rem 0' }}
-      />
+      <h1 style={{ margin: '10rem 0 2rem 0', fontSize: "3rem" }}>Enter term to begin searching:</h1>
       <Search
-        placeholder="input search text"
         onSearch={onSearch}
         style={{ width: 500 }}
       />
