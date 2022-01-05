@@ -32,7 +32,7 @@ export const searchDocs = (
         dispatch({ type: SET_DOCS, payload: data });
         dispatch({
           type: CURRENT_SEARCH,
-          payload: { currentSearch: search, currentPage: page, pageSize },
+          payload: { currentSearch: search, currentPage: page, pageSize: pageSize },
         });
         if (pageType !== 'bookmarks') {
           dispatch({ type: SET_PAGE, payload: 'searchResults' });
