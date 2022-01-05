@@ -163,7 +163,6 @@ function MainHeader(props) {
         <Button onClick={logout} type="default">
           Logout
         </Button>
-        <Avatar size={45} icon={<UserOutlined />} />
       </Header>
     </Layout>
   );
