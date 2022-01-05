@@ -62,7 +62,7 @@ function LandingCard(props) {
         // displays the results in card view
         <Card
           title={
-            <Row style={{ marginLeft: 5 }}>
+            <Row style={{ marginLeft: 15 }}>
               <Col
                 span={18}
                 style={{ textOverflow: 'ellipsis', overflow: 'hidden' }}
@@ -109,15 +109,19 @@ function LandingCard(props) {
         >
           <Row wrap="false">
             <Col span={2}>
-              <Tooltip title="Document Summary">
-                <SummaryModal name={name} summary={summary} />
-              </Tooltip>
-              <Tooltip title="Add/Edit Tags">
-                <EditTags
-                  style={{ fontSize: 18, cursor: 'pointer' }}
-                  onClick={loadTagModal}
-                />
-              </Tooltip>
+              <Row style={{ marginTop: 8, marginBottom: 15 }}>
+                <Tooltip title="Document Summary">
+                  <SummaryModal name={name} summary={summary} />
+                </Tooltip>
+              </Row>
+              <Row>
+                <Tooltip title="Add/Edit Tags">
+                  <EditTags
+                    style={{ fontSize: 18, cursor: 'pointer' }}
+                    onClick={loadTagModal}
+                  />
+                </Tooltip>
+              </Row>
             </Col>
             <Col span={22}>
               <Tags tagArray={tags} size={8} />
