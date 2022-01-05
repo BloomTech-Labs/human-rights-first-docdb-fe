@@ -106,7 +106,7 @@ function MainHeader(props) {
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
         <>
-          <img src={logo2} className="header_img" alt="HRF logo" />
+          <img src={logo2} onClick={bookmarksButton} className="header_img" alt="HRF logo" />
           {pageType === 'searchOnly' ? (
             <></>
           ) : (
