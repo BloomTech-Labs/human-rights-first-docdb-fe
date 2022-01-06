@@ -18,3 +18,18 @@
     padding:.5% 0 5%;
 
 }
+
+.sectionHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.viewHeader {
+    font-size: 2rem;
+    padding: 2rem 0 2rem 2rem;
+}
+
+.tabs {
+    padding: 1rem 4.5rem 2rem 0;
+}

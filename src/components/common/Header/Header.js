@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Search from 'antd/es/input/Search';
-// eslint-disable-next-line no-unused-vars
-import { Tooltip, Avatar, Layout, Button, Tabs } from 'antd';
-// eslint-disable-next-line no-unused-vars
-import { UserOutlined, AppstoreFilled, BarsOutlined } from '@ant-design/icons';
+import { Layout, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './header.css';
 import logo2 from '../../../assets/HRF_Logo2.png';
@@ -49,18 +46,13 @@ function MainHeader(props) {
     getDocs,
     searchDocs,
     searchOnly,
-    displayListView,
-    displayThumbnail,
     bookmarks,
     bookmarkedDocs,
     docs,
     currentSearch,
-    cardView,
     pageType,
     pageSize,
   } = props;
-
-  const { TabPane } = Tabs;
 
   useEffect(() => {
     if (pageType !== 'bookmarks') {
@@ -98,22 +90,6 @@ function MainHeader(props) {
     searchDocs(value, authState, 1, pageSize);
   };
 
-  //Buttons For Display modes
-  const thumbnailView = () => {
-    displayThumbnail();
-  };
-  const listView = () => {
-    displayListView();
-  };
-
-  const callback = (key) => {
-    if (key === "1") {
-      thumbnailView();
-    } else if (key === "2") {
-      listView();
-    }
-  };
-
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
@@ -136,12 +112,6 @@ function MainHeader(props) {
                 value={query}
                 onChange={changeHandler}
               />
-              <Tabs defaultActiveKey="1" size="default" onChange={callback} style={{ marginBottom: -17 }}>
-                <TabPane tab="Grid View" key="1">
-                </TabPane>
-                <TabPane tab="List View" key="2">
-                </TabPane>
-              </Tabs>
             </>
           )}
           {pageType === 'bookmarks' ? (
