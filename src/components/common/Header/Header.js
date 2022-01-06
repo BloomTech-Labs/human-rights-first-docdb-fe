@@ -19,13 +19,6 @@ import { debounce } from '../../../utils/debounce';
 
 const { Header } = Layout;
 
-const scrollStyles = {
-  position: 'fixed',
-  width: '100%',
-  transition: 'top ease-in 0.2s',
-  zIndex: '9999',
-};
-
 function MainHeader(props) {
   const [oldScroll, setOldScroll] = useState(0);
   const [showHeader, setShowHeader] = useState(true);
@@ -91,7 +84,7 @@ function MainHeader(props) {
   };
 
   return (
-    <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
+    <Layout className="navbar" style={{ top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
         <>
           <img src={logo2} onClick={bookmarksButton} className="header_img" alt="HRF logo" />
@@ -115,10 +108,11 @@ function MainHeader(props) {
             </>
           )}
           {pageType === 'bookmarks' ? (
-            <Button onClick={searchButton}>Home</Button>
+            <Button className="navButtons" onClick={searchButton}>Home</Button>
           ) : (
             bookmarkedDocs.length > 0 && (
               <Button
+                className="navButtons"
                 style={{
                   visibility:
                     bookmarkedDocs.length === 0 && docs.length === 0
@@ -133,7 +127,7 @@ function MainHeader(props) {
             )
           )}
         </>
-        <Button onClick={logout} type="default">
+        <Button className="navButtons" onClick={logout} type="default">
           Logout
         </Button>
       </Header>

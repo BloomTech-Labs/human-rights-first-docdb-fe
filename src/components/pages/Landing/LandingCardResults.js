@@ -25,13 +25,6 @@ function LandingCardResults(props) {
     displayThumbnail,
   } = props;
 
-  const headerStyle = {
-    fontSize: '2rem',
-    padding: '2rem',
-    textAlign: 'center',
-    display: 'inline-block',
-  };
-
   const { authState } = useOktaAuth();
 
   const { TabPane } = Tabs;
