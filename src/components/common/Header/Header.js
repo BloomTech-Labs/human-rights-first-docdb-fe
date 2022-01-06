@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Search from 'antd/es/input/Search';
-import { Tooltip, Avatar, Layout, Button } from 'antd';
+// eslint-disable-next-line no-unused-vars
+import { Tooltip, Avatar, Layout, Button, Tabs } from 'antd';
+// eslint-disable-next-line no-unused-vars
 import { UserOutlined, AppstoreFilled, BarsOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './header.css';
@@ -58,6 +60,8 @@ function MainHeader(props) {
     pageSize,
   } = props;
 
+  const { TabPane } = Tabs;
+
   useEffect(() => {
     if (pageType !== 'bookmarks') {
       setQuery(currentSearch);
@@ -102,6 +106,14 @@ function MainHeader(props) {
     displayListView();
   };
 
+  const callback = (key) => {
+    if (key === "1") {
+      thumbnailView();
+    } else if (key === "2") {
+      listView();
+    }
+  };
+
   return (
     <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
@@ -124,21 +136,12 @@ function MainHeader(props) {
                 value={query}
                 onChange={changeHandler}
               />
-              {cardView ? (
-                <><Tooltip placement="bottom" title={'Grid View'}>
-                  <Avatar size={40} icon={<AppstoreFilled style={{ color: '#696969' }} />} onClick={thumbnailView} />
-                </Tooltip>
-                  <Tooltip placement="bottom" title={'List View'}>
-                    <Avatar size={40} icon={<BarsOutlined />} onClick={listView} />
-                  </Tooltip></>
-              ) : (
-                <><Tooltip placement="bottom" title={'Grid View'}>
-                  <Avatar size={40} icon={<AppstoreFilled />} onClick={thumbnailView} />
-                </Tooltip>
-                  <Tooltip placement="bottom" title={'List View'}>
-                    <Avatar size={40} icon={<BarsOutlined style={{ color: '#696969' }} />} onClick={listView} />
-                  </Tooltip></>
-              )}
+              <Tabs defaultActiveKey="1" size="default" onChange={callback} style={{ marginBottom: -17 }}>
+                <TabPane tab="Grid View" key="1">
+                </TabPane>
+                <TabPane tab="List View" key="2">
+                </TabPane>
+              </Tabs>
             </>
           )}
           {pageType === 'bookmarks' ? (
