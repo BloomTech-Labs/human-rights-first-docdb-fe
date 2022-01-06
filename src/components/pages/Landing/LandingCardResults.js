@@ -10,7 +10,7 @@ import {
   displayListView,
   displayThumbnail,
 } from '../../../state/actions/docs';
-import './LandingCard.css';
+import './LandingCard.less';
 
 function LandingCardResults(props) {
   const {
