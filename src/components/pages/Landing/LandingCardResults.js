@@ -4,8 +4,13 @@ import LandingSearchCard from './LandingSearchCard';
 import { searchDocs } from '../../../state/actions/searches';
 import TagModal from '../../common/TagModal';
 import { connect } from 'react-redux';
-import { Row, Col, Pagination } from 'antd';
+import { Row, Col, Pagination, Tabs } from 'antd';
 import { useOktaAuth } from '@okta/okta-react';
+import {
+  displayListView,
+  displayThumbnail,
+} from '../../../state/actions/docs';
+import './LandingCard.less';
 
 function LandingCardResults(props) {
   const {
@@ -16,15 +21,13 @@ function LandingCardResults(props) {
     currentPage,
     bookmarkedDocs,
     pageType,
+    displayListView,
+    displayThumbnail,
   } = props;
 
-  const headerStyle = {
-    fontSize: '2rem',
-    padding: '2rem',
-    textAlign: 'center',
-  };
-
   const { authState } = useOktaAuth();
+
+  const { TabPane } = Tabs;
 
   const handleChange = (page, pageSize) => {
     // for when the page size stays the same
@@ -39,6 +42,22 @@ function LandingCardResults(props) {
     }
   };
 
+  //Buttons For Display modes
+  const thumbnailView = () => {
+    displayThumbnail();
+  };
+  const listView = () => {
+    displayListView();
+  };
+
+  const callback = (key) => {
+    if (key === "1") {
+      thumbnailView();
+    } else if (key === "2") {
+      listView();
+    }
+  };
+
   return (
     <>
       <TagModal />
@@ -47,11 +66,19 @@ function LandingCardResults(props) {
         <LandingSearchCard />
       ) : (
         <>
-          <h1 style={{ ...headerStyle }}>
+        <div className="sectionHeader">
+          <h1 className="viewHeader">
             {pageType === 'bookmarks'
               ? 'Bookmarks'
               : `Search results for "${currentSearch}"`}
           </h1>
+          <Tabs defaultActiveKey="1" size="large" onChange={callback} className="tabs">
+            <TabPane tab="Grid View" key="1">
+            </TabPane>
+            <TabPane tab="List View" key="2">
+            </TabPane>
+          </Tabs>
+        </div>
           <Pagination
             style={{ textAlign: 'center', paddingBottom: '2%' }}
             current={currentPage}
@@ -97,4 +124,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   searchDocs,
+  displayListView,
+  displayThumbnail,
 })(LandingCardResults);

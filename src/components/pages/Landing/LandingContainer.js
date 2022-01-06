@@ -5,7 +5,6 @@ function LandingContainer() {
   return (
     <div
       style={{
-        backgroundColor: '#f7ede2',
         paddingTop: '80px',
       }}
     >

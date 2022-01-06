@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Search from 'antd/es/input/Search';
-import { Tooltip, Avatar, Layout, Button } from 'antd';
-import { UserOutlined, AppstoreFilled, BarsOutlined } from '@ant-design/icons';
+import { Layout, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './header.css';
 import logo2 from '../../../assets/HRF_Logo2.png';
@@ -19,13 +18,6 @@ import { bookmarks } from '../../../state/actions/bookmarks';
 import { debounce } from '../../../utils/debounce';
 
 const { Header } = Layout;
-
-const scrollStyles = {
-  position: 'fixed',
-  width: '100%',
-  transition: 'top ease-in 0.2s',
-  zIndex: '9999',
-};
 
 function MainHeader(props) {
   const [oldScroll, setOldScroll] = useState(0);
@@ -47,13 +39,10 @@ function MainHeader(props) {
     getDocs,
     searchDocs,
     searchOnly,
-    displayListView,
-    displayThumbnail,
     bookmarks,
     bookmarkedDocs,
     docs,
     currentSearch,
-    cardView,
     pageType,
     pageSize,
   } = props;
@@ -94,19 +83,11 @@ function MainHeader(props) {
     searchDocs(value, authState, 1, pageSize);
   };
 
-  //Buttons For Display modes
-  const thumbnailView = () => {
-    displayThumbnail();
-  };
-  const listView = () => {
-    displayListView();
-  };
-
   return (
-    <Layout style={{ ...scrollStyles, top: showHeader ? '0' : '-115px' }}>
+    <Layout className="navbar" style={{ top: showHeader ? '0' : '-115px' }}>
       <Header className="header_div">
         <>
-          <img src={logo2} className="header_img" alt="HRF logo" />
+          <img src={logo2} onClick={bookmarksButton} className="header_img" alt="HRF logo" />
           {pageType === 'searchOnly' ? (
             <></>
           ) : (
@@ -124,28 +105,14 @@ function MainHeader(props) {
                 value={query}
                 onChange={changeHandler}
               />
-              {cardView ? (
-                <><Tooltip placement="bottom" title={'Grid View'}>
-                  <Avatar size={40} icon={<AppstoreFilled style={{ color: '#696969' }} />} onClick={thumbnailView} />
-                </Tooltip>
-                  <Tooltip placement="bottom" title={'List View'}>
-                    <Avatar size={40} icon={<BarsOutlined />} onClick={listView} />
-                  </Tooltip></>
-              ) : (
-                <><Tooltip placement="bottom" title={'Grid View'}>
-                  <Avatar size={40} icon={<AppstoreFilled />} onClick={thumbnailView} />
-                </Tooltip>
-                  <Tooltip placement="bottom" title={'List View'}>
-                    <Avatar size={40} icon={<BarsOutlined style={{ color: '#696969' }} />} onClick={listView} />
-                  </Tooltip></>
-              )}
             </>
           )}
           {pageType === 'bookmarks' ? (
-            <Button onClick={searchButton}>Home</Button>
+            <Button className="navButtons" onClick={searchButton}>Home</Button>
           ) : (
             bookmarkedDocs.length > 0 && (
               <Button
+                className="navButtons"
                 style={{
                   visibility:
                     bookmarkedDocs.length === 0 && docs.length === 0
@@ -160,10 +127,9 @@ function MainHeader(props) {
             )
           )}
         </>
-        <Button onClick={logout} type="default">
+        <Button className="navButtons" onClick={logout} type="default">
           Logout
         </Button>
-        <Avatar size={45} icon={<UserOutlined />} />
       </Header>
     </Layout>
   );

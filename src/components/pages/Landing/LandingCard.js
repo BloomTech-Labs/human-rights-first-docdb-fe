@@ -14,7 +14,7 @@ import {
 } from '../../../state/actions/bookmarks';
 import { handleModal, setDocTags } from '../../../state/actions/docs';
 import SummaryModal from '../../common/SummaryModal';
-import './LandingCard.css';
+import './LandingCard.less';
 
 const { Meta } = Card;
 const { Panel } = Collapse;
@@ -98,11 +98,7 @@ function LandingCard(props) {
               }}
             />
           }
-          style={{
-            width: 300,
-            marginBottom: '17%',
-            border: '1px solid #DAC6B2',
-          }}
+          className="docCard"
           headStyle={{ height: 35, padding: 0 }}
           bodyStyle={{ padding: 12 }}
           hoverable={true}
