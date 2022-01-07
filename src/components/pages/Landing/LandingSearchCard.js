@@ -3,7 +3,7 @@ import { Input } from 'antd';
 import { searchDocs } from '../../../state/actions/searches';
 import { useOktaAuth } from '@okta/okta-react';
 import { connect } from 'react-redux';
-import logo2 from '../../../assets/HRF_Logo2.png';
+import './LandingCard.less';
 
 const { Search } = Input;
 
@@ -11,7 +11,8 @@ const landingSearchStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  height: '100vh',
+  justifyContent: 'center',
+  height: '90vh',
 };
 
 function LandingSearchCard(props) {
@@ -25,10 +26,12 @@ function LandingSearchCard(props) {
 
   return (
     <div style={{ ...landingSearchStyle }}>
-      <h1 style={{ margin: '10rem 0 2rem 0', fontSize: "3rem" }}>Enter term to begin searching:</h1>
+      <h1 className="searchPageHeader">Search</h1>
+      <p className="searchbarText">Simply enter a search term to begin your search through the database!</p>
       <Search
         onSearch={onSearch}
         style={{ width: 500 }}
+        placeholder="Search"
       />
     </div>
   );
