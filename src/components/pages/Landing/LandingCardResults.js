@@ -70,7 +70,7 @@ function LandingCardResults(props) {
           <h1 className="viewHeader">
             {pageType === 'bookmarks'
               ? 'Bookmarks'
-              : `Search results for "${currentSearch}"`}
+              : <span>Search results for: <i>"{currentSearch}"</i></span>}
           </h1>
           <Tabs defaultActiveKey="1" size="large" onChange={callback} className="tabs">
             <TabPane tab="Grid View" key="1">
