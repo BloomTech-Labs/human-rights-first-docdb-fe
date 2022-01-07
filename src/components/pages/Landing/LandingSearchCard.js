@@ -27,7 +27,7 @@ function LandingSearchCard(props) {
   return (
     <div style={{ ...landingSearchStyle }}>
       <h1 className="searchPageHeader">Search</h1>
-      <p className="searchbarText">Simply enter a search term to begin your search through the database!</p>
+      <p className="searchbarText">To get started, enter a search term or phrase.</p><p className="searchbarText2"> From there, bookmark relevant documents, or customize their tags for more useful searches.</p>
       <Search
         onSearch={onSearch}
         style={{ width: 500 }}
