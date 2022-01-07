@@ -1,6 +1,7 @@
 import React from 'react';
 import LandingCard from './LandingCard';
 import LandingSearchCard from './LandingSearchCard';
+import NotFound from '../NotFound/NotFoundPage';
 import { searchDocs } from '../../../state/actions/searches';
 import TagModal from '../../common/TagModal';
 import { connect } from 'react-redux';
@@ -57,6 +58,12 @@ function LandingCardResults(props) {
       listView();
     }
   };
+
+  if (pageType === 'noResults') {
+    return (
+      <NotFound />
+    );
+  }
 
   return (
     <>

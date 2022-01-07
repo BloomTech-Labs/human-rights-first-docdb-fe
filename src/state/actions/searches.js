@@ -25,7 +25,8 @@ export const searchDocs = (
   )
     .then(data => {
       if (data.Response.length === 0) {
-        alert('No search results');
+        dispatch({ type: SET_SEARCH_QUERY, payload: search });
+        dispatch({ type: SET_PAGE, payload: 'noResults' });
         dispatch({ type: FINISH_FETCH });
       } else {
         dispatch({ type: SET_SEARCH_QUERY, payload: search });
