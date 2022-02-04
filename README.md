@@ -50,6 +50,26 @@ To learn more about the data science behind the project, please visit [our DS te
 
 <br><br>
 
+# Interested in Contributing?
+
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+
+Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
+
+<br>
+
+## Installation
+
+- Fork and clone the repo to install it as your own remote.
+  - **note** please [be sure to set your remote](https://help.github.jp/enterprise/2.11/user/articles/changing-a-remote-s-url/) for this repo to point to your Labs Team Front End Repository.
+- run: `npm install` to download all dependencies.
+- Create your `.env` file and update it with the environment variables you will have received from this product's Release Manager.
+- run: `npm start` to start your local development server.
+
+> When using Okta for authentication, the app will need to run locally on port 3000.
+
+<br>
+
 ## Contributors
 
 #### LABS FT 41
@@ -122,25 +142,6 @@ To learn more about the data science behind the project, please visit [our DS te
 [Paul St.Germain](https://github.com/paulstgermain)
 
 <br>
-<br>
-
-# Interested in Contributing?
-
-When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
-
-Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
-
-<br>
-
-## Installation
-
-- Fork and clone the repo to install it as your own remote.
-  - **note** please [be sure to set your remote](https://help.github.jp/enterprise/2.11/user/articles/changing-a-remote-s-url/) for this repo to point to your Labs Team Front End Repository.
-- run: `npm install` to download all dependencies.
-- run: `npm start` to start your local development server.
-
-> When using Okta for authentication, the app will need to run locally on port 3000.
-
 <br>
 
 ## Scripts
