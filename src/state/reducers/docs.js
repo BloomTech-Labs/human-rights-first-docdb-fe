@@ -21,7 +21,7 @@ const initialState = {
     file_id: '',
     tags: [],
   },
-  pageType: 'bookmarks',
+  pageType: 'searchOnly',
 };
 
 export const docsReducer = (state = initialState, action) => {
