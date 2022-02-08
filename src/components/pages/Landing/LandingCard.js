@@ -182,6 +182,13 @@ function LandingCard(props) {
             hoverable={true}
           >
             <img
+                  className="downloadIconList"
+                  src={download}
+                  alt="download icon"
+                  onClick={() => { getRawText(); }}
+            />
+            <img
+              className="bookmarkIconList"
               src={isFavorite ? BookmarkFilled : BookmarkOutlined}
               alt={isFavorite ? 'bookmark filled' : 'bookmark outlined'}
               width={50}
