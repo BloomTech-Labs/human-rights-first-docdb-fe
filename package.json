@@ -22,8 +22,8 @@
     "redux-thunk": "^2.4.0"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "craco start --openssl-legacy-provider",
+    "build": "craco build --openssl-legacy-provider",
     "test": "craco test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",
     "prettier": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
